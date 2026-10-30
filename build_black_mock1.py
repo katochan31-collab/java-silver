@@ -1,45 +1,74 @@
 from pathlib import Path
 import re, html
-src=Path('/mnt/data/JavaSilver黒本_模試1回目_改善版_v3_AI解説.md')
-out=Path('/mnt/data/black_mock1.html')
-md=src.read_text(encoding='utf-8').replace('\\[','[').replace('\\]',']').replace('\\<','<').replace('\\>','>').replace('\\|','|').replace('\\*','*').replace('-\\>','->').replace('\\_','_')
-parts=re.split(r'(?m)^## 問題 (\d+)\s*$',md)
-qs=[]
-for i in range(1,len(parts),2):
-    n=int(parts[i]); body=parts[i+1].strip()
-    pm=re.search(r'### 問題文・コード・選択肢\s*(.*?)(?=\n### 正答)',body,re.S)
-    am=re.search(r'### 正答\s*\n+([^\n]+)',body)
-    em=re.search(r'### 解説\s*(.*)$',body,re.S)
-    content=pm.group(1).strip() if pm else body
-    ans=am.group(1).strip() if am else ''
-    exp=em.group(1).strip() if em else ''
-    qs.append((n,content,ans,exp))
+
+src = Path("/mnt/data/JavaSilver黒本_模試1回目.md")
+out = Path("/mnt/data/black_mock1.html")
+md = (
+    src.read_text(encoding="utf-8")
+    .replace("\\[", "[")
+    .replace("\\]", "]")
+    .replace("\\<", "<")
+    .replace("\\>", ">")
+    .replace("\\|", "|")
+    .replace("\\*", "*")
+    .replace("-\\>", "->")
+    .replace("\\_", "_")
+)
+parts = re.split(r"(?m)^## 問題 (\d+)\s*$", md)
+qs = []
+for i in range(1, len(parts), 2):
+    n = int(parts[i])
+    body = parts[i + 1].strip()
+    pm = re.search(r"### 問題文・コード・選択肢\s*(.*?)(?=\n### 正答)", body, re.S)
+    am = re.search(r"### 正答\s*\n+([^\n]+)", body)
+    em = re.search(r"### 解説\s*(.*)$", body, re.S)
+    content = pm.group(1).strip() if pm else body
+    ans = am.group(1).strip() if am else ""
+    exp = em.group(1).strip() if em else ""
+    qs.append((n, content, ans, exp))
+
 
 def inline(x):
-    x=html.escape(x,quote=False)
-    x=re.sub(r'`([^`]+)`',r'<code>\1</code>',x)
+    x = html.escape(x, quote=False)
+    x = re.sub(r"`([^`]+)`", r"<code>\1</code>", x)
     return x
 
-def render(s):
-    ls=s.splitlines(); o=[]; code=False; buf=[]
-    for line in ls+['@@END@@']:
-        if line.startswith('```'):
-            if code:
-                o.append('<pre><code>'+html.escape('\n'.join(buf))+'</code></pre>'); code=False; buf=[]
-            else: code=True; buf=[]
-            continue
-        if code: buf.append(line); continue
-        if line=='@@END@@': break
-        t=line.strip()
-        if not t: continue
-        if re.match(r'^-\s+',t):
-            o.append('<div class="choice">'+inline(re.sub(r'^-\s+','',t))+'</div>')
-        else: o.append('<p>'+inline(t)+'</p>')
-    return '\n'.join(o)
 
-cards=[]
-for n,c,a,e in qs:
-    cards.append(f'''<article class="question" id="q{n}">
+def render(s):
+    ls = s.splitlines()
+    o = []
+    code = False
+    buf = []
+    for line in ls + ["@@END@@"]:
+        if line.startswith("```"):
+            if code:
+                o.append("<pre><code>" + html.escape("\n".join(buf)) + "</code></pre>")
+                code = False
+                buf = []
+            else:
+                code = True
+                buf = []
+            continue
+        if code:
+            buf.append(line)
+            continue
+        if line == "@@END@@":
+            break
+        t = line.strip()
+        if not t:
+            continue
+        if re.match(r"^-\s+", t):
+            o.append(
+                '<div class="choice">' + inline(re.sub(r"^-\s+", "", t)) + "</div>"
+            )
+        else:
+            o.append("<p>" + inline(t) + "</p>")
+    return "\n".join(o)
+
+
+cards = []
+for n, c, a, e in qs:
+    cards.append(f"""<article class="question" id="q{n}">
       <div class="qhead"><span class="badge">問{n}</span></div>
       <section class="body">{render(c)}</section>
       <details class="answer">
@@ -49,9 +78,9 @@ for n,c,a,e in qs:
           {render(e)}
         </div>
       </details>
-    </article>''')
-nav=''.join(f'<a href="#q{n}">{n}</a>' for n,_,_,_ in qs)
-css='''
+    </article>""")
+nav = "".join(f'<a href="#q{n}">{n}</a>' for n, _, _, _ in qs)
+css = """
 :root { --navy:#12345b; --blue:#1769e8; --pale:#eef4fb; --line:#d7e1ec; --text:#142033; --green:#159447; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -81,14 +110,14 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
 #index a { text-align:center; padding:8px 4px; color:var(--blue); text-decoration:none; background:var(--pale); border-radius:8px; font-weight:700; }
 @media(max-width:600px) { header{padding:22px 18px}.toolbar{flex-wrap:wrap;justify-content:space-between}.home-button{width:100%;text-align:center}.question{padding:18px 16px;border-radius:14px}pre{font-size:13px}.choice{font-size:16px} }
 @media print { .toolbar,#index{display:none}.question{break-inside:avoid;box-shadow:none}details.answer:not([open])>*:not(summary){display:block}details.answer summary{display:none} }
-'''
-js='''const qs=[...document.querySelectorAll('.question')];
+"""
+js = """const qs=[...document.querySelectorAll('.question')];
 let idx=0;
 function go(d){idx=Math.max(0,Math.min(qs.length-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth',block:'start'});update();}
 function update(){document.getElementById('pos').textContent=(idx+1)+' / '+qs.length;}
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);update();}})},{rootMargin:'-35% 0px -55%'});
-qs.forEach(q=>obs.observe(q));update();'''
-doc=f'''<!doctype html>
+qs.forEach(q=>obs.observe(q));update();"""
+doc = f"""<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -115,6 +144,6 @@ doc=f'''<!doctype html>
   </main>
   <script>\n{js}\n  </script>
 </body>
-</html>'''
-out.write_text(doc,encoding='utf-8')
-print('[OK]',out,'questions=',len(qs),'bytes=',out.stat().st_size)
+</html>"""
+out.write_text(doc, encoding="utf-8")
+print("[OK]", out, "questions=", len(qs), "bytes=", out.stat().st_size)
