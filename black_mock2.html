@@ -75,7 +75,6 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>F</div>
           <p>ローカル変数にはデフォルト値が入りません。<code>c</code> は代入前に読み出されるためコンパイルエラーです。フィールドとローカル変数の初期値を区別します。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q2">
@@ -104,7 +103,6 @@ class B {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A,E</div>
           <p><code>public class A</code> があるためソース名は <code>A.java</code> です。<code>javac A.java</code> で同じソース中のAとBがコンパイルされ、どちらにも適切な <code>main</code> があるので <code>java A</code>、<code>java B</code> で実行できます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q3">
@@ -138,7 +136,6 @@ class B {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p><code>print()</code> はstaticメソッドですが、<code>contents</code> はインスタンスフィールドです。インスタンスなしに直接参照できないためコンパイルエラーです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q4">
@@ -176,7 +173,6 @@ class B {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>整数リテラル <code>0b0110</code> の型はintです。<code>Number</code> 引数に渡す際に <code>Integer</code> へボクシングされるので、<code>instanceof Integer</code> が成立してCです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q5">
@@ -212,7 +208,6 @@ class B {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p><code>str</code> はnullなので、<code>str.equalsIgnoreCase("")</code> の呼び出しで <code>NullPointerException</code> が発生します。これは <code>RuntimeException</code> のサブクラスなので2番目のcatchに入りBが表示されます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q6">
@@ -262,7 +257,6 @@ final class C extends B implements A { //(10)
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A, B, E</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q7">
@@ -305,7 +299,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>フィールドアクセスは参照型で決まり、オーバーライドされたメソッド呼出しは実体型で決まります。<code>b.data</code> はA側、<code>b.getData()</code> はB側です。キャスト後の <code>s.data</code> はB側になります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q8">
@@ -349,7 +342,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p><code>test()</code> が投げる実体は <code>ExceptionA</code> なので最初のcatchでAを表示します。その後finallyは必ず実行されEを表示するためA,Eです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q9">
@@ -383,7 +375,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>switch式で70→B、80→A、90→A、95→E、40→C、20→D、10→D、60→Bとなり <code>BAAECDDB</code> です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q10">
@@ -409,7 +400,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D,E</div>
           <p>レコードの標準コンストラクタは全コンポーネントを引数に取るため <code>new Item()</code> は不可です。また <code>new Object()</code> の実体はItemではないため、Itemへのダウンキャストは実行時に <code>ClassCastException</code> になります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q11">
@@ -436,7 +426,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>文字列リテラル <code>"sample"</code> は文字列プール上で共有され1個、<code>new String("sample")</code> は呼ぶたび新しいStringを2個生成します。<code>c</code>、<code>e</code>、<code>f</code> は既存参照の代入なので、新規生成は合計3個です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q12">
@@ -473,7 +462,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>F</div>
           <p>try-with-resourcesはtryを抜ける際、catchより先にリソースをcloseします。そのためC→A→Bの順で表示されます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q13">
@@ -512,7 +500,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C,E</div>
           <p>Cは <code>public void execute()</code> で契約を正しく実装します。Eはabstractクラスなので、抽象メソッドexecuteを未実装のままでも構いません。Aはアクセスをprivateへ狭め、Bはシグネチャ違い、Dは戻り値型が異なります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q14">
@@ -552,7 +539,6 @@ class SampleException extends Exception {}</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>正答Dです。<code>test</code> はbooleanを返す宣言ですが、numが1や2のときfor本体に入らずメソッド末尾へ到達できるため、戻り値不足でコンパイルエラーになります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q15">
@@ -581,7 +567,6 @@ class SampleException extends Exception {}</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p>同じシグネチャのdefaultメソッドをAとBの両方から継承すると競合するためSample側でオーバーライドが必要です。B側のdefault実装は <code>B.super.hello()</code> で明示的に呼べます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q16">
@@ -613,7 +598,6 @@ class SampleException extends Exception {}</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B,C</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q17">
@@ -651,7 +635,6 @@ final class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p><code>test()</code> はBでオーバーライドされるため、A型参照でも実体Bの <code>test()</code> が呼ばれます。B.testはprivateのhelloを呼び、Bを表示します。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q18">
@@ -690,7 +673,6 @@ final class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q19">
@@ -724,7 +706,6 @@ final class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A,C</div>
           <p>クラス名から直接呼ぶにはstaticである必要があります。aとcはstaticで、bはprivateのため他クラスからは不可です。dとeはインスタンスメソッドです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q20">
@@ -747,7 +728,6 @@ final class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>E</div>
           <p>Eはabstractクラス内の具象finalメソッドとして成立します。finalとabstractの併用、非abstractクラス内の抽象メソッド、abstractなしの本体無し宣言などは不正です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q21">
@@ -782,7 +762,6 @@ public class Sample {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q22">
@@ -812,7 +791,6 @@ public class Sample {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q23">
@@ -840,7 +818,6 @@ public class Sample {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>二次元配列は行→列の順に走査します。<code>f</code> は2行目（i=1）の3要素目（j=2）なのでAです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q24">
@@ -870,7 +847,6 @@ public class Sample {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>問題文には <code>object</code> と <code>obj</code> の不一致もありますが、意図された論点でもパターン変数 <code>str</code> はelse側では有効ではありません。したがってコンパイルエラーです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q25">
@@ -917,7 +893,6 @@ public class Sample {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A, E</div>
           <p>Aの <code>var</code> は <code>ArrayList&lt;Object&gt;</code> 相当に推論され、IntegerとStringを追加できます。Eではフィールドxとは別にローカル変数xを宣言でき、Stringとして利用できます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q26">
@@ -953,7 +928,6 @@ public class Sample {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q27">
@@ -1012,7 +986,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q28">
@@ -1046,7 +1019,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>breakがないcaseはフォールスルーします。各valueごとにnumの増減を順に追うと最終値は6です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q29">
@@ -1096,7 +1068,6 @@ public class Trash {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C,E,F</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q30">
@@ -1127,7 +1098,6 @@ public class Trash {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q31">
@@ -1152,7 +1122,6 @@ public class Trash {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>Java 11以降は単一ファイル・ソースコード実行が可能なので、クラスファイルがなくても <code>java Sample.java</code> でコンパイルと実行をまとめて行えます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q32">
@@ -1175,7 +1144,6 @@ public class Trash {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>97と98をcharへキャストするとUnicodeコードポイントとしてそれぞれ <code>a</code> と <code>b</code> になり、<code>a b</code> と表示されます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q33">
@@ -1206,7 +1174,6 @@ public class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q34">
@@ -1221,7 +1188,6 @@ public class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C,D</div>
           <p><code>var</code> は配列初期化子 <code>{...}</code> だけでは型推論できません。<code>new Float[] {...}</code> と <code>new double[] {...}</code> のように生成式で配列型が明示されるC,Dは有効です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q35">
@@ -1270,7 +1236,6 @@ public class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>E</div>
           <p>呼出し側の参照型はAなので、コンパイル時に候補になるのはAが持つ <code>setValue(String)</code> だけです。<code>args</code> はString[]で一致せず、Bだけにある可変長版は候補にならないためコンパイルエラーです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q36">
@@ -1308,7 +1273,6 @@ public class Main {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>フィールドはメソッドのように動的ディスパッチされません。<code>a</code> の宣言型はAなので <code>a.num</code> はA.numを参照し10です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q37">
@@ -1341,7 +1305,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A,E</div>
           <p><code>var</code> はローカル変数だけに使えます。フィールド宣言 <code>var sample ...</code> とメソッド戻り値 <code>public var test()</code> には使えずコンパイルエラーです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q38">
@@ -1370,7 +1333,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p>親Aには引数なしコンストラクタがなく <code>A(int)</code> のみです。Bのコンストラクタ先頭で <code>super(num);</code> を呼ぶ必要があります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q39">
@@ -1396,7 +1358,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>floatからintは縮小変換なので暗黙代入できません。<code>a = (int)b;</code> と明示的にキャストすれば修正できます。int→float、float→double、int→doubleは拡大変換です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q40">
@@ -1426,7 +1387,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p>new String[5] の全要素は初期値nullです。添字1〜3だけA,B,Cへ置換されるため、拡張forでは <code>null, A, B, C, null</code> の順に表示されます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q41">
@@ -1456,7 +1416,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>E</div>
           <p>headerはstaticなので <code>Sample.header</code>、valueはprivateインスタンスフィールドですが公開staticメソッド <code>Sample.getValue()</code> 経由で取得できます。連結して <code>A:B</code> になります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q42">
@@ -1488,7 +1447,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p><code>int[]</code> は参照型でObjectのサブタイプですが、<code>Object[]</code> や <code>long[]</code> とは互換ではありません。そのため <code>test(Object)</code> が選ばれCです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q43">
@@ -1515,7 +1473,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>staticメソッドからインスタンスフィールドnumをインスタンスなしで参照しているため、testメソッドでコンパイルエラーです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q44">
@@ -1538,7 +1495,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p>Stringは不変です。replaceやsubstringは新しいStringを返しますが戻り値を代入していないため、strは元の <code>abcde</code> のままです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q45">
@@ -1559,7 +1515,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>ポイントは , がStringなので、そこから右側は文字列連結になることです。したがって 正答A「1,22」が正しいです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q46">
@@ -1589,7 +1544,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>Aは表示、Bはcontinueで表示せず次へ、Cは表示した直後breakでループ終了です。したがってA,Cです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q47">
@@ -1618,7 +1572,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>二次元配列の各行は別長に置き換えられます。1行目は4要素、2行目は2要素なので <code>1234</code> と <code>12</code> が改行して表示されます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q48">
@@ -1645,7 +1598,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>concatの戻り値は代入しているためAはABCまで増えます。一方replaceの戻り値は捨てるのでCはDになりません。最後にCを連結してABCCです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q49">
@@ -1677,7 +1629,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>原本の <code>AutoCloaseable</code> は <code>AutoCloseable</code> の誤記ならC→A→Bですが、記載どおりなら型名が存在せずコンパイルエラーです。教材としては綴りを修正してから出題するのが安全です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q50">
@@ -1706,7 +1657,6 @@ public class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>continueより後ろの <code>cnt++</code> は絶対に到達できない文なのでコンパイルエラーです。ループ実行結果を考える前に到達可能性を確認します。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q51">
@@ -1737,7 +1687,6 @@ public class A {
 <p>の区別です。</p>
 <p>FのArrayList&lt;Number&gt; は List&lt;Number&gt; のサブタイプなので、共変戻り値によるオーバーライドとして成立します。</p>
 <p>一方Bは引数型そのものが違うので、親のメソッドをオーバーライドしているのではなくオーバーロードです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q52">
@@ -1761,7 +1710,6 @@ public class A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>配列は <code>int[] array = new int[2];</code> のように宣言と生成を行います。Bはnewがなく構文不正、Cは左辺がint、DはJavaの配列宣言構文ではありません。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q53">
@@ -1779,7 +1727,6 @@ char[] array3 = array1[1].clone();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>二次元配列の浅いcloneなので <code>array1[1] == array2[1]</code> がtrueです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q54">
@@ -1814,7 +1761,6 @@ char[] array3 = array1[1].clone();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>原本コードにはCクラスの定義がありません。記載どおり <code>new C()</code> は型を解決できずコンパイルエラーです。「ABC」を意図しているなら <code>class C extends B</code> などCの定義が欠落している可能性があります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q55">
@@ -1840,7 +1786,6 @@ char[] array3 = array1[1].clone();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B,D,E</div>
           <p>abstractクラスには通常の具象メソッド、abstractメソッド、staticメソッドを定義できます。Bは具象、Dは本体なしabstract、Eはstatic具象で有効です。Aはabstractなしで本体がなく、Cはabstractなのに本体があるため不正です。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q56">
@@ -1870,7 +1815,6 @@ char[] array3 = array1[1].clone();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>コンストラクタへ渡したa,bは値渡しです。initはインスタンスフィールド <code>this.a</code> と <code>this.b</code> を4と9にしますが、mainのローカル変数a,bは2,3のままです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q57">
@@ -1908,7 +1852,6 @@ char[] array3 = array1[1].clone();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D,G,H</div>
           <p>tのフィールドnumを0にするには直接 <code>t.num=0</code>、現在値の符号を反転してmodifyへ渡す <code>t.modify(-t.num)</code>、またはgetter結果を使う <code>t.modify(-t.getNum())</code> が成立します。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q58">
@@ -1935,7 +1878,6 @@ char[] array3 = array1[1].clone();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>この問題は、まずコードがコンパイル可能かを確認し、その後に式の評価順序、参照型と実体型、アクセス修飾子など該当するJavaルールを順に適用して正答を判定します。選択肢は「最初にJavaの規則へ反する箇所があるか」を確認すると絞り込みやすくなります。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q59">
@@ -1959,7 +1901,6 @@ char[] array3 = array1[1].clone();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C,D</div>
           <p>オーバーライドではアクセス権を狭められません。親doProcessはprotectedなので子側のpackage-privateは不可です。子をpublicまたはprotectedにすれば修正できます。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q60">
