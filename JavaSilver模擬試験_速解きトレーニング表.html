@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Java SE 17 Silver 黒本 模擬試験 速解きトレーニング表</title>
+<style>
+:root{--navy:#183153;--blue:#2563eb;--pale:#eff6ff;--line:#cbd5e1;--text:#172033;--muted:#526075;--gold:#fff6d8}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;color:var(--text);background:#f6f8fb;line-height:1.55}
+header{background:linear-gradient(135deg,#102a43,#2563eb);color:white;padding:42px 6vw 34px} header h1{margin:0 0 8px;font-size:clamp(24px,4vw,40px)} header p{margin:0;opacity:.9}
+main{max-width:1500px;margin:auto;padding:26px 3vw 56px} section{background:white;border:1px solid #e2e8f0;border-radius:14px;margin:0 0 24px;padding:22px;box-shadow:0 4px 18px rgba(15,23,42,.05)}
+h2{color:var(--navy);border-left:6px solid var(--blue);padding-left:12px;margin-top:0} .lead{font-size:1.05rem} .rulebox{background:var(--pale);border:1px solid #bfdbfe;border-radius:12px;padding:15px 20px} .rulebox ul{columns:2;margin:0;padding-left:22px} nav a{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;background:#e8eef8;color:#173b67;border-radius:999px;text-decoration:none;font-weight:700}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px} table{width:100%;border-collapse:collapse;min-width:940px} th{position:sticky;top:0;background:var(--navy);color:white;text-align:left;padding:10px;border-right:1px solid #49617e} td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top} tbody tr:nth-child(even){background:#f8fafc} tbody tr:hover{background:#eef6ff} .q,.ans,.step{text-align:center;font-weight:800;white-space:nowrap} .ans{color:#b42318} .step{font-size:1.2rem;color:var(--blue)} .note{background:var(--gold);border-left:5px solid #eab308;padding:12px 15px;margin-top:14px} .small{color:var(--muted);font-size:.92rem} @media(max-width:700px){section{padding:15px}.rulebox ul{columns:1}}
+@media print{body{background:white;font-size:9pt} header{padding:18px;background:#183153!important;-webkit-print-color-adjust:exact} main{padding:10px} section{box-shadow:none;break-inside:avoid} nav{display:none} th{position:static}}
+</style></head>
+<body><header><h1>Java SE 17 Silver 黒本<br>模擬試験 速解きトレーニング表</h1><p>問題を読み始める前に論点を見抜き、最短ルートで正答へ進むための一覧</p></header>
+<main>
+<section id="check"><h2>最速チェック順</h2><p class="lead">コードを最初から実行トレースせず、次の順序でふるいにかけます。</p><div class="table-wrap"><table><thead><tr><th>順</th><th>確認</th><th>見る内容</th></tr></thead><tbody><tr><td class="step">1</td><td><strong>そもそもコンパイルできるか</strong></td><td>未初期化、到達不能、アクセス修飾子、static/instance、抽象メソッド、コンストラクタを先に確認</td></tr><tr><td class="step">2</td><td><strong>左辺の参照型は何か</strong></td><td>呼び出せるメソッド候補とフィールド参照は、まず左辺の型で判定</td></tr><tr><td class="step">3</td><td><strong>右辺の実体型は何か</strong></td><td>オーバーライドされたインスタンスメソッドの実行先は実体型で判定</td></tr><tr><td class="step">4</td><td><strong>メソッドかフィールドか</strong></td><td>メソッドは多態性あり。フィールドは隠蔽され、基本的に参照型で決まる</td></tr><tr><td class="step">5</td><td><strong>オーバーライドされているか</strong></td><td>名前・引数が一致し、戻り値とアクセス範囲が適切か確認</td></tr><tr><td class="step">6</td><td><strong>ここまで通って初めて値を計算</strong></td><td>++、ループ、switch、文字列操作、例外の順序を機械的に追う</td></tr></tbody></table></div>
+<div class="rulebox"><strong>瞬間判定フレーズ</strong><ul><li>メソッド：呼べるか左、実行は右。</li><li>フィールド：左。</li><li>コンストラクタ：親から子。</li><li>this / super：コンストラクタの最初の1文。</li><li>String：戻り値を代入したか。</li><li>例外：発生地点 → 型 → catch → finally。</li></ul></div></section>
+<nav><a href="#mock1">模擬試験①</a><a href="#mock2">模擬試験②</a><a href="#notes">注意事項</a></nav>
+<section id="mock1"><h2>模擬試験① 速解き表</h2><p class="small">★は、復習メモ上で特に重点反復したい問題です。</p><div class="table-wrap"><table><thead><tr><th>問</th><th>論点</th><th>初見でまず見るポイント</th><th>判断ルール・要点</th><th>正答</th></tr></thead><tbody><tr><td class="q">1</td><td>defaultメソッド</td><td><strong>B extends A と default search</strong></td><td>default実装は実装クラスCがそのまま利用可能。配列内にtargetがあるか追う</td><td class="ans">B</td></tr>
+<tr><td class="q">2</td><td>import</td><td><strong>package名と使用クラスA/B</strong></td><td>import ex.p1.A。ワイルドカードは直下だけ</td><td class="ans">A,E</td></tr>
+<tr><td class="q">3 ★</td><td>try-with-resources</td><td><strong>リソース宣言順 A→B と finally</strong></td><td>closeは逆順 B→A。その後finally</td><td class="ans">D</td></tr>
+<tr><td class="q">4</td><td>String / intern</td><td><strong>new String、intern()、リテラル</strong></td><td>==は参照比較。internはプール側の参照を返す</td><td class="ans">A</td></tr>
+<tr><td class="q">5</td><td>クラス修飾子</td><td><strong>トップレベルクラス</strong></td><td>トップレベルはprivate/protected/static不可。finalは可</td><td class="ans">E,F</td></tr>
+<tr><td class="q">6</td><td>var</td><td><strong>private var num</strong></td><td>varはローカル変数専用。フィールド不可</td><td class="ans">E</td></tr>
+<tr><td class="q">7</td><td>sealed</td><td><strong>permits B,C</strong></td><td>直接のサブクラスはpermits対象かつ final/sealed/non-sealed</td><td class="ans">E,F</td></tr>
+<tr><td class="q">8</td><td>例外</td><td><strong>RuntimeException配下か</strong></td><td>RuntimeException系は非チェック。Exception、IOExceptionはチェック</td><td class="ans">C,E</td></tr>
+<tr><td class="q">9 ★</td><td>オーバーライド</td><td><strong>メソッド名→引数→戻り値</strong></td><td>引数は完全一致。戻り値は同型または共変戻り値</td><td class="ans">C,D</td></tr>
+<tr><td class="q">10</td><td>instanceof</td><td><strong>obj instanceof A b</strong></td><td>Aとその子ならtrue。実行メソッドは実体側のoverrideを見る</td><td class="ans">B</td></tr>
+<tr><td class="q">11</td><td>フィールド代入</td><td><strong>a=a と this.a</strong></td><td>同名引数があれば裸のaは引数。連鎖代入は右から</td><td class="ans">E</td></tr>
+<tr><td class="q">12 ★</td><td>constructor</td><td><strong>親Aに引数なしconstructorがあるか</strong></td><td>子constructor省略→super()。親にA()なしならエラー</td><td class="ans">C</td></tr>
+<tr><td class="q">13</td><td>ポリモーフィズム</td><td><strong>A[]の実体</strong></td><td>overrideメソッドは実体型で動く</td><td class="ans">A</td></tr>
+<tr><td class="q">14</td><td>拡張for</td><td><strong>indexの範囲</strong></td><td>0 ≦ i ＜ length が基本</td><td class="ans">A</td></tr>
+<tr><td class="q">15</td><td>== / equals</td><td><strong>Stringと独自クラスを分離</strong></td><td>String.equalsは内容比較。独自クラスがequals未overrideなら参照比較</td><td class="ans">D</td></tr>
+<tr><td class="q">16</td><td>switch式</td><td><strong>→か : か</strong></td><td>→ならbreak不要。switch式は値を返す</td><td class="ans">B</td></tr>
+<tr><td class="q">18</td><td>overload</td><td><strong>引数リスト</strong></td><td>戻り値だけ変えてもoverloadにならない</td><td class="ans">A,C</td></tr>
+<tr><td class="q">19</td><td>sealed / final / abstract</td><td><strong>矛盾する修飾子を見る</strong></td><td>finalは継承不可・abstract method不可</td><td class="ans">A,D</td></tr>
+<tr><td class="q">20</td><td>record</td><td><strong>record Book(String name)</strong></td><td>nameは実質private final、アクセサはname()、引数なしnew不可</td><td class="ans">A,B,D</td></tr>
+<tr><td class="q">21 ★</td><td>配列ループ</td><td><strong>iとarray[i]を分離</strong></td><td>欲しい値が奇数でも、その値のindexは偶数</td><td class="ans">C</td></tr>
+<tr><td class="q">22</td><td>配列 / null / toString</td><td><strong>values[3]を直接println</strong></td><td>null自体のprintlnは null と表示。メソッド呼出しではない</td><td class="ans">B</td></tr>
+<tr><td class="q">23</td><td>識別子</td><td><strong>先頭文字・使用文字</strong></td><td>@不可、数字開始不可</td><td class="ans">C,F</td></tr>
+<tr><td class="q">24</td><td>interface field</td><td><strong>interface内のa,b,c</strong></td><td>フィールドは暗黙にpublic static final</td><td class="ans">D</td></tr>
+<tr><td class="q">25</td><td>switch arrow</td><td><strong>→を見る</strong></td><td>arrowではフォールスルーしない。ここはswitch文</td><td class="ans">A</td></tr>
+<tr><td class="q">26 ★</td><td>checked exception</td><td><strong>throws省略でCE</strong></td><td>その情報だけでチェック例外と判定</td><td class="ans">A,D</td></tr>
+<tr><td class="q">27 ★</td><td>protected</td><td><strong>別packageか、extendsがあるか</strong></td><td>別packageでは継承関係をまず確認</td><td class="ans">C</td></tr>
+<tr><td class="q">28</td><td>static field</td><td><strong>static id と通常のname</strong></td><td>staticは全インスタンス共有、nameは個別</td><td class="ans">B</td></tr>
+<tr><td class="q">29</td><td>override / toString</td><td><strong>println(b)</strong></td><td>オブジェクト出力→toString。Bになければ親Aを使用</td><td class="ans">A</td></tr>
+<tr><td class="q">30 ★</td><td>javac / java</td><td><strong>classを生成するのか実行するのか</strong></td><td>javacでコンパイル。依存クラスも見る</td><td class="ans">C</td></tr>
+<tr><td class="q">31</td><td>import</td><td><strong>Sample/Testの完全修飾名</strong></td><td>サブpackageは別package。必要なimportを個別確認</td><td class="ans">C</td></tr>
+<tr><td class="q">32</td><td>ローカル初期化</td><td><strong>int num = num</strong></td><td>右辺は今宣言中のローカルnum。未初期化でCE</td><td class="ans">C</td></tr>
+<tr><td class="q">33</td><td>interface + abstract</td><td><strong>未実装abstract methodを数える</strong></td><td>最後の具象クラスに抽象メソッドを残さない</td><td class="ans">B</td></tr>
+<tr><td class="q">34</td><td>var / 拡張for</td><td><strong>argsの要素型</strong></td><td>String[]を拡張for→valueはString</td><td class="ans">A</td></tr>
+<tr><td class="q">35</td><td>String不変</td><td><strong>substring()を代入しているか</strong></td><td>String操作は戻り値を代入しない限り元は不変。indexは0始まり</td><td class="ans">D</td></tr>
+<tr><td class="q">36 ★</td><td>switch / null</td><td><strong>strの初期値を見る</strong></td><td>static Stringの初期値null。switchにnull→NPE</td><td class="ans">D</td></tr>
+<tr><td class="q">37</td><td>javacオプション</td><td><strong>-d と -cp</strong></td><td>-d buildで出力、-cp buildを起点に完全修飾名で実行</td><td class="ans">B</td></tr>
+<tr><td class="q">38 ★</td><td>参照型と実体型</td><td><strong>A a = new B()</strong></td><td>呼べるかは左A、実行先は右B。Aにbyeなし→CE</td><td class="ans">D</td></tr>
+<tr><td class="q">39</td><td>引数</td><td><strong>定義と呼出しの引数個数</strong></td><td>test(char,int)に1引数しか渡していない</td><td class="ans">D</td></tr>
+<tr><td class="q">40</td><td>多次元配列</td><td><strong>[][][]を1段ずつ剥がす</strong></td><td>a[0]→[][]、a[0][0]→[]</td><td class="ans">A,E</td></tr>
+<tr><td class="q">41 ★</td><td>継承フィールド</td><td><strong>C→B→Aの継承</strong></td><td>package-privateのnumは同条件なら継承先から参照可能</td><td class="ans">A</td></tr>
+<tr><td class="q">42 ★</td><td>overload + override</td><td><strong>候補選択と実行を分ける</strong></td><td>overload候補は左側の型、override実行先は右側の実体</td><td class="ans">A,C,E</td></tr>
+<tr><td class="q">43</td><td>default衝突</td><td><strong>BとCが同じdefault</strong></td><td>クラス側でoverride必須。呼ぶならB.super.sample()</td><td class="ans">D</td></tr>
+<tr><td class="q">44</td><td>ジェネリクス</td><td><strong>Listの型引数と追加する型</strong></td><td>宣言された型関係にadd対象が入るか</td><td class="ans">D</td></tr>
+<tr><td class="q">45</td><td>interface / subtype</td><td><strong>A/Bの関係</strong></td><td>interfaceは暗黙abstract。implementsしたBはAのsubtype</td><td class="ans">A,E,F</td></tr>
+<tr><td class="q">46</td><td>constructor</td><td><strong>new C()から親へ</strong></td><td>constructorは親→子 A→B→C</td><td class="ans">C</td></tr>
+<tr><td class="q">47 ★</td><td>private method</td><td><strong>private print()</strong></td><td>privateはoverrideされない。A.a()→A.print()</td><td class="ans">A</td></tr>
+<tr><td class="q">48</td><td>return</td><td><strong>voidか戻り値ありか</strong></td><td>voidは値を返さない。非voidは型に合う値をreturn</td><td class="ans">C,E</td></tr>
+<tr><td class="q">49</td><td>コマンドライン引数</td><td><strong>&quot;A B&quot;の引用符</strong></td><td>quoted文字列は1引数</td><td class="ans">A</td></tr>
+<tr><td class="q">50 ★</td><td>共変戻り値</td><td><strong>BとC両方のa()戻り値</strong></td><td>CollectionとPathに互換関係がなくDで衝突</td><td class="ans">C</td></tr>
+<tr><td class="q">51</td><td>protected constructor</td><td><strong>packageの違い</strong></td><td>別packageからprotectedへのアクセス可否を先に確認</td><td class="ans">A</td></tr>
+<tr><td class="q">52</td><td>this() / super()</td><td><strong>constructor先頭</strong></td><td>this/superは先頭1文のみ。両方並べられない</td><td class="ans">D</td></tr>
+<tr><td class="q">53 ★</td><td>抽象メソッド</td><td><strong>A.sample→B→C→D</strong></td><td>abstract Cは未実装可。具象Dには未実装sampleが残る→CE</td><td class="ans">E</td></tr>
+<tr><td class="q">54</td><td>例外処理</td><td><strong>catch / finally / TWR</strong></td><td>catch複数可。closeはfinallyより先</td><td class="ans">A,C</td></tr>
+<tr><td class="q">55</td><td>catch順序</td><td><strong>Exception→RuntimeException</strong></td><td>catchは子→親。親を先にすると子catch到達不能</td><td class="ans">C</td></tr>
+<tr><td class="q">56</td><td>String pool</td><td><strong>new / literal / intern</strong></td><td>newだけ別参照、literalとinternは同じプール参照</td><td class="ans">A</td></tr>
+<tr><td class="q">57</td><td>2次元配列</td><td><strong>行単位で読む</strong></td><td>外forでchar[]、内forでchar</td><td class="ans">A</td></tr>
+<tr><td class="q">58</td><td>constructor chain</td><td><strong>this()から先に追う</strong></td><td>B()→B(4)→A()→A(2)、戻りながら出力</td><td class="ans">A</td></tr>
+<tr><td class="q">59</td><td>二重loop</td><td><strong>i,jの初期値と増分</strong></td><td>0,0から2×2を順番に走査</td><td class="ans">D</td></tr>
+<tr><td class="q">60</td><td>配列初期値</td><td><strong>new String[2]</strong></td><td>要素はnull。null.concat()でNPE</td><td class="ans">D</td></tr></tbody></table></div></section>
+<section id="mock2"><h2>模擬試験② 速解き表</h2><div class="table-wrap"><table><thead><tr><th>問</th><th>論点</th><th>初見でまず見るポイント</th><th>判断ルール・要点</th><th>正答</th></tr></thead><tbody><tr><td class="q">1</td><td>ローカル変数</td><td><strong>宣言だけのc</strong></td><td>ローカル変数にデフォルト値なし。使用前初期化必須</td><td class="ans">F</td></tr>
+<tr><td class="q">2</td><td>public class / ファイル名</td><td><strong>publicはAだけ</strong></td><td>A.javaでコンパイル→A.class/B.class両方生成可能</td><td class="ans">A,E</td></tr>
+<tr><td class="q">3</td><td>static</td><td><strong>static print→contents</strong></td><td>staticからinstance fieldを直接参照不可</td><td class="ans">C</td></tr>
+<tr><td class="q">4</td><td>数値literal / boxing</td><td><strong>0b0110の型</strong></td><td>suffixなし整数literalは基本int→NumberへboxingするとInteger</td><td class="ans">C</td></tr>
+<tr><td class="q">5</td><td>例外階層</td><td><strong>例外発生行を最初に見る</strong></td><td>null.equals…→NPE→RuntimeException catch</td><td class="ans">B</td></tr>
+<tr><td class="q">6</td><td>cast / static type</td><td><strong>B b = new C()</strong></td><td>呼べるメソッドは参照型から判定。さらにcast構文自体も確認</td><td class="ans">A,B,E</td></tr>
+<tr><td class="q">7</td><td>field hiding + override</td><td><strong>dataとgetData()を分離</strong></td><td>fieldは参照型、override methodは実体型</td><td class="ans">A</td></tr>
+<tr><td class="q">8</td><td>catch + finally</td><td><strong>実際にthrowされる型</strong></td><td>最も具体的なcatchへ。その後finally必ず実行</td><td class="ans">B</td></tr>
+<tr><td class="q">9</td><td>switch式</td><td><strong>配列を左から変換</strong></td><td>各値→caseの文字に機械的に置換</td><td class="ans">A</td></tr>
+<tr><td class="q">10</td><td>record / cast</td><td><strong>constructorと強制cast</strong></td><td>canonical constructorは引数必要。Object→Item castは実行時ClassCastException</td><td class="ans">D,E</td></tr>
+<tr><td class="q">11</td><td>String生成数</td><td><strong>literalとnewを分離</strong></td><td>pool sample 1個 + new 2個</td><td class="ans">C</td></tr>
+<tr><td class="q">12</td><td>TWR</td><td><strong>throw→close→catch→finally</strong></td><td>close C → catch A → finally B</td><td class="ans">F</td></tr>
+<tr><td class="q">13</td><td>interface実装</td><td><strong>void execute()</strong></td><td>public・同じ引数・同じ戻り値。abstract classなら未実装可</td><td class="ans">C,E</td></tr>
+<tr><td class="q">14</td><td>return</td><td><strong>全経路でreturnするか</strong></td><td>forに入らない経路がありbooleanが返らない→CE</td><td class="ans">D</td></tr>
+<tr><td class="q">15</td><td>default衝突</td><td><strong>A/B双方にhello</strong></td><td>override必須。親defaultはB.super.hello()</td><td class="ans">B</td></tr>
+<tr><td class="q">16</td><td>sealed</td><td><strong>A permits B</strong></td><td>Bはfinal/sealed/non-sealedのいずれか</td><td class="ans">B,C</td></tr>
+<tr><td class="q">17</td><td>override</td><td><strong>A b = new B(); b.test()</strong></td><td>testはoverrideされているためB.test→hello→B</td><td class="ans">B</td></tr>
+<tr><td class="q">18</td><td>boolean演算</td><td><strong>短絡するか両方実行か</strong></td><td>resultが7になるようa,bとif本体/elseを追う</td><td class="ans">A</td></tr>
+<tr><td class="q">19</td><td>static / access</td><td><strong>Test.xxx()形式</strong></td><td>staticかつアクセス可能なものだけ</td><td class="ans">A,C</td></tr>
+<tr><td class="q">20</td><td>abstract / final / sealed</td><td><strong>修飾子の矛盾</strong></td><td>abstract classに具象final methodは置ける</td><td class="ans">E</td></tr>
+<tr><td class="q">21</td><td>continue / break</td><td><strong>switch内の制御文</strong></td><td>continueは外側forへ、breakはswitchだけ抜ける</td><td class="ans">C</td></tr>
+<tr><td class="q">22</td><td>while</td><td><strong>条件を最初に評価</strong></td><td>num=2、2&gt;5はfalseなので本文に入らない</td><td class="ans">A※</td></tr>
+<tr><td class="q">23</td><td>2次元配列</td><td><strong>fの座標</strong></td><td>0始まりなのでf=data[1][2]</td><td class="ans">A</td></tr>
+<tr><td class="q">24</td><td>pattern variable</td><td><strong>strのスコープ</strong></td><td>instanceofで導入した変数は使用可能範囲を確認</td><td class="ans">D</td></tr>
+<tr><td class="q">25</td><td>var</td><td><strong>varを使っている場所</strong></td><td>varはローカルのみ。型は右辺から確定</td><td class="ans">A,E</td></tr>
+<tr><td class="q">26</td><td>shadowing</td><td><strong>constructorのi=++i</strong></td><td>this.iを触っていない→field iは初期値0</td><td class="ans">C</td></tr>
+<tr><td class="q">27 ★</td><td>field hiding / method</td><td><strong>まずprint()の定義場所</strong></td><td>Bはprint()をoverrideしていない→全部A.print()→A.value</td><td class="ans">A</td></tr>
+<tr><td class="q">28</td><td>fall-through</td><td><strong>breakの有無</strong></td><td>colon switchはbreakまで下へ落ちる</td><td class="ans">C</td></tr>
+<tr><td class="q">29</td><td>継承 / final</td><td><strong>final addとsuper.delete</strong></td><td>finalはoverride不可だが継承利用可。constructorでnull追加</td><td class="ans">C,E,F</td></tr>
+<tr><td class="q">30</td><td>private / field</td><td><strong>valueの宣言有無＋アクセス</strong></td><td>掲載コードの宣言・可視性を最初に確認</td><td class="ans">C※</td></tr>
+<tr><td class="q">31</td><td>source-file mode</td><td><strong>java Sample.java</strong></td><td>Javaソースファイルを直接起動する選択肢を見る</td><td class="ans">D</td></tr>
+<tr><td class="q">32</td><td>char cast</td><td><strong>97/98</strong></td><td>Unicodeコード値→a,b</td><td class="ans">A</td></tr>
+<tr><td class="q">33</td><td>protected / package</td><td><strong>別packageのsubclass</strong></td><td>package-private a不可。protected bは継承条件を確認</td><td class="ans">C</td></tr>
+<tr><td class="q">34</td><td>var配列</td><td><strong>array initializer単独か</strong></td><td>var c = new Float[]{...}、new double[]{...}は可</td><td class="ans">C,D</td></tr>
+<tr><td class="q">35</td><td>overload / 参照型</td><td><strong>A a = new B(); a.setValue(args)</strong></td><td>呼出し候補はA型。AにString[]を受けるメソッドなし</td><td class="ans">E</td></tr>
+<tr><td class="q">36</td><td>field hiding</td><td><strong>A a = new B(); a.num</strong></td><td>フィールドは左側A→10</td><td class="ans">C</td></tr>
+<tr><td class="q">37</td><td>var</td><td><strong>field / 戻り値にvar</strong></td><td>varはフィールドや戻り値型に使用不可</td><td class="ans">A,E</td></tr>
+<tr><td class="q">38</td><td>super constructor</td><td><strong>AにA(int)しかない</strong></td><td>B constructor先頭でsuper(num)</td><td class="ans">B</td></tr>
+<tr><td class="q">39</td><td>widening / narrowing</td><td><strong>a=b</strong></td><td>float→intは縮小変換なので明示cast必要</td><td class="ans">A</td></tr>
+<tr><td class="q">40</td><td>配列初期値</td><td><strong>new String[5]</strong></td><td>未代入要素はnull。println(null)は表示できる</td><td class="ans">B</td></tr>
+<tr><td class="q">41</td><td>static / private</td><td><strong>header/value/getValue</strong></td><td>private valueはMainから直接不可、public getValue経由</td><td class="ans">E</td></tr>
+<tr><td class="q">42</td><td>overload / 配列</td><td><strong>int[]は何に代入可？</strong></td><td>primitive配列もObjectそのもの。Object[]ではない</td><td class="ans">C</td></tr>
+<tr><td class="q">43</td><td>static</td><td><strong>static test→instance num</strong></td><td>instance fieldをstaticから直接触れない</td><td class="ans">C</td></tr>
+<tr><td class="q">44</td><td>String不変</td><td><strong>replace/substringの戻り値</strong></td><td>戻り値を再代入していないのでstrはabcde</td><td class="ans">B</td></tr>
+<tr><td class="q">45</td><td>++評価順</td><td><strong>num++と++num</strong></td><td>左→右に1項ずつ、値と更新タイミングを分ける</td><td class="ans">A</td></tr>
+<tr><td class="q">46</td><td>continue / break</td><td><strong>BとC</strong></td><td>B→continue、C出力後→break</td><td class="ans">A</td></tr>
+<tr><td class="q">47</td><td>ジャグ配列</td><td><strong>array[1]を再代入</strong></td><td>2×4で作っても各行を別長配列に置換できる</td><td class="ans">A</td></tr>
+<tr><td class="q">48</td><td>String不変</td><td><strong>concatは代入、replaceは未代入</strong></td><td>代入された操作だけ反映→ABCC</td><td class="ans">C</td></tr>
+<tr><td class="q">49</td><td>AutoCloseable</td><td><strong>綴りも確認</strong></td><td>掲載どおりAutoCloaseableならスペル違いでCE</td><td class="ans">D※</td></tr>
+<tr><td class="q">50</td><td>到達不能コード</td><td><strong>continue直後</strong></td><td>無条件continue後のcnt++はunreachable→CE</td><td class="ans">D</td></tr>
+<tr><td class="q">51</td><td>override / overload</td><td><strong>引数と戻り値</strong></td><td>raw型も含めてシグネチャと共変戻り値を見る</td><td class="ans">B,F</td></tr>
+<tr><td class="q">52</td><td>配列宣言</td><td><strong>new int[2]</strong></td><td>正式な配列生成構文を選ぶ</td><td class="ans">A</td></tr>
+<tr><td class="q">53</td><td>shallow clone</td><td><strong>array1.clone()</strong></td><td>外側だけ複製。内側char[]は同じ参照</td><td class="ans">C</td></tr>
+<tr><td class="q">54</td><td>constructor</td><td><strong>new C()</strong></td><td>親→子のconstructor順</td><td class="ans">A</td></tr>
+<tr><td class="q">55</td><td>abstract class</td><td><strong>abstract methodの書式</strong></td><td>abstractは本体なし、具象/static methodは本体あり</td><td class="ans">B,D,E</td></tr>
+<tr><td class="q">56</td><td>値渡し</td><td><strong>mainのa,bとフィールド</strong></td><td>primitive引数は値渡し。mainのa,bは2,3</td><td class="ans">C</td></tr>
+<tr><td class="q">57</td><td>field更新</td><td><strong>t.num=0 / 差分modify</strong></td><td>100→0になる式を選ぶ</td><td class="ans">D,G,H</td></tr>
+<tr><td class="q">58</td><td>setter</td><td><strong>fieldと引数の同名</strong></td><td>this.value = valueでフィールドを変更</td><td class="ans">C</td></tr>
+<tr><td class="q">59</td><td>override access</td><td><strong>protected→package-private</strong></td><td>override時はアクセスを狭められない</td><td class="ans">C,D</td></tr>
+<tr><td class="q">60</td><td>連鎖代入</td><td><strong>setD(x)から右→左</strong></td><td>setDでd=10、その10をc,b,aへ代入</td><td class="ans">A</td></tr></tbody></table></div></section>
+<section id="notes"><h2>教材の記載に関する注意</h2><div class="note"><strong>※付きの問題は掲載コードと記載正答の整合性に注意してください。</strong><br>模擬② Q22は、掲載コードどおりなら <code>num = 2</code> かつ <code>while (num &gt; 5)</code> が最初からfalseのため、出力は2で選択肢Aです。Q49は、掲載どおり <code>AutoCloaseable</code> ならスペル違いでコンパイルエラーです。Q30にも転記欠落の可能性があります。「教材の意図」と「掲載コードをJavaとしてそのまま読む」を分けて確認してください。</div></section>
+<section><h2>使い方</h2><ol><li>問題を開いたら、表の「初見でまず見るポイント」を3秒以内に言う。</li><li>「判断ルール・要点」を隠した状態で、適用するJavaルールを口頭で説明する。</li><li>答えを選んでから表の正答を確認する。間違えたら、値計算ではなく論点の見落としを記録する。</li></ol><p class="small">ブラウザの印刷機能からPDF保存もできます。横長の表は、印刷設定を「横向き」にすると読みやすくなります。</p></section>
+</main></body></html>
