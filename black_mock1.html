@@ -95,9 +95,7 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
-          <p>---</p>
-<p><code>args[0]</code> は "5" です。配列に5は含まれないため <code>search</code> は <code>false</code> を返し、Bが表示されます。2つ目の引数 "2" はこのプログラムでは参照されません。</p>
-<p>---</p>
+          <p><code>args[0]</code> は "5" です。配列に5は含まれないため <code>search</code> は <code>false</code> を返し、Bが表示されます。2つ目の引数 "2" はこのプログラムでは参照されません。</p>
         </div>
       </details>
     </article><article class="question" id="q2">
@@ -124,9 +122,7 @@ public class B {}</code></pre>
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A,E</div>
-          <p>---</p>
-<p><code>A</code> は <code>ex.p1</code>、<code>B</code> は <code>ex.p2</code> にあります。<code>import ex.p1.A;</code> と <code>import ex.p2.*;</code> なら両方を参照できます。<code>import ex.*</code> は下位パッケージを取り込みません。</p>
-<p>---</p>
+          <p><code>A</code> は <code>ex.p1</code>、<code>B</code> は <code>ex.p2</code> にあります。<code>import ex.p1.A;</code> と <code>import ex.p2.*;</code> なら両方を参照できます。<code>import ex.*</code> は下位パッケージを取り込みません。</p>
         </div>
       </details>
     </article><article class="question" id="q3">
@@ -162,8 +158,6 @@ public class B {}</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>解説：try-with-resourcesで宣言されたリソースは、宣言された順とは逆順にcloseメソッドが呼ばれる。closeメソッドはtryブロックを抜けるタイミングで呼ばれるメソッドで、finallyブロックはその後に表示されるから。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q4">
@@ -206,8 +200,6 @@ public class B {}</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>メモ：a.intern()は、a自体を変えるわけではなく、文字列プールに戻したaをcに代入している。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q5">
@@ -233,8 +225,6 @@ public class B {}</code></pre>
 <p>E: 正解。普通に継承可能。</p>
 <p>F: 正解。継承はできるが、以降のサブクラスへの継承は不可</p>
 <p>G: トップレベルクラスにprivateはつけられない。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q6">
@@ -281,8 +271,6 @@ public class B {}</code></pre>
 <p>配列要素型</p>
 <p>初期値なしの宣言</p>
 <p>nullでの初期化</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q7">
@@ -300,9 +288,7 @@ public class B {}</code></pre>
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>E,F</div>
-          <p>---</p>
-<p>sealedクラスの直接のサブクラスは <code>permits</code> に列挙され、かつ <code>final</code>、<code>sealed</code>、<code>non-sealed</code> のいずれかで宣言します。よって <code>non-sealed C</code> と <code>final B</code> が有効です。</p>
-<p>---</p>
+          <p>sealedクラスの直接のサブクラスは <code>permits</code> に列挙され、かつ <code>final</code>、<code>sealed</code>、<code>non-sealed</code> のいずれかで宣言します。よって <code>non-sealed C</code> と <code>final B</code> が有効です。</p>
         </div>
       </details>
     </article><article class="question" id="q8">
@@ -329,8 +315,6 @@ public class B {}</code></pre>
             ├─ ArithmeticException
             ├─ NumberFormatException
             └─ ArrayIndexOutOfBoundsException</code></pre>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q9">
@@ -369,8 +353,6 @@ public class B {}</code></pre>
 <p>C: 引数一致。戻り値はB(num)であり、BはAの子クラス。共変戻り値なのでOK.</p>
 <p>D: 引数一致。戻り値はB(num)であり、BはAの子クラス。共変戻り値なのでOK.</p>
 <p>E: 引数不一致。Integerなので、オーバーライドではない。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q10">
@@ -417,9 +399,7 @@ public class B {}</code></pre>
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
-          <p>---</p>
-<p><code>instanceof A</code> が成立する <code>new A()</code> と <code>new B()</code> が処理されます。Bの <code>execute()</code> はオーバーライドされているため、出力はA、Bの順です。文字列Cは処理されません。</p>
-<p>---</p>
+          <p><code>instanceof A</code> が成立する <code>new A()</code> と <code>new B()</code> が処理されます。Bの <code>execute()</code> はオーバーライドされているため、出力はA、Bの順です。文字列Cは処理されません。</p>
         </div>
       </details>
     </article><article class="question" id="q11">
@@ -468,8 +448,6 @@ public class B {}</code></pre>
 <p>・引数のa</p>
 <p>・フィールドのa</p>
 <p>のどっち？と考えるクセを付ける。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q12">
@@ -499,8 +477,6 @@ public class B {}</code></pre>
           <div class="correct"><b>正答：</b>C</div>
           <p>解説：このコードでは、Aのインスタンスを生成していない。</p>
 <p>Bにはコンストラクタがないので、自動的にsuper();を定義するが、Aには引数なしのコンストラクタがない。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q13">
@@ -539,9 +515,7 @@ public class B {}</code></pre>
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
-          <p>---</p>
-<p>配列の参照型はAでも、オーバーライドされたメソッドは実際のオブジェクト型で決まります。A、B、Cそれぞれの <code>sample()</code> が実行されます。</p>
-<p>---</p>
+          <p>配列の参照型はAでも、オーバーライドされたメソッドは実際のオブジェクト型で決まります。A、B、Cそれぞれの <code>sample()</code> が実行されます。</p>
         </div>
       </details>
     </article><article class="question" id="q14">
@@ -559,9 +533,7 @@ for (int num: array) {
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
-          <p>---</p>
-<p>拡張for文と同じく全要素を先頭から処理するのは、<code>i=0</code> から <code>i &lt; array.length</code> まで <code>array[i]</code> を表示するAです。<code>&lt;=</code> では範囲外アクセスになります。</p>
-<p>---</p>
+          <p>拡張for文と同じく全要素を先頭から処理するのは、<code>i=0</code> から <code>i &lt; array.length</code> まで <code>array[i]</code> を表示するAです。<code>&lt;=</code> では範囲外アクセスになります。</p>
         </div>
       </details>
     </article><article class="question" id="q15">
@@ -613,8 +585,6 @@ for (int num: array) {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>解説：Testクラスがequals()メソッドをオーバーライドしていないから、参照先判定になる。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q16">
@@ -700,8 +670,6 @@ switch (data) {
 <div class="choice">switch式は値を返すため、すべての分岐で値を返せなければならない。</div>
 <div class="choice">: を使用する場合は yield が必要。</div>
 <div class="choice">-&gt; と : を混在させることはできない。</div>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q17">
@@ -741,9 +709,7 @@ final class C extends B {
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
-          <p>---</p>
-<p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p>
-<p>---</p>
+          <p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p>
         </div>
       </details>
     </article><article class="question" id="q18">
@@ -759,27 +725,22 @@ final class C extends B {
 <pre><code>public long test(Integer i) {
     return i.longValue();
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>B.</p>
 <pre><code>public int test(int x, int y) {
     return x + y;
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>C.</p>
 <pre><code>public int test(Integer i, Integer j) {
     return i + j;
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>D.</p>
 <pre><code>public void test(int a, int b) {
     return a + b;
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>E.</p>
 <pre><code>private int test(int x, int y) {
     return x + y;
-}</code></pre>
-<p>&lt;br&gt;</p></section>
+}</code></pre></section>
       <details class="answer">
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
@@ -791,8 +752,6 @@ final class C extends B {
 <div class="choice">引数リストが異なる（引数の数、型、並び順）</div>
 <div class="choice">戻り値の型だけ違うものはオーバーロードにならない</div>
 <div class="choice">アクセス修飾子だけ違うものはオーバーロードにならない</div>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q19">
@@ -815,8 +774,6 @@ final class C extends B {
 <p>abstractクラス：単独ではインスタンス生成できないクラス</p>
 <p>sealedクラス：継承できるクラスを限定できるクラス</p>
 <p>Hの場合、シールクラスは継承できる前提なのでfinalにしたら継承できなくなるからダメ。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q20">
@@ -861,8 +818,6 @@ final class C extends B {
 <p>private final String name;</p>
 <p>public String name()</p>
 <p>が自動生成されることを思い出す。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q21">
@@ -916,8 +871,6 @@ final class C extends B {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>解説：Aは不正解。iが1から始まるので。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q22">
@@ -958,9 +911,7 @@ final class C extends B {
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
-          <p>---</p>
-<p><code>values[1]</code> は <code>toString()</code> によりB、<code>values[2].data</code> はCです。<code>values[3]</code> はnull参照そのものを <code>println</code> に渡すため文字列 <code>null</code> が表示されます。</p>
-<p>---</p>
+          <p><code>values[1]</code> は <code>toString()</code> によりB、<code>values[2].data</code> はCです。<code>values[3]</code> はnull参照そのものを <code>println</code> に渡すため文字列 <code>null</code> が表示されます。</p>
         </div>
       </details>
     </article><article class="question" id="q23">
@@ -977,8 +928,6 @@ final class C extends B {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C,F</div>
           <p>解説：変数名とメソッド名の命名規則は同じ。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q24">
@@ -1013,8 +962,6 @@ class B implements A {
     public static final int c = 3;
 }</code></pre>
 <p>つまりインタフェースのフィールドは、public static finalになる。選択肢Dはfinal値を変更していないのでOK。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q25">
@@ -1051,8 +998,6 @@ class Test {
           <div class="correct"><b>正答：</b>A</div>
           <p>疑問点：switch式のアロー構文は、そのままtotalをリターンする？それともreturn total;が実行される？</p>
 <p>解説：この問題は代入式がないのでswitch式ではなく、switch文。アロー構文はフォールスルーが起こらないのでreturn total;を返す。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q26">
@@ -1074,8 +1019,6 @@ class Test {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A,D</div>
           <p>解説：throws宣言が必須なのはチェック例外だけ、なので、つまりSampleExceptionを省略するとコンパイルエラーになるということは、SampleExceptionはチェック例外である。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q27">
@@ -1129,8 +1072,6 @@ public class B {
     }
 }</code></pre>
 <p>別パッケージでprotectedが出てきたら、まずextendsがあるか？を確認すること！！</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q28">
@@ -1174,8 +1115,6 @@ class Item {
 <p>b.id = "2";は、idがstaticなので、Item.id = "2";と同じ状態である。</p>
 <p>一方、a.name = "C";は、インスタンス変数なので、a.nameの値のみが変わる。</p>
 <p>obj.staticFieldをみたら、ClassName.staticFieldに置き換えて考える。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q29">
@@ -1228,8 +1167,6 @@ class B extends A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>解説：printlnはオブジェクトを渡されると、内部で b.toString()を呼ぶが、BにはtoStringがないのでAのtoStringが使われる。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q30">
@@ -1255,8 +1192,6 @@ public class A {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>解説：import b.Bにあわせて、b/B.javaも併せてコンパイルされる。依存関係も一緒にコンパイルされる。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q31">
@@ -1291,9 +1226,7 @@ public class Main {
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
-          <p>---</p>
-<p><code>Sample</code> は <code>com.sample</code>、<code>Test</code> は <code>com.sample.test</code> にあるため、Cの2つのimportで参照できます。<code>Integer</code> は <code>java.lang</code> にあり自動importされます。</p>
-<p>---</p>
+          <p><code>Sample</code> は <code>com.sample</code>、<code>Test</code> は <code>com.sample.test</code> にあるため、Cの2つのimportで参照できます。<code>Integer</code> は <code>java.lang</code> にあり自動importされます。</p>
         </div>
       </details>
     </article><article class="question" id="q32">
@@ -1315,8 +1248,6 @@ public class Main {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C</div>
           <p>解説：ローカル変数でint num = num;の形をみたら、numが初期化されているか要チェック</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q33">
@@ -1360,8 +1291,6 @@ public class Main {
 <p>B の x() は既に A の要求を満たしている。</p>
 <p>z() は抽象メソッドのまま残っている。</p>
 <p>C で public void z() {} を実装するので 正答は B。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q34">
@@ -1382,9 +1311,7 @@ public class Main {
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
-          <p>---</p>
-<p><code>args</code> の型は <code>String[]</code> なので、拡張forで取り出す1要素の型は <code>String</code> です。<code>var</code> はコンパイラが <code>String</code> と推論します。</p>
-<p>---</p>
+          <p><code>args</code> の型は <code>String[]</code> なので、拡張forで取り出す1要素の型は <code>String</code> です。<code>var</code> はコンパイラが <code>String</code> と推論します。</p>
         </div>
       </details>
     </article><article class="question" id="q35">
@@ -1413,8 +1340,6 @@ public class Main {
 <p>indexOf("ef") の結果は 5。</p>
 <p>substring() は元のStringを変更しない。</p>
 <p>出力は abcd ef gh 5 なので D。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q36">
@@ -1440,8 +1365,6 @@ public class Main {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>解説：switch文は null を扱えないので「ぬるぽ」になる</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q37">
@@ -1492,8 +1415,6 @@ java build.ex15.Main</code></pre></section>
 <p>-d build は build/ex15/*.class を作る。</p>
 <p>-cp build で build をクラス検索の起点にする。</p>
 <p>実行時は完全修飾名 ex15.Main を指定するので 正答は B。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q38">
@@ -1536,8 +1457,6 @@ a.bye();   // Aにない → NG</code></pre>
 <pre><code>A a = new B();
 a.hello();</code></pre>
 <p>Bがオーバーライドしていたら B.hello();が実行される</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q39">
@@ -1563,8 +1482,6 @@ a.hello();</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
           <p>解説：testメソッドの引数の数に対して、使う数が合っていない</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q40">
@@ -1573,14 +1490,12 @@ a.hello();</code></pre>
 <p>A. <code>int[][] array = {{1,2,3},{4,5,6}};</code></p>
 <p>B. <code>int[][][] array = {{1,2},{3,4},{5,6}};</code></p>
 <p>C. <code>int[][] array = {0, 1};</code></p>
-<p>&lt;br&gt;</p>
 <p>D.</p>
 <pre><code>int[][] array = new int[][2];
 array[0][0] = 1;
 array[0][1] = 2;
 array[1][0] = 3;
 array[1][1] = 4;</code></pre>
-<p>&lt;br&gt;</p>
 <p>E.</p>
 <pre><code>int [] array = {0, 1};
 int[][][] array2 = new int[2][2][2];
@@ -1598,8 +1513,6 @@ array2[1][1] = array;</code></pre></section>
 a[0]      → int[][]
 a[0][0]   → int[]
 a[0][0][0]→ int</code></pre>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q41">
@@ -1637,8 +1550,6 @@ a[0][0][0]→ int</code></pre>
 <p>C → B → A の継承関係では A のフィールドも継承される。</p>
 <p>super.num は親系統から継承したフィールドを参照できる。</p>
 <p>この問題の正解は A。Bは「Aクラスのフィールドにはアクセスできない」が誤り。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q42">
@@ -1689,8 +1600,6 @@ public class Main {
           <p>解説：</p>
 <p>1．フィールドは常に左側（参照型）で決まる。</p>
 <p>2．メソッドは「候補選択は左側」「実行は右側」。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q43">
@@ -1728,8 +1637,6 @@ public class Main {
 <p>複数のdefaultメソッドが衝突したら、クラス側でオーバーライド必須。</p>
 <p>super.sample() ではどのインタフェースか分からないためエラー。</p>
 <p>defaultメソッドを呼ぶなら B.super.sample() の形式で書く。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q44">
@@ -1742,30 +1649,23 @@ public class Main {
 <p>A.</p>
 <pre><code>List&lt;A&gt; listA = new ArrayList&lt;&gt;();
 listA.add(new D());</code></pre>
-<p>&lt;br&gt;</p>
 <p>B.</p>
 <pre><code>List&lt;B&gt; listB = new ArrayList&lt;&gt;();
 listB.add(new C());</code></pre>
-<p>&lt;br&gt;</p>
 <p>C.</p>
 <pre><code>List&lt;B&gt; listC = new ArrayList&lt;&gt;();
 listC.add(new D());</code></pre>
-<p>&lt;br&gt;</p>
 <p>D.</p>
 <pre><code>List&lt;D&gt; listD = new ArrayList&lt;&gt;();
 listD.add(new C());</code></pre>
-<p>&lt;br&gt;</p>
 <p>E.</p>
 <pre><code>List&lt;A&gt; listE = new ArrayList&lt;&gt;();
-listE.add(new C());</code></pre>
-<p>&lt;br&gt;</p></section>
+listE.add(new C());</code></pre></section>
       <details class="answer">
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
-          <p>---</p>
-<p>DはCのサブクラスなのでA型・B型のリストには追加できます。逆に <code>List&lt;D&gt;</code> へ親型の <code>new C()</code> は追加できないためDがコンパイルエラーです。</p>
-<p>---</p>
+          <p>DはCのサブクラスなのでA型・B型のリストには追加できます。逆に <code>List&lt;D&gt;</code> へ親型の <code>new C()</code> は追加できないためDがコンパイルエラーです。</p>
         </div>
       </details>
     </article><article class="question" id="q45">
@@ -1797,8 +1697,6 @@ listE.add(new C());</code></pre>
 <p>A. インタフェースは実現されることを前提としているためfinalにできない。</p>
 <p>B. Bクラス内ではインスタンスを生成しているが、抽象クラスはインスタンス化できない。</p>
 <p>F. BはAを実装している。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q46">
@@ -1836,8 +1734,6 @@ listE.add(new C());</code></pre>
 <p>コンストラクタの先頭には super() が自動挿入される。</p>
 <p>コンストラクタは 親 → 子 の順で実行される。</p>
 <p>new C() の結果は ABC。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q47">
@@ -1876,8 +1772,6 @@ listE.add(new C());</code></pre>
 <p>private メソッドは継承されないためオーバーライドできない。</p>
 <p>a() が呼ぶのは常に A の print()。</p>
 <p>出力結果は A → B なので正答は A。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q48">
@@ -1887,36 +1781,29 @@ listE.add(new C());</code></pre>
 <pre><code>public void methodA(int x) {
     return ++x;
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>B.</p>
 <pre><code>public String methodB() {
     System.out.println(&quot;B&quot;);
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>C.</p>
 <pre><code>public boolean methodC(int a) {
     return a &lt; 0;
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>D.</p>
 <pre><code>public char methodD(String str) {
     return str;
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>E.</p>
 <pre><code>public void methodE() {
     return;
-}</code></pre>
-<p>&lt;br&gt;</p></section>
+}</code></pre></section>
       <details class="answer">
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>C,E</div>
           <p>void メソッドは値を返せない。</p>
 <p>戻り値型があるメソッドは必ず対応する型を return する。</p>
-<p>---</p>
 <p>Cはboolean式を返し、Eはvoidメソッドから値なしでreturnするため正しい定義です。Aはvoidなのに値を返し、BはStringを返さず、DはcharにStringを返すため誤りです。</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q49">
@@ -1940,8 +1827,6 @@ listE.add(new C());</code></pre>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>B</div>
           <p>解説：ダブルクォーテーションで囲まれているため1つの引数になる　→　"A B"</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q50">
@@ -1975,8 +1860,6 @@ public interface C extends A {
 <p>B の Collection a() は、Iterableの共変戻り値なのでOK。</p>
 <p>C の Path a() も共変戻り値なのでOK。</p>
 <p>D では Collection a() と Path a() が衝突するため、コンパイルエラーとなる</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q51">
@@ -2020,8 +1903,6 @@ public class Main {
           <p>解説：protectedコンストラクタを持つクラスを、別パッケージから直接利用するケース</p>
 <p>このコードは コンパイルエラー。</p>
 <p>仮にコンパイルできても、a.x は参照型 A を見て "A" になる。</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q52">
@@ -2063,9 +1944,7 @@ public class Main {
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>E</div>
-          <p>---</p>
-<p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p>
-<p>---</p>
+          <p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p>
         </div>
       </details>
     </article><article class="question" id="q53">
@@ -2112,8 +1991,6 @@ public class Main {
 <p>C は abstract なので sample() 未実装でもOK</p>
 <p>D は具象クラスなので sample() を実装しなければならない</p>
 <p>よって 正解は E</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q54">
@@ -2131,8 +2008,6 @@ public class Main {
           <p>解説：try は複数の catch を持てる</p>
 <p>catch は 子 → 親 の順で書く</p>
 <p>try-with-resources は close() → finally の順</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q55">
@@ -2161,8 +2036,6 @@ public class Main {
           <div class="correct"><b>正答：</b>C</div>
           <p>解説：RuntimeException は Exception の子クラス</p>
 <p>catch(Exception) の後に catch(RuntimeException) は書けない到達不能な catch になるため コンパイルエラー</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q56">
@@ -2189,8 +2062,6 @@ public class Main {
           <div class="correct"><b>正答：</b>A</div>
           <p>解説：new String("Java") は新しいオブジェクトを作る</p>
 <p>"Java" と intern() は同じ String Pool を参照する</p>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q57">
@@ -2216,7 +2087,6 @@ public class Main {
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>A</div>
           <p>解説：char[][] は「配列の配列」、外側の拡張forで1行ずつ取得</p>
-<p>---</p>
 <p>### 58. 次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
 <p>```java</p>
 <p>public class A {</p>
@@ -2335,8 +2205,6 @@ A(2) → 2
 A()  → 1
 B(4) → 4
 B()  → 3</code></pre>
-<p>---</p>
-<p>---</p>
         </div>
       </details>
     </article><article class="question" id="q59">
@@ -2358,21 +2226,18 @@ B()  → 3</code></pre>
         System.out.print(array[i][j]);
     }
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>B.</p>
 <pre><code>for (int i = 0; i &lt; 2; ++i) {
     for (int j = 0; j &lt; i; ++j) {
         System.out.print(array[i][j]);
     }
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>C.</p>
 <pre><code>for (String a : array) {
     for (String b : array) {
         System.out.println(b);
     }
 }</code></pre>
-<p>&lt;br&gt;</p>
 <p>D.</p>
 <pre><code>for (int = 0; i &lt; 2;) {
     for (int j = 0; j &lt; 2;) {
@@ -2380,15 +2245,12 @@ B()  → 3</code></pre>
         j++;
     }
     i++;
-}</code></pre>
-<p>&lt;br&gt;</p></section>
+}</code></pre></section>
       <details class="answer">
         <summary>正答・解説を表示</summary>
         <div class="answer-inner">
           <div class="correct"><b>正答：</b>D</div>
-          <p>---</p>
-<p>Dは添字0、1を二重ループで順に走査するため、a、b、c、dの順に表示します。AとBは全要素を走査せず、Cは配列要素の型が一致しません。</p>
-<p>---</p>
+          <p>Dは添字0、1を二重ループで順に走査するため、a、b、c、dの順に表示します。AとBは全要素を走査せず、Cは配列要素の型が一致しません。</p>
         </div>
       </details>
     </article><article class="question" id="q60">
@@ -2418,7 +2280,6 @@ B()  → 3</code></pre>
           <p>解説：new String[2] の要素は null</p>
 <p>null.concat(...) は NullPointerException</p>
 <p>String は不変なので concat() は代入しないと反映されない</p>
-<p>---</p>
         </div>
       </details>
     </article>
