@@ -51,6 +51,14 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
 .exam-stats .stats-card span{white-space:nowrap;}
 @media(max-width:700px){.toolbar{padding-top:6px;padding-bottom:6px;gap:7px}.toolbar .home-button,.toolbar button{padding:8px 11px;font-size:14px}.toolbar .progress{font-size:15px}.exam-stats{top:58px;padding:0 6px}.exam-stats .stats-card{font-size:12px;padding:5px 8px;gap:3px 10px;justify-content:center}}
 
+
+/* 黒本模試2と同じ、隙間のない固定2段バー */
+.toolbar-wrap{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px rgba(18,52,91,.10)}
+.toolbar-wrap .toolbar{position:static;border:0;box-shadow:none;padding:7px 12px;min-height:48px}
+.study-status{display:flex;justify-content:center;align-items:center;gap:8px;padding:4px 12px 7px;background:#f8fbff;color:var(--navy);font-size:14px;font-weight:700;line-height:1.25;white-space:nowrap}
+.study-status i{font-style:normal;color:#a5b3c3}.study-status b{font-variant-numeric:tabular-nums}
+.question{scroll-margin-top:102px}
+@media(max-width:600px){.toolbar-wrap .toolbar{flex-wrap:nowrap;gap:5px;padding:5px 7px;min-height:42px}.toolbar-wrap .toolbar button,.toolbar-wrap .home-button{padding:7px 9px;font-size:13px;border-radius:9px}.toolbar-wrap .home-button{width:auto;text-align:center;overflow:hidden;text-overflow:ellipsis;max-width:38vw}.toolbar-wrap .progress{min-width:58px;font-size:13px}.study-status{gap:4px;padding:3px 5px 5px;font-size:11px;overflow-x:auto;justify-content:flex-start}.question{scroll-margin-top:84px}}
 </style>
 </head>
 <body>
@@ -58,21 +66,12 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
     <h1>Java Silver 黒本 模擬試験①</h1>
     <p>全60問。選択内容は自動保存され、正答・解説を開くと採点されます。</p>
   </header>
-  <div class="toolbar">
+  <div class="toolbar-wrap"><div class="toolbar nav-row">
     <a class="home-button" href="index.html">はじめの画面に戻る</a>
     <button type="button" onclick="go(-1)">前へ</button>
     <span class="progress" id="pos">1 / 60</span>
     <button type="button" onclick="go(1)">次へ</button>
-  </div>
-  <section class="exam-stats" aria-label="学習状況">
-    <div class="stats-card">
-      <span><strong>解答：</strong><span id="answeredCount">0</span> / 60</span>
-      <span><strong>採点済：</strong><span id="gradedCount">0</span></span>
-      <span><strong>正解：</strong><span id="correctCount">0</span></span>
-      <span><strong>閲覧時間：</strong><span id="elapsedTime">00:00:00</span></span>
-    </div>
-    
-  </section>
+  </div><div class="study-status"><span>解答 <b id="answeredCount">0</b>/ 60</span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div></div>
 
 
   <section id="index">
