@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+
 <html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><title>Java Silver 紫本 模擬試験2</title><style>
 :root{--navy:#4a2868;--blue:#7450a8;--pale:#f2ecf8;--line:#ddd3e8;--text:#241b2f;--green:#159447}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:#f7f4fa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.75}header{background:linear-gradient(120deg,#47245f,#8a5bc1);color:white;padding:28px max(20px,calc((100% - 980px)/2))}header h1{margin:0;font-size:clamp(24px,4vw,38px)}header p{margin:6px 0 0;opacity:.92}.toolbar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:10px;justify-content:center;align-items:center}.toolbar button{border:0;border-radius:12px;padding:10px 16px;font-size:16px;font-weight:700;color:#fff;background:var(--blue);cursor:pointer}.home-button{border-radius:12px;padding:10px 16px;font-size:16px;font-weight:700;color:var(--navy);background:#eee7f5;text-decoration:none;white-space:nowrap}.progress{font-weight:800;min-width:90px;text-align:center}main{max-width:980px;margin:22px auto 80px;padding:0 16px}.question{scroll-margin-top:76px;background:#fff;border:1px solid var(--line);border-radius:18px;margin:0 0 24px;padding:24px;box-shadow:0 3px 14px #4a28680d}.qhead{margin-bottom:8px}.badge{font-size:25px;font-weight:900;color:var(--navy)}p{margin:.55em 0}pre{margin:14px 0;padding:16px;overflow-x:auto;border:1px solid var(--line);border-radius:13px;background:#faf8fc;font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}p code,.answer code{background:#f0ebf5;padding:.08em .35em;border-radius:5px}.choice{border:2px solid var(--line);border-radius:14px;padding:13px 16px;margin:10px 0;color:#6434a0;font-size:17px;overflow-wrap:anywhere;white-space:pre-wrap}.answer{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}.answer summary{cursor:pointer;color:var(--blue);font-weight:800}.answer-inner{margin-top:14px;padding:16px;background:#fbf8fe;border-radius:12px}.correct{color:var(--green);font-size:18px;margin-bottom:10px}#index{max-width:980px;margin:22px auto;padding:0 16px}#index details{background:white;padding:12px 16px;border-radius:14px;border:1px solid var(--line)}#index nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(45px,1fr));gap:8px;margin-top:12px}#index a{text-align:center;padding:8px 4px;color:var(--blue);text-decoration:none;background:var(--pale);border-radius:8px;font-weight:700}@media(max-width:600px){header{padding:22px 18px}.toolbar{flex-wrap:wrap;justify-content:space-between}.home-button{width:100%;text-align:center}.question{padding:18px 16px;border-radius:14px}pre{font-size:13px}.choice{font-size:16px}}@media print{.toolbar,#index{display:none}.question{break-inside:avoid;box-shadow:none}details.answer:not([open])>*:not(summary){display:block}details.answer summary{display:none}}
-</style><style>.toolbar-wrap{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px rgba(74,40,104,.12)}.toolbar-wrap .toolbar{position:static;border:0;padding:7px 12px;min-height:48px}.study-status{display:flex;justify-content:center;align-items:center;gap:8px;padding:4px 12px 7px;background:#fbf8fe;color:var(--navy);font-size:14px;font-weight:700;line-height:1.25;white-space:nowrap}.study-status i{font-style:normal;color:#aa9ab8}.question{scroll-margin-top:102px}.choice[data-choice]{cursor:pointer;user-select:none;transition:.15s}.choice[data-choice]:hover{border-color:#b495d6;background:#fcf9ff}.choice[data-choice]:focus-visible{outline:3px solid #c9aaf0;outline-offset:2px}.choice.selected{background:#eee7fb;border-color:#7450a8;box-shadow:0 0 0 1px #7450a8 inset;color:#512588}.choice.correct-choice{background:#e9f8ef;border-color:#159447;color:#0d7135;box-shadow:0 0 0 1px #159447 inset}.choice.wrong-choice{background:#fff0f0;border-color:#d63b3b;color:#a91f1f;box-shadow:0 0 0 1px #d63b3b inset}.grade-result{display:none;margin:12px 0 0;padding:10px 13px;border-radius:10px;font-weight:900}.grade-result.pass{display:block;background:#e9f8ef;color:#0d7135;border:1px solid #87cfa5}.grade-result.fail{display:block;background:#fff0f0;color:#a91f1f;border:1px solid #efaaaa}@media(max-width:600px){.toolbar-wrap .toolbar{flex-wrap:nowrap;gap:5px;padding:5px 7px;min-height:42px}.toolbar-wrap .toolbar button,.toolbar-wrap .home-button{padding:7px 9px;font-size:13px;border-radius:9px}.toolbar-wrap .home-button{width:auto;max-width:38vw;overflow:hidden;text-overflow:ellipsis}.toolbar-wrap .progress{min-width:58px;font-size:13px}.study-status{gap:4px;padding:3px 5px 5px;font-size:11px;overflow-x:auto;justify-content:flex-start}.question{scroll-margin-top:84px}.choice{padding:10px 12px;margin:8px 0;font-size:15px}}</style></head><body><header><h1>Java Silver 紫本 模擬試験②</h1><p>全60問。正答・解説は各問題の下で開閉できます。</p></header><div class="toolbar-wrap"><div class="toolbar nav-row"><a class="home-button" href="index.html">はじめの画面に戻る</a><button onclick="go(-1)" type="button">前へ</button><span class="progress" id="pos">1 / 60</span><button onclick="go(1)" type="button">次へ</button></div><div aria-live="polite" class="study-status"><span>解答 <b id="answeredCount">0</b>/<b id="totalCount">0</b></span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div></div><section id="index"><details><summary>問題一覧</summary><nav><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a><a href="#q25">25</a><a href="#q26">26</a><a href="#q27">27</a><a href="#q28">28</a><a href="#q29">29</a><a href="#q30">30</a><a href="#q31">31</a><a href="#q32">32</a><a href="#q33">33</a><a href="#q34">34</a><a href="#q35">35</a><a href="#q36">36</a><a href="#q37">37</a><a href="#q38">38</a><a href="#q39">39</a><a href="#q40">40</a><a href="#q41">41</a><a href="#q42">42</a><a href="#q43">43</a><a href="#q44">44</a><a href="#q45">45</a><a href="#q46">46</a><a href="#q47">47</a><a href="#q48">48</a><a href="#q49">49</a><a href="#q50">50</a><a href="#q51">51</a><a href="#q52">52</a><a href="#q53">53</a><a href="#q54">54</a><a href="#q55">55</a><a href="#q56">56</a><a href="#q57">57</a><a href="#q58">58</a><a href="#q59">59</a><a href="#q60">60</a></nav></details></section><main><article class="question" data-correct="C" data-max-select="1" id="q1"><div class="qhead"><span class="badge">問1</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
+</style><style>.toolbar-wrap{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px rgba(74,40,104,.12)}.toolbar-wrap .toolbar{position:static;border:0;padding:7px 12px;min-height:48px}.study-status{display:flex;justify-content:center;align-items:center;gap:8px;padding:4px 12px 7px;background:#fbf8fe;color:var(--navy);font-size:14px;font-weight:700;line-height:1.25;white-space:nowrap}.study-status i{font-style:normal;color:#aa9ab8}.question{scroll-margin-top:102px}.choice[data-choice]{cursor:pointer;user-select:none;transition:.15s}.choice[data-choice]:hover{border-color:#b495d6;background:#fcf9ff}.choice[data-choice]:focus-visible{outline:3px solid #c9aaf0;outline-offset:2px}.choice.selected{background:#eee7fb;border-color:#7450a8;box-shadow:0 0 0 1px #7450a8 inset;color:#512588}.choice.correct-choice{background:#e9f8ef;border-color:#159447;color:#0d7135;box-shadow:0 0 0 1px #159447 inset}.choice.wrong-choice{background:#fff0f0;border-color:#d63b3b;color:#a91f1f;box-shadow:0 0 0 1px #d63b3b inset}.grade-result{display:none;margin:12px 0 0;padding:10px 13px;border-radius:10px;font-weight:900}.grade-result.pass{display:block;background:#e9f8ef;color:#0d7135;border:1px solid #87cfa5}.grade-result.fail{display:block;background:#fff0f0;color:#a91f1f;border:1px solid #efaaaa}@media(max-width:600px){.toolbar-wrap .toolbar{flex-wrap:nowrap;gap:5px;padding:5px 7px;min-height:42px}.toolbar-wrap .toolbar button,.toolbar-wrap .home-button{padding:7px 9px;font-size:13px;border-radius:9px}.toolbar-wrap .home-button{width:auto;max-width:38vw;overflow:hidden;text-overflow:ellipsis}.toolbar-wrap .progress{min-width:58px;font-size:13px}.study-status{gap:4px;padding:3px 5px 5px;font-size:11px;overflow-x:auto;justify-content:flex-start}.question{scroll-margin-top:84px}.choice{padding:10px 12px;margin:8px 0;font-size:15px}}</style><style>/* Stable separate answer controls */.body .choice[data-choice]{cursor:default;user-select:text}.body .choice[data-choice]:hover,.body .choice[data-choice].selected,.body .choice[data-choice].correct-choice,.body .choice[data-choice].wrong-choice{background:transparent;border-color:var(--line);box-shadow:none;color:inherit}.answer-controls{margin-top:18px;padding:13px;background:#fbf8fe;border:1px solid var(--line);border-radius:13px}.answer-control-label{font-weight:800;color:var(--navy);margin-bottom:8px}.answer-choice-grid{display:flex;flex-wrap:wrap;gap:8px}.answer-choice{touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:48px;border:2px solid var(--line);border-radius:11px;padding:9px 14px;background:#fff;color:#7450a8;font-size:17px;font-weight:900;cursor:pointer}.answer-choice:active{transform:scale(.97)}.answer-choice.selected{background:#eee7fb;border-color:#7450a8;box-shadow:0 0 0 1px #7450a8 inset}.answer-choice.correct-choice{background:#e9f8ef;border-color:#159447;color:#0d7135}.answer-choice.wrong-choice{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}@media(max-width:600px){.answer-controls{padding:10px}.answer-choice{min-width:42px;padding:7px 11px;font-size:15px}}</style></head><body><header><h1>Java Silver 紫本 模擬試験②</h1><p>全60問。正答・解説は各問題の下で開閉できます。</p></header><div class="toolbar-wrap"><div class="toolbar nav-row"><a class="home-button" href="index.html">はじめの画面に戻る</a><button onclick="go(-1)" type="button">前へ</button><span class="progress" id="pos">1 / 60</span><button onclick="go(1)" type="button">次へ</button></div><div aria-live="polite" class="study-status"><span>解答 <b id="answeredCount">0</b>/<b id="totalCount">0</b></span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div></div><section id="index"><details><summary>問題一覧</summary><nav><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a><a href="#q25">25</a><a href="#q26">26</a><a href="#q27">27</a><a href="#q28">28</a><a href="#q29">29</a><a href="#q30">30</a><a href="#q31">31</a><a href="#q32">32</a><a href="#q33">33</a><a href="#q34">34</a><a href="#q35">35</a><a href="#q36">36</a><a href="#q37">37</a><a href="#q38">38</a><a href="#q39">39</a><a href="#q40">40</a><a href="#q41">41</a><a href="#q42">42</a><a href="#q43">43</a><a href="#q44">44</a><a href="#q45">45</a><a href="#q46">46</a><a href="#q47">47</a><a href="#q48">48</a><a href="#q49">49</a><a href="#q50">50</a><a href="#q51">51</a><a href="#q52">52</a><a href="#q53">53</a><a href="#q54">54</a><a href="#q55">55</a><a href="#q56">56</a><a href="#q57">57</a><a href="#q58">58</a><a href="#q59">59</a><a href="#q60">60</a></nav></details></section><main><article class="question" data-correct="C" data-max-select="1" id="q1"><div class="qhead"><span class="badge">問1</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
 <p>次のプログラムがあります。</p>
 <pre><code>public interface Playable {
     // insert code here
@@ -12,12 +13,12 @@ class MusicPlayer implements Playable {
         System.out.print("playing..." + SPEED + "x");
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. protected double SPEED = 1.25;</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. private double SPEED = 1.25;</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. final double SPEED = 1.25;</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. public abstract SPEED;</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. public double SPEED;</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. static double speed = 1.25;</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. protected double SPEED = 1.25;</div>
+<div class="choice" data-choice="B">B. private double SPEED = 1.25;</div>
+<div class="choice" data-choice="C">C. final double SPEED = 1.25;</div>
+<div class="choice" data-choice="D">D. public abstract SPEED;</div>
+<div class="choice" data-choice="E">E. public double SPEED;</div>
+<div class="choice" data-choice="F">F. static double speed = 1.25;</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
 <p>A × protected はインターフェースのフィールドには指定できません。</p>
 <p>B × private もこのフィールド宣言には指定できません。</p>
 <p>C ○ final double SPEED = 1.25; は有効。暗黙的に public static final。</p>
@@ -40,23 +41,23 @@ class MusicPlayer implements Playable {
 }</code></pre>
 <p>以下の方法で実行するとどのような結果になりますか。（1つ選択）</p>
 <p><code>java Main.java 10 ab 20 cd</code></p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. 10ab20cdが出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. 1020abcdが出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 1100001が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 107が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. NumberFormatExceptionがスローされる</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. ArrayIndexOutOfBoundsExceptionがスローされる</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. StringIndexOutOfBoundsExceptionがスローされる</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. 10ab20cdが出力される</div>
+<div class="choice" data-choice="B">B. 1020abcdが出力される</div>
+<div class="choice" data-choice="C">C. 1100001が出力される</div>
+<div class="choice" data-choice="D">D. 107が出力される</div>
+<div class="choice" data-choice="E">E. NumberFormatExceptionがスローされる</div>
+<div class="choice" data-choice="F">F. ArrayIndexOutOfBoundsExceptionがスローされる</div>
+<div class="choice" data-choice="G">G. StringIndexOutOfBoundsExceptionがスローされる</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>charAt()の戻り値は char 型です。args[1] は "ab" なので、int + char の演算では 'a' が数値 97 として扱われるため、107が正解。</p>
 <h4>覚え方</h4>
 <p>charAt() の戻り値の型はcharであり、int(a) + char(b) により、char(b)は文字コードの数値で加算される</p></div></details></article><article class="question" data-correct="B,D,F" data-max-select="3" id="q3"><div class="qhead"><span class="badge">問3</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
 <p>次の記述のうち、コンパイルエラーが発生するものはどれですか。(3つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>byte b1 = 0b0100;</code></div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>byte b2 = 200;</code></div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>short s1 = (short)300;</code></div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>short s2 = b1 + s1;</code></div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>Integer i1 = (int)10.0</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>Double d1 = 20.0F</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B, D, F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>byte b1 = 0b0100;</code></div>
+<div class="choice" data-choice="B">B. <code>byte b2 = 200;</code></div>
+<div class="choice" data-choice="C">C. <code>short s1 = (short)300;</code></div>
+<div class="choice" data-choice="D">D. <code>short s2 = b1 + s1;</code></div>
+<div class="choice" data-choice="E">E. <code>Integer i1 = (int)10.0</code></div>
+<div class="choice" data-choice="F">F. <code>Double d1 = 20.0F</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B, D, F</div><h4>正解の理由</h4>
 <p>• B. byte型は-128～127までなので、範囲外となる</p>
 <p>• D. byte + short は二項数値昇格により int になるため、short へそのまま代入できない。</p>
 <p>• F. 20.0F は float。float → Double という「型変換＋ボクシング」はできない。</p>
@@ -85,13 +86,13 @@ class MusicPlayer implements Playable {
         }
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. i:3 i:5 j:0 j:2 j:4が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. i:3 j:2 i:5 j:4 j:0が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. i:1 i:3 i:5 j:2 j:4が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. i:1 i:3 i:5 j:0 j:2 j:4が出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. 無限ループになる</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. i:3 i:5 j:0 j:2 j:4が出力される</div>
+<div class="choice" data-choice="D">D. i:3 j:2 i:5 j:4 j:0が出力される</div>
+<div class="choice" data-choice="E">E. i:1 i:3 i:5 j:2 j:4が出力される</div>
+<div class="choice" data-choice="F">F. i:1 i:3 i:5 j:0 j:2 j:4が出力される</div>
+<div class="choice" data-choice="G">G. 無限ループになる</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
 <p>(B)において、jのインクリメントが2ずつ繰り上がるため、break条件に合致せずに無限ループになる。</p>
 <h4>覚え方</h4>
 <p>無限ループ問題では「終了条件に本当に到達できるか」を確認する。</p></div></details></article><article class="question" data-correct="B,F" data-max-select="2" id="q5"><div class="qhead"><span class="badge">問5</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -102,13 +103,13 @@ String s3 = s2.intern();
 String s4 = s1.toString();
 StringBuilder sb1 = new StringBuilder(s1);
 String s5 = sb1.toString();</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Stringオブジェクトは2つ生成される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Stringオブジェクトは3つ生成される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Stringオブジェクトは4つ生成される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. Stringオブジェクトは5つ生成される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. s1 == s2 の結果はtrueとなる</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. s1 == s3 の結果はtrueとなる</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. s1 == s5 の結果はtrueとなる</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B, F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Stringオブジェクトは2つ生成される</div>
+<div class="choice" data-choice="B">B. Stringオブジェクトは3つ生成される</div>
+<div class="choice" data-choice="C">C. Stringオブジェクトは4つ生成される</div>
+<div class="choice" data-choice="D">D. Stringオブジェクトは5つ生成される</div>
+<div class="choice" data-choice="E">E. s1 == s2 の結果はtrueとなる</div>
+<div class="choice" data-choice="F">F. s1 == s3 の結果はtrueとなる</div>
+<div class="choice" data-choice="G">G. s1 == s5 の結果はtrueとなる</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B, F</div><h4>正解の理由</h4>
 <p>s1：文字列プールの "Hello" を参照</p>
 <p>s2：new String() により新しいStringオブジェクトを生成</p>
 <p>s3：intern() により、文字列プールの "Hello"、つまり s1 と同じオブジェクトを参照</p>
@@ -156,7 +157,7 @@ array[2][2] = "Y";</code></pre>
 <p>array[0][2] = "C";</p>
 <p>array[1][0] = "X";</p>
 <p>array[1][1] = "Y";</p>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. この中にはない</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="F">F. この中にはない</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
 <p>A × 未代入箇所は "" ではなく null になる</p>
 <p>B × new String[3][3] なので配列サイズが違う</p>
 <p>C × サイズ・添字とも不適切</p>
@@ -175,11 +176,11 @@ array[2][2] = "Y";</code></pre>
         System.out.println(str.equals(sb));
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aのメソッドは引数を3つ指定する必要があるため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bのメソッドは引数を1つのみ指定して使用するため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Cのメソッドは第2引数の指定が正しくないため、StringIndexOutOfBoundsExceptionがスローされる</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 正常にコンパイル、実行でき、trueが出力される</div>
-<p>‐ E. 正常にコンパイル、実行でき、falseが出力される</p></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aのメソッドは引数を3つ指定する必要があるため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bのメソッドは引数を1つのみ指定して使用するため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. Cのメソッドは第2引数の指定が正しくないため、StringIndexOutOfBoundsExceptionがスローされる</div>
+<div class="choice" data-choice="D">D. 正常にコンパイル、実行でき、trueが出力される</div>
+<p>‐ E. 正常にコンパイル、実行でき、falseが出力される</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
 <p>考え方の修正ポイントは substring() は StringBuilder 自体を変更しないことです。</p>
 <p>戻り値 "Japan" を受け取っていないため、sb はそのまま "Japanese" です。</p>
 <p>sb.replace()によってJapaneseがJavaに変更されるが、8行目のstr.equalsには、StringBuilderオブジェクトが渡されているため、結果はfalse。</p>
@@ -189,12 +190,12 @@ array[2][2] = "Y";</code></pre>
 <p>StringBuilder.substring() → String を返す。元のStringBuilderは変更しない</p>
 <p>StringBuilder.replace() → 元のStringBuilderを変更する</p></div></details></article><article class="question" data-correct="A,D" data-max-select="2" id="q8"><div class="qhead"><span class="badge">問8</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
 <p>次のローカル変数の宣言で、コンパイルエラーが発生しないものはどれですか。(2つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>var a = -1___00;</code></div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>var b = 100_L;</code></div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>var c = 0b_0000_0000_0000_0000_0000_0000_0000_0010;</code></div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>var d = 0xf_f_f_fL;</code></div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>var e = 0xadd_:</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>var f = 3._1_4F;</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A, D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>var a = -1___00;</code></div>
+<div class="choice" data-choice="B">B. <code>var b = 100_L;</code></div>
+<div class="choice" data-choice="C">C. <code>var c = 0b_0000_0000_0000_0000_0000_0000_0000_0010;</code></div>
+<div class="choice" data-choice="D">D. <code>var d = 0xf_f_f_fL;</code></div>
+<div class="choice" data-choice="E">E. <code>var e = 0xadd_:</code></div>
+<div class="choice" data-choice="F">F. <code>var f = 3._1_4F;</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A, D</div><h4>正解の理由</h4>
 <p>A ○ -1___00：数字の間なら _ は連続してもOK</p>
 <p>B × 100_L：L の直前はNG</p>
 <p>C × 0b_...：0b の直後はNG</p>
@@ -223,13 +224,13 @@ class MyResource implements AutoCloseable {
         System.out.print("C");
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Cでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. BACが出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. BCAが出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. BAが出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. BCが出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. Cでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="D">D. BACが出力される</div>
+<div class="choice" data-choice="E">E. BCAが出力される</div>
+<div class="choice" data-choice="F">F. BAが出力される</div>
+<div class="choice" data-choice="G">G. BCが出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
 <p>try (r) の処理で、</p>
 <p>B を出力</p>
 <p>try終了時に close() が自動実行され、C を出力</p>
@@ -243,12 +244,12 @@ class MyResource implements AutoCloseable {
     void main(String args) { new Main(); }
     public static void main(String... s) { main(); }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Javaアプリケーションの実行に必要なmain()メソッドの宣言は、3行目のように仮引数にString型の可変長引数を1つ指定できる</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Javaアプリケーションの実行に必要なmain()メソッドをクラス内の先頭に記述していないため、JavaコマンドでMainクラスを指定しても実行に失敗する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Javaコマンドで実行すると3行目のmain()メソッドが呼ばれ、次に2行目のmain()メソッドが呼ばれてMainオブジェクトが生成される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. main()メソッドはオーバーロードできないためコンパイルエラーが発生する</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. クラスにpublicが付いていないためnew Main()でコンパイルエラーが発生する</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. コンストラクタが宣言されていないためnew Main()でコンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Javaアプリケーションの実行に必要なmain()メソッドの宣言は、3行目のように仮引数にString型の可変長引数を1つ指定できる</div>
+<div class="choice" data-choice="B">B. Javaアプリケーションの実行に必要なmain()メソッドをクラス内の先頭に記述していないため、JavaコマンドでMainクラスを指定しても実行に失敗する</div>
+<div class="choice" data-choice="C">C. Javaコマンドで実行すると3行目のmain()メソッドが呼ばれ、次に2行目のmain()メソッドが呼ばれてMainオブジェクトが生成される</div>
+<div class="choice" data-choice="D">D. main()メソッドはオーバーロードできないためコンパイルエラーが発生する</div>
+<div class="choice" data-choice="E">E. クラスにpublicが付いていないためnew Main()でコンパイルエラーが発生する</div>
+<div class="choice" data-choice="F">F. コンストラクタが宣言されていないためnew Main()でコンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <p>A: String... は可変長引数ですが、実質的に String[] として扱われるため、有効な main メソッドです。</p>
 <p>B: 記述順は関係ない</p>
 <p>C: staticメソッドからインスタンスメソッドは呼び出すことができない。さらに2行目のメソッドとは引数リストが一致しない。</p>
@@ -280,13 +281,13 @@ class MyResource implements AutoCloseable {
         System.out.println("count:" + count);
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. ArrayIndexOutOfBoundsExceptionがスローされる</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. コンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. count:9が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. count:7が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. count:6が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. count:1が出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. count:0が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. ArrayIndexOutOfBoundsExceptionがスローされる</div>
+<div class="choice" data-choice="B">B. コンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. count:9が出力される</div>
+<div class="choice" data-choice="D">D. count:7が出力される</div>
+<div class="choice" data-choice="E">E. count:6が出力される</div>
+<div class="choice" data-choice="F">F. count:1が出力される</div>
+<div class="choice" data-choice="G">G. count:0が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>2 + 2 + 1 + 1 + 1 = 7</p>
 <p>new String("Coffee") や new String("Ca").concat("fe") でも、switchは参照先が同じかではなく文字列の内容で一致判定されます。</p>
 <h4>覚え方</h4>
@@ -303,13 +304,13 @@ class MyResource implements AutoCloseable {
     }
 }</code></pre>
 <p>AU:GB:JP:USと出力するために(1)に記述できるものはどれですか。(2つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. List&lt;&gt; list</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. List&lt;String&gt; list</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Collection list</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. ArrayList&lt;&gt; list</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. ArrayList&lt;String&gt; list</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. ArrayList list</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. Object&lt;String&gt; list</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B, E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. List&lt;&gt; list</div>
+<div class="choice" data-choice="B">B. List&lt;String&gt; list</div>
+<div class="choice" data-choice="C">C. Collection list</div>
+<div class="choice" data-choice="D">D. ArrayList&lt;&gt; list</div>
+<div class="choice" data-choice="E">E. ArrayList&lt;String&gt; list</div>
+<div class="choice" data-choice="F">F. ArrayList list</div>
+<div class="choice" data-choice="G">G. Object&lt;String&gt; list</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B, E</div><h4>正解の理由</h4>
 <p>show(code) に渡す code の型は、<code>ArrayList&lt;String&gt;</code>です。</p>
 <p>拡張for文で、<code>for (String s : list)</code>と String として取り出すため、仮引数も要素型が String であることが明確である必要があります。</p>
 <p>一方、Collection list や ArrayList list はraw型なので、取り出した要素は Object として扱われ、String s に代入できません。</p>
@@ -329,12 +330,12 @@ public class Main {
         System.out.print("3 ");
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. &gt;java Main.javaを実行すると3が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. &gt;java Main.javaを実行すると1 3が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. &gt;java Main.javaを実行すると1 2 3が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. &gt;java Main.javaを実行すると3 1 2が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. &gt;java Main.javaでプログラムを実行することはできない</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. &gt;javac Main.java、 &gt;java Testを実行すると1 3が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. &gt;java Main.javaを実行すると3が出力される</div>
+<div class="choice" data-choice="B">B. &gt;java Main.javaを実行すると1 3が出力される</div>
+<div class="choice" data-choice="C">C. &gt;java Main.javaを実行すると1 2 3が出力される</div>
+<div class="choice" data-choice="D">D. &gt;java Main.javaを実行すると3 1 2が出力される</div>
+<div class="choice" data-choice="E">E. &gt;java Main.javaでプログラムを実行することはできない</div>
+<div class="choice" data-choice="F">F. &gt;javac Main.java、 &gt;java Testを実行すると1 3が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
 <p>publicが付与されたClassは、ファイル名と一致していなければコンパイルできないが</p>
 <p>ソースファイルモードでは、ソースファイル内で最初に宣言されたトップレベルクラスが実行対象となる</p>
 <p>一番上のTestクラスが実行されるが、エントリーポイントがない<code>public static void main(String[] args)</code>ため、エラーになる。</p>
@@ -371,7 +372,7 @@ else i = 3;</code></pre>
 <pre><code>if (!x.equals(y)) {
     if (!y.equals(x)) i = 3;
     i = 2;
-}</code></pre></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
+}</code></pre><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
 <p>三項演算子は右側からまとまるので、</p>
 <pre><code>if (x.equals(y))
     i = 1;
@@ -416,13 +417,13 @@ public class Test {
     }
 }</code></pre>
 <p>Super!SUb#print()を出力するために必要な記述はどれですか。(2つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aのprotectedをprivateに変更する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bのprint()にpublicを指定する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Cのnameをsuper(name)に変更する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. Dにimport app.sub.Sub;を指定する</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. Dにimport app.*.*;を指定する</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. Eをapp.sub.Sub obj = new Sub();に変更する</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. EをSub obj = new app.sub.Sub();に変更する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aのprotectedをprivateに変更する</div>
+<div class="choice" data-choice="B">B. Bのprint()にpublicを指定する</div>
+<div class="choice" data-choice="C">C. Cのnameをsuper(name)に変更する</div>
+<div class="choice" data-choice="D">D. Dにimport app.sub.Sub;を指定する</div>
+<div class="choice" data-choice="E">E. Dにimport app.*.*;を指定する</div>
+<div class="choice" data-choice="F">F. Eをapp.sub.Sub obj = new Sub();に変更する</div>
+<div class="choice" data-choice="G">G. EをSub obj = new app.sub.Sub();に変更する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,D</div><h4>正解の理由</h4>
 <p>B ○：親のprint()はprotected。子のアクセス範囲を修飾子なしに狭めることはできないため、publicにする必要があります。</p>
 <p>C ×：super(name)という構文はありません。nameは継承したprotectedフィールドなので、CのSystem.out.print(name);はそのままで "Super!" を出力できます。</p>
 <p>D ○：Testはtestパッケージ、Subはapp.subパッケージなので、import app.sub.Sub;が必要です。</p>
@@ -446,13 +447,13 @@ public class Test {
         }
         System.out.println(Arrays.toString(countries));
     }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. [GB, JP]が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. [GB, India, USA, Canada, JP]</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. [IN, CA]</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. [IN, US, CA]</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. [GB, IN, US, CA, JP]</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. [GB, JP]が出力される</div>
+<div class="choice" data-choice="D">D. [GB, India, USA, Canada, JP]</div>
+<div class="choice" data-choice="E">E. [IN, CA]</div>
+<div class="choice" data-choice="F">F. [IN, US, CA]</div>
+<div class="choice" data-choice="G">G. [GB, IN, US, CA, JP]</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
 <p>countires配列内の文字について、文字の長さが2文字の場合はそのままで、それ以外は頭文字2文字を大文字にするメソッドにより変更されるから。</p>
 <h4>覚え方</h4>
 <p>continue は「今回の繰り返しの残りを飛ばして、次の周回へ」。</p></div></details></article><article class="question" data-correct="A" data-max-select="1" id="q17"><div class="qhead"><span class="badge">問17</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -466,12 +467,12 @@ public class Test {
         System.out.println("ans1:" + ans1 + ", ans2:" + ans2);
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. ans1:33,ans2:2.1が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. ans1:33,ans2:4.9が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. ans1:33,ans2:1.1が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. ans1:6,ans2:2.1が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. ans1:6,ans2:1.1が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. ans1:33,ans2:2.1が出力される</div>
+<div class="choice" data-choice="B">B. ans1:33,ans2:4.9が出力される</div>
+<div class="choice" data-choice="C">C. ans1:33,ans2:1.1が出力される</div>
+<div class="choice" data-choice="D">D. ans1:6,ans2:2.1が出力される</div>
+<div class="choice" data-choice="E">E. ans1:6,ans2:1.1が出力される</div>
+<div class="choice" data-choice="F">F. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <p>ans1は割り算から先に計算されて33、ans2は右辺から計算されてzの値が代入されるから。</p>
 <h4>覚え方</h4>
 <p>計算は「×÷が先」、連続代入は「右から左」。</p></div></details></article><article class="question" data-correct="C" data-max-select="1" id="q18"><div class="qhead"><span class="badge">問18</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -530,7 +531,7 @@ class Disp {
         }
         i += 2;
     }
-}</code></pre></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
+}</code></pre><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
 <p>クラス名.メソッド名で呼び出しているので、staticメソッドである必要がある</p>
 <p>0始まりで、偶数の添え字を呼び出す必要があるため、Cが正解。</p>
 <h4>覚え方</h4>
@@ -563,13 +564,13 @@ class Disp {
         return b ? "T" : "F";
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. FTFが出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. FFTが出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. TFTが出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. TTFが出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. TTT が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. AからCは、戻り値の型が適切でないためコンパイルエラーが発生する</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. AからDは、アクセス修飾子の指定が適切でないためコンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. FTFが出力される</div>
+<div class="choice" data-choice="B">B. FFTが出力される</div>
+<div class="choice" data-choice="C">C. TFTが出力される</div>
+<div class="choice" data-choice="D">D. TTFが出力される</div>
+<div class="choice" data-choice="E">E. TTT が出力される</div>
+<div class="choice" data-choice="F">F. AからCは、戻り値の型が適切でないためコンパイルエラーが発生する</div>
+<div class="choice" data-choice="G">G. AからDは、アクセス修飾子の指定が適切でないためコンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <p>• 1. method(s1.toString(), s2)</p>
 <p>    引数は String, String</p>
 <p>    A/Bには一致しないため、Object, Object の C</p>
@@ -595,12 +596,12 @@ class Disp {
         System.out.println(Arrays.toString(newPrice));
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. [9.95, 11.0, 24.99]が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. [9.95, 10.1, 25.89]が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. [9.95, 11.0, 25.89]が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. [9.95, 12.0, 24.99]が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. [7.95, 10.0, 25.99]が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. この中にはない</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. [9.95, 11.0, 24.99]が出力される</div>
+<div class="choice" data-choice="B">B. [9.95, 10.1, 25.89]が出力される</div>
+<div class="choice" data-choice="C">C. [9.95, 11.0, 25.89]が出力される</div>
+<div class="choice" data-choice="D">D. [9.95, 12.0, 24.99]が出力される</div>
+<div class="choice" data-choice="E">E. [7.95, 10.0, 25.99]が出力される</div>
+<div class="choice" data-choice="F">F. この中にはない</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <h4>覚え方</h4></div></details></article><article class="question" data-correct="D,E,F" data-max-select="3" id="q21"><div class="qhead"><span class="badge">問21</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
 <p>次のプログラムがあります。</p>
 <pre><code>public class Main {
@@ -617,12 +618,12 @@ class Disp {
     }
 }</code></pre>
 <p>コンパイルを成功させるために必要な変更はどれですか。(3つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aのthrow以降を、throw new Exception();に変更する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bの行を、throw new Throwable("Incorrect letter");に変更する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Bの行を、throw new Exception();に変更する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. main()にthrows Exceptionを指定する</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. methodA()に、throws Exceptionを指定する</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. methodB()に、throws Exceptionを指定する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D,E,F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aのthrow以降を、throw new Exception();に変更する</div>
+<div class="choice" data-choice="B">B. Bの行を、throw new Throwable("Incorrect letter");に変更する</div>
+<div class="choice" data-choice="C">C. Bの行を、throw new Exception();に変更する</div>
+<div class="choice" data-choice="D">D. main()にthrows Exceptionを指定する</div>
+<div class="choice" data-choice="E">E. methodA()に、throws Exceptionを指定する</div>
+<div class="choice" data-choice="F">F. methodB()に、throws Exceptionを指定する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D,E,F</div><h4>正解の理由</h4>
 <p>methodB()でチェック例外Exceptionをスローしているため、例外をcatchしない場合は、methodB() → methodA() → main()の呼び出し経路すべてでthrows Exceptionを宣言する必要があるため。</p>
 <h4>覚え方</h4>
 <p>チェック例外は「catchするまでthrowsでバケツリレー」。</p></div></details></article><article class="question" data-correct="A,F" data-max-select="2" id="q22"><div class="qhead"><span class="badge">問22</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -659,7 +660,7 @@ final class Sub extends C {
 <pre><code>interface G {
     void x();
 }
-abstract class H implements G {}</code></pre></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,F</div><h4>正解の理由</h4>
+abstract class H implements G {}</code></pre><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,F</div><h4>正解の理由</h4>
 <p>A: ×、具象メソッドなのに{}がないから</p>
 <p>B: 〇、抽象メソッドの正しい書き方</p>
 <p>C: 〇、abstract sealed class は可能です。abstractは「抽象クラス」、sealedは「継承できるクラスを限定する」という別々の役割なので併用できます。また、許可されたSubがfinalになるのも正しい形です。</p>
@@ -688,7 +689,7 @@ record Drink() implements Food, Item {}</code></pre>
 final class Drink extends Food implements Item {}</code></pre>
 <p>• E.</p>
 <pre><code>final interface Food extends Item {}
-sealed class Drink implements Item {}</code></pre></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
+sealed class Drink implements Item {}</code></pre><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
 <p>A. ×：Foodインタフェースの宣言は適切だが、ItemインタフェースのpermitsにDrinkも指定しているため、Drinkクラスにも直接Itemを実装する記述が必要。</p>
 <p>B. ×：Drinkはインタフェースのためextends Foodとすべきところ、implementsが指定され、Foodにはpermits Drinkの指定も不足しているためコンパイルエラー。</p>
 <p>C. 〇：FoodインタフェースもItemインタフェースを実装し、DrinkレコードもItemインタフェースを実装できているためOK。なおレコードは暗黙的にfinalクラスになるため、sealedやnon-sealedの指定はできない。</p>
@@ -712,12 +713,12 @@ sealed class Drink implements Item {}</code></pre></section><details class="answ
         }
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>Amy:Clara:Lewis:</code>と出力された後、ArrayIndexOutOfBoundsExceptionがスローされる</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>Amy:Clara:Lewis:null:</code>が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>Amy:Clara:Lewis:</code>が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>[Amy, Clara][Lewis,</code>と出力された後、NullPointerExceptionがスローされる</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>[Amy, Clara][Lewis, null]</code>が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>[Amy, Clara][Lewis]</code>が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>Amy:Clara:Lewis:</code>と出力された後、ArrayIndexOutOfBoundsExceptionがスローされる</div>
+<div class="choice" data-choice="B">B. <code>Amy:Clara:Lewis:null:</code>が出力される</div>
+<div class="choice" data-choice="C">C. <code>Amy:Clara:Lewis:</code>が出力される</div>
+<div class="choice" data-choice="D">D. <code>[Amy, Clara][Lewis,</code>と出力された後、NullPointerExceptionがスローされる</div>
+<div class="choice" data-choice="E">E. <code>[Amy, Clara][Lewis, null]</code>が出力される</div>
+<div class="choice" data-choice="F">F. <code>[Amy, Clara][Lewis]</code>が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
 <p>printメソッドは、Stringオブジェクトを引数に受取り、引数がnullの場合は"null"を表示する。</p>
 <p>なお、nullは参照するだけではNPEにならない。何か操作をするときにNPEになる。</p>
 <h4>覚え方</h4>
@@ -743,14 +744,14 @@ class Main {
         System.out.print(s.getName());
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. 正常にコンパイル、実行でき、SuperSUPERが出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. 正常にコンパイル、実行でき、Sub SUBが出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 正常にコンパイル、実行でき、Sub SUB SUPER が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 正常にコンパイル、実行できるが、何も出力されない</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. メンバ変数nameが適切に宣言されていないため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. reset()メソッドが適切に宣言されていないため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. getName()メソッドが適切に宣言されていないため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="H" role="button" tabindex="0">H. toString()メソッドが適切に宣言されていないため、コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. 正常にコンパイル、実行でき、SuperSUPERが出力される</div>
+<div class="choice" data-choice="B">B. 正常にコンパイル、実行でき、Sub SUBが出力される</div>
+<div class="choice" data-choice="C">C. 正常にコンパイル、実行でき、Sub SUB SUPER が出力される</div>
+<div class="choice" data-choice="D">D. 正常にコンパイル、実行できるが、何も出力されない</div>
+<div class="choice" data-choice="E">E. メンバ変数nameが適切に宣言されていないため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="F">F. reset()メソッドが適切に宣言されていないため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="G">G. getName()メソッドが適切に宣言されていないため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="H">H. toString()メソッドが適切に宣言されていないため、コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
 <p>Superクラスにて、finalメソッドとして定義したgetName()を、Subクラスでオーバーライドしようとしているから。</p>
 <h4>覚え方</h4>
 <p>finalは継承禁止</p></div></details></article><article class="question" data-correct="E" data-max-select="1" id="q26"><div class="qhead"><span class="badge">問26</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -773,12 +774,12 @@ class Calc {
 
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aのoperate()の呼び出しでRuntimeExceptionがスローされる</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bのoperate()の宣言でコンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. [3, 5, 10, 10]が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. [3, 6, 9, 10]が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. [4, 6, 9, 11]が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. [5, 6, 10, 11]が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aのoperate()の呼び出しでRuntimeExceptionがスローされる</div>
+<div class="choice" data-choice="B">B. Bのoperate()の宣言でコンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. [3, 5, 10, 10]が出力される</div>
+<div class="choice" data-choice="D">D. [3, 6, 9, 10]が出力される</div>
+<div class="choice" data-choice="E">E. [4, 6, 9, 11]が出力される</div>
+<div class="choice" data-choice="F">F. [5, 6, 10, 11]が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
 <p>A. oboo11は3、0x000Cは12でnumber配列はすべてint型なので、ラッパークラスのInteger[]にオートボクシングされえて問題ないため、RuntimeExceptionはスローされない</p>
 <p>B. 引数はラッパークラスのIntegerであり、呼び出し側もInteger型なので問題なし。throwsは非チェック例外なので特に問題なし。</p>
 <p>C, D, F. switchの条件分岐とobjのインクリメントから異なる結果である。</p>
@@ -803,11 +804,11 @@ class Calc {
         System.out.println(o1.id + o1.name + MyClass.id + o2.name);
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>1:Duke 2:James 3:Scott 3:Scott</code>が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>1.Duke 2:James 3:Scott 2:James</code>が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>2:Duke 2:James 3:Scott 2:James</code>が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>2:Duke 2:James 3:Scott 3:Scott</code>が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>2:James 2:James 3:Scott 3:Scott</code>が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>1:Duke 2:James 3:Scott 3:Scott</code>が出力される</div>
+<div class="choice" data-choice="B">B. <code>1.Duke 2:James 3:Scott 2:James</code>が出力される</div>
+<div class="choice" data-choice="C">C. <code>2:Duke 2:James 3:Scott 2:James</code>が出力される</div>
+<div class="choice" data-choice="D">D. <code>2:Duke 2:James 3:Scott 3:Scott</code>が出力される</div>
+<div class="choice" data-choice="E">E. <code>2:James 2:James 3:Scott 3:Scott</code>が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>idはstaticなので、o2.id = "2:"の時点で、o1.idも同じになる。MyClass.id = "2:"と同義である。</p>
 <p>o1 = o2により、o1の参照先がo2になっているため、o1.name = "Scott ";によりo2.nameの参照値も変更される。</p>
 <h4>覚え方</h4>
@@ -830,13 +831,13 @@ class SafeResource implements AutoCloseable {
         System.out.println("close: ");
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. 正常にコンパイル、実行でき、load: try: close: が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. 正常にコンパイル、実行でき、try: close: load: が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 正常にコンパイル、実行でき、close: try: が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. close()の処理ではRuntimeExceptionがスローされていないためコンパイルエラーが発生する</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. リソースの参照変数の宣言にvarは使用できないため、tryブロックでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. tryブロックに対応するcatchブロックがないためコンパイルエラーが発生する</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. try-with-resources構文ではfinallyブロックを明示的に用意する必要があるためコンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. 正常にコンパイル、実行でき、load: try: close: が出力される</div>
+<div class="choice" data-choice="B">B. 正常にコンパイル、実行でき、try: close: load: が出力される</div>
+<div class="choice" data-choice="C">C. 正常にコンパイル、実行でき、close: try: が出力される</div>
+<div class="choice" data-choice="D">D. close()の処理ではRuntimeExceptionがスローされていないためコンパイルエラーが発生する</div>
+<div class="choice" data-choice="E">E. リソースの参照変数の宣言にvarは使用できないため、tryブロックでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="F">F. tryブロックに対応するcatchブロックがないためコンパイルエラーが発生する</div>
+<div class="choice" data-choice="G">G. try-with-resources構文ではfinallyブロックを明示的に用意する必要があるためコンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <p>A. try文の内容（load実行、try出力）、close出力の順に処理されるため正解</p>
 <p>B. try文の実行順が違うため不正解</p>
 <p>C. Bと同じ</p>
@@ -866,13 +867,13 @@ class SafeResource implements AutoCloseable {
 }
 class Item { String name = "Item "; }
 class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Object型の配列でStringを要素にする場合はnew String("TBD ")とする必要があるため、Aでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. この位置からは変数cにアクセスできないため、Bでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. この位置からは変数sにアクセスできないため、Cでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 正常にコンパイル、実行でき、Item Item TBD N/A が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. 正常にコンパイル、実行でき、Item Item N/A TBD が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. 正常にコンパイル、実行でき、Item Clothes TBD N/A が出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. 正常にコンパイル、実行でき、Item Clothes N/A TBD が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Object型の配列でStringを要素にする場合はnew String("TBD ")とする必要があるため、Aでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. この位置からは変数cにアクセスできないため、Bでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. この位置からは変数sにアクセスできないため、Cでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="D">D. 正常にコンパイル、実行でき、Item Item TBD N/A が出力される</div>
+<div class="choice" data-choice="E">E. 正常にコンパイル、実行でき、Item Item N/A TBD が出力される</div>
+<div class="choice" data-choice="F">F. 正常にコンパイル、実行でき、Item Clothes TBD N/A が出力される</div>
+<div class="choice" data-choice="G">G. 正常にコンパイル、実行でき、Item Clothes N/A TBD が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
 <p>A. String要素にするにはダブルクォーテーションで挟むのも可能である</p>
 <p>B. 変数cのアクセス範囲内である</p>
 <p>C. 変数sのアクセス範囲内である</p>
@@ -889,12 +890,12 @@ class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
     }
 }</code></pre>
 <p>Found!を出力するために(1)に記述できるものはどれですか。(2つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>text.indexOf("m") == 4</code></div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>text.indexOf("m", 4) == 7</code></div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>text.length() == 9</code></div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>text == "Lime Lemon"</code></div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>text.contains("m")</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>text.intern()</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>text.indexOf("m") == 4</code></div>
+<div class="choice" data-choice="B">B. <code>text.indexOf("m", 4) == 7</code></div>
+<div class="choice" data-choice="C">C. <code>text.length() == 9</code></div>
+<div class="choice" data-choice="D">D. <code>text == "Lime Lemon"</code></div>
+<div class="choice" data-choice="E">E. <code>text.contains("m")</code></div>
+<div class="choice" data-choice="F">F. <code>text.intern()</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,E</div><h4>正解の理由</h4>
 <p>trimにより、先頭と末尾の空白が除去され、textには"Lime Lemon"が代入されている。</p>
 <p>A. × indexOf("m") は最初のmの位置なので 2</p>
 <p>B. 〇 indexOf("m", 4) は「添字4以降から検索」という意味。次のmは 7 なのでtrue</p>
@@ -917,12 +918,12 @@ class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
     var value4 = list.remove(3);                     //(C)
     for (String s: list) System.out.print(s);
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Cでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 正常にコンパイル、実行でき、Carol Amy James が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. 正常にコンパイル、実行でき、Carol Duke Amy James が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. 正常にコンパイル、実行でき、Carol Duke Amy null が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. Cでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="D">D. 正常にコンパイル、実行でき、Carol Amy James が出力される</div>
+<div class="choice" data-choice="E">E. 正常にコンパイル、実行でき、Carol Duke Amy James が出力される</div>
+<div class="choice" data-choice="F">F. 正常にコンパイル、実行でき、Carol Duke Amy null が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
 <p>ArrayList.add(int index, E element) の戻り値は void です。</p>
 <p>そのため、戻り値のないメソッドを</p>
 <p><code>var value1 = list.add(0, "Carol ");</code></p>
@@ -941,13 +942,13 @@ non-sealed class A implements I {}
 final class B {}
 // insert code here</code></pre>
 <p>コンパイルを成功させるために5行目に記述できるものはどれですか。(3つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>final class Base extends A implements I {}</code></div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>final class Base extends B extends A {}</code></div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>final class Base implements I extends B, A {}</code></div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>final class Base implements I, J {}</code></div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>non-sealed class Base implements I, B {}</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>non-sealed class Base implements I {}</code></div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. <code>non-sealed class Base extends B implements I {}</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,D,F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>final class Base extends A implements I {}</code></div>
+<div class="choice" data-choice="B">B. <code>final class Base extends B extends A {}</code></div>
+<div class="choice" data-choice="C">C. <code>final class Base implements I extends B, A {}</code></div>
+<div class="choice" data-choice="D">D. <code>final class Base implements I, J {}</code></div>
+<div class="choice" data-choice="E">E. <code>non-sealed class Base implements I, B {}</code></div>
+<div class="choice" data-choice="F">F. <code>non-sealed class Base implements I {}</code></div>
+<div class="choice" data-choice="G">G. <code>non-sealed class Base extends B implements I {}</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,D,F</div><h4>正解の理由</h4>
 <p>A ○：Aはnon-sealedなので継承可能。BaseはItemではなくIの許可された直接サブタイプとして成立し、finalも指定されている。</p>
 <p>B ×：Javaのクラスは複数のクラスをextendsできない。</p>
 <p>C ×：extendsとimplementsの書き順が違う</p>
@@ -970,13 +971,13 @@ final class B {}
         } while (arr[i] &lt;= 11 | arr[i++] &lt; 11);
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. 57が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. 5711が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 571113が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 57111315が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. 無限ループになる</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. ArrayIndexOutOfBoundsExceptionがスローされる</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. 57が出力される</div>
+<div class="choice" data-choice="B">B. 5711が出力される</div>
+<div class="choice" data-choice="C">C. 571113が出力される</div>
+<div class="choice" data-choice="D">D. 57111315が出力される</div>
+<div class="choice" data-choice="E">E. 無限ループになる</div>
+<div class="choice" data-choice="F">F. ArrayIndexOutOfBoundsExceptionがスローされる</div>
+<div class="choice" data-choice="G">G. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
 <p>operate()はint型配列を受け取り、問題なく動作する。</p>
 <p>do-while構文により無限ループにもならないし、例外も起きない</p>
 <p>11以下または次の要素が11未満まで、がdo継続条件なので、5, 7, 11, 13がprintされる。</p>
@@ -997,11 +998,11 @@ final class B {}
         System.out.println(p);
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Product[code=100, name=Duke]が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Product[code=100, name=James]が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Product@4eec7777が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. name:Dukeが出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. name:Jamesが出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Product[code=100, name=Duke]が出力される</div>
+<div class="choice" data-choice="B">B. Product[code=100, name=James]が出力される</div>
+<div class="choice" data-choice="C">C. Product@4eec7777が出力される</div>
+<div class="choice" data-choice="D">D. name:Dukeが出力される</div>
+<div class="choice" data-choice="E">E. name:Jamesが出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>setName(String name)では、name = name;となっているため、ローカル変数のみの変更になり、インスタンス変数が変更されない。</p>
 <p>したがって、インスタンス生成時に使った引数のDukeが、toStringのオーバーライドによりname:Dukeと表示される。</p>
 <h4>覚え方</h4>
@@ -1027,12 +1028,12 @@ record Item(int price, int amount) {
     }
     public long calc() { return (long)price * amount; }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. 200 100 110 が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. 200 500 1100 が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 200 100 50 が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 100 100 500 が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. 100 100 550 が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. 200 100 110 が出力される</div>
+<div class="choice" data-choice="B">B. 200 500 1100 が出力される</div>
+<div class="choice" data-choice="C">C. 200 100 50 が出力される</div>
+<div class="choice" data-choice="D">D. 100 100 500 が出力される</div>
+<div class="choice" data-choice="E">E. 100 100 550 が出力される</div>
+<div class="choice" data-choice="F">F. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
 <p>戻り値の型がintとlongのcalc()があり、オーバーロードに失敗している。（メソッド名、引数リストが一緒）</p>
 <h4>覚え方</h4>
 <p>Math.floor()は小数部を切り捨ててdoubleを戻し、Math.round()は、小数部を丸めた結果をlongで戻す。</p>
@@ -1084,7 +1085,7 @@ record Item(int price, int amount) {
     public String getAuthor() {
         return author.toUpperCase();
     }
-}</code></pre></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D,E</div><h4>正解の理由</h4>
+}</code></pre><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D,E</div><h4>正解の理由</h4>
 <p>A. レコードクラスのtoStringメソッドはオーバーライドできない → recordでもtoString()はオーバーライド可能です。ただし、このtoString()では "author=WILLIAM," しか返さないため、指定された出力になりません。</p>
 <p>B. 標準コンストラクタを使う場合は、すべてのコンポーネントを設定しなければならない → コンストラクタとしての宣言になっていません。コンパクトコンストラクタなら public Book { ... } と書きます。</p>
 <p>C. record Book()なのでコンポーネントがなく、id・author・priceを持つ指定のレコードとは異なります。</p>
@@ -1127,11 +1128,11 @@ class Resource implements AutoCloseable {
         throw new Exception("Exception ");
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. try close3 close2 close1 catchが出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. try close2 close1 catchが出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. try close2 close3 catchが出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. try close3 close2 catchが出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. try close3 close2 close1 catchが出力される</div>
+<div class="choice" data-choice="B">B. try close2 close1 catchが出力される</div>
+<div class="choice" data-choice="C">C. try close2 close3 catchが出力される</div>
+<div class="choice" data-choice="D">D. try close3 close2 catchが出力される</div>
+<div class="choice" data-choice="E">E. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
 <p>try(r1; r2) のように、try-with-resourcesで既存のローカル変数を使う場合、その変数は<b>finalまたは実質的final（effectively final）</b>である必要があります。</p>
 <h4>覚え方</h4>
 <p>try-with-resourcesに既存変数を渡すなら、その変数は再代入しない。</p></div></details></article><article class="question" data-correct="A" data-max-select="1" id="q38"><div class="qhead"><span class="badge">問38</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -1150,8 +1151,8 @@ class Resource implements AutoCloseable {
 <pre><code>String text = """
     Java "17"
     """</code></pre>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>String text = """Java "17\""";</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>String text = """Java "17\""""</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="E">E. <code>String text = """Java "17\""";</code></div>
+<div class="choice" data-choice="F">F. <code>String text = """Java "17\""""</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <p>A.最初のトリプルクォーテーションもOK、最後のトリプルクォーテーションもOKでJava "17"という内容になる。</p>
 <p>B.最後のトリプルクォーテーションが￥によって無効化されてしまいエラーになる</p>
 <p>C.最後のトリプルクォーテーションが￥によって無効化されてしまいエラーになる</p>
@@ -1180,13 +1181,13 @@ class Resource implements AutoCloseable {
         System.out.print("String ");
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Stringが出力された後、RuntimeExceptionがスローされる</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. String Integerが出力された後、RuntimeExceptionがスローされる</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. RuntimeExceptionがスローされる</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. String Ex Stringが出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. String Integer Stringが出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. Stringが出力された後、RuntimeExceptionがスローされる</div>
+<div class="choice" data-choice="D">D. String Integerが出力された後、RuntimeExceptionがスローされる</div>
+<div class="choice" data-choice="E">E. RuntimeExceptionがスローされる</div>
+<div class="choice" data-choice="F">F. String Ex Stringが出力される</div>
+<div class="choice" data-choice="G">G. String Integer Stringが出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>A, Bは、staticメソッドからstaticメソッドの呼び出しであり、引数の型はObjectなのでコンパイルエラーは発生しない。</p>
 <p><code>validate("Java")</code>により、Stringがどのif文にも合致せず、Stringが出力される</p>
 <p><code>validate(17)</code>は、Integerのif文に合致し、Integerと出力され、その後のif文に入る。String型ではないのでRuntimeExceptionがスローされる。</p>
@@ -1211,12 +1212,12 @@ class Main {
     }
 }</code></pre>
 <p>(1)に記述するとコンパイルエラーとなるものはどれですか。(2つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>p.getBasePoint()</code></div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>Point.getBasePoint()</code></div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>p.basePoint</code></div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>Point.basePoint</code></div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>p.calculate(100)</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>Point.calculate(100)</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>p.getBasePoint()</code></div>
+<div class="choice" data-choice="B">B. <code>Point.getBasePoint()</code></div>
+<div class="choice" data-choice="C">C. <code>p.basePoint</code></div>
+<div class="choice" data-choice="D">D. <code>Point.basePoint</code></div>
+<div class="choice" data-choice="E">E. <code>p.calculate(100)</code></div>
+<div class="choice" data-choice="F">F. <code>Point.calculate(100)</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,F</div><h4>正解の理由</h4>
 <p>インターフェースのフィールドは暗黙的にpublic static final。</p>
 <p> → Point.basePoint でも p.basePoint でも参照できる。ただし、クラス名（インターフェース名）からの参照が推奨。</p>
 <p>インターフェースのstaticメソッドは、インターフェース名.メソッド名で呼ぶ。</p>
@@ -1255,13 +1256,13 @@ class Item {
     public String x;
     public Item(String x) { this.x = x; }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. abcxyz:3abcxyz:1が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. abcxyz:3:abc:1が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. xyz:1xyz:2:が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. xyz:2:abc:1:が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. abc:1xyz:2:が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. xyz:3:abc:1:が出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. xyz:3:xyz:1:が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. abcxyz:3abcxyz:1が出力される</div>
+<div class="choice" data-choice="B">B. abcxyz:3:abc:1が出力される</div>
+<div class="choice" data-choice="C">C. xyz:1xyz:2:が出力される</div>
+<div class="choice" data-choice="D">D. xyz:2:abc:1:が出力される</div>
+<div class="choice" data-choice="E">E. abc:1xyz:2:が出力される</div>
+<div class="choice" data-choice="F">F. xyz:3:abc:1:が出力される</div>
+<div class="choice" data-choice="G">G. xyz:3:xyz:1:が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>G</div><h4>正解の理由</h4>
 <p>itemが参照している<b>同じItemオブジェクトのフィールドx</b>が変更されます。そのため、main()に戻ってもitem.xは "xyz" のままです。</p>
 <p>method()のy += 2は、main()のyの値1をコピーして受け取ったローカル変数ですのでmain()内のyが変わるわけではありません。</p>
 <p>尚、Mainクラスにはyというフィールドは存在しないので、this.y += 2という考え方ではありません。(main()内のyはローカル変数である)</p>
@@ -1289,12 +1290,12 @@ class Main {
         System.out.print(new Sub().execute(2.0, 3.0));
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. 11:6 が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. 12.5:6 が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 11.0:6.0 が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 11:6.0 が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. コンパイルエラーが発生する</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. この中にはない</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. 11:6 が出力される</div>
+<div class="choice" data-choice="B">B. 12.5:6 が出力される</div>
+<div class="choice" data-choice="C">C. 11.0:6.0 が出力される</div>
+<div class="choice" data-choice="D">D. 11:6.0 が出力される</div>
+<div class="choice" data-choice="E">E. コンパイルエラーが発生する</div>
+<div class="choice" data-choice="F">F. この中にはない</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
 <p>戻り値の型が異なる同じメソッド名・引数リストのメソッドをオーバーライドしようとしているから、メソッドの重複によるコンパイルエラーが発生する。</p>
 <p>引数リストが同じなのでこれはオーバーライドになりますが、戻り値をdoubleからintへ変更することはできません。</p>
 <h4>覚え方</h4>
@@ -1325,13 +1326,13 @@ class Main {
         }
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Open Close Close が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Open Close が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Open Close Friday が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. Open Close Firday Close が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. Open Close Friday の後に例外の詳細メッセージが出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. 例外の詳細メッセージのみが出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Open Close Close が出力される</div>
+<div class="choice" data-choice="B">B. Open Close が出力される</div>
+<div class="choice" data-choice="C">C. Open Close Friday が出力される</div>
+<div class="choice" data-choice="D">D. Open Close Firday Close が出力される</div>
+<div class="choice" data-choice="E">E. Open Close Friday の後に例外の詳細メッセージが出力される</div>
+<div class="choice" data-choice="F">F. 例外の詳細メッセージのみが出力される</div>
+<div class="choice" data-choice="G">G. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
 <p>"Mon" → Open</p>
 <p>"Sat" → Close</p>
 <p>"Friday" → DataTooLongException</p>
@@ -1362,12 +1363,12 @@ class ListOperator {
 <p>以下の実行結果とするために11行目に記述するものはどれですか。(1つ選択)</p>
 <pre><code>Before:Customer[no=100, name=Duke]Customer[no=101, name=Scott]
 After :Customer[no=100, name=Duke]Customer[no=200, name=James]</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>list.set(1, new Customer(200, "James"));</code></div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>list.add(1, new Customer(200, "James"));</code></div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>list.put(200, "James");</code></div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>list.put(1, new Customer(200, "James"));</code></div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>list.update(1, new Customer(200, "James"));</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>list.update(200, "James");</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>list.set(1, new Customer(200, "James"));</code></div>
+<div class="choice" data-choice="B">B. <code>list.add(1, new Customer(200, "James"));</code></div>
+<div class="choice" data-choice="C">C. <code>list.put(200, "James");</code></div>
+<div class="choice" data-choice="D">D. <code>list.put(1, new Customer(200, "James"));</code></div>
+<div class="choice" data-choice="E">E. <code>list.update(1, new Customer(200, "James"));</code></div>
+<div class="choice" data-choice="F">F. <code>list.update(200, "James");</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <p>A：set()なので置換 → 正解</p>
 <p>B：add()なので挿入 → 要素数が増える</p>
 <p>C～F：Listにはput()もupdate()もない</p>
@@ -1391,11 +1392,11 @@ saaled interface B {
     }
 }
 non-sealed interface C extends A, B {}</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. sealedで宣言されたインタフェースA,Bにはpermits Cを指定しなければならない</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. sealedで宣言されたインタフェースはクラスへの実装のみを許可するため、インタフェースCをクラスとして宣言し、implements A, Bとする</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. インタフェースCの宣言において、複数のインタフェースを継承することはできないため、extendsにはAまたはBのどちらかのみを指定する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. インタフェースA, Bのdefaultメソッドが衝突するため、インタフェースCでoperate()をオーバーライドし、衝突を回避する</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. インターフェースA, BのdefaultメソッドはインタフェースCでのオーバーライドに失敗するため、インタフェースCのextendsにはAまたはBのどちらかのみを指定する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. sealedで宣言されたインタフェースA,Bにはpermits Cを指定しなければならない</div>
+<div class="choice" data-choice="B">B. sealedで宣言されたインタフェースはクラスへの実装のみを許可するため、インタフェースCをクラスとして宣言し、implements A, Bとする</div>
+<div class="choice" data-choice="C">C. インタフェースCの宣言において、複数のインタフェースを継承することはできないため、extendsにはAまたはBのどちらかのみを指定する</div>
+<div class="choice" data-choice="D">D. インタフェースA, Bのdefaultメソッドが衝突するため、インタフェースCでoperate()をオーバーライドし、衝突を回避する</div>
+<div class="choice" data-choice="E">E. インターフェースA, BのdefaultメソッドはインタフェースCでのオーバーライドに失敗するため、インタフェースCのextendsにはAまたはBのどちらかのみを指定する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
 <p>AとBには、同じ引数リストのoperate(int, int)がありますが、戻り値が異なります。</p>
 <p>Cが両方を継承すると、同じシグネチャなのに戻り値に互換性のないメソッドを2つ継承することになります。</p>
 <p>intとIntegerの違いをオートボクシングで解決することもできません。</p>
@@ -1425,12 +1426,12 @@ non-sealed interface C extends A, B {}</code></pre>
         )
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. varで宣言した変数はswitch文で使用できないため、Aでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bのcaseの指定は適切であり、xの値は5であるため、プログラムを実行するとBが出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Cのcaseの指定は適切でないため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. Dのcaseの指定は適切でないため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. switch文では例外をスローすることはできないため、Eでコンパイルエラーが発生する</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. yieldは「:」と共に使用できないため、コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. varで宣言した変数はswitch文で使用できないため、Aでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bのcaseの指定は適切であり、xの値は5であるため、プログラムを実行するとBが出力される</div>
+<div class="choice" data-choice="C">C. Cのcaseの指定は適切でないため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="D">D. Dのcaseの指定は適切でないため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="E">E. switch文では例外をスローすることはできないため、Eでコンパイルエラーが発生する</div>
+<div class="choice" data-choice="F">F. yieldは「:」と共に使用できないため、コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
 <p>A ×：var x = 5はintと推論され、switchに使用可能</p>
 <p>B ×：3 &amp; 5は定数式（ビットAND）で、結果は1。この条件は通らない。0011 &amp; 0101 = 0001(1)</p>
 <p>C ○：iは定数ではないのでcase iは不可</p>
@@ -1456,13 +1457,13 @@ class Sub extends Super {
     // insert code here
 }</code></pre>
 <p>// insert code hereに記述できるコンストラクタはどれですか。(2つ選択)</p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>Sub() {}</code></div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>Sub() { this(10, "cd000"); }</code></div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>Sub(int no) { super(no); }</code></div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>Sub(String code) { super(); this.code = code; }</code></div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>Sub(int no, String code) { super(no, code); }</code></div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. <code>Sub(String code) {super.no = 10; this.code = code; }</code></div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. <code>Sub(int no, String code) { super(no); this(code); }</code></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,C</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>Sub() {}</code></div>
+<div class="choice" data-choice="B">B. <code>Sub() { this(10, "cd000"); }</code></div>
+<div class="choice" data-choice="C">C. <code>Sub(int no) { super(no); }</code></div>
+<div class="choice" data-choice="D">D. <code>Sub(String code) { super(); this.code = code; }</code></div>
+<div class="choice" data-choice="E">E. <code>Sub(int no, String code) { super(no, code); }</code></div>
+<div class="choice" data-choice="F">F. <code>Sub(String code) {super.no = 10; this.code = code; }</code></div>
+<div class="choice" data-choice="G">G. <code>Sub(int no, String code) { super(no); this(code); }</code></div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,C</div><h4>正解の理由</h4>
 <p>A: Sub(){}コンストラクタの中でSuper();が呼び出されるが、Super側に引数なしのコンストラクタがないためコンパイルエラーが発生する</p>
 <p>B: Subの引数2つのコンストラクタが呼び出され、その中で引数1つのSuperコンストラクタも呼び出されるので問題なし</p>
 <p>C: Subの引数1つのコンストラクタとして新たに定義し、その中でSuperの引数1つのコンストラクタを呼び出しているので問題なし</p>
@@ -1496,13 +1497,13 @@ class Main {
         System.out.println(p1.equals(p2));                   //(G)
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. A</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. B</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. C</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. D</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. E</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. F</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. G</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. A</div>
+<div class="choice" data-choice="B">B. B</div>
+<div class="choice" data-choice="C">C. C</div>
+<div class="choice" data-choice="D">D. D</div>
+<div class="choice" data-choice="E">E. E</div>
+<div class="choice" data-choice="F">F. F</div>
+<div class="choice" data-choice="G">G. G</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,F</div><h4>正解の理由</h4>
 <p>A:staticフィールドはrecordにも定義でき、finalでなければ変更可能です。</p>
 <p>B:recordは、<b>レコードコンポーネント由来ではない追加のインスタンスフィールド</b>を宣言できません。したがってコンパイルエラー。</p>
 <p>C:staticメソッドを追加できます。</p>
@@ -1540,13 +1541,13 @@ class Main {
         }
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Aはthrowsにチェック例外をしているが、例外をスローする処理がないためコンパイルエラーが発生する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bのtry-catch文の例外処理にcatchブロックがないため、コンパイルエラーが発生する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 正常にコンパイル、実行でき、Rectangle:4.0 : Doneが出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 正常にコンパイル、実行でき、Circle:12.56 : Doneが出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. 正常にコンパイル、実行でき、Doneが出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. 正常にコンパイルでき、Circle12.56 : が出力された後RuntimeExceptionがスローされる</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. 正常にコンパイルでき、Rectangle:4.0 が出力された後Exceptionがスローされる</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Aはthrowsにチェック例外をしているが、例外をスローする処理がないためコンパイルエラーが発生する</div>
+<div class="choice" data-choice="B">B. Bのtry-catch文の例外処理にcatchブロックがないため、コンパイルエラーが発生する</div>
+<div class="choice" data-choice="C">C. 正常にコンパイル、実行でき、Rectangle:4.0 : Doneが出力される</div>
+<div class="choice" data-choice="D">D. 正常にコンパイル、実行でき、Circle:12.56 : Doneが出力される</div>
+<div class="choice" data-choice="E">E. 正常にコンパイル、実行でき、Doneが出力される</div>
+<div class="choice" data-choice="F">F. 正常にコンパイルでき、Circle12.56 : が出力された後RuntimeExceptionがスローされる</div>
+<div class="choice" data-choice="G">G. 正常にコンパイルでき、Rectangle:4.0 が出力された後Exceptionがスローされる</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>throws句は例外が発生する可能性がある、という意味であり、必ずしもcatchブロックを記述しなければいけないわけではない。</p>
 <p>calcArea(2.0)により、引数1つのメソッドが呼び出されDの出力となる。</p>
 <p>なお、Aのthrows Exceptionは、実際に例外を投げる処理がなくても宣言自体は可能です。また今回はその2引数メソッドを呼んでいないので影響しません。</p>
@@ -1580,18 +1581,18 @@ public class MyClass implements A, B {
 }</code></pre>
 <p>以下の実行結果とするために(1)、(2)に記述するものはどれですか。(1つ選択)</p>
 <p><code>10A...11</code></p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. (1) obj.min(10, 11)</div>
+<div class="choice" data-choice="A">A. (1) obj.min(10, 11)</div>
 <p>     (2) A.max(10, 11)</p>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. (1) A.min(10, 11)</div>
+<div class="choice" data-choice="B">B. (1) A.min(10, 11)</div>
 <p>     (2) obj.max(10, 11)</p>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. (1) MyClass.min(10, 11)</div>
+<div class="choice" data-choice="C">C. (1) MyClass.min(10, 11)</div>
 <p>     (2) B.super.max(10, 11)</p>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. (1) obj.min(10, 11)</div>
+<div class="choice" data-choice="D">D. (1) obj.min(10, 11)</div>
 <p>     (2) obj.show()</p>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. (1) MyClass.min(10, 11)</div>
+<div class="choice" data-choice="E">E. (1) MyClass.min(10, 11)</div>
 <p>     (2) A.show()</p>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. (1) A.min(10, 11)</div>
-<p>     (2) A.show()</p></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
+<div class="choice" data-choice="F">F. (1) A.min(10, 11)</div>
+<p>     (2) A.show()</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>正解の理由</h4>
 <p>A ×：staticなmin()をobj.min()とは呼べない。またdefaultのmax()をA.max()とも呼べない。</p>
 <p>C ×：interfaceのstaticメソッドは実装クラスに継承されないのでMyClass.min()は不可。さらにB.superはこのstaticなmain()の場所から直接使えない。</p>
 <p>D ×：obj.min()不可。show()はprivateなのでobj.show()も不可。</p>
@@ -1623,12 +1624,12 @@ class Main {
         System.out.print(p1);
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. <code>[10:][20:][20:product]</code>が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. <code>[10:null][20:][20:product]</code>が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. <code>[10:null][20:null][20:product]</code>が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. <code>[10:][20:product][10:product]</code>が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. <code>NullPointerException</code>がスローされる</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. <code>[10:][20:][20:product]</code>が出力される</div>
+<div class="choice" data-choice="B">B. <code>[10:null][20:][20:product]</code>が出力される</div>
+<div class="choice" data-choice="C">C. <code>[10:null][20:null][20:product]</code>が出力される</div>
+<div class="choice" data-choice="D">D. <code>[10:][20:product][10:product]</code>が出力される</div>
+<div class="choice" data-choice="E">E. <code>NullPointerException</code>がスローされる</div>
+<div class="choice" data-choice="F">F. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
 <p>• idの初期値は0、nameの初期値はnullであり、idはインスタンス生成時に設定される</p>
 <p>• p1 = p2により参照が変わり、p2.setNameにより変更されたnameをp1も参照する</p>
 <p>• print()は、nullの場合は"null"と返す</p>
@@ -1646,12 +1647,12 @@ class Main {
         System.out.println(s + ":" + sb);
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. None:One:Done が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. true:None:Done が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. None:None:Done が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. None:one:Done:one が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. None:one:One:one が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. None:true:None:one が出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. None:One:Done が出力される</div>
+<div class="choice" data-choice="B">B. true:None:Done が出力される</div>
+<div class="choice" data-choice="C">C. None:None:Done が出力される</div>
+<div class="choice" data-choice="D">D. None:one:Done:one が出力される</div>
+<div class="choice" data-choice="E">E. None:one:One:one が出力される</div>
+<div class="choice" data-choice="F">F. None:true:None:one が出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>正解の理由</h4>
 <p>最初のreplace()は新しい文字列"None"を返しますが、元のsは"One"のままです。</p>
 <p>次のdelete(0, 1)はStringBuilder自身を"one"に変更し、変更後の自身を戻り値として返します。</p>
 <p>そのため、最終的にNone:one:One:oneと出力されます。</p>
@@ -1688,11 +1689,11 @@ public class Main {
         return p instanceof Clothes;
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. AでClassCastExceptionがスローされる</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. コンパイル、実行でき、falseが2回、trueが2回出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. コンパイル、実行でき、falseが2回、trueが3回出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. コンパイル、実行でき、falseが1回、trueが3回出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. コンパイル、実行でき、falseが1回、trueが4回出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. AでClassCastExceptionがスローされる</div>
+<div class="choice" data-choice="B">B. コンパイル、実行でき、falseが2回、trueが2回出力される</div>
+<div class="choice" data-choice="C">C. コンパイル、実行でき、falseが2回、trueが3回出力される</div>
+<div class="choice" data-choice="D">D. コンパイル、実行でき、falseが1回、trueが3回出力される</div>
+<div class="choice" data-choice="E">E. コンパイル、実行でき、falseが1回、trueが4回出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>pがnew Book()を参照しているとき、hasBook(p)はtrueですがhasEbook(p)はfalseなので、最初にfalseが出力されます。次にpがnew Clothes()を参照するとhasClothes(p)はtrue。最後にpがnew EBook()を参照すると、EBookはClothesではなくBookのサブクラスなので、!hasClothes(p) &amp;&amp; hasEBook(p)はtrueになります。(A)の(Book)pも、実体がEBookなのでBookへのアップキャスト側の変換として問題ありません。その後hasEBook(p)もtrueとなるため、結果はfalseが1回、trueが3回です。</p>
 <h4>覚え方</h4>
 <p>instanceofは参照変数の型ではなく「実際に入っているオブジェクトが、その型として扱えるか」で判定する。</p>
@@ -1728,12 +1729,12 @@ class Main {
         Derived d = (Derived) new Base();
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. Base が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Extension Base が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Derived Base が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. Extension Base が出力された後、ClassCastExceptionがスローされる</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. Derived Base が出力された後、ClassCastExceptionがスローされる</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. Base が出力される</div>
+<div class="choice" data-choice="B">B. Extension Base が出力される</div>
+<div class="choice" data-choice="C">C. Derived Base が出力される</div>
+<div class="choice" data-choice="D">D. Extension Base が出力された後、ClassCastExceptionがスローされる</div>
+<div class="choice" data-choice="E">E. Derived Base が出力された後、ClassCastExceptionがスローされる</div>
+<div class="choice" data-choice="F">F. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
 <p>DerivedのコンストラクタからprotectedなBase(String)をsuper(name)で呼ぶことは、別パッケージでもサブクラスからの呼び出しなので可能。</p>
 <p>コンパイルエラーになるのは、Mainからnew Base("Base ")を呼んでいる箇所です。MainはBaseと別パッケージにあり、Baseのサブクラスでもないため、protectedなコンストラクタにアクセスできません。</p>
 <p>なお、最後の(Derived) new Base()はコンパイル自体は可能ですが、そこまで実行できるコードなら、実体がBaseなので実行時にClassCastExceptionになります。</p>
@@ -1750,12 +1751,12 @@ class Main {
         }
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. 2:5 -1:4 が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. 2:5 -1:3 が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. 2:5 -1:4 -4:3 が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. 2:5 -1:4 -4:2 が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. 2:5 -1:4 -4:3 -7:2 -10:1 -13:0 が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. 何も出力されない</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. 2:5 -1:4 が出力される</div>
+<div class="choice" data-choice="B">B. 2:5 -1:3 が出力される</div>
+<div class="choice" data-choice="C">C. 2:5 -1:4 -4:3 が出力される</div>
+<div class="choice" data-choice="D">D. 2:5 -1:4 -4:2 が出力される</div>
+<div class="choice" data-choice="E">E. 2:5 -1:4 -4:3 -7:2 -10:1 -13:0 が出力される</div>
+<div class="choice" data-choice="F">F. 何も出力されない</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>正解の理由</h4>
 <p>最初はx=5, y=5で条件を満たします。ループ内で先にxを3減らしてから出力するため、順に2:5、-1:4、-4:3と出力されます。-4:3を出力した次の条件判定では、x &gt;= -1がfalseになります。さらに&amp;&amp;は短絡評価なので、そこで条件判定が終了し、ループを抜けます。したがって 2:5 -1:4 -4:3 となります。</p>
 <h4>覚え方</h4>
 <p>whileは「条件判定 → 本体」の順。本体で条件を外れる値になっても、その周回の処理は最後まで実行される。</p></div></details></article><article class="question" data-correct="B,E,F" data-max-select="3" id="q56"><div class="qhead"><span class="badge">問56</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -1772,13 +1773,13 @@ class Main {
 class MyException extends Exception {
     public MyException(String message) { super(message); }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. e.getException();</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. e.printStackTrace();</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. e.printError();</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. e.getErrorMessage();</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. e.getMessage();</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. e.getCause();</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. e.printErrorTrace();</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,E,F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. e.getException();</div>
+<div class="choice" data-choice="B">B. e.printStackTrace();</div>
+<div class="choice" data-choice="C">C. e.printError();</div>
+<div class="choice" data-choice="D">D. e.getErrorMessage();</div>
+<div class="choice" data-choice="E">E. e.getMessage();</div>
+<div class="choice" data-choice="F">F. e.getCause();</div>
+<div class="choice" data-choice="G">G. e.printErrorTrace();</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B,E,F</div><h4>正解の理由</h4>
 <p>MyExceptionはExceptionを継承しているため、例外オブジェクトeからExceptionやその親クラスThrowableが持つメソッドを利用できます。選択肢では、printStackTrace()、getMessage()、getCause()が実在するため、B・E・Fが正解です。</p>
 <h4>覚え方</h4>
 <p>例外でよく使う3つは、</p>
@@ -1825,11 +1826,11 @@ public class Main {
 }</code></pre>
 <p>以下の実行結果とするために必要な修正はどれですか。(1つ選択)</p>
 <p><code>Rectangle:10.0sq.cm. Triangle:10.0sq.cm. Circle:28.26sq.cm. drawing...</code></p>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. AのShapeインタフェースにsealedを指定し、permitsにはCircleのみを指定する</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. Bのcalc()メソッドはCircleインタフェースから削除する</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. Cをif(calc instanceof Calculator c) c.calc();に変更する</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. Dをif(calc instanceof Shape s) s.draw();に変更する</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. RectangleとTriangleクラスにCircleクラスと同じdraw()メソッドを追加する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. AのShapeインタフェースにsealedを指定し、permitsにはCircleのみを指定する</div>
+<div class="choice" data-choice="B">B. Bのcalc()メソッドはCircleインタフェースから削除する</div>
+<div class="choice" data-choice="C">C. Cをif(calc instanceof Calculator c) c.calc();に変更する</div>
+<div class="choice" data-choice="D">D. Dをif(calc instanceof Shape s) s.draw();に変更する</div>
+<div class="choice" data-choice="E">E. RectangleとTriangleクラスにCircleクラスと同じdraw()メソッドを追加する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>正解の理由</h4>
 <p>listの要素はすべてCalculatorとして扱えるため、calc.calc()は問題なく呼び出せます。一方、draw()を持つのはShapeを実装したCircleだけなので、Calculator型のcalcから直接draw()は呼べません。そこでcalc instanceof Shape sでShapeでもあることを確認し、その場合だけs.draw()を呼び出せば、Circleのときだけdrawing...が出力されます。</p>
 <h4>覚え方</h4>
 <p>参照型にないメソッドは直接呼べない。instanceofで型を絞り込んでから呼ぶ。</p>
@@ -1858,7 +1859,7 @@ public class Main {
 <p>• E.</p>
 <pre><code>final class Rectangle implements Shape {
     public Integer calc() { return 100; }
-}</code></pre></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C, E</div><h4>正解の理由</h4>
+}</code></pre><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C, E</div><h4>正解の理由</h4>
 <p>BはShapeを実装した具象クラスなので、Shapeの抽象メソッドcalc()を実装する必要があります。しかしBのcalc(double base)は引数が異なるため、calc()のオーバーライドではなく別メソッドです。そのためコンパイルエラーになります。</p>
 <p>CはLongをレコードコンポーネントに指定しても問題ありません。また、LongはNumberのサブクラスなので、Number calc()をLong calc()でオーバーライドできます。</p>
 <p>Eも同様に、IntegerはNumberのサブクラスなので成立します。</p>
@@ -1887,12 +1888,12 @@ class MyConcrete extends MyAbstract {
         new MyConcrete().x();
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. concrete default private が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. default private default が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. private default concrete が出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. private default が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. private concrete が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. コンパイルエラーが発生する</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. concrete default private が出力される</div>
+<div class="choice" data-choice="B">B. default private default が出力される</div>
+<div class="choice" data-choice="C">C. private default concrete が出力される</div>
+<div class="choice" data-choice="D">D. private default が出力される</div>
+<div class="choice" data-choice="E">E. private concrete が出力される</div>
+<div class="choice" data-choice="F">F. コンパイルエラーが発生する</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>F</div><h4>正解の理由</h4>
 <p>MyIFのz()は暗黙的にpublic abstractです。MyAbstractは抽象クラスなのでz()を実装しなくても構いませんが、MyConcreteは具象クラスなので、継承した抽象メソッドz()を実装する必要があります。実装していないためコンパイルエラーになります。</p>
 <h4>覚え方</h4>
 <p>インターフェースの未実装メソッドは、抽象クラスなら先送りできるが、最初の具象クラスで必ず実装する。</p></div></details></article><article class="question" data-correct="A" data-max-select="1" id="q60"><div class="qhead"><span class="badge">問60</span></div><section class="body"><h3>問題文・コード・選択肢</h3>
@@ -1917,13 +1918,13 @@ class MyConcrete extends MyAbstract {
         }
     }
 }</code></pre>
-<div class="choice" data-choice="A" role="button" tabindex="0">A. UserException: User Ex! が出力される</div>
-<div class="choice" data-choice="B" role="button" tabindex="0">B. User Ex! が出力される</div>
-<div class="choice" data-choice="C" role="button" tabindex="0">C. User Ex! と例外のスタックトレースが出力される</div>
-<div class="choice" data-choice="D" role="button" tabindex="0">D. CustomException: Custom Ex! が出力される</div>
-<div class="choice" data-choice="E" role="button" tabindex="0">E. Custom Ex! が出力される</div>
-<div class="choice" data-choice="F" role="button" tabindex="0">F. Custom Ex! と例外のスタックトレースが出力される</div>
-<div class="choice" data-choice="G" role="button" tabindex="0">G. 例外のスタックトレースが出力される</div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
+<div class="choice" data-choice="A">A. UserException: User Ex! が出力される</div>
+<div class="choice" data-choice="B">B. User Ex! が出力される</div>
+<div class="choice" data-choice="C">C. User Ex! と例外のスタックトレースが出力される</div>
+<div class="choice" data-choice="D">D. CustomException: Custom Ex! が出力される</div>
+<div class="choice" data-choice="E">E. Custom Ex! が出力される</div>
+<div class="choice" data-choice="F">F. Custom Ex! と例外のスタックトレースが出力される</div>
+<div class="choice" data-choice="G">G. 例外のスタックトレースが出力される</div><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>正解の理由</h4>
 <p>evaluate(1)で発生したUserExceptionは、catchされた後、新しいExceptionの原因（cause）として設定されます。</p>
 <p>getCause()は原因となった例外オブジェクトそのものを返すため、println()すると例外クラス名とメッセージを含むUserException: User Ex!が出力されます。</p>
 <p>BのようにUser Ex!というメッセージだけを取得するのはgetMessage()です。</p>
@@ -1933,4 +1934,4 @@ class MyConcrete extends MyAbstract {
 <p>printStackTrace() → スタックトレースを出力</p>
 <p>つまり今回は、</p>
 <p>Message = User Ex!</p>
-<p>Cause = UserException: User Ex!</p></div></details></article></main><script>(()=>{const qs=[...document.querySelectorAll('.question')],total=qs.length,key='javaSilver:purple_mock2:interactive:v1',state={answers:{},graded:{}};let idx=0,elapsed=0,lastTick=Date.now(),storageOK=true;try{const s=JSON.parse(localStorage.getItem(key)||'null');if(s){state.answers=s.answers||{};state.graded=s.graded||{};elapsed=Number(s.elapsed)||0}}catch(e){storageOK=false}const letters=q=>[...new Set(state.answers[q.id]||[])];const correctSet=q=>(q.dataset.correct||'').split(',').filter(Boolean).sort();const isCorrect=q=>{const a=letters(q).sort(),c=correctSet(q);return a.length===c.length&&a.every((v,i)=>v===c[i])};function save(){if(!storageOK)return;try{localStorage.setItem(key,JSON.stringify({answers:state.answers,graded:state.graded,elapsed}))}catch(e){storageOK=false}}function fmt(s){s=Math.floor(Math.max(0,s));return[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,'0')).join(':')}function paint(q){const a=new Set(letters(q)),g=!!state.graded[q.id],c=new Set(correctSet(q));q.querySelectorAll('.choice[data-choice]').forEach(el=>{const l=el.dataset.choice;el.classList.toggle('selected',a.has(l)&&!g);el.classList.toggle('correct-choice',g&&c.has(l));el.classList.toggle('wrong-choice',g&&a.has(l)&&!c.has(l));el.setAttribute('aria-pressed',a.has(l)?'true':'false')});const r=q.querySelector('.grade-result');r.className='grade-result';if(g){const ok=isCorrect(q),mine=letters(q).join(', ')||'未解答';r.classList.add(ok?'pass':'fail');r.textContent=ok?`正解です（選択：${mine}）`:`不正解です（選択：${mine}）`}}function stats(){answeredCount.textContent=qs.filter(q=>letters(q).length).length;totalCount.textContent=total;gradedCount.textContent=qs.filter(q=>state.graded[q.id]).length;correctCount.textContent=qs.filter(q=>state.graded[q.id]&&isCorrect(q)).length;elapsedTime.textContent=fmt(elapsed)}function choose(q,l){const max=Number(q.dataset.maxSelect)||1,a=letters(q),i=a.indexOf(l);if(i>=0)a.splice(i,1);else if(max===1)a.splice(0,a.length,l);else{if(a.length>=max)a.shift();a.push(l)}state.answers[q.id]=a;paint(q);stats();save()}qs.forEach(q=>{q.querySelectorAll('.choice[data-choice]').forEach(el=>{el.onclick=()=>choose(q,el.dataset.choice);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(q,el.dataset.choice)}}});q.querySelector('details.answer').addEventListener('toggle',e=>{if(e.currentTarget.open){state.graded[q.id]=true;paint(q);stats();save()}});paint(q)});window.go=d=>{idx=Math.max(0,Math.min(total-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth',block:'start'});pos()};function pos(){document.getElementById('pos').textContent=`${idx+1} / ${total}`}const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);pos()}}),{rootMargin:'-25% 0px -65%'});qs.forEach(q=>ob.observe(q));document.querySelectorAll('#index a[href^="#q"]').forEach(a=>a.onclick=()=>{const n=Number(a.getAttribute('href').slice(2));if(n)idx=n-1;pos()});function tick(){const n=Date.now();if(!document.hidden)elapsed+=(n-lastTick)/1000;lastTick=n;stats()}document.addEventListener('visibilitychange',()=>{lastTick=Date.now();save()});window.addEventListener('beforeunload',save);setInterval(tick,1000);pos();stats()})();</script></body></html>
+<p>Cause = UserException: User Ex!</p></div></details></article></main><script>(()=>{const qs=[...document.querySelectorAll('.question')],KEY='javaSilver:purple_mock2:stableAnswers:v3';let idx=0,elapsed=0,last=Date.now(),storageOK=true,state={answers:{},graded:{}};try{const z=JSON.parse(localStorage.getItem(KEY)||'null');if(z){state.answers=z.answers||{};state.graded=z.graded||{};elapsed=Number(z.elapsed)||0}}catch(e){storageOK=false}const B=q=>[...q.querySelectorAll('.answer-choice')],V=b=>b.dataset.answerChoice,A=q=>Array.isArray(state.answers[q.id])?[...state.answers[q.id]]:[],C=q=>(q.dataset.correct||'').split(',').map(x=>x.trim()).filter(Boolean);function eq(a,c){a=[...a].sort();c=[...c].sort();return a.length===c.length&&a.every((x,i)=>x===c[i])}const R=q=>eq(A(q),C(q));function save(){if(storageOK)try{localStorage.setItem(KEY,JSON.stringify({answers:state.answers,graded:state.graded,elapsed}))}catch(e){storageOK=false}}function fmt(s){s=Math.floor(Math.max(0,s));return[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,'0')).join(':')}function paint(q){const a=new Set(A(q)),c=new Set(C(q)),g=!!state.graded[q.id];B(q).forEach(b=>{const x=V(b);b.classList.toggle('selected',a.has(x)&&!g);b.classList.toggle('correct-choice',g&&c.has(x));b.classList.toggle('wrong-choice',g&&a.has(x)&&!c.has(x));b.setAttribute('aria-pressed',a.has(x)?'true':'false')});const r=q.querySelector('.grade-result');if(r){r.className='grade-result';if(g){const pass=R(q),mine=A(q).join(', ')||'未解答';r.classList.add(pass?'pass':'fail');r.textContent=(pass?'正解です':'不正解です')+`（選択：${mine}）`}}}function stats(){answeredCount.textContent=qs.filter(q=>A(q).length).length;totalCount.textContent=qs.length;gradedCount.textContent=qs.filter(q=>state.graded[q.id]).length;correctCount.textContent=qs.filter(q=>state.graded[q.id]&&R(q)).length;elapsedTime.textContent=fmt(elapsed)}function choose(q,x){const max=Math.max(1,+q.dataset.maxSelect||C(q).length||1),set=new Set(A(q));if(set.has(x))set.delete(x);else if(max===1){set.clear();set.add(x)}else if(set.size<max)set.add(x);state.answers[q.id]=[...set];paint(q);stats();save()}qs.forEach(q=>{B(q).forEach(b=>{b.onclick=e=>{e.preventDefault();e.stopPropagation();choose(q,V(b))};b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();choose(q,V(b))}}});const d=q.querySelector('details.answer');if(d)d.ontoggle=()=>{if(d.open){state.graded[q.id]=true;paint(q);stats();save()}};paint(q)});window.go=d=>{idx=Math.max(0,Math.min(qs.length-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth',block:'start'});pos()};function pos(){document.getElementById('pos').textContent=`${idx+1} / ${qs.length}`}const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);pos()}}),{rootMargin:'-25% 0px -65%'});qs.forEach(q=>ob.observe(q));document.querySelectorAll('#index a[href^="#q"]').forEach(a=>a.onclick=()=>{const n=+a.getAttribute('href').slice(2);if(n)idx=n-1;pos()});document.addEventListener('visibilitychange',()=>{last=Date.now();save()});setInterval(()=>{const n=Date.now();if(!document.hidden)elapsed+=(n-last)/1000;last=n;stats()},1000);window.addEventListener('beforeunload',save);pos();stats()})();</script></body></html>
