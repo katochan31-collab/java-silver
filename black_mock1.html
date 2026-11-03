@@ -1,90 +1,6 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Java Silver 黒本 模擬試験1</title>
-  <style>
-
-:root { --navy:#12345b; --blue:#1769e8; --pale:#eef4fb; --line:#d7e1ec; --text:#142033; --green:#159447; }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { margin:0; color:var(--text); background:#f4f7fb; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif; line-height:1.75; }
-header { background:linear-gradient(120deg,#12345b,#2365dc); color:white; padding:28px max(20px,calc((100% - 980px)/2)); }
-header h1 { margin:0; font-size:clamp(24px,4vw,38px); }
-header p { margin:6px 0 0; opacity:.92; }
-.toolbar { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); padding:10px 16px; display:flex; gap:10px; justify-content:center; align-items:center; }
-.toolbar button { border:0; border-radius:12px; padding:10px 16px; font-size:16px; font-weight:700; color:#fff; background:var(--blue); cursor:pointer; }
-.home-button { border-radius:12px; padding:10px 16px; font-size:16px; font-weight:700; color:var(--navy); background:#e6edf6; text-decoration:none; white-space:nowrap; }
-.progress { font-weight:800; min-width:90px; text-align:center; }
-main { max-width:980px; margin:22px auto 80px; padding:0 16px; }
-.question { scroll-margin-top:76px; background:#fff; border:1px solid var(--line); border-radius:18px; margin:0 0 24px; padding:24px; box-shadow:0 3px 14px #16345b0d; }
-.qhead { margin-bottom:8px; }.badge { font-size:25px; font-weight:900; color:var(--navy); }
-p { margin:.55em 0; }
-pre { margin:14px 0; padding:16px; overflow-x:auto; border:1px solid var(--line); border-radius:13px; background:#f7f9fc; font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; white-space:pre; }
-code { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
-p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px; }
-.choice { border:2px solid var(--line); border-radius:14px; padding:13px 16px; margin:10px 0; color:#075fc9; font-size:17px; overflow-wrap:anywhere; white-space:pre-wrap; }
-.answer { margin-top:22px; border-top:1px solid var(--line); padding-top:16px; }
-.answer summary { cursor:pointer; color:var(--blue); font-weight:800; }
-.answer-inner { margin-top:14px; padding:16px; background:#f8fbff; border-radius:12px; }
-.correct { color:var(--green); font-size:18px; margin-bottom:10px; }
-#index { max-width:980px; margin:22px auto; padding:0 16px; }
-#index details { background:white; padding:12px 16px; border-radius:14px; border:1px solid var(--line); }
-#index nav { display:grid; grid-template-columns:repeat(auto-fill,minmax(45px,1fr)); gap:8px; margin-top:12px; }
-#index a { text-align:center; padding:8px 4px; color:var(--blue); text-decoration:none; background:var(--pale); border-radius:8px; font-weight:700; }
-@media(max-width:600px) { header{padding:22px 18px}.toolbar{flex-wrap:wrap;justify-content:space-between}.home-button{width:100%;text-align:center}.question{padding:18px 16px;border-radius:14px}pre{font-size:13px}.choice{font-size:16px} }
-@media print { .toolbar,#index{display:none}.question{break-inside:avoid;box-shadow:none}details.answer:not([open])>*:not(summary){display:block}details.answer summary{display:none} }
-
-  
-/* 学習機能 */
-.choice-option{border:2px solid var(--line);border-radius:14px;padding:11px 14px;margin:9px 0;cursor:pointer;transition:.15s;background:#fff;}
-.choice-option:hover{border-color:#8bb9f4;background:#f6faff}.choice-option.selected{border-color:#1769e8;background:#dbeafe;box-shadow:0 0 0 2px #1769e833}.choice-option.correct-choice{border-color:#159447;background:#ecfdf3}.choice-option.wrong-choice{border-color:#dc2626;background:#fff1f2}.grade-note{margin:12px 0 0;padding:10px 13px;border-radius:10px;font-weight:800}.grade-note.ok{color:#116b35;background:#dcfce7}.grade-note.ng{color:#a31515;background:#fee2e2}.exam-stats{max-width:980px;margin:16px auto;padding:0 16px}.stats-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}.stats-card strong{color:var(--navy)}.print-summary{display:none}
-@media(max-width:600px){.choice-option{padding:10px 12px}}
-@media print{header,main{display:none!important}.exam-stats{margin:0;max-width:none}.stats-card{display:none}.print-summary{display:block}.print-summary table{width:100%;border-collapse:collapse;font-size:11px}.print-summary th,.print-summary td{border:1px solid #999;padding:4px;text-align:left}.print-summary h1{font-size:22px}.print-summary .ok{color:#08752f}.print-summary .ng{color:#b91c1c}}
-
-
-/* コンパクト固定ナビ＋学習状況 */
-.toolbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);}
-.exam-stats{position:sticky;top:88px;z-index:49;margin:0 auto;padding:0 16px;background:rgba(245,248,252,.97);backdrop-filter:blur(8px);}
-.exam-stats .stats-card{max-width:980px;margin:0 auto;padding:6px 14px;min-height:32px;border-radius:0 0 12px 12px;border-top:0;gap:5px 16px;font-size:14px;box-shadow:0 2px 8px #12345b12;}
-.exam-stats .stats-card span{white-space:nowrap;}
-@media(max-width:700px){.toolbar{padding-top:6px;padding-bottom:6px;gap:7px}.toolbar .home-button,.toolbar button{padding:8px 11px;font-size:14px}.toolbar .progress{font-size:15px}.exam-stats{top:58px;padding:0 6px}.exam-stats .stats-card{font-size:12px;padding:5px 8px;gap:3px 10px;justify-content:center}}
-
-
-/* 黒本模試2と同じ、隙間のない固定2段バー */
-.toolbar-wrap{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px rgba(18,52,91,.10)}
-.toolbar-wrap .toolbar{position:static;border:0;box-shadow:none;padding:7px 12px;min-height:48px}
-.study-status{display:flex;justify-content:center;align-items:center;gap:8px;padding:4px 12px 7px;background:#f8fbff;color:var(--navy);font-size:14px;font-weight:700;line-height:1.25;white-space:nowrap}
-.study-status i{font-style:normal;color:#a5b3c3}.study-status b{font-variant-numeric:tabular-nums}
-.question{scroll-margin-top:102px}
-@media(max-width:600px){.toolbar-wrap .toolbar{flex-wrap:nowrap;gap:5px;padding:5px 7px;min-height:42px}.toolbar-wrap .toolbar button,.toolbar-wrap .home-button{padding:7px 9px;font-size:13px;border-radius:9px}.toolbar-wrap .home-button{width:auto;text-align:center;overflow:hidden;text-overflow:ellipsis;max-width:38vw}.toolbar-wrap .progress{min-width:58px;font-size:13px}.study-status{gap:4px;padding:3px 5px 5px;font-size:11px;overflow-x:auto;justify-content:flex-start}.question{scroll-margin-top:84px}}
-</style>
-</head>
-<body>
-  <header>
-    <h1>Java Silver 黒本 模擬試験①</h1>
-    <p>全60問。選択内容は自動保存され、正答・解説を開くと採点されます。</p>
-  </header>
-  <div class="toolbar-wrap"><div class="toolbar nav-row">
-    <a class="home-button" href="index.html">はじめの画面に戻る</a>
-    <button type="button" onclick="go(-1)">前へ</button>
-    <span class="progress" id="pos">1 / 60</span>
-    <button type="button" onclick="go(1)">次へ</button>
-  </div><div class="study-status"><span>解答 <b id="answeredCount">0</b>/ 60</span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div></div>
-
-
-  <section id="index">
-    <details><summary>問題一覧</summary><nav><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a><a href="#q25">25</a><a href="#q26">26</a><a href="#q27">27</a><a href="#q28">28</a><a href="#q29">29</a><a href="#q30">30</a><a href="#q31">31</a><a href="#q32">32</a><a href="#q33">33</a><a href="#q34">34</a><a href="#q35">35</a><a href="#q36">36</a><a href="#q37">37</a><a href="#q38">38</a><a href="#q39">39</a><a href="#q40">40</a><a href="#q41">41</a><a href="#q42">42</a><a href="#q43">43</a><a href="#q44">44</a><a href="#q45">45</a><a href="#q46">46</a><a href="#q47">47</a><a href="#q48">48</a><a href="#q49">49</a><a href="#q50">50</a><a href="#q51">51</a><a href="#q52">52</a><a href="#q53">53</a><a href="#q54">54</a><a href="#q55">55</a><a href="#q56">56</a><a href="#q57">57</a><a href="#q58">58</a><a href="#q59">59</a><a href="#q60">60</a></nav></details>
-  </section>
-  <main>
-    <article class="question" id="q1">
-      <div class="qhead"><span class="badge">問1</span></div>
-      <section class="body"><p>次のプログラムを確認してください。</p>
-<pre><code>public interface A {
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Java Silver 黒本 模擬試験①</title><style> :root{--navy:#15395b;--blue:#1769e8;--line:#cfdae6;--green:#159447}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f4f7fa;color:#162536;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.75}header{background:linear-gradient(120deg,#123754,#2e78b7);color:#fff;padding:28px max(20px,calc((100% - 980px)/2))}header h1{margin:0}.toolbar-wrap{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px #12345b1a}.toolbar{padding:7px 12px;display:flex;gap:10px;justify-content:center;align-items:center}.toolbar button,.home-button{border:0;border-radius:10px;padding:8px 15px;font-size:15px;font-weight:700;text-decoration:none}.toolbar button{color:#fff;background:var(--blue)}.home-button{color:var(--navy);background:#e8f0f7}.progress{font-weight:800;min-width:82px;text-align:center}.study-status{display:flex;justify-content:center;gap:8px;padding:4px 12px 7px;background:#f8fbff;color:var(--navy);font-size:14px;font-weight:700;white-space:nowrap}.study-status i{font-style:normal;color:#a5b3c3}#index,main{max-width:980px;margin:22px auto;padding:0 16px}#index details,.question{background:#fff;border:1px solid var(--line);border-radius:16px}.question{scroll-margin-top:102px;margin-bottom:24px;padding:24px}.badge{font-size:25px;font-weight:900;color:var(--navy)}#index details{padding:12px 16px}#index nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(45px,1fr));gap:8px;margin-top:12px}#index a{text-align:center;padding:7px;color:var(--blue);background:#eef5fc;border-radius:8px;text-decoration:none;font-weight:700}pre{padding:16px;overflow:auto;border:1px solid var(--line);border-radius:13px;background:#f8fafc;font:15px/1.55 ui-monospace,monospace;white-space:pre}code{font-family:ui-monospace,monospace}.answer-controls{margin-top:18px;padding:13px;background:#f8fbff;border:1px solid #d8e5f2;border-radius:13px}.choice-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.choice{min-width:48px;border:2px solid var(--line);border-radius:11px;padding:9px 14px;background:#fff;color:#075fc9;font-size:17px;font-weight:900;cursor:pointer}.choice.selected{background:#e8f2ff;border-color:#1769e8}.choice.correct-choice{background:#e9f8ef;border-color:#159447;color:#0d7135}.choice.wrong-choice{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}.answer{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}.answer summary{cursor:pointer;color:var(--blue);font-weight:800}.answer-inner{margin-top:14px;padding:16px;background:#fbfdff;border-radius:12px}.correct{color:var(--green);font-size:18px}.grade-result{display:none;margin:12px 0;padding:10px 13px;border-radius:10px;font-weight:900}.grade-result.pass{display:block;background:#e9f8ef;color:#0d7135}.grade-result.fail{display:block;background:#fff0f0;color:#a91f1f}@media(max-width:600px){header{padding:22px 18px}.toolbar{gap:5px;padding:5px 7px}.toolbar button,.home-button{padding:7px 9px;font-size:13px}.home-button{max-width:38vw;overflow:hidden;text-overflow:ellipsis}.progress{min-width:58px;font-size:13px}.study-status{justify-content:flex-start;overflow-x:auto;gap:4px;font-size:11px;padding:3px 5px 5px}.question{scroll-margin-top:84px;padding:18px 16px}pre{font-size:13px}.choice{min-width:42px;padding:7px 11px}}</style></head><body><header><h1>Java Silver 黒本 模擬試験①</h1><p>全60問。正答・解説は各問題の下で開閉できます。</p></header><div class="toolbar-wrap"><div class="toolbar"><a class="home-button" href="index.html">はじめの画面に戻る</a><button onclick="go(-1)">前へ</button><span class="progress" id="pos">1 / 60</span><button onclick="go(1)">次へ</button></div><div class="study-status"><span>解答 <b id="answeredCount">0</b>/60</span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div></div><section id="index"><details><summary>問題一覧</summary><nav><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a><a href="#q25">25</a><a href="#q26">26</a><a href="#q27">27</a><a href="#q28">28</a><a href="#q29">29</a><a href="#q30">30</a><a href="#q31">31</a><a href="#q32">32</a><a href="#q33">33</a><a href="#q34">34</a><a href="#q35">35</a><a href="#q36">36</a><a href="#q37">37</a><a href="#q38">38</a><a href="#q39">39</a><a href="#q40">40</a><a href="#q41">41</a><a href="#q42">42</a><a href="#q43">43</a><a href="#q44">44</a><a href="#q45">45</a><a href="#q46">46</a><a href="#q47">47</a><a href="#q48">48</a><a href="#q49">49</a><a href="#q50">50</a><a href="#q51">51</a><a href="#q52">52</a><a href="#q53">53</a><a href="#q54">54</a><a href="#q55">55</a><a href="#q56">56</a><a href="#q57">57</a><a href="#q58">58</a><a href="#q59">59</a><a href="#q60">60</a></nav></details></section><main><article class="question" id="q1" data-correct="B" data-max-select="1"><div class="badge">問1</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認してください。</p><pre><code>public interface A {
     boolean search(int[] data, int target);
-}</code></pre>
-<pre><code>public interface B extends A {
+}</code></pre><pre><code>public interface B extends A {
     @Override
     default boolean search(int[] data, int target) {
         int cnt = 0;
@@ -95,11 +11,9 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
         }
         return cnt &gt; 0;
     }
-}</code></pre>
-<pre><code>public class C implements B {
+}</code></pre><pre><code>public class C implements B {
 
-}</code></pre>
-<pre><code>public class Sample {
+}</code></pre><pre><code>public class Sample {
     public static void main(String... args) {
         if (new C().search(
             new int[]{1, 2, 3, 7, 9},
@@ -109,51 +23,15 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
                 System.out.println(&quot;B&quot;);
         }
     }
-}</code></pre>
-<p>#### このプログラムを次のコマンドで実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>&gt; java Sample 5 2</code></pre>
-<p>A.　「A」と表示される</p>
-<p>B.　「B」と表示される</p>
-<p>C.　コンパイルエラーが発生する</p>
-<p>D.　実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p><code>args[0]</code> は "5" です。配列に5は含まれないため <code>search</code> は <code>false</code> を返し、Bが表示されます。2つ目の引数 "2" はこのプログラムでは参照されません。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q2">
-      <div class="qhead"><span class="badge">問2</span></div>
-      <section class="body"><p>次のプログラムを確認してください。</p>
-<pre><code>package ex.p1;
+}</code></pre><h4>このプログラムを次のコマンドで実行したときの結果として、正しいものを選びなさい。(1つ選択)</h4><pre><code>&gt; java Sample 5 2</code></pre><p>A.　「A」と表示される</p><p>B.　「B」と表示される</p><p>C.　コンパイルエラーが発生する</p><p>D.　実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p><code>args[0]</code> は &quot;5&quot; です。配列に5は含まれないため <code>search</code> は <code>false</code> を返し、Bが表示されます。2つ目の引数 &quot;2&quot; はこのプログラムでは参照されません。</p></div></details></article><article class="question" id="q2" data-correct="A,E" data-max-select="2"><div class="badge">問2</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認してください。</p><pre><code>package ex.p1;
 
-public class A {}</code></pre>
-<pre><code>package ex.p2;
+public class A {}</code></pre><pre><code>package ex.p2;
 
-public class B {}</code></pre>
-<p>#### 上記の2つのクラスを次のプログラムで利用するために必要なimport文として、正しいものを選択肢から選びなさい。(2つ選択)</p>
-<pre><code>public class C extends A {
+public class B {}</code></pre><h4>上記の2つのクラスを次のプログラムで利用するために必要なimport文として、正しいものを選択肢から選びなさい。(2つ選択)</h4><pre><code>public class C extends A {
     public void sample() {
         B b = new B();
     }
-}</code></pre>
-<p>A. <code>import ex.p1.A;</code></p>
-<p>B. <code>import ex.*;</code></p>
-<p>C. <code>import static ex.p1.*;</code> <code>import static ex.p2.*;</code></p>
-<p>D. <code>import static ex.p1.A;</code> <code>import static ex.p2.B;</code></p>
-<p>E. <code>import ex.p2.*;</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A,E</div>
-          <p><code>A</code> は <code>ex.p1</code>、<code>B</code> は <code>ex.p2</code> にあります。<code>import ex.p1.A;</code> と <code>import ex.p2.*;</code> なら両方を参照できます。<code>import ex.*</code> は下位パッケージを取り込みません。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q3">
-      <div class="qhead"><span class="badge">問3</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class A implements AutoCloseable {
+}</code></pre><p>A. <code>import ex.p1.A;</code></p><p>B. <code>import ex.*;</code></p><p>C. <code>import static ex.p1.*;</code> <code>import static ex.p2.*;</code></p><p>D. <code>import static ex.p1.A;</code> <code>import static ex.p2.B;</code></p><p>E. <code>import ex.p2.*;</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,E</div><h4>解説</h4><p><code>A</code> は <code>ex.p1</code>、<code>B</code> は <code>ex.p2</code> にあります。<code>import ex.p1.A;</code> と <code>import ex.p2.*;</code> なら両方を参照できます。<code>import ex.*</code> は下位パッケージを取り込みません。</p></div></details></article><article class="question" id="q3" data-correct="D" data-max-select="1"><div class="badge">問3</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class A implements AutoCloseable {
     private String name;
     public A(String name) {
         this.name = name;
@@ -161,8 +39,7 @@ public class B {}</code></pre>
     public void close() throws Exception {
         System.out.println(name);
     }
-}</code></pre>
-<pre><code>public class Sample {
+}</code></pre><pre><code>public class Sample {
     public static void main(String[] args)
                             throws Exception {
         try (A a = new A(&quot;A&quot;);
@@ -171,24 +48,7 @@ public class B {}</code></pre>
             System.out.println(&quot;C&quot;);
         }
     }
-}</code></pre>
-<p>A. 「C」と表示される</p>
-<p>B. 「B」「A」の順に表示される</p>
-<p>C. 「C」「B」「A」の順に表示される</p>
-<p>D. 「B」「A」「C」の順に表示される</p>
-<p>E. 「C」「B」「A」の順に表示される</p>
-<p>F. 「A」「B」「C」の順に表示される</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：try-with-resourcesで宣言されたリソースは、宣言された順とは逆順にcloseメソッドが呼ばれる。closeメソッドはtryブロックを抜けるタイミングで呼ばれるメソッドで、finallyブロックはその後に表示されるから。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q4">
-      <div class="qhead"><span class="badge">問4</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを1つ選びなさい。(1つ選択)</p>
-<pre><code>public class Sample {
+}</code></pre><p>A. 「C」と表示される</p><p>B. 「B」「A」の順に表示される</p><p>C. 「C」「A」「B」の順に表示される</p><p>D. 「B」「A」「C」の順に表示される</p><p>E. 「C」「B」「A」の順に表示される</p><p>F. 「A」「B」「C」の順に表示される</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：try-with-resourcesで宣言されたリソースは、宣言された順とは逆順にcloseメソッドが呼ばれる。closeメソッドはtryブロックを抜けるタイミングで呼ばれるメソッドで、finallyブロックはその後に表示されるから。</p></div></details></article><article class="question" id="q4" data-correct="A" data-max-select="1"><div class="badge">問4</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを1つ選びなさい。(1つ選択)</p><pre><code>public class Sample {
     public static void main(String[] args) {
 
         String a = new String(&quot;sample&quot;);
@@ -215,47 +75,7 @@ public class B {}</code></pre>
             System.out.println(&quot;F&quot;);
         }
     }
-}</code></pre>
-<p>A. 「A」「F」と表示される</p>
-<p>B. 「A」と表示される</p>
-<p>C. 「A」「B」「C」「D」「E」「F」と表示される</p>
-<p>D. 「A」「D」と表示される</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>メモ：a.intern()は、a自体を変えるわけではなく、文字列プールに戻したaをcに代入している。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q5">
-      <div class="qhead"><span class="badge">問5</span></div>
-      <section class="body"><p>次のクラスのサブクラスとして、正しいものを選びなさい。(2つ選択)</p>
-<pre><code>public class A {}</code></pre>
-<p>A. <code>static class B extends A {}</code></p>
-<p>B. <code>protected class B extends A {}</code></p>
-<p>C. <code>sealed class B extends A {}</code></p>
-<p>D. <code>non-sealed class B extends A {}</code></p>
-<p>E. <code>public class B extends A {}</code></p>
-<p>F. <code>final class B extends A {}</code></p>
-<p>G. <code>private class B extends A {}</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>E,F</div>
-          <p>解説：</p>
-<p>A: トップレベルクラスにはstaticを付けられない。内部クラスのみで使用可能</p>
-<p>B:　トップレベルクラスには、publicおよびデフォルトしか指定できない。protectedは不可。</p>
-<p>C: Sealedクラスは可能だが、permitsが必要。</p>
-<p>D: non-sealedはsealed class Aを継承するときだけ使用可能。Aはpublic class Aなので不可。</p>
-<p>E: 正解。普通に継承可能。</p>
-<p>F: 正解。継承はできるが、以降のサブクラスへの継承は不可</p>
-<p>G: トップレベルクラスにprivateはつけられない。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q6">
-      <div class="qhead"><span class="badge">問6</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class A {
+}</code></pre><p>A. 「A」「F」と表示される</p><p>B. 「A」と表示される</p><p>C. 「A」「B」「C」「D」「E」「F」と表示される</p><p>D. 「A」「D」と表示される</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>メモ：a.intern()は、a自体を変えるわけではなく、文字列プールに戻したaをcに代入している。</p></div></details></article><article class="question" id="q5" data-correct="E,F" data-max-select="2"><div class="badge">問5</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のクラスのサブクラスとして、正しいものを選びなさい。(2つ選択)</p><pre><code>public class A {}</code></pre><p>A. <code>static class B extends A {}</code></p><p>B. <code>protected class B extends A {}</code></p><p>C. <code>sealed class B extends A {}</code></p><p>D. <code>non-sealed class B extends A {}</code></p><p>E. <code>public class B extends A {}</code></p><p>F. <code>final class B extends A {}</code></p><p>G. <code>private class B extends A {}</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button><button type="button" class="choice" data-choice="G" aria-pressed="false">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E,F</div><h4>解説</h4><p>解説：</p><p>A: トップレベルクラスにはstaticを付けられない。内部クラスのみで使用可能</p><p>B:　トップレベルクラスには、publicおよびデフォルトしか指定できない。protectedは不可。</p><p>C: Sealedクラスは可能だが、permitsが必要。</p><p>D: non-sealedはsealed class Aを継承するときだけ使用可能。Aはpublic class Aなので不可。</p><p>E: 正解。普通に継承可能。</p><p>F: 正解。継承はできるが、以降のサブクラスへの継承は不可</p><p>G: トップレベルクラスにprivateはつけられない。</p></div></details></article><article class="question" id="q6" data-correct="E" data-max-select="1"><div class="badge">問6</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class A {
     private var num = 10; //(1)
     public A(String num) {
         var var = Integer.parseInt(num); //(2)
@@ -265,73 +85,11 @@ public class B {}</code></pre>
         int var = num; //(4)
         System.out.println(var); //(5)
     }
-}</code></pre>
-<pre><code>public class Sample {
+}</code></pre><pre><code>public class Sample {
     public static void main(String[] args) {
         new A(&quot;20&quot;).print();
     }
-}</code></pre>
-<p>A. 正しくコンパイルされ、実行すると10が表示される</p>
-<p>B. 正しくコンパイルされ、実行すると20が表示される</p>
-<p>C. （2）の行でコンパイルエラーが発生する</p>
-<p>D. （3）の行でClassCastExceptionがスローされる</p>
-<p>E. （4）の行でコンパイルエラーが発生する</p>
-<p>F. （5）の行でNumberFormatExceptionがスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>E</div>
-          <p>解説：var はローカル変数専用</p>
-<p>✅ 使える</p>
-<p>メソッド内のローカル変数</p>
-<p>コンストラクタ内のローカル変数</p>
-<p>for文のループ変数</p>
-<p>拡張for文のループ変数</p>
-<p>❌ 使えない</p>
-<p>インスタンス変数（フィールド）</p>
-<p>クラス変数（staticフィールド）</p>
-<p>メソッド引数</p>
-<p>コンストラクタ引数</p>
-<p>戻り値型</p>
-<p>配列要素型</p>
-<p>初期値なしの宣言</p>
-<p>nullでの初期化</p>
-        </div>
-      </details>
-    </article><article class="question" id="q7">
-      <div class="qhead"><span class="badge">問7</span></div>
-      <section class="body"><p>次のクラスのサブクラスとして、正しいものを選びなさい。(2つ選択)</p>
-<pre><code>public sealed class A permits B, C {}</code></pre>
-<p>A. <code>public non-sealed class D extends A {}</code></p>
-<p>B. <code>public class B extends A {}</code></p>
-<p>C. <code>public class B extends A {}</code></p>
-<p>D. <code>public abstract class C extends A {}</code></p>
-<p>E. <code>public non-sealed class C extends A {}</code></p>
-<p>F. <code>public final class B extends A {}</code></p>
-<p>G. <code>public final class D extends A {}</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>E,F</div>
-          <p>sealedクラスの直接のサブクラスは <code>permits</code> に列挙され、かつ <code>final</code>、<code>sealed</code>、<code>non-sealed</code> のいずれかで宣言します。よって <code>non-sealed C</code> と <code>final B</code> が有効です。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q8">
-      <div class="qhead"><span class="badge">問8</span></div>
-      <section class="body"><p>次のうちコンパイラによってチェックされる例外はどれですか。(2つ選択)</p>
-<p>A. <code>java.lang.ArrayIndexOutOfBoundsException</code></p>
-<p>B. <code>java.lang.ClassCastException</code></p>
-<p>C. <code>java.lang.Exception</code></p>
-<p>D. <code>java.lang.ArithmeticException</code></p>
-<p>E. <code>java.io.IOException</code></p>
-<p>F. <code>java.lang.NumberFormatException</code></p>
-<p>G. <code>java.lang.RuntimeException</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C,E</div>
-          <p>解説：非チェック例外は、RuntimeExceptionとその子クラス</p>
-<pre><code>Throwable
+}</code></pre><p>A. 正しくコンパイルされ、実行すると10が表示される</p><p>B. 正しくコンパイルされ、実行すると20が表示される</p><p>C. （2）の行でコンパイルエラーが発生する</p><p>D. （3）の行でClassCastExceptionがスローされる</p><p>E. （4）の行でコンパイルエラーが発生する</p><p>F. （5）の行でNumberFormatExceptionがスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>解説</h4><p>解説：var はローカル変数専用</p><p>✅ 使える</p><p>メソッド内のローカル変数</p><p>コンストラクタ内のローカル変数</p><p>for文のループ変数</p><p>拡張for文のループ変数</p><p>❌ 使えない</p><p>インスタンス変数（フィールド）</p><p>クラス変数（staticフィールド）</p><p>メソッド引数</p><p>コンストラクタ引数</p><p>戻り値型</p><p>配列要素型</p><p>初期値なしの宣言</p><p>nullでの初期化</p></div></details></article><article class="question" id="q7" data-correct="E,F" data-max-select="2"><div class="badge">問7</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のクラスのサブクラスとして、正しいものを選びなさい。(2つ選択)</p><pre><code>public sealed class A permits B, C {}</code></pre><p>A. <code>public non-sealed class D extends A {}</code></p><p>B. <code>public class B extends A {}</code></p><p>C. <code>public class B extends A {}</code></p><p>D. <code>public abstract class C extends A {}</code></p><p>E. <code>public non-sealed class C extends A {}</code></p><p>F. <code>public final class B extends A {}</code></p><p>G. <code>public final class D extends A {}</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button><button type="button" class="choice" data-choice="G" aria-pressed="false">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E,F</div><h4>解説</h4><p>sealedクラスの直接のサブクラスは <code>permits</code> に列挙され、かつ <code>final</code>、<code>sealed</code>、<code>non-sealed</code> のいずれかで宣言します。よって <code>non-sealed C</code> と <code>final B</code> が有効です。</p></div></details></article><article class="question" id="q8" data-correct="C,E" data-max-select="2"><div class="badge">問8</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のうちコンパイラによってチェックされる例外はどれですか。(2つ選択)</p><p>A. <code>java.lang.ArrayIndexOutOfBoundsException</code></p><p>B. <code>java.lang.ClassCastException</code></p><p>C. <code>java.lang.Exception</code></p><p>D. <code>java.lang.ArithmeticException</code></p><p>E. <code>java.io.IOException</code></p><p>F. <code>java.lang.NumberFormatException</code></p><p>G. <code>java.lang.RuntimeException</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button><button type="button" class="choice" data-choice="G" aria-pressed="false">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C,E</div><h4>解説</h4><p>解説：非チェック例外は、RuntimeExceptionとその子クラス</p><pre><code>Throwable
  ├─ Error
  └─ Exception
       ├─ IOException
@@ -339,64 +97,29 @@ public class B {}</code></pre>
             ├─ ClassCastException
             ├─ ArithmeticException
             ├─ NumberFormatException
-            └─ ArrayIndexOutOfBoundsException</code></pre>
-        </div>
-      </details>
-    </article><article class="question" id="q9">
-      <div class="qhead"><span class="badge">問9</span></div>
-      <section class="body"><p>次のプログラムを確認してください。</p>
-<pre><code>public class A {
+            └─ ArrayIndexOutOfBoundsException</code></pre></div></details></article><article class="question" id="q9" data-correct="C,D" data-max-select="2"><div class="badge">問9</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認してください。</p><pre><code>public class A {
     public int num;
     public A(int num) {
         this.num = num;
     }
-}</code></pre>
-<pre><code>public class B extends A {
+}</code></pre><pre><code>public class B extends A {
     public B(int num) {
         super(num);
     }
-}</code></pre>
-<pre><code>public interface Sample {
+}</code></pre><pre><code>public interface Sample {
     A execute(int num);
-}</code></pre>
-<p>Sampleインタフェースを実装したクラスに記述できるメソッドの定義として、正しいものを選びなさい。(2つ選択)</p>
-<p>A. <code>public B execute(Integer num) {return new B(num);}</code></p>
-<p>B. <code>public Object execute(int num) {return new A();}</code></p>
-<p>C. <code>public A execute(int num) {return new B(num);}</code></p>
-<p>D. <code>public B execute(int num) {return new B(num);}</code></p>
-<p>E. <code>public A execute(Integer num) {return new A(num);}</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C,D</div>
-          <p>解説：オーバーライドできる条件</p>
-<p>・メソッド名：同じ</p>
-<p>・引数リスト：同じ</p>
-<p>・戻り値：同じ、または共変戻り値</p>
-<p>A:　引数が違う。Integerなので、オーバーライドではなくオーバーロードになっている</p>
-<p>B: 戻り値がObjectになっている。オーバーライドでは、AかAのサブクラスしか返せない。ObjectはAの親なので間違い。</p>
-<p>C: 引数一致。戻り値はB(num)であり、BはAの子クラス。共変戻り値なのでOK.</p>
-<p>D: 引数一致。戻り値はB(num)であり、BはAの子クラス。共変戻り値なのでOK.</p>
-<p>E: 引数不一致。Integerなので、オーバーライドではない。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q10">
-      <div class="qhead"><span class="badge">問10</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class A {
+}</code></pre><p>Sampleインタフェースを実装したクラスに記述できるメソッドの定義として、正しいものを選びなさい。(2つ選択)</p><p>A. <code>public B execute(Integer num) {return new B(num);}</code></p><p>B. <code>public Object execute(int num) {return new A();}</code></p><p>C. <code>public A execute(int num) {return new B(num);}</code></p><p>D. <code>public B execute(int num) {return new B(num);}</code></p><p>E. <code>public A execute(Integer num) {return new A(num);}</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C,D</div><h4>解説</h4><p>解説：オーバーライドできる条件</p><p>・メソッド名：同じ</p><p>・引数リスト：同じ</p><p>・戻り値：同じ、または共変戻り値</p><p>A:　引数が違う。Integerなので、オーバーライドではなくオーバーロードになっている</p><p>B: 戻り値がObjectになっている。オーバーライドでは、AかAのサブクラスしか返せない。ObjectはAの親なので間違い。</p><p>C: 引数一致。戻り値はB(num)であり、BはAの子クラス。共変戻り値なのでOK.</p><p>D: 引数一致。戻り値はB(num)であり、BはAの子クラス。共変戻り値なのでOK.</p><p>E: 引数不一致。Integerなので、オーバーライドではない。</p></div></details></article><article class="question" id="q10" data-correct="B" data-max-select="1"><div class="badge">問10</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class A {
     public void execute() {
         System.out.println(&quot;A&quot;);
     }    
-}</code></pre>
-<pre><code>public class B extends A {
+}</code></pre><pre><code>public class B extends A {
     public void test() {
         System.out.println(&quot;B&quot;);
     }
     public void execute() {
         test();
     }
-}</code></pre>
-<pre><code>public class Main {
+}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
         Object[] objects = {
             new A(), new B(), &quot;C&quot;
@@ -412,25 +135,7 @@ public class B {}</code></pre>
         }
     }
     
-}</code></pre>
-<p>A. 何も出力されない</p>
-<p>B. A, Bの順に出力される</p>
-<p>C. A, B, Cの順に出力される</p>
-<p>D. Bが表示される</p>
-<p>E. Cが表示される</p>
-<p>F. コンパイルエラーが発生する</p>
-<p>G. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p><code>instanceof A</code> が成立する <code>new A()</code> と <code>new B()</code> が処理されます。Bの <code>execute()</code> はオーバーライドされているため、出力はA、Bの順です。文字列Cは処理されません。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q11">
-      <div class="qhead"><span class="badge">問11</span></div>
-      <section class="body"><p>インスタンス変数a,b,c,dの値を変更するメソッドはどれか。正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Test {
+}</code></pre><p>A. 何も出力されない</p><p>B. A, Bの順に出力される</p><p>C. A, B, Cの順に出力される</p><p>D. Bが表示される</p><p>E. Cが表示される</p><p>F. コンパイルエラーが発生する</p><p>G. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button><button type="button" class="choice" data-choice="G" aria-pressed="false">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p><code>instanceof A</code> が成立する <code>new A()</code> と <code>new B()</code> が処理されます。Bの <code>execute()</code> はオーバーライドされているため、出力はA、Bの順です。文字列Cは処理されません。</p></div></details></article><article class="question" id="q11" data-correct="E" data-max-select="1"><div class="badge">問11</div><section class="body"><h3>問題文・コード・選択肢</h3><p>インスタンス変数a,b,c,dの値を変更するメソッドはどれか。正しいものを選びなさい。(1つ選択)</p><pre><code>public class Test {
     int a, b, c, d;
 
     void setA(int a) {
@@ -449,36 +154,7 @@ public class B {}</code></pre>
     void setAll(int x) {
         a = b = this.c = d = setD(x);
     }
-}</code></pre>
-<p>A. setAメソッド</p>
-<p>B. setBメソッド</p>
-<p>C. setCメソッド</p>
-<p>D. setDメソッド</p>
-<p>E. setAllメソッド</p>
-<p>F. どのメソッドも変更しない</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>E</div>
-          <p>解説：</p>
-<p>A: a = aは、引数 = 引数になっているので、インスタンス変数は一切触っていない。</p>
-<p>B: 一見変更しているように見えるが、bというローカル変数はどこにもいない。そのため右辺のbはthis.bと解釈され、this.b = this.bとなり、自分自身を代入しているだけになる。</p>
-<p>C: returnで単に値を返しているだけで、インスタンス変数は一切触っていない。</p>
-<p>D: setAと同じく、d = dで、インスタンス変数は一切触っていない。</p>
-<p>E: まず、右側から計算する。setD(x)は、例えばx=100のとき、100を返す。</p>
-<p>すると、a = b = this.c = d = 100となる。(代入演算子は右から左へ評価される)</p>
-<p>変数名が重なったら、</p>
-<p>void setA(int a)</p>
-<p>を見た瞬間に、</p>
-<p>・引数のa</p>
-<p>・フィールドのa</p>
-<p>のどっち？と考えるクセを付ける。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q12">
-      <div class="qhead"><span class="badge">問12</span></div>
-      <section class="body"><p>次のプログラムが、コンパイルエラーとなる理由として正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public abstract class A {
+}</code></pre><p>A. setAメソッド</p><p>B. setBメソッド</p><p>C. setCメソッド</p><p>D. setDメソッド</p><p>E. setAllメソッド</p><p>F. どのメソッドも変更しない</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>解説</h4><p>解説：</p><p>A: a = aは、引数 = 引数になっているので、インスタンス変数は一切触っていない。</p><p>B: 一見変更しているように見えるが、bというローカル変数はどこにもいない。そのため右辺のbはthis.bと解釈され、this.b = this.bとなり、自分自身を代入しているだけになる。</p><p>C: returnで単に値を返しているだけで、インスタンス変数は一切触っていない。</p><p>D: setAと同じく、d = dで、インスタンス変数は一切触っていない。</p><p>E: まず、右側から計算する。setD(x)は、例えばx=100のとき、100を返す。</p><p>すると、a = b = this.c = d = 100となる。(代入演算子は右から左へ評価される)</p><p>変数名が重なったら、</p><p>void setA(int a)</p><p>を見た瞬間に、</p><p>・引数のa</p><p>・フィールドのa</p><p>のどっち？と考えるクセを付ける。</p></div></details></article><article class="question" id="q12" data-correct="C" data-max-select="1"><div class="badge">問12</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムが、コンパイルエラーとなる理由として正しいものを選びなさい。(1つ選択)</p><pre><code>public abstract class A {
     private int id;
     public A(int id) {
         this.id = id;
@@ -486,43 +162,23 @@ public class B {}</code></pre>
     void sample() {
         System.out.println(&quot;A&quot;);
     }
-}</code></pre>
-<pre><code>public class B extends A {
+}</code></pre><pre><code>public class B extends A {
     public void sample() {
         System.out.println(&quot;B&quot;);
     }
-}</code></pre>
-<p>A. Aクラスは抽象クラスではなく、具象クラスでなくてはならない</p>
-<p>B. Bクラスでオーバーライドしているsampleメソッドのアクセス修飾子をpublicからアクセス修飾子なしにしなくてはならない</p>
-<p>C. Bクラスのコンストラクタ内でAクラスのコンストラクタを呼び出さなければならない</p>
-<p>D. Bクラスをfinalクラスとして宣言しなくてはならない</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：このコードでは、Aのインスタンスを生成していない。</p>
-<p>Bにはコンストラクタがないので、自動的にsuper();を定義するが、Aには引数なしのコンストラクタがない。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q13">
-      <div class="qhead"><span class="badge">問13</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class A {
+}</code></pre><p>A. Aクラスは抽象クラスではなく、具象クラスでなくてはならない</p><p>B. Bクラスでオーバーライドしているsampleメソッドのアクセス修飾子をpublicからアクセス修飾子なしにしなくてはならない</p><p>C. Bクラスのコンストラクタ内でAクラスのコンストラクタを呼び出さなければならない</p><p>D. Bクラスをfinalクラスとして宣言しなくてはならない</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：このコードでは、Aのインスタンスを生成していない。</p><p>Bにはコンストラクタがないので、自動的にsuper();を定義するが、Aには引数なしのコンストラクタがない。</p></div></details></article><article class="question" id="q13" data-correct="A" data-max-select="1"><div class="badge">問13</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class A {
     public void sample() {
         System.out.println(&quot;A&quot;);
     }
-}</code></pre>
-<pre><code>public class B extends A {
+}</code></pre><pre><code>public class B extends A {
     public void sample() {
         System.out.println(&quot;B&quot;);
     }
-}</code></pre>
-<pre><code>public class C extends A {
+}</code></pre><pre><code>public class C extends A {
     public void sample() {
         System.out.println(&quot;C&quot;);
     }
-}</code></pre>
-<pre><code>public class Main {
+}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
         A[] list = {
             new A(), new B(), new C()
@@ -531,46 +187,15 @@ public class B {}</code></pre>
             obj.sample();
         }
     }
-}</code></pre>
-<p>A. 「A」「B」「C」と表示される</p>
-<p>B. 「A」が表示された後、例外がスローされる</p>
-<p>C. 「A」「B」「C」が表示された後、例外がスローされる</p>
-<p>D. コンパイルエラーが発生する</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>配列の参照型はAでも、オーバーライドされたメソッドは実際のオブジェクト型で決まります。A、B、Cそれぞれの <code>sample()</code> が実行されます。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q14">
-      <div class="qhead"><span class="badge">問14</span></div>
-      <section class="body"><p>次のコードの2行目から4行目と等しい処理はどれか。正しいものを選びなさい。(1つ選択)</p>
-<pre><code>int[] array = {1, 2, 3, 4, 5};
+}</code></pre><p>A. 「A」「B」「C」と表示される</p><p>B. 「A」が表示された後、例外がスローされる</p><p>C. 「A」「B」「C」が表示された後、例外がスローされる</p><p>D. コンパイルエラーが発生する</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>配列の参照型はAでも、オーバーライドされたメソッドは実際のオブジェクト型で決まります。A、B、Cそれぞれの <code>sample()</code> が実行されます。</p></div></details></article><article class="question" id="q14" data-correct="A" data-max-select="1"><div class="badge">問14</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のコードの2行目から4行目と等しい処理はどれか。正しいものを選びなさい。(1つ選択)</p><pre><code>int[] array = {1, 2, 3, 4, 5};
 for (int num: array) {
     System.out.println(num);
-}</code></pre>
-<p>A. <code>for (int i = 0; i &lt; array.length; i++) {System.out.println(array[i]);}</code></p>
-<p>B. <code>for (int i = 0; i &lt;= array.length; i++) {System.out.println(array[i]);}</code></p>
-<p>C. <code>for (int i = 0; i &lt;= array.length; ++i) {System.out.println(array[i]);}</code></p>
-<p>D. <code>for (int i = 0; ++i &lt; array.length;) {System.out.println(array[i]);}</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>拡張for文と同じく全要素を先頭から処理するのは、<code>i=0</code> から <code>i &lt; array.length</code> まで <code>array[i]</code> を表示するAです。<code>&lt;=</code> では範囲外アクセスになります。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q15">
-      <div class="qhead"><span class="badge">問15</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Test {
+}</code></pre><p>A. <code>for (int i = 0; i &lt; array.length; i++) {System.out.println(array[i]);}</code></p><p>B. <code>for (int i = 0; i &lt;= array.length; i++) {System.out.println(array[i]);}</code></p><p>C. <code>for (int i = 0; i &lt;= array.length; ++i) {System.out.println(array[i]);}</code></p><p>D. <code>for (int i = 0; ++i &lt; array.length;) {System.out.println(array[i]);}</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>拡張for文と同じく全要素を先頭から処理するのは、<code>i=0</code> から <code>i &lt; array.length</code> まで <code>array[i]</code> を表示するAです。<code>&lt;=</code> では範囲外アクセスになります。</p></div></details></article><article class="question" id="q15" data-correct="D" data-max-select="1"><div class="badge">問15</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Test {
     private int value;
     public Test(int value) {
         this.value = value;
     }
-}</code></pre>
-<pre><code>public class Main {
+}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
         String s = &quot;A&quot;;
         String t = new String(&quot;A&quot;);
@@ -598,24 +223,7 @@ for (int num: array) {
             System.out.println(&quot;H&quot;);
         }
     }
-}</code></pre>
-<p>A. 「B」「C」「E」「H」の順に表示される</p>
-<p>B. 「A」「C」「F」「G」の順に表示される</p>
-<p>C. 「A」「D」「F」「H」の順に表示される</p>
-<p>D. 「B」「C」「F」「H」の順に表示される</p>
-<p>E. 「B」「C」「F」「G」の順に表示される</p>
-<p>F. 「A」「D」「E」「G」の順に表示される</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：Testクラスがequals()メソッドをオーバーライドしていないから、参照先判定になる。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q16">
-      <div class="qhead"><span class="badge">問16</span></div>
-      <section class="body"><p>次のプログラムの2行目から10行目と同じ結果となるコードとして、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>int data = 0xFF0000;
+}</code></pre><p>A. 「B」「C」「E」「H」の順に表示される</p><p>B. 「A」「C」「F」「G」の順に表示される</p><p>C. 「A」「D」「F」「H」の順に表示される</p><p>D. 「B」「C」「F」「H」の順に表示される</p><p>E. 「B」「C」「F」「G」の順に表示される</p><p>F. 「A」「D」「E」「G」の順に表示される</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：Testクラスがequals()メソッドをオーバーライドしていないから、参照先判定になる。</p></div></details></article><article class="question" id="q16" data-correct="B" data-max-select="1"><div class="badge">問16</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの2行目から10行目と同じ結果となるコードとして、正しいものを選びなさい。(1つ選択)</p><pre><code>int data = 0xFF0000;
 String str = &quot;&quot;;
 switch (data) {
     case 0x0000FF : str = &quot;A&quot;; break;
@@ -624,83 +232,48 @@ switch (data) {
     case 0xFFFF00 : str = &quot;D&quot;; break;
     case 0xFFFFFF : str = &quot;E&quot;; break;
     default : str = &quot;F&quot;;
-}</code></pre>
-<div class="choice">A.</div>
-<pre><code>String str = switch (data) {
+}</code></pre><ul><li>A. </li></ul><pre><code>String str = switch (data) {
     case 0x0000FF -&gt; &quot;A&quot;; break;
     case 0x008000 -&gt; &quot;B&quot;; break;
     case 0xFF0000 -&gt; &quot;C&quot;; break;
     case 0xFFFF00 -&gt; &quot;D&quot;; break;
     case 0xFFFFFF -&gt; &quot;E&quot;; break;
     default -&gt; &quot;F&quot;;
-};</code></pre>
-<div class="choice">B.</div>
-<pre><code>String str = switch (data) {
+};</code></pre><ul><li>B.</li></ul><pre><code>String str = switch (data) {
     case 0x0000FF -&gt; &quot;A&quot;;
     case 0x008000 -&gt; &quot;B&quot;;
     case 0xFF0000 -&gt; &quot;C&quot;;
     case 0xFFFF00 -&gt; &quot;D&quot;;
     case 0xFFFFFF -&gt; &quot;E&quot;;
     default -&gt; &quot;F&quot;;
-};</code></pre>
-<div class="choice">C.</div>
-<pre><code>String str = switch (data) {
+};</code></pre><ul><li>C.</li></ul><pre><code>String str = switch (data) {
     case 0x0000FF -&gt; &quot;A&quot;;
     case 0x008000 -&gt; &quot;B&quot;;
     case 0xFF0000 -&gt; &quot;C&quot;;
     case 0xFFFF00 -&gt; &quot;D&quot;;
     case 0xFFFFFF -&gt; &quot;E&quot;;
     default : yield &quot;F&quot;;
-};</code></pre>
-<div class="choice">D.</div>
-<pre><code>String str = switch (data) {
+};</code></pre><ul><li>D.</li></ul><pre><code>String str = switch (data) {
     case 0x0000FF : color = &quot;A&quot;;
     case 0x008000 : color = &quot;B&quot;;
     case 0xFF0000 : color = &quot;C&quot;;
     case 0xFFFF00 : color = &quot;D&quot;;
     case 0xFFFFFF : color = &quot;E&quot;;
     default : color = &quot;F&quot;;
-};</code></pre>
-<div class="choice">E.</div>
-<pre><code>String str = switch (data) {
+};</code></pre><ul><li>E.</li></ul><pre><code>String str = switch (data) {
     case 0x0000FF := &quot;A&quot;;
     case 0x008000 := &quot;B&quot;;
     case 0xFF0000 := &quot;C&quot;;
     case 0xFFFF00 := &quot;D&quot;;
     case 0xFFFFFF := &quot;E&quot;;
     default := &quot;F&quot;;
-};</code></pre>
-<div class="choice">F.</div>
-<pre><code>String str = switch (data) {
+};</code></pre><ul><li>F.</li></ul><pre><code>String str = switch (data) {
     case 0x0000FF : yield &quot;A&quot;;
     case 0x008000 : yield &quot;B&quot;;
     case 0xFF0000 : yield &quot;C&quot;;
     case 0xFFFF00 : yield &quot;D&quot;;
     case 0xFFFFFF : yield &quot;E&quot;;
-};</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p>解説：</p>
-<p>・アローを使った場合breakを書くとコンパイルエラー</p>
-<p>・switch式を使った場合は-&gt;アローを書く。:や:=はコンパイルエラー</p>
-<p>・switch式の場合はdefaultを省略できない</p>
-<p>・switch式には2通りの書き方がある。アロー構文の場合は、break, yield不要だが、コロン構文の場合はbreakではなくyieldが必要。値を返すためにyieldを書く。</p>
-<p>・アロー構文とコロン構文を混在させることはできない。</p>
-<p>（AIお薦め解説）</p>
-<div class="choice">アロー（-&gt;）を使った場合、break は書けない。書くとコンパイルエラー。</div>
-<div class="choice">switch式では -&gt; または : + yield を使用する。</div>
-<div class="choice">:= はJavaの構文ではないためコンパイルエラー。</div>
-<div class="choice">switch式は値を返すため、すべての分岐で値を返せなければならない。</div>
-<div class="choice">: を使用する場合は yield が必要。</div>
-<div class="choice">-&gt; と : を混在させることはできない。</div>
-        </div>
-      </details>
-    </article><article class="question" id="q17">
-      <div class="qhead"><span class="badge">問17</span></div>
-      <section class="body"><p>次のプログラムがコンパイルエラーになる理由として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Main {
+};</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p>解説：</p><p>・アローを使った場合breakを書くとコンパイルエラー</p><p>・switch式を使った場合は-&gt;アローを書く。:や:=はコンパイルエラー</p><p>・switch式の場合はdefaultを省略できない</p><p>・switch式には2通りの書き方がある。アロー構文の場合は、break, yield不要だが、コロン構文の場合はbreakではなくyieldが必要。値を返すためにyieldを書く。</p><p>・アロー構文とコロン構文を混在させることはできない。</p><p>（AIお薦め解説）</p><ul><li>アロー（-&gt;）を使った場合、break は書けない。書くとコンパイルエラー。</li><li>switch式では -&gt; または : + yield を使用する。</li><li>:= はJavaの構文ではないためコンパイルエラー。</li><li>switch式は値を返すため、すべての分岐で値を返せなければならない。</li><li>: を使用する場合は yield が必要。</li><li>-&gt; と : を混在させることはできない。</li></ul></div></details></article><article class="question" id="q17" data-correct="B" data-max-select="1"><div class="badge">問17</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムがコンパイルエラーになる理由として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Main {
     public static void main(String[] args) {
         ((A) new C()).sample();
         ((B) new C()).sample();
@@ -724,88 +297,22 @@ final class C extends B {
     public void sample() {
         System.out.println(&quot;C&quot;);
     }
-}</code></pre>
-<p>A. Bクラスのsampleメソッドがprivateであるため、Cクラスでオーバーライドできない</p>
-<p>B. Bクラスのsampleメソッドがprivateであるため、Aインタフェースのsampleメソッドをオーバーライドできない。</p>
-<p>C. sealedキーワードの使い方が間違っているため。</p>
-<p>D. Bクラスがabstractであるため、sampleメソッドを定義する必要がある。</p>
-<p>E. Cクラスのsampleメソッドがpublicであるため、アクセス修飾子が一致しない。</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q18">
-      <div class="qhead"><span class="badge">問18</span></div>
-      <section class="body"><p>次のプログラムの空欄に入るコードとして、正しいものを選びなさい。(2つ選択)</p>
-<pre><code>public class Sample {
+}</code></pre><p>A. Bクラスのsampleメソッドがprivateであるため、Cクラスでオーバーライドできない</p><p>B. Bクラスのsampleメソッドがprivateであるため、Aインタフェースのsampleメソッドをオーバーライドできない。</p><p>C. sealedキーワードの使い方が間違っているため。</p><p>D. Bクラスがabstractであるため、sampleメソッドを定義する必要がある。</p><p>E. Cクラスのsampleメソッドがpublicであるため、アクセス修飾子が一致しない。</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p></div></details></article><article class="question" id="q18" data-correct="A,C" data-max-select="2"><div class="badge">問18</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの空欄に入るコードとして、正しいものを選びなさい。(2つ選択)</p><pre><code>public class Sample {
     public int test(int a, int b) {
         return a + b;
     }
     // Enter here any code
-}</code></pre>
-<p>A.</p>
-<pre><code>public long test(Integer i) {
+}</code></pre><p>A.</p><pre><code>public long test(Integer i) {
     return i.longValue();
-}</code></pre>
-<p>B.</p>
-<pre><code>public int test(int x, int y) {
+}</code></pre><p>B.</p><pre><code>public int test(int x, int y) {
     return x + y;
-}</code></pre>
-<p>C.</p>
-<pre><code>public int test(Integer i, Integer j) {
+}</code></pre><p>C.</p><pre><code>public int test(Integer i, Integer j) {
     return i + j;
-}</code></pre>
-<p>D.</p>
-<pre><code>public void test(int a, int b) {
+}</code></pre><p>D.</p><pre><code>public void test(int a, int b) {
     return a + b;
-}</code></pre>
-<p>E.</p>
-<pre><code>private int test(int x, int y) {
+}</code></pre><p>E.</p><pre><code>private int test(int x, int y) {
     return x + y;
-}</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A,C</div>
-          <p>解説：</p>
-<p>#### オーバーロードの条件</p>
-<div class="choice">メソッド名が同じ</div>
-<p>かつ</p>
-<div class="choice">引数リストが異なる（引数の数、型、並び順）</div>
-<div class="choice">戻り値の型だけ違うものはオーバーロードにならない</div>
-<div class="choice">アクセス修飾子だけ違うものはオーバーロードにならない</div>
-        </div>
-      </details>
-    </article><article class="question" id="q19">
-      <div class="qhead"><span class="badge">問19</span></div>
-      <section class="body"><p>シールクラスやfinalクラスについて正しい説明を選びなさい。(2つ選択)</p>
-<p>A. finalクラスはシールクラスのサブクラスとして宣言できる</p>
-<p>B. finalクラスはシールクラスのサブクラスでなければならない</p>
-<p>C. finalクラスはabstractクラスのサブクラスでなければならない</p>
-<p>D. finalクラスはabstractメソッドを含むことはできない</p>
-<p>E. abstractクラスはfinalメソッドを含むことはできない</p>
-<p>F. abstractクラスはfinalクラスのサブクラスとして宣言できる</p>
-<p>G. シールクラスはfinalメソッドを含むことができない</p>
-<p>H. シールクラスはfinalクラスとして宣言できる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A,D</div>
-          <p>解説：</p>
-<p>finalクラス：これ以上継承できないクラス</p>
-<p>abstractクラス：単独ではインスタンス生成できないクラス</p>
-<p>sealedクラス：継承できるクラスを限定できるクラス</p>
-<p>Hの場合、シールクラスは継承できる前提なのでfinalにしたら継承できなくなるからダメ。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q20">
-      <div class="qhead"><span class="badge">問20</span></div>
-      <section class="body"><p>次のプログラムの「//insert code here」の箇所に記述するとコンパイルエラーになるものはどれですか。正しいものを選びなさい。(3つ選択)</p>
-<pre><code>public record Book(String name) {}</code></pre>
-<pre><code>public class Main {
+}</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,C</div><h4>解説</h4><p>解説：</p><h4>オーバーロードの条件</h4><ul><li>メソッド名が同じ</li></ul><p>かつ</p><ul><li>引数リストが異なる（引数の数、型、並び順）</li><li>戻り値の型だけ違うものはオーバーロードにならない</li><li>アクセス修飾子だけ違うものはオーバーロードにならない</li></ul></div></details></article><article class="question" id="q19" data-correct="A,D" data-max-select="2"><div class="badge">問19</div><section class="body"><h3>問題文・コード・選択肢</h3><p>シールクラスやfinalクラスについて正しい説明を選びなさい。(2つ選択)</p><p>A. finalクラスはシールクラスのサブクラスとして宣言できる</p><p>B. finalクラスはシールクラスのサブクラスでなければならない</p><p>C. finalクラスはabstractクラスのサブクラスでなければならない</p><p>D. finalクラスはabstractメソッドを含むことはできない</p><p>E. abstractクラスはfinalメソッドを含むことはできない</p><p>F. abstractクラスはfinalクラスのサブクラスとして宣言できる</p><p>G. シールクラスはfinalメソッドを含むことができない</p><p>H. シールクラスはfinalクラスとして宣言できる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button><button type="button" class="choice" data-choice="G" aria-pressed="false">G</button><button type="button" class="choice" data-choice="H" aria-pressed="false">H</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,D</div><h4>解説</h4><p>解説：</p><p>finalクラス：これ以上継承できないクラス</p><p>abstractクラス：単独ではインスタンス生成できないクラス</p><p>sealedクラス：継承できるクラスを限定できるクラス</p><p>Hの場合、シールクラスは継承できる前提なのでfinalにしたら継承できなくなるからダメ。</p></div></details></article><article class="question" id="q20" data-correct="A,B,D" data-max-select="3"><div class="badge">問20</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの「//insert code here」の箇所に記述するとコンパイルエラーになるものはどれですか。正しいものを選びなさい。(3つ選択)</p><pre><code>public record Book(String name) {}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
 
         Book a = new Book(&quot;A&quot;);
@@ -813,95 +320,36 @@ final class C extends B {
 
         // insert code here
     }
-}</code></pre>
-<p>A. <code>a.name = "C";</code></p>
-<p>B. <code>Book c = new Book();</code></p>
-<p>C. <code>boolean isEqual = a == b;</code></p>
-<p>D. <code>String title = a.getName();</code></p>
-<p>E. <code>a = null;</code></p>
-<p>F. <code>Book c = new Book("C");</code></p>
-<p>G. <code>String name = a.name();</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A, B, D</div>
-          <p>解説：</p>
-<p>A. <code>a.name ="C";</code></p>
-<p>コンパイルエラー、nameはprivateなので直接アクセスできない。**recordのフィールドはprivate finalになるから。**</p>
-<pre><code>private final String name;</code></pre>
-<p>B. <code>Book c = new Book();</code></p>
-<p>コンパイルエラー、recordで引数なしのコンストラクタは存在しないから</p>
-<p>D. <code>String title = a.getName();</code></p>
-<p>コンパイルエラー、recordが自動生成するアクセサは、</p>
-<p><code>name()</code>だから<code>getName()</code>は生成されない。</p>
-<p>E. <code>a = null;</code></p>
-<p>コンパイル可能。参照変数へnullを代入できる。recordから禁止というルールはない。</p>
-<p>G. <code>String name = a.name();</code></p>
-<p>コンパイル可能、recordが生成するアクセサメソッドである。</p>
-<p>####　試験での見分け方</p>
-<p>record Book(String name)を見たらまず、</p>
-<p>private final String name;</p>
-<p>public String name()</p>
-<p>が自動生成されることを思い出す。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q21">
-      <div class="qhead"><span class="badge">問21</span></div>
-      <section class="body"><p>次のプログラムを確認してください。</p>
-<pre><code>public class Sample {
+}</code></pre><p>A. <code>a.name = &quot;C&quot;;</code></p><p>B. <code>Book c = new Book();</code></p><p>C. <code>boolean isEqual = a == b;</code></p><p>D. <code>String title = a.getName();</code></p><p>E. <code>a = null;</code></p><p>F. <code>Book c = new Book(&quot;C&quot;);</code></p><p>G. <code>String name = a.name();</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button><button type="button" class="choice" data-choice="G" aria-pressed="false">G</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,B,D</div><h4>解説</h4><p>解説：</p><p>A. <code>a.name =&quot;C&quot;;</code></p><p>コンパイルエラー、nameはprivateなので直接アクセスできない。**recordのフィールドはprivate finalになるから。**</p><pre><code>private final String name;</code></pre><p>B. <code>Book c = new Book();</code></p><p>コンパイルエラー、recordで引数なしのコンストラクタは存在しないから</p><p>D. <code>String title = a.getName();</code></p><p>コンパイルエラー、recordが自動生成するアクセサは、</p><p><code>name()</code>だから<code>getName()</code>は生成されない。</p><p>E. <code>a = null;</code></p><p>コンパイル可能。参照変数へnullを代入できる。recordから禁止というルールはない。</p><p>G. <code>String name = a.name();</code></p><p>コンパイル可能、recordが生成するアクセサメソッドである。</p><h4>試験での見分け方</h4><p>record Book(String name)を見たらまず、</p><p>private final String name;</p><p>public String name()</p><p>が自動生成されることを思い出す。</p></div></details></article><article class="question" id="q21" data-correct="C" data-max-select="1"><div class="badge">問21</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認してください。</p><pre><code>public class Sample {
     public static void main(String[] args) {
         int[] array = {1,2,3,4,5,6,7,8,9,10};
         //insert code here
     }
-}</code></pre>
-<p>#### このプログラムの「//insert code here」の箇所に入るコードで、1,3,5,7,9と表示できるものを選びなさい。（1つ選択）</p>
-<div class="choice">A.</div>
-<pre><code>for (int i = 1; i &lt; array.length; ++i) {
+}</code></pre><h4>このプログラムの「//insert code here」の箇所に入るコードで、1,3,5,7,9と表示できるものを選びなさい。（1つ選択）</h4><ul><li>A.</li></ul><pre><code>for (int i = 1; i &lt; array.length; ++i) {
     if (i % 2 == 0) {
         System.out.println(array[i]);
     }
-}</code></pre>
-<div class="choice">B.</div>
-<pre><code>for (int i = 0; ++i &lt; array.length;) {
+}</code></pre><ul><li>B.</li></ul><pre><code>for (int i = 0; ++i &lt; array.length;) {
     if (i % 2 == 0) {
         System.out.println(array[i]);
     }
-}</code></pre>
-<div class="choice">C.</div>
-<pre><code>for (int i = 0; i &lt; array.length; i++) {
+}</code></pre><ul><li>C.</li></ul><pre><code>for (int i = 0; i &lt; array.length; i++) {
     if (i % 2 == 0) {
         System.out.println(array[i]);
     }
-}</code></pre>
-<div class="choice">D.</div>
-<pre><code>for (int i = 0; i++ &lt; array.length + 1; i++) {
+}</code></pre><ul><li>D.</li></ul><pre><code>for (int i = 0; i++ &lt; array.length + 1; i++) {
     if (i % 2 == 0) {
         System.out.println(array[i]);
     }
-}</code></pre>
-<div class="choice">E.</div>
-<pre><code>for (int i = 0; i &lt; array.length; i++) {
+}</code></pre><ul><li>E.</li></ul><pre><code>for (int i = 0; i &lt; array.length; i++) {
     if (i % 2 == 1) {
         System.out.println(array[i]);
     }
-}</code></pre>
-<div class="choice">F.</div>
-<pre><code>for (int i = 1; i &lt;= array.length; i++) {
+}</code></pre><ul><li>F.</li></ul><pre><code>for (int i = 1; i &lt;= array.length; i++) {
     if (i % 2 == 1) {
         System.out.println(array[i]);
     }
-}</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：Aは不正解。iが1から始まるので。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q22">
-      <div class="qhead"><span class="badge">問22</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Value {
+}</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：Aは不正解。iが1から始まるので。</p></div></details></article><article class="question" id="q22" data-correct="B" data-max-select="1"><div class="badge">問22</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Value {
     public String data;
 
     public Value(String data) {
@@ -911,8 +359,7 @@ final class C extends B {
     public String toString() {
         return this.data;
     }
-}</code></pre>
-<pre><code>public class Sample {
+}</code></pre><pre><code>public class Sample {
     private static Value[] values = {
         new Value(&quot;A&quot;),
         new Value(&quot;B&quot;),
@@ -925,40 +372,7 @@ final class C extends B {
         System.out.println(values[2].data);
         System.out.println(values[3]);
     }
-}</code></pre>
-<p>A. A、B、Cの順に表示される</p>
-<p>B. B、C、nullの順に表示される</p>
-<p>C. Value@7344699f、C、nullの順に表示される</p>
-<p>D. Value@7344699f、Value@7344699f、Cの順に表示される</p>
-<p>E. コンパイルエラーが発生する</p>
-<p>F. 実行時例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p><code>values[1]</code> は <code>toString()</code> によりB、<code>values[2].data</code> はCです。<code>values[3]</code> はnull参照そのものを <code>println</code> に渡すため文字列 <code>null</code> が表示されます。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q23">
-      <div class="qhead"><span class="badge">問23</span></div>
-      <section class="body"><p>次のうちメソッド定義として正しくないものを選びなさい。(２つ選択)</p>
-<p>A. <code>public void sample3() {}</code></p>
-<p>B. <code>public void $sample() {}</code></p>
-<p>C. <code>public void sample@2() {}</code></p>
-<p>D. <code>public void _null() {}</code></p>
-<p>E. <code>public void sample() {}</code></p>
-<p>F. <code>public void 0_sample() {}</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C,F</div>
-          <p>解説：変数名とメソッド名の命名規則は同じ。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q24">
-      <div class="qhead"><span class="badge">問24</span></div>
-      <section class="body"><p>次のプログラムの <code>//insert code here</code> に記述できるコードとして、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public interface A {
+}</code></pre><p>A. A、B、Cの順に表示される</p><p>B. B、C、nullの順に表示される</p><p>C. Value@7344699f、C、nullの順に表示される</p><p>D. Value@7344699f、Value@7344699f、Cの順に表示される</p><p>E. コンパイルエラーが発生する</p><p>F. 実行時例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p><code>values[1]</code> は <code>toString()</code> によりB、<code>values[2].data</code> はCです。<code>values[3]</code> はnull参照そのものを <code>println</code> に渡すため文字列 <code>null</code> が表示されます。</p></div></details></article><article class="question" id="q23" data-correct="C,F" data-max-select="2"><div class="badge">問23</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のうちメソッド定義として正しくないものを選びなさい。(２つ選択)</p><p>A. <code>public void sample3() {}</code></p><p>B. <code>public void $sample() {}</code></p><p>C. <code>public void sample@2() {}</code></p><p>D. <code>public void _null() {}</code></p><p>E. <code>public void sample() {}</code></p><p>F. <code>public void 0_sample() {}</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C,F</div><h4>解説</h4><p>解説：変数名とメソッド名の命名規則は同じ。</p></div></details></article><article class="question" id="q24" data-correct="D" data-max-select="1"><div class="badge">問24</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの <code>//insert code here</code> に記述できるコードとして、正しいものを選びなさい。(1つ選択)</p><pre><code>public interface A {
     int a = 1;
     static int b = 2;
     static final int c = 3;
@@ -971,28 +385,11 @@ class B implements A {
         int i = ++a;
         System.out.println(i);
     }
-}</code></pre>
-<p>A. <code>int i = c++;</code></p>
-<p>B. <code>int i = c + a++;</code></p>
-<p>C. <code>int i = ++a;</code></p>
-<p>D. <code>int i = b + 1;</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：上記interface Aのコードは、コンパイラが次の様に解釈する。</p>
-<pre><code>public interface A {
+}</code></pre><p>A. <code>int i = c++;</code></p><p>B. <code>int i = c + a++;</code></p><p>C. <code>int i = ++a;</code></p><p>D. <code>int i = b + 1;</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：上記interface Aのコードは、コンパイラが次の様に解釈する。</p><pre><code>public interface A {
     public static final int a = 1;
     public static final int b = 2;
     public static final int c = 3;
-}</code></pre>
-<p>つまりインタフェースのフィールドは、public static finalになる。選択肢Dはfinal値を変更していないのでOK。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q25">
-      <div class="qhead"><span class="badge">問25</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Sample {
+}</code></pre><p>つまりインタフェースのフィールドは、public static finalになる。選択肢Dはfinal値を変更していないのでOK。</p></div></details></article><article class="question" id="q25" data-correct="A" data-max-select="1"><div class="badge">問25</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Sample {
     public static void main(String[] args) {
         int result = new Test().execute(&quot;A&quot;);
         System.out.println(result);
@@ -1010,53 +407,17 @@ class Test {
         };
         return total;
     }
-}</code></pre>
-<p>A. 1が表示される</p>
-<p>B. 2が表示される</p>
-<p>C. 4が表示される</p>
-<p>D. 6が表示される</p>
-<p>E. コンパイルエラー</p>
-<p>F. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>疑問点：switch式のアロー構文は、そのままtotalをリターンする？それともreturn total;が実行される？</p>
-<p>解説：この問題は代入式がないのでswitch式ではなく、switch文。アロー構文はフォールスルーが起こらないのでreturn total;を返す。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q26">
-      <div class="qhead"><span class="badge">問26</span></div>
-      <section class="body"><p>次のプログラムのthrows SampleExceptionを省略するとコンパイルエラーになります。SampleExceptionについて正しい説明はどれですか。正しいものを選びなさい。(2つ選択)</p>
-<pre><code>public class Sample {
+}</code></pre><p>A. 1が表示される</p><p>B. 2が表示される</p><p>C. 4が表示される</p><p>D. 6が表示される</p><p>E. コンパイルエラー</p><p>F. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>疑問点：switch式のアロー構文は、そのままtotalをリターンする？それともreturn total;が実行される？</p><p>解説：この問題は代入式がないのでswitch式ではなく、switch文。アロー構文はフォールスルーが起こらないのでreturn total;を返す。</p></div></details></article><article class="question" id="q26" data-correct="A,D" data-max-select="2"><div class="badge">問26</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムのthrows SampleExceptionを省略するとコンパイルエラーになります。SampleExceptionについて正しい説明はどれですか。正しいものを選びなさい。(2つ選択)</p><pre><code>public class Sample {
     public void hello() throws SampleException {
         // some code
     }
-}</code></pre>
-<p>A. SampleExceptionはチェック例外である</p>
-<p>B. SampleExceptionはエラーである</p>
-<p>C. SampleExceptionは非チェック例外である</p>
-<p>D. helloメソッドでは、SampleExceptionのサブクラスをスローできる</p>
-<p>E. helloメソッドでは、SampleExceptionのみをスローできる</p>
-<p>F. helloメソッドでは、Exceptionをスローできる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A,D</div>
-          <p>解説：throws宣言が必須なのはチェック例外だけ、なので、つまりSampleExceptionを省略するとコンパイルエラーになるということは、SampleExceptionはチェック例外である。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q27">
-      <div class="qhead"><span class="badge">問27</span></div>
-      <section class="body"><p>次のプログラムの説明として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>package p1;
+}</code></pre><p>A. SampleExceptionはチェック例外である</p><p>B. SampleExceptionはエラーである</p><p>C. SampleExceptionは非チェック例外である</p><p>D. helloメソッドでは、SampleExceptionのサブクラスをスローできる</p><p>E. helloメソッドでは、SampleExceptionのみをスローできる</p><p>F. helloメソッドでは、Exceptionをスローできる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,D</div><h4>解説</h4><p>解説：throws宣言が必須なのはチェック例外だけ、なので、つまりSampleExceptionを省略するとコンパイルエラーになるということは、SampleExceptionはチェック例外である。</p></div></details></article><article class="question" id="q27" data-correct="C" data-max-select="1"><div class="badge">問27</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの説明として、正しいものを選びなさい。(1つ選択)</p><pre><code>package p1;
 
 public class A {
     protected void hello() {
         System.out.println(&quot;A&quot;);
     }
-}</code></pre>
-<pre><code>package p2;
+}</code></pre><pre><code>package p2;
 
 import p1.A;
 
@@ -1071,38 +432,16 @@ public class B {
     public void hello() {
         new A().hello();
     }
-}</code></pre>
-<pre><code>public class Sample {
+}</code></pre><pre><code>public class Sample {
     public static void main(String[] args) {
         B b = B.getInstance();
         b.hello();
     }
-}</code></pre>
-<p>A. Aクラスのコンストラクタはpublicである必要がある</p>
-<p>B. Bクラスのコンストラクタはpublicである必要がある</p>
-<p>C. BクラスはAクラスのサブクラスである必要がある</p>
-<p>D. AクラスはBクラスのサブクラスである必要がある</p>
-<p>E. Bクラスのhelloメソッドは、protectedである必要がある</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：論点はprotectedアクセス修飾子である</p>
-<p>protectedは、同一パッケージ内または別パッケージであれば継承したサブクラスのみであるため、</p>
-<p>クラスBのnew A().hello()メソッドを呼ぶとアクセス不可でコンパイルエラーになる。</p>
-<p>修正例</p>
-<pre><code>public class B extends A {
+}</code></pre><p>A. Aクラスのコンストラクタはpublicである必要がある</p><p>B. Bクラスのコンストラクタはpublicである必要がある</p><p>C. BクラスはAクラスのサブクラスである必要がある</p><p>D. AクラスはBクラスのサブクラスである必要がある</p><p>E. Bクラスのhelloメソッドは、protectedである必要がある</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：論点はprotectedアクセス修飾子である</p><p>protectedは、同一パッケージ内または別パッケージであれば継承したサブクラスのみであるため、</p><p>クラスBのnew A().hello()メソッドを呼ぶとアクセス不可でコンパイルエラーになる。</p><p>修正例</p><pre><code>public class B extends A {
     public void hello() {
         super.hello();
     }
-}</code></pre>
-<p>別パッケージでprotectedが出てきたら、まずextendsがあるか？を確認すること！！</p>
-        </div>
-      </details>
-    </article><article class="question" id="q28">
-      <div class="qhead"><span class="badge">問28</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Sample {
+}</code></pre><p>別パッケージでprotectedが出てきたら、まずextendsがあるか？を確認すること！！</p></div></details></article><article class="question" id="q28" data-correct="B" data-max-select="1"><div class="badge">問28</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Sample {
     public static void main(String[] args) {
 
         Item a = new Item(&quot;A&quot;);
@@ -1124,29 +463,7 @@ class Item {
         this.name = name;
         id = &quot;1&quot;;
     }
-}</code></pre>
-<p>A. A1,B1,C1,B2</p>
-<p>B. A1,B1,C2,B2</p>
-<p>C. A1,B2,C2,B2</p>
-<p>D. C1,B2,C1,B2</p>
-<p>E. C1,B1,C1,B2</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p>解説：この問題はstaticフィールドとインスタンスフィールドの違いを問う典型問題である。</p>
-<p>staticフィールドはクラスで1つだけ共有、オブジェクトごとではない</p>
-<p>インスタンスフィールドはオブジェクトごとに保持</p>
-<p>b.id = "2";は、idがstaticなので、Item.id = "2";と同じ状態である。</p>
-<p>一方、a.name = "C";は、インスタンス変数なので、a.nameの値のみが変わる。</p>
-<p>obj.staticFieldをみたら、ClassName.staticFieldに置き換えて考える。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q29">
-      <div class="qhead"><span class="badge">問29</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)　なお、実行には次のコマンドを使うものとする。</p>
-<pre><code>&gt; java Sample A B C</code></pre>
-<pre><code>public class Sample {
+}</code></pre><p>A. A1,B1,C1,B2</p><p>B. A1,B1,C2,B2</p><p>C. A1,B2,C2,B2</p><p>D. C1,B2,C1,B2</p><p>E. C1,B1,C1,B2</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p>解説：この問題はstaticフィールドとインスタンスフィールドの違いを問う典型問題である。</p><p>staticフィールドはクラスで1つだけ共有、オブジェクトごとではない</p><p>インスタンスフィールドはオブジェクトごとに保持</p><p>b.id = &quot;2&quot;;は、idがstaticなので、Item.id = &quot;2&quot;;と同じ状態である。</p><p>一方、a.name = &quot;C&quot;;は、インスタンス変数なので、a.nameの値のみが変わる。</p><p>obj.staticFieldをみたら、ClassName.staticFieldに置き換えて考える。</p></div></details></article><article class="question" id="q29" data-correct="A" data-max-select="1"><div class="badge">問29</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)　なお、実行には次のコマンドを使うものとする。</p><pre><code>&gt; java Sample A B C</code></pre><pre><code>public class Sample {
     public static void main(String[] args) {
         B b = new B();
         b.setValues(args);
@@ -1181,60 +498,26 @@ class B extends A {
         }
         this.setValue(sb.toString());
     }
-}</code></pre>
-<p>A. "A B C "</p>
-<p>B. A B C</p>
-<p>C. 空文字</p>
-<p>D. コンパイルエラーが発生する</p>
-<p>E. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>解説：printlnはオブジェクトを渡されると、内部で b.toString()を呼ぶが、BにはtoStringがないのでAのtoStringが使われる。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q30">
-      <div class="qhead"><span class="badge">問30</span></div>
-      <section class="body"><p>次の2つのコードのクラスファイルを生成するためのコマンドとして、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>package b;
+}</code></pre><p>A. &quot;A B C &quot;</p><p>B. A B C</p><p>C. 空文字</p><p>D. コンパイルエラーが発生する</p><p>E. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>解説：printlnはオブジェクトを渡されると、内部で b.toString()を呼ぶが、BにはtoStringがないのでAのtoStringが使われる。</p></div></details></article><article class="question" id="q30" data-correct="D" data-max-select="1"><div class="badge">問30</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次の2つのコードのクラスファイルを生成するためのコマンドとして、正しいものを選びなさい。(1つ選択)</p><pre><code>package b;
 
-public class B {}</code></pre>
-<pre><code>package a;
+public class B {}</code></pre><pre><code>package a;
 import b.B;
 
 public class A {
     public static void main(String[] args) {
         B b = new B();
     }
-}</code></pre>
-<p>A. <code>java a/A.java</code></p>
-<p>B. <code>java b/B.java</code></p>
-<p>C. <code>javac b/B.java</code> <code>java a/A.java</code></p>
-<p>D. <code>javac a/A.java</code> <code>java a/A</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：import b.Bにあわせて、b/B.javaも併せてコンパイルされる。依存関係も一緒にコンパイルされる。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q31">
-      <div class="qhead"><span class="badge">問31</span></div>
-      <section class="body"><p>次のプログラムを確認し、Mainクラスの空欄に入るコードとして、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>package com.sample;
+}</code></pre><p>A. <code>java a/A.java</code></p><p>B. <code>java b/B.java</code></p><p>C. <code>javac b/B.java</code> <code>java a/A.java</code></p><p>D. <code>javac a/A.java</code> <code>java a/A</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：import b.Bにあわせて、b/B.javaも併せてコンパイルされる。依存関係も一緒にコンパイルされる。</p></div></details></article><article class="question" id="q31" data-correct="C" data-max-select="1"><div class="badge">問31</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認し、Mainクラスの空欄に入るコードとして、正しいものを選びなさい。(1つ選択)</p><pre><code>package com.sample;
 public class Sample {
     public void sample() {
         // any code
     }
-}</code></pre>
-<pre><code>package com.sample.test;
+}</code></pre><pre><code>package com.sample.test;
 public class Test {
     public void test(int num) {
         // any code
     }
-}</code></pre>
-<pre><code>package com;
+}</code></pre><pre><code>package com;
 // please choose answer.
 public class Main {
     public static void main(String[] args) {
@@ -1242,107 +525,27 @@ public class Main {
         int num = Integer.parseInt(args[0]);
         new Test().test(num);
     }
-}</code></pre>
-<p>A. <code>import java.langInteger;</code> <code>import com.*;</code></p>
-<p>B. <code>import com.sample.*;</code></p>
-<p>C. <code>import com.sample.Sample;</code> <code>import com.sample.test.*;</code></p>
-<p>D. <code>import java.lang.*;</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p><code>Sample</code> は <code>com.sample</code>、<code>Test</code> は <code>com.sample.test</code> にあるため、Cの2つのimportで参照できます。<code>Integer</code> は <code>java.lang</code> にあり自動importされます。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q32">
-      <div class="qhead"><span class="badge">問32</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Sample {
+}</code></pre><p>A. <code>import java.langInteger;</code> <code>import com.*;</code></p><p>B. <code>import com.sample.*;</code></p><p>C. <code>import com.sample.Sample;</code> <code>import com.sample.test.*;</code></p><p>D. <code>import java.lang.*;</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p><code>Sample</code> は <code>com.sample</code>、<code>Test</code> は <code>com.sample.test</code> にあるため、Cの2つのimportで参照できます。<code>Integer</code> は <code>java.lang</code> にあり自動importされます。</p></div></details></article><article class="question" id="q32" data-correct="C" data-max-select="1"><div class="badge">問32</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Sample {
     static int num = 23;
     public static void main(String[] args) {
         int num = num;
         System.out.println(num);
     }
-}</code></pre>
-<p>A. 23が表示される</p>
-<p>B. 想定外の結果が表示される</p>
-<p>C. コンパイルエラーが発生する</p>
-<p>D. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：ローカル変数でint num = num;の形をみたら、numが初期化されているか要チェック</p>
-        </div>
-      </details>
-    </article><article class="question" id="q33">
-      <div class="qhead"><span class="badge">問33</span></div>
-      <section class="body"><p>次のプログラムのコンパイルを成功させるための方法として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public interface A {
+}</code></pre><p>A. 23が表示される</p><p>B. 想定外の結果が表示される</p><p>C. コンパイルエラーが発生する</p><p>D. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：ローカル変数でint num = num;の形をみたら、numが初期化されているか要チェック</p></div></details></article><article class="question" id="q33" data-correct="B" data-max-select="1"><div class="badge">問33</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムのコンパイルを成功させるための方法として、正しいものを選びなさい。(1つ選択)</p><pre><code>public interface A {
     abstract void x();
-}</code></pre>
-<pre><code>public abstract class B /*position 1*/ {
+}</code></pre><pre><code>public abstract class B /*position 1*/ {
     /* position2 */
     public void x() {}
     public abstract void z();
-}</code></pre>
-<pre><code>public class C extends B implements A {
+}</code></pre><pre><code>public class C extends B implements A {
     /* position 3*/
-}</code></pre>
-<p>A. 以下をposition3に記述する</p>
-<p>```java</p>
-<p>@Override</p>
-<p>public void x() {}</p>
-<p>```</p>
-<p>B. 以下をposition3に記述する</p>
-<p><code>public void z() {}</code></p>
-<p>C. 以下をposition2に記述する</p>
-<p><code>void x() {}</code></p>
-<p>D. 以下をposition1に記述する</p>
-<p><code>implements A</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p>解説：</p>
-<p>インターフェースと抽象クラスが出たら、</p>
-<p>1. インターフェースの抽象メソッド</p>
-<p>2. 抽象クラスで実装済みのもの</p>
-<p>3. まだ未実装のもの</p>
-<p>をチェックします。</p>
-<p>「最後の具象クラスに抽象メソッドが残っていないか」</p>
-<p>を確認すれば正解を選びやすくなります。</p>
-<p>・今回の要点</p>
-<p>B の x() は既に A の要求を満たしている。</p>
-<p>z() は抽象メソッドのまま残っている。</p>
-<p>C で public void z() {} を実装するので 正答は B。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q34">
-      <div class="qhead"><span class="badge">問34</span></div>
-      <section class="body"><p>次のプログラムを確認し、変数valueのデータ型として正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Main {
+}</code></pre><p>A. 以下をposition3に記述する</p><p>   ```java</p><p>   @Override</p><p>   public void x() {}</p><p>   ```</p><p>B. 以下をposition3に記述する</p><p>   <code>public void z() {}</code></p><p>C. 以下をposition2に記述する</p><p>   <code>void x() {}</code></p><p>D. 以下をposition1に記述する</p><p>   <code>implements A</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p>解説：</p><p>インターフェースと抽象クラスが出たら、</p><p>1. インターフェースの抽象メソッド</p><p>2. 抽象クラスで実装済みのもの</p><p>3. まだ未実装のもの</p><p>をチェックします。</p><p>「最後の具象クラスに抽象メソッドが残っていないか」</p><p>を確認すれば正解を選びやすくなります。</p><p>・今回の要点</p><p>B の x() は既に A の要求を満たしている。</p><p>z() は抽象メソッドのまま残っている。</p><p>C で public void z() {} を実装するので 正答は B。</p></div></details></article><article class="question" id="q34" data-correct="A" data-max-select="1"><div class="badge">問34</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認し、変数valueのデータ型として正しいものを選びなさい。(1つ選択)</p><pre><code>public class Main {
     public static void main(String... args) {
         for (var value : args) {
             System.out.println(value);
         }
     }
-}</code></pre>
-<p>A. <code>String</code></p>
-<p>B. <code>String[]</code></p>
-<p>C. <code>Character</code></p>
-<p>D. <code>var</code></p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p><code>args</code> の型は <code>String[]</code> なので、拡張forで取り出す1要素の型は <code>String</code> です。<code>var</code> はコンパイラが <code>String</code> と推論します。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q35">
-      <div class="qhead"><span class="badge">問35</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Main {
+}</code></pre><p>A. <code>String</code></p><p>B. <code>String[]</code></p><p>C. <code>Character</code></p><p>D. <code>var</code></p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p><code>args</code> の型は <code>String[]</code> なので、拡張forで取り出す1要素の型は <code>String</code> です。<code>var</code> はコンパイラが <code>String</code> と推論します。</p></div></details></article><article class="question" id="q35" data-correct="D" data-max-select="1"><div class="badge">問35</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Main {
     public static void main(String[] args) {
         String str = &quot;abcd ef gh&quot;;
         int x = str.indexOf(&quot;ef&quot;);
@@ -1350,27 +553,7 @@ public class Main {
         x = str.indexOf(&quot;ef&quot;);
         System.out.println(str + &quot; &quot; + x);
     }
-}</code></pre>
-<p>A. 「ef gh 5」と表示される</p>
-<p>B. 「ef gh 4」と表示される</p>
-<p>C. 「abcd ef gh 4」と表示される</p>
-<p>D. 「abcd ef gh 5」と表示される</p>
-<p>E. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：</p>
-<p>今回の要点</p>
-<p>indexOf("ef") の結果は 5。</p>
-<p>substring() は元のStringを変更しない。</p>
-<p>出力は abcd ef gh 5 なので D。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q36">
-      <div class="qhead"><span class="badge">問36</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Sample {
+}</code></pre><p>A. 「ef gh 5」と表示される</p><p>B. 「ef gh 4」と表示される</p><p>C. 「abcd ef gh 4」と表示される</p><p>D. 「abcd ef gh 5」と表示される</p><p>E. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：</p><p>今回の要点</p><p>indexOf(&quot;ef&quot;) の結果は 5。</p><p>substring() は元のStringを変更しない。</p><p>出力は abcd ef gh 5 なので D。</p></div></details></article><article class="question" id="q36" data-correct="D" data-max-select="1"><div class="badge">問36</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Sample {
     static String str;
     public static void main(String[] args) {
         switch(str) {
@@ -1380,22 +563,7 @@ public class Main {
         }
         System.out.println(str);
     }
-}</code></pre>
-<p>A. 「10 def 20」と表示される</p>
-<p>B. 「def 20」と表示される</p>
-<p>C. 「null」と表示される</p>
-<p>D. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：switch文は null を扱えないので「ぬるぽ」になる</p>
-        </div>
-      </details>
-    </article><article class="question" id="q37">
-      <div class="qhead"><span class="badge">問37</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行するためのコマンドとして、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>package ex15;
+}</code></pre><p>A. 「10 def 20」と表示される</p><p>B. 「def 20」と表示される</p><p>C. 「null」と表示される</p><p>D. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：switch文は null を扱えないので「ぬるぽ」になる</p></div></details></article><article class="question" id="q37" data-correct="B" data-max-select="1"><div class="badge">問37</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行するためのコマンドとして、正しいものを選びなさい。(1つ選択)</p><pre><code>package ex15;
 
 public class Sample {
     private final String name;
@@ -1408,8 +576,7 @@ public class Sample {
     public String toString() {
         return name;
     }
-}</code></pre>
-<pre><code>package ex15;
+}</code></pre><pre><code>package ex15;
 
 import java.util.logging.Logger;
 
@@ -1419,75 +586,28 @@ public class Main {
         var d = new Sample(&quot;sample&quot;);
         logger.info(d.toString());
     }
-}</code></pre>
-<div class="choice">A.</div>
-<pre><code>javac ex15/Sample.java ex15/Main.java
-java -cp build ex15.Main</code></pre>
-<div class="choice">B.</div>
-<pre><code>javac -d build ex15/Sample.java ex15/Main.java
-java -cp build ex15.Main</code></pre>
-<div class="choice">C.</div>
-<pre><code>javac -d build ex15/Sample.java ex15/Main.java
-java ex15.Main</code></pre>
-<div class="choice">D.</div>
-<pre><code>javac -d build ex15/Sample.java ex15/Main.java
-java build.ex15.Main</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p>解説：今回の要点</p>
-<p>-d build は build/ex15/*.class を作る。</p>
-<p>-cp build で build をクラス検索の起点にする。</p>
-<p>実行時は完全修飾名 ex15.Main を指定するので 正答は B。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q38">
-      <div class="qhead"><span class="badge">問38</span></div>
-      <section class="body"><p>次のプログラムを確認し、これらのクラスを利用するMainクラスをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class A {
+}</code></pre><ul><li>A.</li></ul><pre><code>javac ex15/Sample.java ex15/Main.java
+java -cp build ex15.Main</code></pre><ul><li>B.</li></ul><pre><code>javac -d build ex15/Sample.java ex15/Main.java
+java -cp build ex15.Main</code></pre><ul><li>C.</li></ul><pre><code>javac -d build ex15/Sample.java ex15/Main.java
+java ex15.Main</code></pre><ul><li>D.</li></ul><pre><code>javac -d build ex15/Sample.java ex15/Main.java
+java build.ex15.Main</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p>解説：今回の要点</p><p>-d build は build/ex15/*.class を作る。</p><p>-cp build で build をクラス検索の起点にする。</p><p>実行時は完全修飾名 ex15.Main を指定するので 正答は B。</p></div></details></article><article class="question" id="q38" data-correct="D" data-max-select="1"><div class="badge">問38</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認し、これらのクラスを利用するMainクラスをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class A {
     public void hello() {
         System.out.println(&quot;hello&quot;);
     }
-}</code></pre>
-<pre><code>public class B extends A {
+}</code></pre><pre><code>public class B extends A {
     public void bye() {
         System.out.println(&quot;bye&quot;);
     }
-}</code></pre>
-<pre><code>public class Main {
+}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
         A a = new B();
         a.bye();
     }
-}</code></pre>
-<p>A. 「bye」と表示される</p>
-<p>B. 「null」と表示される</p>
-<p>C. 何も表示されない</p>
-<p>D. コンパイルエラーが発生する</p>
-<p>E. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：A a = new B();でも、A型に定義されているメソッドしか使えない。メソッドのときは、右辺を見ると教わったので、B型のメソッドでも使えるかと思ったんだが、とても複雑なルールのようだ。いまいちルールの全容が見えてこない。</p>
-<p>Rule①</p>
-<p>メソッドが呼べるかは左辺を見る</p>
-<pre><code>A a = new B();
+}</code></pre><p>A. 「bye」と表示される</p><p>B. 「null」と表示される</p><p>C. 何も表示されない</p><p>D. コンパイルエラーが発生する</p><p>E. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：A a = new B();でも、A型に定義されているメソッドしか使えない。メソッドのときは、右辺を見ると教わったので、B型のメソッドでも使えるかと思ったんだが、とても複雑なルールのようだ。いまいちルールの全容が見えてこない。</p><p>Rule①</p><p>メソッドが呼べるかは左辺を見る</p><pre><code>A a = new B();
 
 a.hello(); // Aにある → OK
-a.bye();   // Aにない → NG</code></pre>
-<p>Rule②</p>
-<p>実際に実行されるメソッドは右辺を見る</p>
-<pre><code>A a = new B();
-a.hello();</code></pre>
-<p>Bがオーバーライドしていたら B.hello();が実行される</p>
-        </div>
-      </details>
-    </article><article class="question" id="q39">
-      <div class="qhead"><span class="badge">問39</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Sample {
+a.bye();   // Aにない → NG</code></pre><p>Rule②</p><p>実際に実行されるメソッドは右辺を見る</p><pre><code>A a = new B();
+a.hello();</code></pre><p>Bがオーバーライドしていたら B.hello();が実行される</p></div></details></article><article class="question" id="q39" data-correct="D" data-max-select="1"><div class="badge">問39</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Sample {
     private char a;
     private int b = 1;
     String test(char a, int b) {
@@ -1497,97 +617,42 @@ a.hello();</code></pre>
         Sample app = new Sample();
         System.out.println(app.test(&#x27;A&#x27;));
     }
-}</code></pre>
-<p>A. 「A,0」と表示される</p>
-<p>B. 「A,1」と表示される</p>
-<p>C. 「A,null」と表示される</p>
-<p>D. コンパイルエラーが発生する</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：testメソッドの引数の数に対して、使う数が合っていない</p>
-        </div>
-      </details>
-    </article><article class="question" id="q40">
-      <div class="qhead"><span class="badge">問40</span></div>
-      <section class="body"><p>多次元配列のインスタンス化と初期化のコードとして、正しいものを選びなさい。(2つ選択)</p>
-<p>A. <code>int[][] array = {{1,2,3},{4,5,6}};</code></p>
-<p>B. <code>int[][][] array = {{1,2},{3,4},{5,6}};</code></p>
-<p>C. <code>int[][] array = {0, 1};</code></p>
-<p>D.</p>
-<pre><code>int[][] array = new int[][2];
+}</code></pre><p>A. 「A,0」と表示される</p><p>B. 「A,1」と表示される</p><p>C. 「A,null」と表示される</p><p>D. コンパイルエラーが発生する</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：testメソッドの引数の数に対して、使う数が合っていない</p></div></details></article><article class="question" id="q40" data-correct="A,E" data-max-select="2"><div class="badge">問40</div><section class="body"><h3>問題文・コード・選択肢</h3><p>多次元配列のインスタンス化と初期化のコードとして、正しいものを選びなさい。(2つ選択)</p><p>A. <code>int[][] array = {{1,2,3},{4,5,6}};</code></p><p>B. <code>int[][][] array = {{1,2},{3,4},{5,6}};</code></p><p>C. <code>int[][] array = {0, 1};</code></p><p>D.</p><pre><code>int[][] array = new int[][2];
 array[0][0] = 1;
 array[0][1] = 2;
 array[1][0] = 3;
-array[1][1] = 4;</code></pre>
-<p>E.</p>
-<pre><code>int [] array = {0, 1};
+array[1][1] = 4;</code></pre><p>E.</p><pre><code>int [] array = {0, 1};
 int[][][] array2 = new int[2][2][2];
 array2[0][0] = array;
 array2[0][1] = array;
 array2[1][0] = array;
-array2[1][1] = array;</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A,E</div>
-          <p>解説：覚え方</p>
-<p>次元を1つずつ減らして考えます。</p>
-<pre><code>int[][][] a
+array2[1][1] = array;</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,E</div><h4>解説</h4><p>解説：覚え方</p><p>次元を1つずつ減らして考えます。</p><pre><code>int[][][] a
 a[0]      → int[][]
 a[0][0]   → int[]
-a[0][0][0]→ int</code></pre>
-        </div>
-      </details>
-    </article><article class="question" id="q41">
-      <div class="qhead"><span class="badge">問41</span></div>
-      <section class="body"><p>次のプログラムの説明として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class A {
+a[0][0][0]→ int</code></pre></div></details></article><article class="question" id="q41" data-correct="A" data-max-select="1"><div class="badge">問41</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの説明として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class A {
     int num = 10;
     public double getValue() {
         return 0.0;
     }
-}</code></pre>
-<pre><code>public class B extends A {
+}</code></pre><pre><code>public class B extends A {
     @Override
     public double getValue() {
         // ...
         return 1.0;
     }
-}</code></pre>
-<pre><code>public class C extends B {
+}</code></pre><pre><code>public class C extends B {
     @Override
     public double getValue() {
         System.out.println(super.num);
         return super.getValue();
     }
-}</code></pre>
-<p>A. Bクラスのサブクラスでは、getValueメソッドでAクラスのフィールドにアクセスすることができる。</p>
-<p>B. Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにsuper.getValue()を使えるが、Ａクラスのフィールドにはアクセスできない</p>
-<p>C. Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにnew.getValue()を使う</p>
-<p>D. Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにpublic.getValue()を使う</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>解説：</p>
-<p>C → B → A の継承関係では A のフィールドも継承される。</p>
-<p>super.num は親系統から継承したフィールドを参照できる。</p>
-<p>この問題の正解は A。Bは「Aクラスのフィールドにはアクセスできない」が誤り。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q42">
-      <div class="qhead"><span class="badge">問42</span></div>
-      <section class="body"><p>次のプログラムの説明として、正しいものを選びなさい。(３つ選択)</p>
-<pre><code>import java.util.Collection;
+}</code></pre><p>A. Bクラスのサブクラスでは、getValueメソッドでAクラスのフィールドにアクセスすることができる。</p><p>B. Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにsuper.getValue()を使えるが、Ａクラスのフィールドにはアクセスできない</p><p>C. Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにnew.getValue()を使う</p><p>D. Bクラスのサブクラスでは、Bクラスのメソッドを呼び出すためにpublic.getValue()を使う</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>解説：</p><p>C → B → A の継承関係では A のフィールドも継承される。</p><p>super.num は親系統から継承したフィールドを参照できる。</p><p>この問題の正解は A。Bは「Aクラスのフィールドにはアクセスできない」が誤り。</p></div></details></article><article class="question" id="q42" data-correct="A,C,E" data-max-select="3"><div class="badge">問42</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの説明として、正しいものを選びなさい。(３つ選択)</p><pre><code>import java.util.Collection;
 
 public class A {
     public void sample(Collection arg) {
         System.out.println(&quot;A&quot;);
     }
-}</code></pre>
-<pre><code>import java.util.Collection;
+}</code></pre><pre><code>import java.util.Collection;
 import java.util.List;
 
 public class B extends A {
@@ -1597,8 +662,7 @@ public class B extends A {
     public void sample(List arg) {
         System.out.println(&quot;C&quot;);
     }
-}</code></pre>
-<pre><code>import java.util.ArrayList;
+}</code></pre><pre><code>import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -1612,94 +676,30 @@ public class Main {
 
         // do something
     }
-}</code></pre>
-<p>A. 「a1.sample(list)」を実行すると、Aが表示される</p>
-<p>B. 「a2.sample(list)」を実行すると、Aが表示される</p>
-<p>C. 「a2.sample(list)」を実行すると、Bが表示される</p>
-<p>D. 「b1.sample(list)」を実行すると、Bが表示される</p>
-<p>E. 「b1.sample(list)」を実行すると、Cが表示される</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A,C,E</div>
-          <p>解説：</p>
-<p>1．フィールドは常に左側（参照型）で決まる。</p>
-<p>2．メソッドは「候補選択は左側」「実行は右側」。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q43">
-      <div class="qhead"><span class="badge">問43</span></div>
-      <section class="body"><p>Dクラスの説明として正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public interface A {
+}</code></pre><p>A. 「a1.sample(list)」を実行すると、Aが表示される</p><p>B. 「a2.sample(list)」を実行すると、Aが表示される</p><p>C. 「a2.sample(list)」を実行すると、Bが表示される</p><p>D. 「b1.sample(list)」を実行すると、Bが表示される</p><p>E. 「b1.sample(list)」を実行すると、Cが表示される</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,C,E</div><h4>解説</h4><p>解説：</p><p>1．フィールドは常に左側（参照型）で決まる。</p><p>2．メソッドは「候補選択は左側」「実行は右側」。</p></div></details></article><article class="question" id="q43" data-correct="D" data-max-select="1"><div class="badge">問43</div><section class="body"><h3>問題文・コード・選択肢</h3><p>Dクラスの説明として正しいものを選びなさい。(1つ選択)</p><pre><code>public interface A {
     void sample();
-}</code></pre>
-<pre><code>public interface B extends A {
+}</code></pre><pre><code>public interface B extends A {
     default void sample() {
         System.out.println(&quot;B&quot;);
     }
-}</code></pre>
-<pre><code>public interface C extends A {
+}</code></pre><pre><code>public interface C extends A {
     @Override
     default void sample() {
         System.out.println(&quot;C&quot;);
     }
-}</code></pre>
-<pre><code>public class D implements B, C {
+}</code></pre><pre><code>public class D implements B, C {
     @Override
     public void sample() {
         super.sample();
     }
-}</code></pre>
-<p>A. Bインタフェースのsampleメソッドを実装している</p>
-<p>B. Cインタフェースのsampleメソッドを実装している</p>
-<p>C. Dクラスのsampleメソッドを使わないのであれば、オーバーライドをする必要はない</p>
-<p>D. コンパイルエラーが発生する</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：</p>
-<p>複数のdefaultメソッドが衝突したら、クラス側でオーバーライド必須。</p>
-<p>super.sample() ではどのインタフェースか分からないためエラー。</p>
-<p>defaultメソッドを呼ぶなら B.super.sample() の形式で書く。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q44">
-      <div class="qhead"><span class="badge">問44</span></div>
-      <section class="body"><p>次のプログラムを確認し、コンパイルエラーとなるコードを選びなさい。(1つ選択)</p>
-<p><code>public abstract class A {}</code></p>
-<p><code>public interface B {}</code></p>
-<p><code>public class C extends A implements B {}</code></p>
-<p><code>public class D extends C {}</code></p>
-<p>A.</p>
-<pre><code>List&lt;A&gt; listA = new ArrayList&lt;&gt;();
-listA.add(new D());</code></pre>
-<p>B.</p>
-<pre><code>List&lt;B&gt; listB = new ArrayList&lt;&gt;();
-listB.add(new C());</code></pre>
-<p>C.</p>
-<pre><code>List&lt;B&gt; listC = new ArrayList&lt;&gt;();
-listC.add(new D());</code></pre>
-<p>D.</p>
-<pre><code>List&lt;D&gt; listD = new ArrayList&lt;&gt;();
-listD.add(new C());</code></pre>
-<p>E.</p>
-<pre><code>List&lt;A&gt; listE = new ArrayList&lt;&gt;();
-listE.add(new C());</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>DはCのサブクラスなのでA型・B型のリストには追加できます。逆に <code>List&lt;D&gt;</code> へ親型の <code>new C()</code> は追加できないためDがコンパイルエラーです。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q45">
-      <div class="qhead"><span class="badge">問45</span></div>
-      <section class="body"><p>次のプログラムの説明として、正しいものを選びなさい。(3つ選択)</p>
-<pre><code>public interface A {
+}</code></pre><p>A. Bインタフェースのsampleメソッドを実装している</p><p>B. Cインタフェースのsampleメソッドを実装している</p><p>C. Dクラスのsampleメソッドを使わないのであれば、オーバーライドをする必要はない</p><p>D. コンパイルエラーが発生する</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：</p><p>複数のdefaultメソッドが衝突したら、クラス側でオーバーライド必須。</p><p>super.sample() ではどのインタフェースか分からないためエラー。</p><p>defaultメソッドを呼ぶなら B.super.sample() の形式で書く。</p></div></details></article><article class="question" id="q44" data-correct="D" data-max-select="1"><div class="badge">問44</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認し、コンパイルエラーとなるコードを選びなさい。(1つ選択)</p><p><code>public abstract class A {}</code></p><p><code>public interface B {}</code></p><p><code>public class C extends A implements B {}</code></p><p><code>public class D extends C {}</code></p><p>A.</p><pre><code>List&lt;A&gt; listA = new ArrayList&lt;&gt;();
+listA.add(new D());</code></pre><p>B.</p><pre><code>List&lt;B&gt; listB = new ArrayList&lt;&gt;();
+listB.add(new C());</code></pre><p>C.</p><pre><code>List&lt;B&gt; listC = new ArrayList&lt;&gt;();
+listC.add(new D());</code></pre><p>D.</p><pre><code>List&lt;D&gt; listD = new ArrayList&lt;&gt;();
+listD.add(new C());</code></pre><p>E.</p><pre><code>List&lt;A&gt; listE = new ArrayList&lt;&gt;();
+listE.add(new C());</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>DはCのサブクラスなのでA型・B型のリストには追加できます。逆に <code>List&lt;D&gt;</code> へ親型の <code>new C()</code> は追加できないためDがコンパイルエラーです。</p></div></details></article><article class="question" id="q45" data-correct="A,B,F" data-max-select="3"><div class="badge">問45</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムの説明として、正しいものを選びなさい。(3つ選択)</p><pre><code>public interface A {
     public A build(String str);
-}</code></pre>
-<pre><code>public class B implements A {
+}</code></pre><pre><code>public class B implements A {
     public B(String str) {
         // ...
     }
@@ -1707,72 +707,30 @@ listE.add(new C());</code></pre></section>
     public B build(String str) {
         return new B(str);
     }
-}</code></pre>
-<p>A. Aはfinalにできない</p>
-<p>B. Bはabstractにできない</p>
-<p>C. Bはfinalにできない</p>
-<p>D. AはBのサブタイプである</p>
-<p>E. Aはabstractにできない</p>
-<p>F. BはAのサブタイプである</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A, B, F</div>
-          <p>解説：</p>
-<p>A. インタフェースは実現されることを前提としているためfinalにできない。</p>
-<p>B. Bクラス内ではインスタンスを生成しているが、抽象クラスはインスタンス化できない。</p>
-<p>F. BはAを実装している。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q46">
-      <div class="qhead"><span class="badge">問46</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>class A {
+}</code></pre><p>A. Aはfinalにできない</p><p>B. Bはabstractにできない</p><p>C. Bはfinalにできない</p><p>D. AはBのサブタイプである</p><p>E. Aはabstractにできない</p><p>F. BはAのサブタイプである</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,B,F</div><h4>解説</h4><p>解説：</p><p>A. インタフェースは実現されることを前提としているためfinalにできない。</p><p>B. Bクラス内ではインスタンスを生成しているが、抽象クラスはインスタンス化できない。</p><p>F. BはAを実装している。</p></div></details></article><article class="question" id="q46" data-correct="C" data-max-select="1"><div class="badge">問46</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>class A {
     public A() {
         System.out.print(&quot;A&quot;);
     }
-}</code></pre>
-<pre><code>class B extends A {
+}</code></pre><pre><code>class B extends A {
     public B() {
         System.out.print(&quot;B&quot;);
     }
-}</code></pre>
-<pre><code>class C extends B {
+}</code></pre><pre><code>class C extends B {
     public C() {
         System.out.print(&quot;C&quot;);
     }
-}</code></pre>
-<pre><code>public class Main {
+}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
         new C();
     }
-}</code></pre>
-<p>A. 「CBA」と表示される</p>
-<p>B. 「C」と表示される</p>
-<p>C. 「ABC」と表示される</p>
-<p>D. コンパイルエラーが発生する</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：</p>
-<p>コンストラクタの先頭には super() が自動挿入される。</p>
-<p>コンストラクタは 親 → 子 の順で実行される。</p>
-<p>new C() の結果は ABC。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q47">
-      <div class="qhead"><span class="badge">問47</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class A {
+}</code></pre><p>A. 「CBA」と表示される</p><p>B. 「C」と表示される</p><p>C. 「ABC」と表示される</p><p>D. コンパイルエラーが発生する</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：</p><p>コンストラクタの先頭には super() が自動挿入される。</p><p>コンストラクタは 親 → 子 の順で実行される。</p><p>new C() の結果は ABC。</p></div></details></article><article class="question" id="q47" data-correct="A" data-max-select="1"><div class="badge">問47</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class A {
     private void print() {
         System.out.println(&quot;A&quot;);
     }
     public void a() {
         print();
     }
-}</code></pre>
-<pre><code>public class B extends A {
+}</code></pre><pre><code>public class B extends A {
     private void print() {
         System.out.println(&quot;B&quot;);
     }
@@ -1784,119 +742,40 @@ listE.add(new C());</code></pre></section>
         b.a();
         b.b();
     }
-}</code></pre>
-<p>A. 「A」「B」と表示される</p>
-<p>B. 「B」「B」と表示される</p>
-<p>C. コンパイルエラーが発生する</p>
-<p>D. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>解説：</p>
-<p>private メソッドは継承されないためオーバーライドできない。</p>
-<p>a() が呼ぶのは常に A の print()。</p>
-<p>出力結果は A → B なので正答は A。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q48">
-      <div class="qhead"><span class="badge">問48</span></div>
-      <section class="body"><p>次のうち、メソッドの定義として正しいものを選びなさい。(2つ選択)</p>
-<p>A.</p>
-<pre><code>public void methodA(int x) {
+}</code></pre><p>A. 「A」「B」と表示される</p><p>B. 「B」「B」と表示される</p><p>C. コンパイルエラーが発生する</p><p>D. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>解説：</p><p>private メソッドは継承されないためオーバーライドできない。</p><p>a() が呼ぶのは常に A の print()。</p><p>出力結果は A → B なので正答は A。</p></div></details></article><article class="question" id="q48" data-correct="C,E" data-max-select="2"><div class="badge">問48</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のうち、メソッドの定義として正しいものを選びなさい。(2つ選択)</p><p>A.</p><pre><code>public void methodA(int x) {
     return ++x;
-}</code></pre>
-<p>B.</p>
-<pre><code>public String methodB() {
+}</code></pre><p>B.</p><pre><code>public String methodB() {
     System.out.println(&quot;B&quot;);
-}</code></pre>
-<p>C.</p>
-<pre><code>public boolean methodC(int a) {
+}</code></pre><p>C.</p><pre><code>public boolean methodC(int a) {
     return a &lt; 0;
-}</code></pre>
-<p>D.</p>
-<pre><code>public char methodD(String str) {
+}</code></pre><p>D.</p><pre><code>public char methodD(String str) {
     return str;
-}</code></pre>
-<p>E.</p>
-<pre><code>public void methodE() {
+}</code></pre><p>E.</p><pre><code>public void methodE() {
     return;
-}</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C,E</div>
-          <p>void メソッドは値を返せない。</p>
-<p>戻り値型があるメソッドは必ず対応する型を return する。</p>
-<p>Cはboolean式を返し、Eはvoidメソッドから値なしでreturnするため正しい定義です。Aはvoidなのに値を返し、BはStringを返さず、DはcharにStringを返すため誤りです。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q49">
-      <div class="qhead"><span class="badge">問49</span></div>
-      <section class="body"><p>次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>&gt; java A &quot;A B&quot; A B</code></pre>
-<pre><code>public class A {
+}</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C,E</div><h4>解説</h4><p>void メソッドは値を返せない。</p><p>戻り値型があるメソッドは必ず対応する型を return する。</p><p>Cはboolean式を返し、Eはvoidメソッドから値なしでreturnするため正しい定義です。Aはvoidなのに値を返し、BはStringを返さず、DはcharにStringを返すため誤りです。</p></div></details></article><article class="question" id="q49" data-correct="B" data-max-select="1"><div class="badge">問49</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを以下に示したコマンドで実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>&gt; java A &quot;A B&quot; A B</code></pre><pre><code>public class A {
     public static void main(String[] args) {
         for (String str : args) {
             System.out.print(str);
         }
     }
-}</code></pre>
-<p>A. 「AA BAB」と表示される</p>
-<p>B. 「A BAB」と表示される</p>
-<p>C. 「A BA B」と表示される</p>
-<p>D. 「A B A B」と表示される</p>
-<p>F. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>B</div>
-          <p>解説：ダブルクォーテーションで囲まれているため1つの引数になる　→　"A B"</p>
-        </div>
-      </details>
-    </article><article class="question" id="q50">
-      <div class="qhead"><span class="badge">問50</span></div>
-      <section class="body"><p>次のプログラムを確認し、Dインタフェースでコンパイルエラーが発生する理由として考えられるものを選びなさい。（1つ選択）</p>
-<pre><code>public interface A {
+}</code></pre><p>A. 「AA BAB」と表示される</p><p>B. 「A BAB」と表示される</p><p>C. 「A BA B」と表示される</p><p>D. 「A B A B」と表示される</p><p>F. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button><button type="button" class="choice" data-choice="F" aria-pressed="false">F</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h4>解説</h4><p>解説：ダブルクォーテーションで囲まれているため1つの引数になる　→　&quot;A B&quot;</p></div></details></article><article class="question" id="q50" data-correct="C" data-max-select="1"><div class="badge">問50</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを確認し、Dインタフェースでコンパイルエラーが発生する理由として考えられるものを選びなさい。（1つ選択）</p><pre><code>public interface A {
     public Iterable a();
-}</code></pre>
-<pre><code>import java.util.Collection;
+}</code></pre><pre><code>import java.util.Collection;
 
 public interface B extends A {
     public Collection a();
-}</code></pre>
-<pre><code>import java.nio.file.Path;
+}</code></pre><pre><code>import java.nio.file.Path;
 
 public interface C extends A {
     public Path a();
-}</code></pre>
-<pre><code>public interface D extends B, C {
+}</code></pre><pre><code>public interface D extends B, C {
 
-}</code></pre>
-<p>A. Dインタフェースが2つ以上継承しているため</p>
-<p>B. BインタフェースがAインタフェースとは異なる戻り値型の同名メソッドを定義しているため</p>
-<p>C. BとCインタフェースから継承したメソッドの戻り値型が異なるため</p>
-<p>D. Dインタフェースで継承したメソッドを再定義しなかったため</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：</p>
-<p>B の Collection a() は、Iterableの共変戻り値なのでOK。</p>
-<p>C の Path a() も共変戻り値なのでOK。</p>
-<p>D では Collection a() と Path a() が衝突するため、コンパイルエラーとなる</p>
-        </div>
-      </details>
-    </article><article class="question" id="q51">
-      <div class="qhead"><span class="badge">問51</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>package ex42.a;
+}</code></pre><p>A. Dインタフェースが2つ以上継承しているため</p><p>B. BインタフェースがAインタフェースとは異なる戻り値型の同名メソッドを定義しているため</p><p>C. BとCインタフェースから継承したメソッドの戻り値型が異なるため</p><p>D. Dインタフェースで継承したメソッドを再定義しなかったため</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：</p><p>B の Collection a() は、Iterableの共変戻り値なのでOK。</p><p>C の Path a() も共変戻り値なのでOK。</p><p>D では Collection a() と Path a() が衝突するため、コンパイルエラーとなる</p></div></details></article><article class="question" id="q51" data-correct="C" data-max-select="1"><div class="badge">問51</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>package ex42.a;
 
 public class A {
     public String x = &quot;A&quot;;
     protected A() { }
-}</code></pre>
-<pre><code>package ex42.b;
+}</code></pre><pre><code>package ex42.b;
 
 import ex42.a.A;
 
@@ -1905,8 +784,7 @@ public class B extends A {
     public B() {
         super();
     }
-}</code></pre>
-<pre><code>package ex42;
+}</code></pre><pre><code>package ex42;
 
 import ex42.a.A;
 import ex42.b.B;
@@ -1916,32 +794,14 @@ public class Main {
         A a = new B();
         System.out.println(a.x);
     }
-}</code></pre>
-<p>A. コンパイルエラーが発生する</p>
-<p>B. 実行時に例外がスローされる</p>
-<p>C. Aが表示される</p>
-<p>D. Bが表示される</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：protectedコンストラクタを持つクラスを、別パッケージから直接利用するケース</p>
-<p>このコードは コンパイルエラー。</p>
-<p>仮にコンパイルできても、a.x は参照型 A を見て "A" になる。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q52">
-      <div class="qhead"><span class="badge">問52</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）</p>
-<pre><code>public class Sample {
+}</code></pre><p>A. コンパイルエラーが発生する</p><p>B. 実行時に例外がスローされる</p><p>C. Aが表示される</p><p>D. Bが表示される</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：protectedコンストラクタを持つクラスを、別パッケージから直接利用するケース</p><p>このコードは コンパイルエラー。</p><p>仮にコンパイルできても、a.x は参照型 A を見て &quot;A&quot; になる。</p></div></details></article><article class="question" id="q52" data-correct="E" data-max-select="1"><div class="badge">問52</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。（1つ選択）</p><pre><code>public class Sample {
     String name;
     int num;
     public Sample(String name, int num) {
         this.name = name;
         this.num = num;
     }
-}</code></pre>
-<pre><code>public class SubSample extends Sample {
+}</code></pre><pre><code>public class SubSample extends Sample {
     int price;
     public SubSample(int price) {
         this.price = price; // line A
@@ -1950,95 +810,31 @@ public class Main {
         super(name, num);　//line B
         this(price);
     }
-}</code></pre>
-<pre><code>public class Main {
+}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
         SubSample s1 = new SubSample(100);
         SubSample s2 = new SubSample(&quot;sample&quot;, 200, 100);
         System.out.println(s1.name + &quot;, &quot; + s1.num + &quot;, &quot; + s1.price);
         System.out.println(s2.name + &quot;, &quot; + s2.num + &quot;, &quot; + s2.price);
     }
-}</code></pre>
-<p>A. <code>sample 200 100</code> <code>sample 200 100</code></p>
-<p>B. <code>null 0 100</code></p>
-<p><code>sample 200 100</code></p>
-<p>C. SubSampleクラスのline Aだけでコンパイルエラーになる</p>
-<p>D. SubSampleクラスのline Bだけでコンパイルエラーになる</p>
-<p>E. SubSampleクラスのline Aとline Bの両方でコンパイルエラーになる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>E</div>
-          <p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q53">
-      <div class="qhead"><span class="badge">問53</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>interface A {
+}</code></pre><p>A. <code>sample 200 100</code> <code>sample 200 100</code></p><p>B. <code>null 0 100</code></p><p>   <code>sample 200 100</code></p><p>C. SubSampleクラスのline Aだけでコンパイルエラーになる</p><p>D. SubSampleクラスのline Bだけでコンパイルエラーになる</p><p>E. SubSampleクラスのline Aとline Bの両方でコンパイルエラーになる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>解説</h4><p>正答を判断するときは、最初にコンパイル時の規則（宣言、型、アクセス範囲、必須実装）を確認し、コンパイルできる場合だけ実行時の評価順序やオーバーライドを追います。各選択肢について、最初に規則へ反する箇所を1つ特定すると判断しやすくなります。</p></div></details></article><article class="question" id="q53" data-correct="E" data-max-select="1"><div class="badge">問53</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>interface A {
     public void sample();
-}</code></pre>
-<pre><code>interface B extends A {
+}</code></pre><pre><code>interface B extends A {
     public void test();
-}</code></pre>
-<pre><code>abstract class C implements B {
+}</code></pre><pre><code>abstract class C implements B {
     public void test() {
         System.out.println(&quot;A&quot;);
     }
-}</code></pre>
-<pre><code>class D extends C {
+}</code></pre><pre><code>class D extends C {
     public void test() {
         System.out.println(&quot;B&quot;);
     }
-}</code></pre>
-<pre><code>public class Main {
+}</code></pre><pre><code>public class Main {
     public static void main(String[] args) {
         C c = new D();
         c.test();
     }
-}</code></pre>
-<p>A.「A」と表示される</p>
-<p>B.「B」と表示される</p>
-<p>C. Bインタフェースでコンパイルエラーが発生する</p>
-<p>D. Cクラスでコンパイルエラーが発生する</p>
-<p>E. Dクラスでコンパイルエラーが発生する</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>E</div>
-          <p>解説：</p>
-<p>・Silver試験の見分け方</p>
-<p>インタフェース + 抽象クラスの問題が出たら</p>
-<p>インタフェースの抽象メソッドを数える</p>
-<p>抽象クラスで実装済みか確認する</p>
-<p>最後の具象クラスで未実装メソッドが残っていないか確認する</p>
-<p>・今回の要点</p>
-<p>C は abstract なので sample() 未実装でもOK</p>
-<p>D は具象クラスなので sample() を実装しなければならない</p>
-<p>よって 正解は E</p>
-        </div>
-      </details>
-    </article><article class="question" id="q54">
-      <div class="qhead"><span class="badge">問54</span></div>
-      <section class="body"><p>例外処理に関する説明として、正しいものを選びなさい。(2つ選択)</p>
-<p>A. finallyブロックは、tryブロックまたはcatchブロックのすぐ後ろに配置しなければいけない</p>
-<p>B. try-with-resourceのリソースを閉じる前に、finallyブロックが実行される</p>
-<p>C. tryブロックは複数のcatchブロックを持つことが出来る</p>
-<p>D. catchブロックは、一般的な型から特定の型への順に並べなければいけない</p>
-<p>E. tryブロックは、catchブロックとfinallyブロックを持たなければいけない</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A,C</div>
-          <p>解説：try は複数の catch を持てる</p>
-<p>catch は 子 → 親 の順で書く</p>
-<p>try-with-resources は close() → finally の順</p>
-        </div>
-      </details>
-    </article><article class="question" id="q55">
-      <div class="qhead"><span class="badge">問55</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Main {
+}</code></pre><p>A.「A」と表示される</p><p>B.「B」と表示される</p><p>C. Bインタフェースでコンパイルエラーが発生する</p><p>D. Cクラスでコンパイルエラーが発生する</p><p>E. Dクラスでコンパイルエラーが発生する</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>E</div><h4>解説</h4><p>解説：</p><p>・Silver試験の見分け方</p><p>　インタフェース + 抽象クラスの問題が出たら</p><p>　インタフェースの抽象メソッドを数える</p><p>　抽象クラスで実装済みか確認する</p><p>　最後の具象クラスで未実装メソッドが残っていないか確認する</p><p>・今回の要点</p><p>　C は abstract なので sample() 未実装でもOK</p><p>　D は具象クラスなので sample() を実装しなければならない</p><p>　よって 正解は E</p></div></details></article><article class="question" id="q54" data-correct="A,C" data-max-select="2"><div class="badge">問54</div><section class="body"><h3>問題文・コード・選択肢</h3><p>例外処理に関する説明として、正しいものを選びなさい。(2つ選択)</p><p>A. finallyブロックは、tryブロックまたはcatchブロックのすぐ後ろに配置しなければいけない</p><p>B. try-with-resourceのリソースを閉じる前に、finallyブロックが実行される</p><p>C. tryブロックは複数のcatchブロックを持つことが出来る</p><p>D. catchブロックは、一般的な型から特定の型への順に並べなければいけない</p><p>E. tryブロックは、catchブロックとfinallyブロックを持たなければいけない</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A,C</div><h4>解説</h4><p>解説：try は複数の catch を持てる</p><p>catch は 子 → 親 の順で書く</p><p>try-with-resources は close() → finally の順</p></div></details></article><article class="question" id="q55" data-correct="C" data-max-select="1"><div class="badge">問55</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Main {
     public static void main(String[] args) {
         try {
             throw new Exception();
@@ -2050,23 +846,7 @@ public class Main {
             System.out.println(&quot;B&quot;);
         }
     }
-}</code></pre>
-<p>A. Aが表示される</p>
-<p>B. Bが表示される</p>
-<p>C. コンパイルエラーが発生する</p>
-<p>D. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>C</div>
-          <p>解説：RuntimeException は Exception の子クラス</p>
-<p>catch(Exception) の後に catch(RuntimeException) は書けない到達不能な catch になるため コンパイルエラー</p>
-        </div>
-      </details>
-    </article><article class="question" id="q56">
-      <div class="qhead"><span class="badge">問56</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Main {
+}</code></pre><p>A. Aが表示される</p><p>B. Bが表示される</p><p>C. コンパイルエラーが発生する</p><p>D. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h4>解説</h4><p>解説：RuntimeException は Exception の子クラス</p><p>catch(Exception) の後に catch(RuntimeException) は書けない到達不能な catch になるため コンパイルエラー</p></div></details></article><article class="question" id="q56" data-correct="A" data-max-select="1"><div class="badge">問56</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Main {
     public static void main(String[] args) {
         String s1 = new String(&quot;Java&quot;);
         String s2 = &quot;Java&quot;;
@@ -2075,24 +855,7 @@ public class Main {
         System.out.print((s2 == s3) + &quot;, &quot;);
         System.out.print(s1 == s3);
     }
-}</code></pre>
-<p>A. 「false,true,false」と表示される</p>
-<p>B. 「true,true,true」と表示される</p>
-<p>C. 「true,false,false」と表示される</p>
-<p>D. 「true,true,false」と表示される</p>
-<p>E. 「false,false,false」と表示される</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>解説：new String("Java") は新しいオブジェクトを作る</p>
-<p>"Java" と intern() は同じ String Pool を参照する</p>
-        </div>
-      </details>
-    </article><article class="question" id="q57">
-      <div class="qhead"><span class="badge">問57</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Main {
+}</code></pre><p>A. 「false,true,false」と表示される</p><p>B. 「true,true,true」と表示される</p><p>C. 「true,false,false」と表示される</p><p>D. 「true,true,false」と表示される</p><p>E. 「false,false,false」と表示される</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button><button type="button" class="choice" data-choice="E" aria-pressed="false">E</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>解説：new String(&quot;Java&quot;) は新しいオブジェクトを作る</p><p>&quot;Java&quot; と intern() は同じ String Pool を参照する</p></div></details></article><article class="question" id="q57" data-correct="A" data-max-select="1"><div class="badge">問57</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Main {
     public static void main(String[] args) {
         char[][] arrays = {{&#x27;a&#x27;, &#x27;d&#x27;}, {&#x27;b&#x27;, &#x27;e&#x27;}, {&#x27;c&#x27;, &#x27;f&#x27;}};
         for (char[] array: arrays) {
@@ -2102,46 +865,7 @@ public class Main {
             System.out.print(&quot; &quot;);
         }
     }
-}</code></pre>
-<p>A. 「ad be cf」と表示される</p>
-<p>B. 「abc def」と表示される</p>
-<p>C. 「a d b e c f」と表示される</p>
-<p>D. 「adb ecf」と表示される</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>解説：char[][] は「配列の配列」、外側の拡張forで1行ずつ取得</p>
-<p>### 58. 次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<p>```java</p>
-<p>public class A {</p>
-<p>protected A() {</p>
-<p>this(2);</p>
-<p>System.out.print("1");</p>
-<p>}</p>
-<p>protected A(int a) {</p>
-<p>System.out.print(a);</p>
-<p>}</p>
-<p>}</p>
-<p>```</p>
-<p>```java</p>
-<p>public class B extends A {</p>
-<p>B() {</p>
-<p>this(4);</p>
-<p>System.out.print("3");</p>
-<p>}</p>
-<p>B(int b) {</p>
-<p>System.out.print(b);</p>
-<p>}</p>
-<p>}</p>
-<p>```</p>
-<p>```java</p>
-<p>public class Main {</p>
-<p>public static void main(String [] args) {</p>
-<p>B b = new B();</p>
-<p>}</p>
-<p>}</p>
-<pre><code>
+}</code></pre><p>A. 「ad be cf」と表示される</p><p>B. 「abc def」と表示される</p><p>C. 「a d b e c f」と表示される</p><p>D. 「adb ecf」と表示される</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>解説：char[][] は「配列の配列」、外側の拡張forで1行ずつ取得</p><p> ### 58. 次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><p> ```java</p><p> public class A {</p><p>    protected A() {</p><p>        this(2);</p><p>        System.out.print(&quot;1&quot;);</p><p>    }</p><p>    protected A(int a) {</p><p>        System.out.print(a);</p><p>    }</p><p> }</p><p> ```</p><p> ```java</p><p> public class B extends A {</p><p>    B() {</p><p>        this(4);</p><p>        System.out.print(&quot;3&quot;);</p><p>    }</p><p>    B(int b) {</p><p>        System.out.print(b);</p><p>    }</p><p> }</p><p> ```</p><p> ```java</p><p> public class Main {</p><p>    public static void main(String [] args) {</p><p>        B b = new B();</p><p>    }</p><p> }</p><pre><code>
 A. 2143が表示される
 B. 1234が表示される
 C. 4321が表示される
@@ -2156,65 +880,11 @@ this() を最優先でたどる
 this() は同一クラスの別コンストラクタへ移動
 super() は親コンストラクタへ移動
 実行順は A(int) → A() → B(int) → B()
-</code></pre>
-<p>new B()</p>
-<p>↓</p>
-<p>B()</p>
-<p>↓ this(4)</p>
-<p>B(4)</p>
-<p>↓ super()</p>
-<p>A()</p>
-<p>↓ this(2)</p>
-<p>A(2) → 2</p>
-<p>A()  → 1</p>
-<p>B(4) → 4</p>
-<p>B()  → 3</p>
-        </div>
-      </details>
-    </article><article class="question" id="q58">
-      <div class="qhead"><span class="badge">問58</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<p>```java</p>
-<p>public class A {</p>
-<p>protected A() {</p>
-<p>this(2);</p>
-<p>System.out.print("1");</p>
-<p>}</p>
-<p>protected A(int a) {</p>
-<p>System.out.print(a);</p>
-<p>}</p>
-<p>}</p>
-<p>```</p>
-<p>```java</p>
-<p>public class B extends A {</p>
-<p>B() {</p>
-<p>this(4);</p>
-<p>System.out.print("3");</p>
-<p>}</p>
-<p>B(int b) {</p>
-<p>System.out.print(b);</p>
-<p>}</p>
-<p>}</p>
-<p>```</p>
-<p>```java</p>
-<p>public class Main {</p>
-<p>public static void main(String [] args) {</p>
-<p>B b = new B();</p>
-<p>}</p>
-<p>}</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>A</div>
-          <p>解説：コンストラクタ問題が出たら、</p>
-<p>this() を最優先でたどる</p>
-<p>次に super() をたどる</p>
-<p>親コンストラクタから戻ってくる</p>
-<p>出力順を書く</p>
-<p>this() は同一クラスの別コンストラクタへ移動</p>
-<p>super() は親コンストラクタへ移動</p>
-<p>実行順は A(int) → A() → B(int) → B()</p>
-<pre><code>new B()
+</code></pre><p>new B()</p><p>↓</p><p>B()</p><p> ↓ this(4)</p><p>B(4)</p><p> ↓ super()</p><p>A()</p><p> ↓ this(2)</p><p>A(2) → 2</p><p>A()  → 1</p><p>B(4) → 4</p><p>B()  → 3</p><pre><code></code></pre></div></details></article><article class="question" id="q58" data-correct="A" data-max-select="1"><div class="badge">問58</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><p> ```java</p><p> public class A {</p><p>    protected A() {</p><p>        this(2);</p><p>        System.out.print(&quot;1&quot;);</p><p>    }</p><p>    protected A(int a) {</p><p>        System.out.print(a);</p><p>    }</p><p> }</p><p> ```</p><p> ```java</p><p> public class B extends A {</p><p>    B() {</p><p>        this(4);</p><p>        System.out.print(&quot;3&quot;);</p><p>    }</p><p>    B(int b) {</p><p>        System.out.print(b);</p><p>    }</p><p> }</p><p> ```</p><p> ```java</p><p> public class Main {</p><p>    public static void main(String [] args) {</p><p>        B b = new B();</p><p>    }</p><p> }</p><pre><code>
+A. 2143が表示される
+B. 1234が表示される
+C. 4321が表示される
+D. 3421が表示される</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>A</div><h4>解説</h4><p>解説：コンストラクタ問題が出たら、</p><p>this() を最優先でたどる</p><p>次に super() をたどる</p><p>親コンストラクタから戻ってくる</p><p>出力順を書く</p><p>this() は同一クラスの別コンストラクタへ移動</p><p>super() は親コンストラクタへ移動</p><p>実行順は A(int) → A() → B(int) → B()</p><pre><code>new B()
 
 ↓
 B()
@@ -2229,13 +899,7 @@ A()
 A(2) → 2
 A()  → 1
 B(4) → 4
-B()  → 3</code></pre>
-        </div>
-      </details>
-    </article><article class="question" id="q59">
-      <div class="qhead"><span class="badge">問59</span></div>
-      <section class="body"><p>次のプログラムを実行し、「abcd」と表示したい。「// insert code here」に入るコードとして、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Sample {
+B()  → 3</code></pre></div></details></article><article class="question" id="q59" data-correct="D" data-max-select="1"><div class="badge">問59</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムを実行し、「abcd」と表示したい。「// insert code here」に入るコードとして、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Sample {
     public static void main(String[] args) {
         String[][] array = new String[2][2];
         array[0][0] = &quot;a&quot;;
@@ -2244,44 +908,25 @@ B()  → 3</code></pre>
         array[1][1] = &quot;d&quot;;
         // insert code here
     }
-}</code></pre>
-<p>A.</p>
-<pre><code>for (int i = 1; i &lt; 2; i++) {
+}</code></pre><p>A.</p><pre><code>for (int i = 1; i &lt; 2; i++) {
     for (int j = 1; j &lt; 2; j++) {
         System.out.print(array[i][j]);
     }
-}</code></pre>
-<p>B.</p>
-<pre><code>for (int i = 0; i &lt; 2; ++i) {
+}</code></pre><p>B.</p><pre><code>for (int i = 0; i &lt; 2; ++i) {
     for (int j = 0; j &lt; i; ++j) {
         System.out.print(array[i][j]);
     }
-}</code></pre>
-<p>C.</p>
-<pre><code>for (String a : array) {
+}</code></pre><p>C.</p><pre><code>for (String a : array) {
     for (String b : array) {
         System.out.println(b);
     }
-}</code></pre>
-<p>D.</p>
-<pre><code>for (int = 0; i &lt; 2;) {
+}</code></pre><p>D.</p><pre><code>for (int = 0; i &lt; 2;) {
     for (int j = 0; j &lt; 2;) {
         System.out.print(array[i][j]);
         j++;
     }
     i++;
-}</code></pre></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>Dは添字0、1を二重ループで順に走査するため、a、b、c、dの順に表示します。AとBは全要素を走査せず、Cは配列要素の型が一致しません。</p>
-        </div>
-      </details>
-    </article><article class="question" id="q60">
-      <div class="qhead"><span class="badge">問60</span></div>
-      <section class="body"><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-<pre><code>public class Main {
+}</code></pre><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>Dは添字0、1を二重ループで順に走査するため、a、b、c、dの順に表示します。AとBは全要素を走査せず、Cは配列要素の型が一致しません。</p></div></details></article><article class="question" id="q60" data-correct="D" data-max-select="1"><div class="badge">問60</div><section class="body"><h3>問題文・コード・選択肢</h3><p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p><pre><code>public class Main {
     public static void main(String[] args) {
         String[] str = new String[2];
         int i = 0;
@@ -2293,54 +938,4 @@ B()  → 3</code></pre>
             System.out.println(str[i]);
         }
     }
-}</code></pre>
-<p>A. <code>e0</code> <code>e1</code></p>
-<p>B. <code>null e0</code> <code>null e1</code></p>
-<p>C. <code>null</code> <code>null</code></p>
-<p>D. 実行時に例外がスローされる</p></section>
-      <details class="answer">
-        <summary>正答・解説を表示</summary>
-        <div class="answer-inner">
-          <div class="correct"><b>正答：</b>D</div>
-          <p>解説：new String[2] の要素は null</p>
-<p>null.concat(...) は NullPointerException</p>
-<p>String は不変なので concat() は代入しないと反映されない</p>
-        </div>
-      </details>
-    </article>
-  </main>
-  <script>
-const qs=[...document.querySelectorAll('.question')];
-let idx=0;
-const STORE='javaSilver_black_mock1_progress_v2';
-let state={answers:{},graded:{},elapsed:0};
-let lastTick=Date.now();
-function go(d){idx=Math.max(0,Math.min(qs.length-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth',block:'start'});update();}
-function update(){document.getElementById('pos').textContent=(idx+1)+' / '+qs.length;}
-function letters(s){return (s.toUpperCase().match(/[A-H]/g)||[]).filter((v,i,a)=>a.indexOf(v)===i).sort();}
-function correctFor(q){const x=q.querySelector('.correct').textContent.replace(/^.*?正答[：:]\s*/,'');return letters(x);}
-function choiceStart(el){const t=el.textContent.trim();const m=t.match(/^([A-H])[\.．。]\s*/);return m?m[1]:null;}
-function prepareChoices(q){
- const body=q.querySelector('.body'), children=[...body.children]; let groups=[];
- for(let i=0;i<children.length;i++){const letter=choiceStart(children[i]);if(!letter)continue;let nodes=[children[i]];let j=i+1;while(j<children.length&&!choiceStart(children[j])){nodes.push(children[j]);j++;}groups.push({letter,nodes});i=j-1;}
- groups.forEach(g=>{const wrap=document.createElement('div');wrap.className='choice-option';wrap.dataset.choice=g.letter;wrap.tabIndex=0;g.nodes[0].before(wrap);g.nodes.forEach(n=>wrap.appendChild(n));wrap.addEventListener('click',()=>selectChoice(q,g.letter));wrap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectChoice(q,g.letter);}});});
-}
-function selectChoice(q,letter){
- const n=q.id.slice(1), multi=/[（(][２2３3]|[２2３3]つ選択/.test(q.querySelector('.body').textContent);let a=state.answers[n]||[];
- if(multi){a=a.includes(letter)?a.filter(x=>x!==letter):[...a,letter].sort();}else a=[letter];
- state.answers[n]=a;delete state.graded[n];q.querySelector('.answer').open=false;paint(q);saveState();refreshStats();
-}
-function paint(q){const n=q.id.slice(1),selected=state.answers[n]||[],graded=state.graded[n];q.querySelectorAll('.choice-option').forEach(c=>{c.classList.toggle('selected',selected.includes(c.dataset.choice));c.classList.remove('correct-choice','wrong-choice');if(graded){const correct=correctFor(q);if(correct.includes(c.dataset.choice))c.classList.add('correct-choice');else if(selected.includes(c.dataset.choice))c.classList.add('wrong-choice');}});let note=q.querySelector('.grade-note');if(note)note.remove();if(graded){note=document.createElement('div');note.className='grade-note '+(graded.ok?'ok':'ng');note.textContent=graded.ok?'正解です':'不正解です（あなたの解答：'+(selected.join(', ')||'未解答')+'）';q.querySelector('.answer-inner').prepend(note);}}
-function grade(q){const n=q.id.slice(1),selected=(state.answers[n]||[]).slice().sort(),correct=correctFor(q);state.graded[n]={ok:JSON.stringify(selected)===JSON.stringify(correct),at:new Date().toISOString()};paint(q);saveState();refreshStats();}
-function fmt(sec){sec=Math.floor(sec);return [Math.floor(sec/3600),Math.floor(sec%3600/60),sec%60].map(x=>String(x).padStart(2,'0')).join(':');}
-function refreshStats(){const answered=Object.values(state.answers).filter(a=>a.length).length,graded=Object.keys(state.graded).length,correct=Object.values(state.graded).filter(x=>x.ok).length;document.getElementById('answeredCount').textContent=answered;document.getElementById('gradedCount').textContent=graded;document.getElementById('correctCount').textContent=correct;document.getElementById('elapsedTime').textContent=fmt(state.elapsed);}
-function saveState(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){}}
-function loadState(){try{const x=JSON.parse(localStorage.getItem(STORE)||'null');if(x)state={answers:x.answers||{},graded:x.graded||{},elapsed:x.elapsed||0};}catch(e){}qs.forEach(paint);refreshStats();}
-
-qs.forEach(q=>{prepareChoices(q);q.querySelector('.answer').addEventListener('toggle',e=>{if(e.target.open)grade(q);});});
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);update();}})},{rootMargin:'-35% 0px -55%'});qs.forEach(q=>obs.observe(q));
-document.addEventListener('visibilitychange',()=>{if(document.hidden){state.elapsed+=(Date.now()-lastTick)/1000;saveState();}lastTick=Date.now();});setInterval(()=>{if(!document.hidden){const now=Date.now();state.elapsed+=(now-lastTick)/1000;lastTick=now;refreshStats();if(Math.floor(state.elapsed)%15===0)saveState();}},1000);window.addEventListener('beforeunload',()=>{if(!document.hidden)state.elapsed+=(Date.now()-lastTick)/1000;saveState();});
-loadState();update();
-  </script>
-</body>
-</html>
+}</code></pre><p>A. <code>e0</code> <code>e1</code></p><p>B. <code>null e0</code> <code>null e1</code></p><p>C. <code>null</code> <code>null</code></p><p>D. 実行時に例外がスローされる</p><div class="answer-controls"><b>回答を選択</b><div class="choice-grid"><button type="button" class="choice" data-choice="A" aria-pressed="false">A</button><button type="button" class="choice" data-choice="B" aria-pressed="false">B</button><button type="button" class="choice" data-choice="C" aria-pressed="false">C</button><button type="button" class="choice" data-choice="D" aria-pressed="false">D</button></div></div></section><details class="answer"><summary>正答・解説を表示</summary><div class="grade-result"></div><div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h4>解説</h4><p>解説：new String[2] の要素は null</p><p>null.concat(...) は NullPointerException</p><p>String は不変なので concat() は代入しないと反映されない</p></div></details></article></main><script>(()=>{const qs=[...document.querySelectorAll('.question')],state={answers:{},graded:{}},key='javaSilver:black_mock1:corrected:v1';let idx=0,elapsed=0,last=Date.now(),store=true;try{const s=JSON.parse(localStorage.getItem(key)||'null');if(s){Object.assign(state,s);elapsed=+s.elapsed||0}}catch(e){store=false}const A=q=>[...new Set(state.answers[q.id]||[])],C=q=>q.dataset.correct.split(',').filter(Boolean).sort(),R=q=>{let a=A(q).sort(),c=C(q);return a.length===c.length&&a.every((v,i)=>v===c[i])};function save(){if(store)try{localStorage.setItem(key,JSON.stringify({...state,elapsed}))}catch(e){store=false}}function fmt(s){s=Math.floor(s);return[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,'0')).join(':')}function paint(q){let a=new Set(A(q)),g=state.graded[q.id],c=new Set(C(q));q.querySelectorAll('.choice').forEach(b=>{let x=b.dataset.choice;b.classList.toggle('selected',a.has(x)&&!g);b.classList.toggle('correct-choice',g&&c.has(x));b.classList.toggle('wrong-choice',g&&a.has(x)&&!c.has(x))});let r=q.querySelector('.grade-result');r.className='grade-result';if(g){let pass=R(q),mine=A(q).join(', ')||'未解答';r.classList.add(pass?'pass':'fail');r.textContent=(pass?'正解です':'不正解です')+`（選択：${mine}）`}}function stats(){answeredCount.textContent=qs.filter(q=>A(q).length).length;gradedCount.textContent=qs.filter(q=>state.graded[q.id]).length;correctCount.textContent=qs.filter(q=>state.graded[q.id]&&R(q)).length;elapsedTime.textContent=fmt(elapsed)}function choose(q,x){let a=A(q),i=a.indexOf(x),max=+q.dataset.maxSelect||1;if(i>=0)a.splice(i,1);else if(max===1)a.splice(0,a.length,x);else{if(a.length>=max)a.shift();a.push(x)}state.answers[q.id]=a;paint(q);stats();save()}qs.forEach(q=>{q.querySelectorAll('.choice').forEach(b=>b.onclick=()=>choose(q,b.dataset.choice));q.querySelector('details').ontoggle=e=>{if(e.currentTarget.open){state.graded[q.id]=true;paint(q);stats();save()}};paint(q)});window.go=d=>{idx=Math.max(0,Math.min(qs.length-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth'});pos()};function pos(){document.getElementById('pos').textContent=`${idx+1} / ${qs.length}`}new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);pos()}}),{rootMargin:'-25% 0px -65%'}).observe(qs[0]);const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);pos()}}),{rootMargin:'-25% 0px -65%'});qs.forEach(q=>ob.observe(q));document.addEventListener('visibilitychange',()=>{last=Date.now();save()});setInterval(()=>{let n=Date.now();if(!document.hidden)elapsed+=(n-last)/1000;last=n;stats()},1000);window.addEventListener('beforeunload',save);pos();stats()})();</script></body></html>
