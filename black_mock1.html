@@ -36,12 +36,27 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
 @media(max-width:600px) { header{padding:22px 18px}.toolbar{flex-wrap:wrap;justify-content:space-between}.home-button{width:100%;text-align:center}.question{padding:18px 16px;border-radius:14px}pre{font-size:13px}.choice{font-size:16px} }
 @media print { .toolbar,#index{display:none}.question{break-inside:avoid;box-shadow:none}details.answer:not([open])>*:not(summary){display:block}details.answer summary{display:none} }
 
-  </style>
+  
+/* 学習機能 */
+.choice-option{border:2px solid var(--line);border-radius:14px;padding:11px 14px;margin:9px 0;cursor:pointer;transition:.15s;background:#fff;}
+.choice-option:hover{border-color:#8bb9f4;background:#f6faff}.choice-option.selected{border-color:#1769e8;background:#dbeafe;box-shadow:0 0 0 2px #1769e833}.choice-option.correct-choice{border-color:#159447;background:#ecfdf3}.choice-option.wrong-choice{border-color:#dc2626;background:#fff1f2}.grade-note{margin:12px 0 0;padding:10px 13px;border-radius:10px;font-weight:800}.grade-note.ok{color:#116b35;background:#dcfce7}.grade-note.ng{color:#a31515;background:#fee2e2}.exam-stats{max-width:980px;margin:16px auto;padding:0 16px}.stats-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}.stats-card strong{color:var(--navy)}.print-summary{display:none}
+@media(max-width:600px){.choice-option{padding:10px 12px}}
+@media print{header,main{display:none!important}.exam-stats{margin:0;max-width:none}.stats-card{display:none}.print-summary{display:block}.print-summary table{width:100%;border-collapse:collapse;font-size:11px}.print-summary th,.print-summary td{border:1px solid #999;padding:4px;text-align:left}.print-summary h1{font-size:22px}.print-summary .ok{color:#08752f}.print-summary .ng{color:#b91c1c}}
+
+
+/* コンパクト固定ナビ＋学習状況 */
+.toolbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);}
+.exam-stats{position:sticky;top:88px;z-index:49;margin:0 auto;padding:0 16px;background:rgba(245,248,252,.97);backdrop-filter:blur(8px);}
+.exam-stats .stats-card{max-width:980px;margin:0 auto;padding:6px 14px;min-height:32px;border-radius:0 0 12px 12px;border-top:0;gap:5px 16px;font-size:14px;box-shadow:0 2px 8px #12345b12;}
+.exam-stats .stats-card span{white-space:nowrap;}
+@media(max-width:700px){.toolbar{padding-top:6px;padding-bottom:6px;gap:7px}.toolbar .home-button,.toolbar button{padding:8px 11px;font-size:14px}.toolbar .progress{font-size:15px}.exam-stats{top:58px;padding:0 6px}.exam-stats .stats-card{font-size:12px;padding:5px 8px;gap:3px 10px;justify-content:center}}
+
+</style>
 </head>
 <body>
   <header>
     <h1>Java Silver 黒本 模擬試験①</h1>
-    <p>全60問。正答・解説は各問題の下で開閉できます。</p>
+    <p>全60問。選択内容は自動保存され、正答・解説を開くと採点されます。</p>
   </header>
   <div class="toolbar">
     <a class="home-button" href="index.html">はじめの画面に戻る</a>
@@ -49,6 +64,17 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
     <span class="progress" id="pos">1 / 60</span>
     <button type="button" onclick="go(1)">次へ</button>
   </div>
+  <section class="exam-stats" aria-label="学習状況">
+    <div class="stats-card">
+      <span><strong>解答：</strong><span id="answeredCount">0</span> / 60</span>
+      <span><strong>採点済：</strong><span id="gradedCount">0</span></span>
+      <span><strong>正解：</strong><span id="correctCount">0</span></span>
+      <span><strong>閲覧時間：</strong><span id="elapsedTime">00:00:00</span></span>
+    </div>
+    
+  </section>
+
+
   <section id="index">
     <details><summary>問題一覧</summary><nav><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a><a href="#q25">25</a><a href="#q26">26</a><a href="#q27">27</a><a href="#q28">28</a><a href="#q29">29</a><a href="#q30">30</a><a href="#q31">31</a><a href="#q32">32</a><a href="#q33">33</a><a href="#q34">34</a><a href="#q35">35</a><a href="#q36">36</a><a href="#q37">37</a><a href="#q38">38</a><a href="#q39">39</a><a href="#q40">40</a><a href="#q41">41</a><a href="#q42">42</a><a href="#q43">43</a><a href="#q44">44</a><a href="#q45">45</a><a href="#q46">46</a><a href="#q47">47</a><a href="#q48">48</a><a href="#q49">49</a><a href="#q50">50</a><a href="#q51">51</a><a href="#q52">52</a><a href="#q53">53</a><a href="#q54">54</a><a href="#q55">55</a><a href="#q56">56</a><a href="#q57">57</a><a href="#q58">58</a><a href="#q59">59</a><a href="#q60">60</a></nav></details>
   </section>
@@ -2287,10 +2313,35 @@ B()  → 3</code></pre>
   <script>
 const qs=[...document.querySelectorAll('.question')];
 let idx=0;
+const STORE='javaSilver_black_mock1_progress_v2';
+let state={answers:{},graded:{},elapsed:0};
+let lastTick=Date.now();
 function go(d){idx=Math.max(0,Math.min(qs.length-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth',block:'start'});update();}
 function update(){document.getElementById('pos').textContent=(idx+1)+' / '+qs.length;}
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);update();}})},{rootMargin:'-35% 0px -55%'});
-qs.forEach(q=>obs.observe(q));update();
+function letters(s){return (s.toUpperCase().match(/[A-H]/g)||[]).filter((v,i,a)=>a.indexOf(v)===i).sort();}
+function correctFor(q){const x=q.querySelector('.correct').textContent.replace(/^.*?正答[：:]\s*/,'');return letters(x);}
+function choiceStart(el){const t=el.textContent.trim();const m=t.match(/^([A-H])[\.．。]\s*/);return m?m[1]:null;}
+function prepareChoices(q){
+ const body=q.querySelector('.body'), children=[...body.children]; let groups=[];
+ for(let i=0;i<children.length;i++){const letter=choiceStart(children[i]);if(!letter)continue;let nodes=[children[i]];let j=i+1;while(j<children.length&&!choiceStart(children[j])){nodes.push(children[j]);j++;}groups.push({letter,nodes});i=j-1;}
+ groups.forEach(g=>{const wrap=document.createElement('div');wrap.className='choice-option';wrap.dataset.choice=g.letter;wrap.tabIndex=0;g.nodes[0].before(wrap);g.nodes.forEach(n=>wrap.appendChild(n));wrap.addEventListener('click',()=>selectChoice(q,g.letter));wrap.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectChoice(q,g.letter);}});});
+}
+function selectChoice(q,letter){
+ const n=q.id.slice(1), multi=/[（(][２2３3]|[２2３3]つ選択/.test(q.querySelector('.body').textContent);let a=state.answers[n]||[];
+ if(multi){a=a.includes(letter)?a.filter(x=>x!==letter):[...a,letter].sort();}else a=[letter];
+ state.answers[n]=a;delete state.graded[n];q.querySelector('.answer').open=false;paint(q);saveState();refreshStats();
+}
+function paint(q){const n=q.id.slice(1),selected=state.answers[n]||[],graded=state.graded[n];q.querySelectorAll('.choice-option').forEach(c=>{c.classList.toggle('selected',selected.includes(c.dataset.choice));c.classList.remove('correct-choice','wrong-choice');if(graded){const correct=correctFor(q);if(correct.includes(c.dataset.choice))c.classList.add('correct-choice');else if(selected.includes(c.dataset.choice))c.classList.add('wrong-choice');}});let note=q.querySelector('.grade-note');if(note)note.remove();if(graded){note=document.createElement('div');note.className='grade-note '+(graded.ok?'ok':'ng');note.textContent=graded.ok?'正解です':'不正解です（あなたの解答：'+(selected.join(', ')||'未解答')+'）';q.querySelector('.answer-inner').prepend(note);}}
+function grade(q){const n=q.id.slice(1),selected=(state.answers[n]||[]).slice().sort(),correct=correctFor(q);state.graded[n]={ok:JSON.stringify(selected)===JSON.stringify(correct),at:new Date().toISOString()};paint(q);saveState();refreshStats();}
+function fmt(sec){sec=Math.floor(sec);return [Math.floor(sec/3600),Math.floor(sec%3600/60),sec%60].map(x=>String(x).padStart(2,'0')).join(':');}
+function refreshStats(){const answered=Object.values(state.answers).filter(a=>a.length).length,graded=Object.keys(state.graded).length,correct=Object.values(state.graded).filter(x=>x.ok).length;document.getElementById('answeredCount').textContent=answered;document.getElementById('gradedCount').textContent=graded;document.getElementById('correctCount').textContent=correct;document.getElementById('elapsedTime').textContent=fmt(state.elapsed);}
+function saveState(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){}}
+function loadState(){try{const x=JSON.parse(localStorage.getItem(STORE)||'null');if(x)state={answers:x.answers||{},graded:x.graded||{},elapsed:x.elapsed||0};}catch(e){}qs.forEach(paint);refreshStats();}
+
+qs.forEach(q=>{prepareChoices(q);q.querySelector('.answer').addEventListener('toggle',e=>{if(e.target.open)grade(q);});});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);update();}})},{rootMargin:'-35% 0px -55%'});qs.forEach(q=>obs.observe(q));
+document.addEventListener('visibilitychange',()=>{if(document.hidden){state.elapsed+=(Date.now()-lastTick)/1000;saveState();}lastTick=Date.now();});setInterval(()=>{if(!document.hidden){const now=Date.now();state.elapsed+=(now-lastTick)/1000;lastTick=now;refreshStats();if(Math.floor(state.elapsed)%15===0)saveState();}},1000);window.addEventListener('beforeunload',()=>{if(!document.hidden)state.elapsed+=(Date.now()-lastTick)/1000;saveState();});
+loadState();update();
   </script>
 </body>
 </html>
