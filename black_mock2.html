@@ -60,7 +60,19 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
  .toolbar-wrap .progress{min-width:58px;font-size:13px}.study-status{gap:4px;padding:3px 5px 5px;font-size:11px;overflow-x:auto;justify-content:flex-start}
  .question{scroll-margin-top:84px}.choice{padding:10px 12px;margin:8px 0;font-size:15px}
 }
-</style><style>/* Stable separate answer controls */.body .choice[data-choice]{cursor:default;user-select:text}.body .choice[data-choice]:hover,.body .choice[data-choice].selected,.body .choice[data-choice].correct-choice,.body .choice[data-choice].wrong-choice{background:transparent;border-color:var(--line);box-shadow:none;color:inherit}.answer-controls{margin-top:18px;padding:13px;background:#f8fbff;border:1px solid var(--line);border-radius:13px}.answer-control-label{font-weight:800;color:var(--navy);margin-bottom:8px}.answer-choice-grid{display:flex;flex-wrap:wrap;gap:8px}.answer-choice{touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:48px;border:2px solid var(--line);border-radius:11px;padding:9px 14px;background:#fff;color:#1769e8;font-size:17px;font-weight:900;cursor:pointer}.answer-choice:active{transform:scale(.97)}.answer-choice.selected{background:#e8f2ff;border-color:#1769e8;box-shadow:0 0 0 1px #1769e8 inset}.answer-choice.correct-choice{background:#e9f8ef;border-color:#159447;color:#0d7135}.answer-choice.wrong-choice{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}@media(max-width:600px){.answer-controls{padding:10px}.answer-choice{min-width:42px;padding:7px 11px;font-size:15px}}</style></head>
+</style><style>/* Stable separate answer controls */.body .choice[data-choice]{cursor:default;user-select:text}.body .choice[data-choice]:hover,.body .choice[data-choice].selected,.body .choice[data-choice].correct-choice,.body .choice[data-choice].wrong-choice{background:transparent;border-color:var(--line);box-shadow:none;color:inherit}.answer-controls{margin-top:18px;padding:13px;background:#f8fbff;border:1px solid var(--line);border-radius:13px}.answer-control-label{font-weight:800;color:var(--navy);margin-bottom:8px}.answer-choice-grid{display:flex;flex-wrap:wrap;gap:8px}.answer-choice{touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:48px;border:2px solid var(--line);border-radius:11px;padding:9px 14px;background:#fff;color:#1769e8;font-size:17px;font-weight:900;cursor:pointer}.answer-choice:active{transform:scale(.97)}.answer-choice.selected{background:#e8f2ff;border-color:#1769e8;box-shadow:0 0 0 1px #1769e8 inset}.answer-choice.correct-choice{background:#e9f8ef;border-color:#159447;color:#0d7135}.answer-choice.wrong-choice{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}@media(max-width:600px){.answer-controls{padding:10px}.answer-choice{min-width:42px;padding:7px 11px;font-size:15px}}</style><style>/* FINAL answer-button UI: selection choices are plain text; only answer controls are interactive */
+.body .choice,.body [data-choice]{border:0!important;border-radius:0!important;padding:0!important;margin:.55em 0!important;background:transparent!important;box-shadow:none!important;color:inherit!important;cursor:text!important;user-select:text!important;white-space:pre-wrap}
+.body .choice:hover,.body [data-choice]:hover{border:0!important;background:transparent!important;color:inherit!important}
+.answer-controls{margin-top:18px;padding:13px;background:#f8fbff;border:1px solid var(--line);border-radius:13px}
+.answer-control-label{font-weight:800;color:var(--navy);margin-bottom:8px}.answer-choice-grid{display:flex;flex-wrap:wrap;gap:8px}
+.answer-choice{touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-width:48px;border:2px solid var(--line);border-radius:11px;padding:9px 14px;background:#fff;color:#1769e8;font-size:17px;font-weight:900;cursor:pointer}
+.answer-choice:active{transform:scale(.97)}.answer-choice.selected{background:#e8f2ff;border-color:#1769e8;box-shadow:0 0 0 1px #1769e8 inset}.answer-choice.correct-choice{background:#e9f8ef;border-color:#159447;color:#0d7135}.answer-choice.wrong-choice{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}
+@media(max-width:600px){.answer-controls{padding:10px}.answer-choice{min-width:42px;padding:7px 11px;font-size:15px}}</style><style>
+/* Reset button */
+.toolbar .reset-button{background:#64748b;color:#fff}
+.toolbar .reset-button:hover{background:#475569}
+@media(max-width:600px){.toolbar .reset-button{padding:7px 9px;font-size:13px}}
+</style></head>
 <body>
 <header>
 <h1>Java Silver 黒本 模擬試験②</h1>
@@ -70,7 +82,7 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
 <a class="home-button" href="index.html">はじめの画面に戻る</a>
 <button onclick="go(-1)" type="button">前へ</button>
 <span class="progress" id="pos">1 / 60</span>
-<button onclick="go(1)" type="button">次へ</button>
+<button onclick="go(1)" type="button">次へ</button><button class="reset-button" onclick="resetQuiz()" title="選択・採点・解説表示・閲覧時間をリセット" type="button">リセット</button>
 </div><div aria-live="polite" class="study-status"><span>解答 <b id="answeredCount">0</b>/<b id="totalCount">0</b></span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div></div>
 <section id="index">
 <details><summary>問題一覧</summary><nav><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a><a href="#q25">25</a><a href="#q26">26</a><a href="#q27">27</a><a href="#q28">28</a><a href="#q29">29</a><a href="#q30">30</a><a href="#q31">31</a><a href="#q32">32</a><a href="#q33">33</a><a href="#q34">34</a><a href="#q35">35</a><a href="#q36">36</a><a href="#q37">37</a><a href="#q38">38</a><a href="#q39">39</a><a href="#q40">40</a><a href="#q41">41</a><a href="#q42">42</a><a href="#q43">43</a><a href="#q44">44</a><a href="#q45">45</a><a href="#q46">46</a><a href="#q47">47</a><a href="#q48">48</a><a href="#q49">49</a><a href="#q50">50</a><a href="#q51">51</a><a href="#q52">52</a><a href="#q53">53</a><a href="#q54">54</a><a href="#q55">55</a><a href="#q56">56</a><a href="#q57">57</a><a href="#q58">58</a><a href="#q59">59</a><a href="#q60">60</a></nav></details>
@@ -92,7 +104,7 @@ p code,.answer code { background:#edf2f7; padding:.08em .35em; border-radius:5px
 <p class="choice" data-choice="C">C. 1, 10, nullが表示される</p>
 <p class="choice" data-choice="D">D. 1, 10L, 0が表示される</p>
 <p class="choice" data-choice="E">E. 実行時に例外がスローされる</p>
-<p class="choice" data-choice="F">F. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -120,7 +132,7 @@ class B {
 <p class="choice" data-choice="D">D. このコードは、javac B.javaでコンパイルでき、java Bで実行できる</p>
 <p class="choice" data-choice="E">E. このコードは、javac A.javaでコンパイルでき、java Aで実行できる</p>
 <p class="choice" data-choice="F">F. このコードはコンパイルエラーになる。AとBは異なるソースファイルに保存しなければならない。</p>
-<p class="choice" data-choice="G">G. このコードはコンパイルエラーになる。ファイル名をB.javaにする必要がある。</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
+<p class="choice" data-choice="G">G. このコードはコンパイルエラーになる。ファイル名をB.javaにする必要がある。</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -153,7 +165,7 @@ class B {
 <p class="choice" data-choice="A">A. 何も表示されない</p>
 <p class="choice" data-choice="B">B. ""が表示される</p>
 <p class="choice" data-choice="C">C. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="D">D. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -190,7 +202,7 @@ class B {
 <p class="choice" data-choice="D">D. D</p>
 <p class="choice" data-choice="E">E. E</p>
 <p class="choice" data-choice="F">F. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="G">G. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
+<p class="choice" data-choice="G">G. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -225,7 +237,7 @@ class B {
 <p class="choice" data-choice="C">C. Cが出力される</p>
 <p class="choice" data-choice="D">D. 何も出力されない</p>
 <p class="choice" data-choice="E">E. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="F">F. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -274,7 +286,7 @@ final class C extends B implements A { //(10)
 <p class="choice" data-choice="F">F. (6)</p>
 <p class="choice" data-choice="G">G. (7)</p>
 <p class="choice" data-choice="H">H. (8)</p>
-<p class="choice" data-choice="I">I. (9)</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button><button aria-pressed="false" class="answer-choice" data-answer-choice="I" type="button">I</button></div></div></section>
+<p class="choice" data-choice="I">I. (9)</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button><button aria-pressed="false" class="answer-choice" data-answer-choice="I" type="button">I</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -316,7 +328,7 @@ class B extends A {
 <p class="choice" data-choice="C">C. 10,10|20,20|11,11|21,21|</p>
 <p class="choice" data-choice="D">D. 10,11|20,20|11,11|21,21|</p>
 <p class="choice" data-choice="E">E. 10,10|10,20|20,20|21,21|</p>
-<p class="choice" data-choice="F">F. 10,11|10,11|20,11|21,21|</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. 10,11|10,11|20,11|21,21|</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -359,7 +371,7 @@ class B extends A {
 <p class="choice" data-choice="E">E. Cのみ表示される</p>
 <p class="choice" data-choice="F">F. C,Eの順に表示される</p>
 <p class="choice" data-choice="G">G. Dのみ表示される</p>
-<p class="choice" data-choice="H">H. D,Eの順に表示される</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button></div></div></section>
+<p class="choice" data-choice="H">H. D,Eの順に表示される</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -392,7 +404,7 @@ class B extends A {
 <p class="choice" data-choice="B">B. BASECDDB</p>
 <p class="choice" data-choice="C">C. BASEASEASEECBASEDCBASEDCBASEABASE</p>
 <p class="choice" data-choice="D">D. コンパイルエラー</p>
-<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -417,7 +429,7 @@ class B extends A {
 <p class="choice" data-choice="B">B. list.add(new Item(""));</p>
 <p class="choice" data-choice="C">C. list.add(null);</p>
 <p class="choice" data-choice="D">D. list.add(new Item());</p>
-<p class="choice" data-choice="E">E. list.add((Item) new Object());</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. list.add((Item) new Object());</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -443,7 +455,7 @@ class B extends A {
 <p class="choice" data-choice="C">C. 3</p>
 <p class="choice" data-choice="D">D. 4</p>
 <p class="choice" data-choice="E">E. 5</p>
-<p class="choice" data-choice="F">F. 6</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. 6</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -479,7 +491,7 @@ class B extends A {
 <p class="choice" data-choice="E">E. A,C,Bの順に表示される</p>
 <p class="choice" data-choice="F">F. C,A,Bの順に表示される</p>
 <p class="choice" data-choice="G">G. コンパイルエラー</p>
-<p class="choice" data-choice="H">H. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button></div></div></section>
+<p class="choice" data-choice="H">H. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -493,31 +505,51 @@ class B extends A {
 <pre><code>interface Test {
     void execute();
 }</code></pre>
-<p class="choice" data-choice="A">A. public class A implements Test {</p>
-<p class="choice" data-choice="A">private void execute() {</p>
-<p class="choice" data-choice="A">System.out.println("sample");</p>
-<p class="choice" data-choice="A">}</p>
-<p class="choice" data-choice="A">}</p>
-<p class="choice" data-choice="B">B. public class B implements Test {</p>
-<p class="choice" data-choice="B">public void execute(String str) {</p>
-<p class="choice" data-choice="B">System.out.println(str);</p>
-<p class="choice" data-choice="B">}</p>
-<p class="choice" data-choice="B">}</p>
-<p class="choice" data-choice="C">C. public class C implements Test {</p>
-<p class="choice" data-choice="C">public void execute() {</p>
-<p class="choice" data-choice="C">System.out.println("sample");</p>
-<p class="choice" data-choice="C">}</p>
-<p class="choice" data-choice="C">}</p>
-<p class="choice" data-choice="D">D. public class D implements Test {</p>
-<p class="choice" data-choice="D">public String execute() {</p>
-<p class="choice" data-choice="D">return "sample";</p>
-<p class="choice" data-choice="D">}</p>
-<p class="choice" data-choice="D">}</p>
-<p class="choice" data-choice="E">E. public abstract class e implements Test {</p>
-<p class="choice" data-choice="E">public void print(String str) {</p>
-<p class="choice" data-choice="E">System.out.println(str);</p>
-<p class="choice" data-choice="E">}</p>
-<p class="choice" data-choice="E">}</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<pre><code>A. public class A implements Test {
+private void execute() {
+System.out.println("sample");
+}
+}</code></pre>
+
+
+
+
+<pre><code>B. public class B implements Test {
+public void execute(String str) {
+System.out.println(str);
+}
+}</code></pre>
+
+
+
+
+<pre><code>C. public class C implements Test {
+public void execute() {
+System.out.println("sample");
+}
+}</code></pre>
+
+
+
+
+<pre><code>D. public class D implements Test {
+public String execute() {
+return "sample";
+}
+}</code></pre>
+
+
+
+
+<pre><code>E. public abstract class e implements Test {
+public void print(String str) {
+System.out.println(str);
+}
+}</code></pre>
+
+
+
+<div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -556,7 +588,7 @@ class SampleException extends Exception {}</code></pre>
 <p class="choice" data-choice="B">B. 1,2,3,5,7の順に表示される</p>
 <p class="choice" data-choice="C">C. 1,3,5,7,9の順に表示される</p>
 <p class="choice" data-choice="D">D. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -584,7 +616,7 @@ class SampleException extends Exception {}</code></pre>
 <p class="choice" data-choice="B">B. Sampleは、helloを実装する必要がある。Bのメソッド実装にアクセスする必要がある場合には、B.super.hello()のように記述する</p>
 <p class="choice" data-choice="C">C. Sampleは、helloを実装する必要はない。helloメソッドが呼び出されるとAの実装が使われる。</p>
 <p class="choice" data-choice="D">D. Sampleは、helloを実装する必要はない。helloメソッドが呼び出されるとBの実装が使われる。</p>
-<p class="choice" data-choice="E">E. Sampleは、helloを実装する必要はない。helloメソッドを使用するには、利用した実装を持つインタフェース型の変数を通じてアクセスする必要がある。</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. Sampleは、helloを実装する必要はない。helloメソッドを使用するには、利用した実装を持つインタフェース型の変数を通じてアクセスする必要がある。</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -598,24 +630,36 @@ class SampleException extends Exception {}</code></pre>
 <pre><code>public sealed interface A permits B {
     void sample();
 }</code></pre>
-<p class="choice" data-choice="A">A. abstract class B implements A {</p>
-<p class="choice" data-choice="A">// some codes</p>
-<p class="choice" data-choice="A">}</p>
-<p class="choice" data-choice="B">B. non-sealed class B implements A {</p>
-<p class="choice" data-choice="B">public void sample() {}</p>
-<p class="choice" data-choice="B">}</p>
-<p class="choice" data-choice="C">C. final class B implements A {</p>
-<p class="choice" data-choice="C">public void sample() {}</p>
-<p class="choice" data-choice="C">}</p>
-<p class="choice" data-choice="D">D. class B implements A {</p>
-<p class="choice" data-choice="D">public void sample() {}</p>
-<p class="choice" data-choice="D">}</p>
-<p class="choice" data-choice="E">E. sealed class B implements A {</p>
-<p class="choice" data-choice="E">public void sample() {}</p>
-<p class="choice" data-choice="E">}</p>
-<p class="choice" data-choice="F">F. abstract class B implemnets A {</p>
-<p class="choice" data-choice="F">public void sample() {}</p>
-<p class="choice" data-choice="F">}</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<pre><code>A. abstract class B implements A {
+// some codes
+}</code></pre>
+
+
+<pre><code>B. non-sealed class B implements A {
+public void sample() {}
+}</code></pre>
+
+
+<pre><code>C. final class B implements A {
+public void sample() {}
+}</code></pre>
+
+
+<pre><code>D. class B implements A {
+public void sample() {}
+}</code></pre>
+
+
+<pre><code>E. sealed class B implements A {
+public void sample() {}
+}</code></pre>
+
+
+<pre><code>F. abstract class B implemnets A {
+public void sample() {}
+}</code></pre>
+
+<div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -652,7 +696,7 @@ final class B extends A {
 <p class="choice" data-choice="C">C. A,Bが表示される</p>
 <p class="choice" data-choice="D">D. B,Aが表示される</p>
 <p class="choice" data-choice="E">E. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="F">F. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -690,7 +734,7 @@ final class B extends A {
 <p class="choice" data-choice="C">C. <code>a() == b()</code></p>
 <p class="choice" data-choice="D">D. <code>a() &amp; b()</code></p>
 <p class="choice" data-choice="E">E. <code>a() || b()</code></p>
-<p class="choice" data-choice="F">F. <code>a() &amp;&amp; b()</code></p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. <code>a() &amp;&amp; b()</code></p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -723,7 +767,7 @@ final class B extends A {
 <p class="choice" data-choice="B">B. Test.b();</p>
 <p class="choice" data-choice="C">C. Test.c();</p>
 <p class="choice" data-choice="D">D. Test.d();</p>
-<p class="choice" data-choice="E">E. Test.e();</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. Test.e();</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -734,18 +778,25 @@ final class B extends A {
 </article><article class="question" data-correct="E" data-max-select="1" id="q20">
 <div class="qhead"><span class="badge">問20</span></div>
 <section class="body"><p>次のうち正しいクラスの定義はどれですか。正しいものを選びなさい。(1つ選択)</p>
-<p class="choice" data-choice="A">A. final abstract class A {}</p>
-<p class="choice" data-choice="B">B. sealed class A permits B {}</p>
-<p class="choice" data-choice="B">abstract class B extends A {}</p>
-<p class="choice" data-choice="C">C. class A {</p>
-<p class="choice" data-choice="C">abstract void method() {}</p>
-<p class="choice" data-choice="C">}</p>
-<p class="choice" data-choice="D">D. abstract class A {</p>
-<p class="choice" data-choice="D">void method();</p>
-<p class="choice" data-choice="D">}</p>
-<p class="choice" data-choice="E">E. abstract class A {</p>
-<p class="choice" data-choice="E">final void method() {}</p>
-<p class="choice" data-choice="E">}</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<pre><code>A. final abstract class A {}</code></pre>
+<pre><code>B. sealed class A permits B {}
+abstract class B extends A {}</code></pre>
+
+<pre><code>C. class A {
+abstract void method() {}
+}</code></pre>
+
+
+<pre><code>D. abstract class A {
+void method();
+}</code></pre>
+
+
+<pre><code>E. abstract class A {
+final void method() {}
+}</code></pre>
+
+<div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -779,7 +830,7 @@ public class Sample {
 <p class="choice" data-choice="D">D. A:C:E:</p>
 <p class="choice" data-choice="E">E. A::C::E:</p>
 <p class="choice" data-choice="F">F. A:B:C:D:E:</p>
-<p class="choice" data-choice="G">G. A:C:D:E:</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
+<p class="choice" data-choice="G">G. A:C:D:E:</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -808,7 +859,7 @@ public class Sample {
 <p class="choice" data-choice="D">D. 5が表示される</p>
 <p class="choice" data-choice="E">E. 6が表示される</p>
 <p class="choice" data-choice="F">F. whileループが終了せずに何も表示されない</p>
-<p class="choice" data-choice="G">G. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
+<p class="choice" data-choice="G">G. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -835,7 +886,7 @@ public class Sample {
 <p class="choice" data-choice="D">D. i=0, j=2</p>
 <p class="choice" data-choice="E">E. i=0, j=1</p>
 <p class="choice" data-choice="F">F. i=0, j=3</p>
-<p class="choice" data-choice="G">G. i=1, j=3</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
+<p class="choice" data-choice="G">G. i=1, j=3</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -864,7 +915,7 @@ public class Sample {
 <p class="choice" data-choice="B">B. Aが表示される</p>
 <p class="choice" data-choice="C">C. 何も表示されない</p>
 <p class="choice" data-choice="D">D. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -875,42 +926,71 @@ public class Sample {
 </article><article class="question" data-correct="A,E" data-max-select="2" id="q25">
 <div class="qhead"><span class="badge">問25</span></div>
 <section class="body"><p>次のうち正しいクラス宣言はどれですか。正しいものを選びなさい。(2つ選択)</p>
-<p class="choice" data-choice="A">A. class A {</p>
-<p class="choice" data-choice="A">public void hello() {</p>
-<p class="choice" data-choice="A">var x = new ArrayList&lt;&gt;();</p>
-<p class="choice" data-choice="A">x.add(0);</p>
-<p class="choice" data-choice="A">x.add("0");</p>
-<p class="choice" data-choice="A">System.out.println(x);</p>
-<p class="choice" data-choice="A">}</p>
-<p class="choice" data-choice="A">}</p>
-<p class="choice" data-choice="B">B. class B {</p>
-<p class="choice" data-choice="B">public void hello() {</p>
-<p class="choice" data-choice="B">var a = 0;</p>
-<p class="choice" data-choice="B">a = "0";</p>
-<p class="choice" data-choice="B">}</p>
-<p class="choice" data-choice="B">}</p>
-<p class="choice" data-choice="C">C. class C {</p>
-<p class="choice" data-choice="C">var x = 10;</p>
-<p class="choice" data-choice="C">}</p>
-<p class="choice" data-choice="D">D. record D(var x, var y) {</p>
-<p class="choice" data-choice="D">}</p>
-<p class="choice" data-choice="E">E. class E {</p>
-<p class="choice" data-choice="E">private int x = 0;</p>
-<p class="choice" data-choice="E">public void hello() {</p>
-<p class="choice" data-choice="E">var x = "hello";</p>
-<p class="choice" data-choice="E">System.out.println(x);</p>
-<p class="choice" data-choice="E">}</p>
-<p class="choice" data-choice="E">}</p>
-<p class="choice" data-choice="F">F. class F {</p>
-<p class="choice" data-choice="F">public void hello(int x) {</p>
-<p class="choice" data-choice="F">var x = 0;</p>
-<p class="choice" data-choice="F">}</p>
-<p class="choice" data-choice="F">}</p>
-<p class="choice" data-choice="G">G. class G {</p>
-<p class="choice" data-choice="G">public void hello() {</p>
-<p class="choice" data-choice="G">var str = null;</p>
-<p class="choice" data-choice="G">}</p>
-<p class="choice" data-choice="G">}</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
+<pre><code>A. class A {
+public void hello() {
+var x = new ArrayList&lt;&gt;();
+x.add(0);
+x.add("0");
+System.out.println(x);
+}
+}</code></pre>
+
+
+
+
+
+
+
+<pre><code>B. class B {
+public void hello() {
+var a = 0;
+a = "0";
+}
+}</code></pre>
+
+
+
+
+
+<pre><code>C. class C {
+var x = 10;
+}</code></pre>
+
+
+<pre><code>D. record D(var x, var y) {
+}</code></pre>
+
+<pre><code>E. class E {
+private int x = 0;
+public void hello() {
+var x = "hello";
+System.out.println(x);
+}
+}</code></pre>
+
+
+
+
+
+
+<pre><code>F. class F {
+public void hello(int x) {
+var x = 0;
+}
+}</code></pre>
+
+
+
+
+<pre><code>G. class G {
+public void hello() {
+var str = null;
+}
+}</code></pre>
+
+
+
+<div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -945,7 +1025,7 @@ public class Sample {
 <p class="choice" data-choice="C">C. 18が表示される</p>
 <p class="choice" data-choice="D">D. 無限ループになり何も表示されない</p>
 <p class="choice" data-choice="E">E. コンパイルエラー</p>
-<p class="choice" data-choice="F">F. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1003,7 +1083,7 @@ class B extends A {
 <p class="choice" data-choice="D">D. result=200 result=B result=100 result=A</p>
 <p class="choice" data-choice="E">E. result=null result=null result=100 result=100</p>
 <p class="choice" data-choice="F">F. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="G">G. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
+<p class="choice" data-choice="G">G. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1036,7 +1116,7 @@ class B extends A {
 <p class="choice" data-choice="B">B. 4が表示される</p>
 <p class="choice" data-choice="C">C. 6が表示される</p>
 <p class="choice" data-choice="D">D. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1085,7 +1165,7 @@ public class Trash {
 <p class="choice" data-choice="C">C. CacheTrashクラスのaddメソッドは、引数をlistに追加する</p>
 <p class="choice" data-choice="D">D. Trashクラスのlistは、Trashクラスのすべてのサブクラスで参照できる</p>
 <p class="choice" data-choice="E">E. CacheTrashクラスのflushメソッドは、Trashクラスのdeleteメソッドを呼び出す</p>
-<p class="choice" data-choice="F">F. CacheTrashクラスのコンストラクタは、nullをlistに追加する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. CacheTrashクラスのコンストラクタは、nullをlistに追加する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1115,7 +1195,7 @@ public class Trash {
 <p class="choice" data-choice="A">A. 「Hello, Java」と表示される</p>
 <p class="choice" data-choice="B">B. 「Hello, null」と表示される</p>
 <p class="choice" data-choice="C">C. 「null」と表示される</p>
-<p class="choice" data-choice="D">D. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1139,7 +1219,7 @@ public class Trash {
 <p class="choice" data-choice="C">java -p . -m Sample</p>
 <p class="choice" data-choice="D">D. java Sample.java</p>
 <p class="choice" data-choice="E">E. java -m Sample.java</p>
-<p class="choice" data-choice="F">F. java Sample</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. java Sample</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1161,7 +1241,7 @@ public class Trash {
 <p class="choice" data-choice="A">A. 「a b」と表示される</p>
 <p class="choice" data-choice="B">B. 「a」と表示される</p>
 <p class="choice" data-choice="C">C. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="D">D. ClassCastExceptionがスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. ClassCastExceptionがスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1191,7 +1271,7 @@ public class B extends A {
 <p class="choice" data-choice="A">A. 「new B().b」と「new B().c」の両方でコンパイルエラーが発生する</p>
 <p class="choice" data-choice="B">B. 「new B().b」のみでコンパイルエラーが発生する</p>
 <p class="choice" data-choice="C">C. 「new B().a」のみでコンパイルエラーが発生する</p>
-<p class="choice" data-choice="D">D. 「new B().a」と「new B().b」の両方でコンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. 「new B().a」と「new B().b」の両方でコンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1205,7 +1285,7 @@ public class B extends A {
 <p class="choice" data-choice="A">A. var a = {1.0, 2.0, 3.0, 4.0};</p>
 <p class="choice" data-choice="B">B. var b = new Double{1.0, 2.0, 3.0, 4.0};</p>
 <p class="choice" data-choice="C">C. var c = new Float[] {1.0F, 2.0F, 3.0F, 4.0F};</p>
-<p class="choice" data-choice="D">D. var d = new double[] {1.0, 2.0, 3.0, 4.0};</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. var d = new double[] {1.0, 2.0, 3.0, 4.0};</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1253,7 +1333,7 @@ public class B extends A {
 <p class="choice" data-choice="B">B. AクラスのtoStringメソッドをBクラスでオーバーライドしていないため</p>
 <p class="choice" data-choice="C">C. Bクラスのtestメソッドがprivateであるため</p>
 <p class="choice" data-choice="D">D. BクラスからAクラスのvalueにアクセスできないため</p>
-<p class="choice" data-choice="E">E. AクラスにはsetValue(String... args)というメソッドがないため</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. AクラスにはsetValue(String... args)というメソッドがないため</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1290,7 +1370,7 @@ public class Main {
 <p class="choice" data-choice="A">A. Bクラスでコンパイルエラーが発生する</p>
 <p class="choice" data-choice="B">B. Mainクラスでコンパイルエラーが発生する</p>
 <p class="choice" data-choice="C">C. 10が表示される</p>
-<p class="choice" data-choice="D">D. 20が表示される</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. 20が表示される</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1322,7 +1402,7 @@ public class Test {
 <p class="choice" data-choice="B">B. 10行目</p>
 <p class="choice" data-choice="C">C. 7行目</p>
 <p class="choice" data-choice="D">D. 6行目</p>
-<p class="choice" data-choice="E">E. 4行目</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 4行目</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1350,7 +1430,7 @@ public class Test {
 <p class="choice" data-choice="B">B. super(num);</p>
 <p class="choice" data-choice="C">C. this(val);</p>
 <p class="choice" data-choice="D">D. super(val);</p>
-<p class="choice" data-choice="E">E. super();</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. super();</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1375,7 +1455,7 @@ public class Test {
 <p class="choice" data-choice="A">A. 6行目を「a = (int) b;」に置き換える</p>
 <p class="choice" data-choice="B">B. 7行目を「b = (float) a;」に置き換える</p>
 <p class="choice" data-choice="C">C. 8行目を「c = (double) b;」に置き換える</p>
-<p class="choice" data-choice="D">D. 9行目を「c = (double) a;」に置き換える</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. 9行目を「c = (double) a;」に置き換える</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1404,7 +1484,7 @@ public class Test {
 <p class="choice" data-choice="A">A. 「A」「B」「C」と表示される</p>
 <p class="choice" data-choice="B">B. 「null」「A」「B」「C」「null」と表示される</p>
 <p class="choice" data-choice="C">C. 「Error」と表示される</p>
-<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1433,7 +1513,7 @@ public class Test {
 <p class="choice" data-choice="C">C. System.out.println(new Sample().header + new Sample().value);</p>
 <p class="choice" data-choice="D">D. System.out.println(s.header + Sample.value);</p>
 <p class="choice" data-choice="E">E. System.out.println(Sample.header + Sample.getValue());</p>
-<p class="choice" data-choice="F">F. System.out.println(s.header + s.value);</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. System.out.println(s.header + s.value);</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1464,7 +1544,7 @@ public class Test {
 <p class="choice" data-choice="B">B. Bが表示される</p>
 <p class="choice" data-choice="C">C. Cが表示される</p>
 <p class="choice" data-choice="D">D. Sampleクラスでコンパイルエラーが発生する</p>
-<p class="choice" data-choice="E">E. Mainクラスでコンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. Mainクラスでコンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1490,7 +1570,7 @@ public class Test {
 <p class="choice" data-choice="B">B. 1が2回表示される</p>
 <p class="choice" data-choice="C">C. testメソッドでコンパイルエラーが発生する</p>
 <p class="choice" data-choice="D">D. mainメソッドでコンパイルエラーが発生する</p>
-<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1512,7 +1592,7 @@ public class Test {
 <p class="choice" data-choice="A">A. 「abxde」と表示される</p>
 <p class="choice" data-choice="B">B. 「abcde」と表示される</p>
 <p class="choice" data-choice="C">C. 「cde」と表示される</p>
-<p class="choice" data-choice="D">D. 「xde」と表示される</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. 「xde」と表示される</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1532,7 +1612,7 @@ public class Test {
 <p class="choice" data-choice="A">A. 「1,22」と表示される</p>
 <p class="choice" data-choice="B">B. 「2,22」と表示される</p>
 <p class="choice" data-choice="C">C. 「2,4」と表示される</p>
-<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1561,7 +1641,7 @@ public class Test {
 <p class="choice" data-choice="B">B. 「A」「B」「C」と表示される</p>
 <p class="choice" data-choice="C">C. 「C」「D」と表示される</p>
 <p class="choice" data-choice="D">D. 「C」と表示される</p>
-<p class="choice" data-choice="E">E. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1589,7 +1669,7 @@ public class Test {
 <p class="choice" data-choice="B">B. 「12」「12」と表示される</p>
 <p class="choice" data-choice="C">C. 「12」「1200」と表示される</p>
 <p class="choice" data-choice="D">D. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1615,7 +1695,7 @@ public class Test {
 <p class="choice" data-choice="B">B. 「ACD」と表示される</p>
 <p class="choice" data-choice="C">C. 「ABCC」と表示される</p>
 <p class="choice" data-choice="D">D. 「ABC」と表示される</p>
-<p class="choice" data-choice="E">E. 「ABDC」と表示される</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 「ABDC」と表示される</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1646,7 +1726,7 @@ public class Test {
 <p class="choice" data-choice="A">A. 「A」「B」「C」と表示される</p>
 <p class="choice" data-choice="B">B. 「A」「C」「B」と表示される</p>
 <p class="choice" data-choice="C">C. 「C」「A」「B」と表示される</p>
-<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1674,7 +1754,7 @@ public class Test {
 <p class="choice" data-choice="A">A. 3</p>
 <p class="choice" data-choice="B">B. 2</p>
 <p class="choice" data-choice="C">C. 1</p>
-<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1697,7 +1777,7 @@ public class A {
 <p class="choice" data-choice="C">C. <code>public List&lt;Integer&gt; test(Set&lt;String&gt; s) { ... }</code></p>
 <p class="choice" data-choice="D">D. <code>public List&lt;Object&gt; test(Set&lt;CharSequence&gt; s) { ... }</code></p>
 <p class="choice" data-choice="E">E. <code>public List&lt;Integer&gt; test(Set&lt;CharSequence&gt; s) { ... }</code></p>
-<p class="choice" data-choice="F">F. <code>public ArrayList&lt;Number&gt; test(Set&lt;CharSequence&gt; s) { ... }</code></p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
+<p class="choice" data-choice="F">F. <code>public ArrayList&lt;Number&gt; test(Set&lt;CharSequence&gt; s) { ... }</code></p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1727,7 +1807,7 @@ public class A {
 <p class="choice" data-choice="B">B. int[] array;</p>
 <p class="choice" data-choice="B">array = int[2];</p>
 <p class="choice" data-choice="C">C. int array = new int[2];</p>
-<p class="choice" data-choice="D">D. int array[2];</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. int array[2];</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1744,7 +1824,7 @@ char[] array3 = array1[1].clone();</code></pre>
 <p class="choice" data-choice="A">A. array1[1] == array3</p>
 <p class="choice" data-choice="B">B. array1[1] == array3[1]</p>
 <p class="choice" data-choice="C">C. array1[1] == array2[1]</p>
-<p class="choice" data-choice="D">D. array1.equals(array2)</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. array1.equals(array2)</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1778,7 +1858,7 @@ char[] array3 = array1[1].clone();</code></pre>
 <p class="choice" data-choice="A">A. 「ABC」と表示される</p>
 <p class="choice" data-choice="B">B. 「C」と表示される</p>
 <p class="choice" data-choice="C">C. 「CBA」と表示される</p>
-<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1793,17 +1873,23 @@ char[] array3 = array1[1].clone();</code></pre>
     int num;
     // insert code here
 }</code></pre>
-<p class="choice" data-choice="A">A. public void print();</p>
-<p class="choice" data-choice="B">B. public int calculate() {</p>
-<p class="choice" data-choice="B">return num * 2;</p>
-<p class="choice" data-choice="B">}</p>
-<p class="choice" data-choice="C">C. public abstract int getNum() {</p>
-<p class="choice" data-choice="C">return num;</p>
-<p class="choice" data-choice="C">}</p>
-<p class="choice" data-choice="D">D. public abstract int test();</p>
-<p class="choice" data-choice="E">E. public static void sample() {</p>
-<p class="choice" data-choice="E">// some codes</p>
-<p class="choice" data-choice="E">}</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<pre><code>A. public void print();</code></pre>
+<pre><code>B. public int calculate() {
+return num * 2;
+}</code></pre>
+
+
+<pre><code>C. public abstract int getNum() {
+return num;
+}</code></pre>
+
+
+<pre><code>D. public abstract int test();</code></pre>
+<pre><code>E. public static void sample() {
+// some codes
+}</code></pre>
+
+<div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1832,7 +1918,7 @@ char[] array3 = array1[1].clone();</code></pre>
 <p class="choice" data-choice="A">A. 「4,9」と表示される</p>
 <p class="choice" data-choice="B">B. 「0,0」と表示される</p>
 <p class="choice" data-choice="C">C. 「2,3」と表示される</p>
-<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<p class="choice" data-choice="D">D. コンパイルエラーが発生する</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1869,7 +1955,7 @@ char[] array3 = array1[1].clone();</code></pre>
 <p class="choice" data-choice="E">E. t.getNum() = 0;</p>
 <p class="choice" data-choice="F">F. t.modify(0);</p>
 <p class="choice" data-choice="G">G. t.modify(-t.num);</p>
-<p class="choice" data-choice="H">H. t.modify(-t.getNum());</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button></div></div></section>
+<p class="choice" data-choice="H">H. t.modify(-t.getNum());</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice" data-answer-choice="F" type="button">F</button><button aria-pressed="false" class="answer-choice" data-answer-choice="G" type="button">G</button><button aria-pressed="false" class="answer-choice" data-answer-choice="H" type="button">H</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1883,19 +1969,28 @@ char[] array3 = array1[1].clone();</code></pre>
 <pre><code>public class Sample {
     private String value;
 }</code></pre>
-<p class="choice" data-choice="A">A. public void setvalue(String value) {</p>
-<p class="choice" data-choice="A">value = value;</p>
-<p class="choice" data-choice="A">}</p>
-<p class="choice" data-choice="B">B. public String setValue(String str) {</p>
-<p class="choice" data-choice="B">String value = str;</p>
-<p class="choice" data-choice="B">return value;</p>
-<p class="choice" data-choice="B">}</p>
-<p class="choice" data-choice="C">C. public void setValue(String value) {</p>
-<p class="choice" data-choice="C">this.value = value;</p>
-<p class="choice" data-choice="C">}</p>
-<p class="choice" data-choice="D">D. public void setValue() {</p>
-<p class="choice" data-choice="D">this.value = value;</p>
-<p class="choice" data-choice="D">}</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
+<pre><code>A. public void setvalue(String value) {
+value = value;
+}</code></pre>
+
+
+<pre><code>B. public String setValue(String str) {
+String value = str;
+return value;
+}</code></pre>
+
+
+
+<pre><code>C. public void setValue(String value) {
+this.value = value;
+}</code></pre>
+
+
+<pre><code>D. public void setValue() {
+this.value = value;
+}</code></pre>
+
+<div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1918,7 +2013,7 @@ char[] array3 = array1[1].clone();</code></pre>
 <p class="choice" data-choice="B">B. Sampleクラスの3行目のメソッドをpublicにする</p>
 <p class="choice" data-choice="C">C. Testクラスの2行目のメソッドをpublicにする</p>
 <p class="choice" data-choice="D">D. Testクラスの2行目のメソッドをprotectedにする</p>
-<p class="choice" data-choice="E">E. Testクラスの3行目のメソッドをpublicにする</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. Testクラスの3行目のメソッドをpublicにする</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1965,7 +2060,7 @@ char[] array3 = array1[1].clone();</code></pre>
 <p class="choice" data-choice="B">B. Sample [a=0, b=10, c=10, d=10]</p>
 <p class="choice" data-choice="C">C. Sample [a=0, b=0, c=0, d=10]</p>
 <p class="choice" data-choice="D">D. コンパイルエラーが発生する</p>
-<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
+<p class="choice" data-choice="E">E. 実行時に例外がスローされる</p><div aria-label="回答欄" class="answer-controls"><div class="answer-control-label">回答を選択</div><div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice" data-answer-choice="A" type="button">A</button><button aria-pressed="false" class="answer-choice" data-answer-choice="B" type="button">B</button><button aria-pressed="false" class="answer-choice" data-answer-choice="C" type="button">C</button><button aria-pressed="false" class="answer-choice" data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice" data-answer-choice="E" type="button">E</button></div></div></section>
 <details class="answer">
 <summary>正答・解説を表示</summary><div aria-live="polite" class="grade-result"></div>
 <div class="answer-inner">
@@ -1975,6 +2070,6 @@ char[] array3 = array1[1].clone();</code></pre>
 </details>
 </article>
 </main>
-<script>(()=>{const qs=[...document.querySelectorAll('.question')],KEY='javaSilver:black_mock2:stableAnswers:v3';let idx=0,elapsed=0,last=Date.now(),storageOK=true,state={answers:{},graded:{}};try{const z=JSON.parse(localStorage.getItem(KEY)||'null');if(z){state.answers=z.answers||{};state.graded=z.graded||{};elapsed=Number(z.elapsed)||0}}catch(e){storageOK=false}const B=q=>[...q.querySelectorAll('.answer-choice')],V=b=>b.dataset.answerChoice,A=q=>Array.isArray(state.answers[q.id])?[...state.answers[q.id]]:[],C=q=>(q.dataset.correct||'').split(',').map(x=>x.trim()).filter(Boolean);function eq(a,c){a=[...a].sort();c=[...c].sort();return a.length===c.length&&a.every((x,i)=>x===c[i])}const R=q=>eq(A(q),C(q));function save(){if(storageOK)try{localStorage.setItem(KEY,JSON.stringify({answers:state.answers,graded:state.graded,elapsed}))}catch(e){storageOK=false}}function fmt(s){s=Math.floor(Math.max(0,s));return[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,'0')).join(':')}function paint(q){const a=new Set(A(q)),c=new Set(C(q)),g=!!state.graded[q.id];B(q).forEach(b=>{const x=V(b);b.classList.toggle('selected',a.has(x)&&!g);b.classList.toggle('correct-choice',g&&c.has(x));b.classList.toggle('wrong-choice',g&&a.has(x)&&!c.has(x));b.setAttribute('aria-pressed',a.has(x)?'true':'false')});const r=q.querySelector('.grade-result');if(r){r.className='grade-result';if(g){const pass=R(q),mine=A(q).join(', ')||'未解答';r.classList.add(pass?'pass':'fail');r.textContent=(pass?'正解です':'不正解です')+`（選択：${mine}）`}}}function stats(){answeredCount.textContent=qs.filter(q=>A(q).length).length;totalCount.textContent=qs.length;gradedCount.textContent=qs.filter(q=>state.graded[q.id]).length;correctCount.textContent=qs.filter(q=>state.graded[q.id]&&R(q)).length;elapsedTime.textContent=fmt(elapsed)}function choose(q,x){const max=Math.max(1,+q.dataset.maxSelect||C(q).length||1),set=new Set(A(q));if(set.has(x))set.delete(x);else if(max===1){set.clear();set.add(x)}else if(set.size<max)set.add(x);state.answers[q.id]=[...set];paint(q);stats();save()}qs.forEach(q=>{B(q).forEach(b=>{b.onclick=e=>{e.preventDefault();e.stopPropagation();choose(q,V(b))};b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();choose(q,V(b))}}});const d=q.querySelector('details.answer');if(d)d.ontoggle=()=>{if(d.open){state.graded[q.id]=true;paint(q);stats();save()}};paint(q)});window.go=d=>{idx=Math.max(0,Math.min(qs.length-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth',block:'start'});pos()};function pos(){document.getElementById('pos').textContent=`${idx+1} / ${qs.length}`}const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);pos()}}),{rootMargin:'-25% 0px -65%'});qs.forEach(q=>ob.observe(q));document.querySelectorAll('#index a[href^="#q"]').forEach(a=>a.onclick=()=>{const n=+a.getAttribute('href').slice(2);if(n)idx=n-1;pos()});document.addEventListener('visibilitychange',()=>{last=Date.now();save()});setInterval(()=>{const n=Date.now();if(!document.hidden)elapsed+=(n-last)/1000;last=n;stats()},1000);window.addEventListener('beforeunload',save);pos();stats()})();</script>
+<script>(()=>{const qs=[...document.querySelectorAll('.question')],KEY='javaSilver:black_mock2:finalPlainStable:v4';let idx=0,elapsed=0,last=Date.now(),storageOK=true,state={answers:{},graded:{}};try{const z=JSON.parse(localStorage.getItem(KEY)||'null');if(z){state.answers=z.answers||{};state.graded=z.graded||{};elapsed=Number(z.elapsed)||0}}catch(e){storageOK=false}const B=q=>[...q.querySelectorAll('.answer-choice')],V=b=>b.dataset.answerChoice,A=q=>Array.isArray(state.answers[q.id])?[...state.answers[q.id]]:[],C=q=>(q.dataset.correct||'').split(',').map(x=>x.trim()).filter(Boolean);function eq(a,c){a=[...a].sort();c=[...c].sort();return a.length===c.length&&a.every((x,i)=>x===c[i])}const R=q=>eq(A(q),C(q));function save(){if(storageOK)try{localStorage.setItem(KEY,JSON.stringify({answers:state.answers,graded:state.graded,elapsed}))}catch(e){storageOK=false}}function fmt(s){s=Math.floor(Math.max(0,s));return[Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(x=>String(x).padStart(2,'0')).join(':')}function paint(q){const a=new Set(A(q)),c=new Set(C(q)),g=!!state.graded[q.id];B(q).forEach(b=>{const x=V(b);b.classList.toggle('selected',a.has(x)&&!g);b.classList.toggle('correct-choice',g&&c.has(x));b.classList.toggle('wrong-choice',g&&a.has(x)&&!c.has(x));b.setAttribute('aria-pressed',a.has(x)?'true':'false')});const r=q.querySelector('.grade-result');if(r){r.className='grade-result';if(g){const pass=R(q),mine=A(q).join(', ')||'未解答';r.classList.add(pass?'pass':'fail');r.textContent=(pass?'正解です':'不正解です')+`（選択：${mine}）`}}}function stats(){document.getElementById('answeredCount').textContent=qs.filter(q=>A(q).length).length;const t=document.getElementById('totalCount');if(t)t.textContent=qs.length;document.getElementById('gradedCount').textContent=qs.filter(q=>state.graded[q.id]).length;document.getElementById('correctCount').textContent=qs.filter(q=>state.graded[q.id]&&R(q)).length;document.getElementById('elapsedTime').textContent=fmt(elapsed)}function choose(q,x){const max=Math.max(1,+q.dataset.maxSelect||C(q).length||1),set=new Set(A(q));if(set.has(x))set.delete(x);else if(max===1){set.clear();set.add(x)}else if(set.size<max)set.add(x);state.answers[q.id]=[...set];paint(q);stats();save()}qs.forEach(q=>{B(q).forEach(b=>{b.onclick=e=>{e.preventDefault();e.stopPropagation();choose(q,V(b))};b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();choose(q,V(b))}}});const d=q.querySelector('details.answer');if(d)d.ontoggle=()=>{if(d.open){state.graded[q.id]=true;paint(q);stats();save()}};paint(q)});window.resetQuiz=()=>{state={answers:{},graded:{}};elapsed=0;qs.forEach(q=>{const d=q.querySelector('details.answer');if(d)d.open=false;paint(q)});stats();save()};window.go=d=>{idx=Math.max(0,Math.min(qs.length-1,idx+d));qs[idx].scrollIntoView({behavior:'smooth',block:'start'});pos()};function pos(){const p=document.getElementById('pos');if(p)p.textContent=`${idx+1} / ${qs.length}`}const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){idx=qs.indexOf(e.target);pos()}}),{rootMargin:'-25% 0px -65%'});qs.forEach(q=>ob.observe(q));document.querySelectorAll('#index a[href^="#q"]').forEach(a=>a.onclick=()=>{const n=+a.getAttribute('href').slice(2);if(n)idx=n-1;pos()});document.addEventListener('visibilitychange',()=>{last=Date.now();save()});setInterval(()=>{const n=Date.now();if(!document.hidden)elapsed+=(n-last)/1000;last=n;stats()},1000);window.addEventListener('beforeunload',save);pos();stats()})();</script>
 </body>
 </html>
