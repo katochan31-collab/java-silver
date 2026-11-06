@@ -926,7 +926,7 @@ public class SampleImpl extends Sample {
                 <div class="qhead"><span class="badge">第01章 問8</span><span class="serial">通し 8 / 180</span></div>
                 <section class="body">
                     <p>以下に示したSampleクラスを実行したときの結果として、正しいものを選びなさい。なお、実行時のコマンドは次の通りとする。(1つ選択)</p>
-                    <pre><code>&gt; java Sample a \" a\" "a "b c</code></pre>
+                    <pre><code>> java Sample a \" a\" "a "b c</code></pre>
                     <pre><code>public class Sample {
     public static void main(String... args) {
         System.out.println(args.length);
@@ -967,10 +967,10 @@ public class SampleImpl extends Sample {
                     <ul class="choices">
                         <li>A. java Sample.class</li>
                         <li>B. javac Sample.java</li>
-                        <p>java Sample.class</p>
+                                java Sample.class
                         <li>C. java Sample</li>
                         <li>D. javac Sample.java</li>
-                        <p>java Sample</p>
+                                java Sample
                         <li>E. java Sample.java</li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
@@ -3006,7 +3006,9 @@ public class Main {
                                 class="answer-choice" data-answer-choice="B" type="button">B</button><button
                                 aria-pressed="false" class="answer-choice" data-answer-choice="C"
                                 type="button">C</button><button aria-pressed="false" class="answer-choice"
-                                data-answer-choice="D" type="button">D</button></div>
+                                data-answer-choice="D" type="button">D</button><button aria-pressed="false" class="answer-choice"
+                                data-answer-choice="E" type="button">E</button><button aria-pressed="false" class="answer-choice"
+                                data-answer-choice="F" type="button">F</button></div>
                     </div>
                 </section>
                 <details class="answer">
@@ -3201,8 +3203,8 @@ public class Main {
     public static void main(String[] args) {
         Sample s1 = new Sample(10);
         Sample s2 = s1;
-        s1 = new Sample(10)
-        Sysmte.out.println(s1==s2);
+        s1 = new Sample(10);
+        System.out.println(s1==s2);
     }
 }</code></pre>
                     <ul class="choices">
@@ -3229,7 +3231,7 @@ public class Main {
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>==で参照型を比較すると、同じオブジェクトを指しているかを比較します。</p>
                         <p><strong>この問題では：</strong>誤記を補正すると、最初はs2=s1で同じオブジェクト。その後s1=new
-                            Sample(10)でs1だけ別オブジェクトを指すのでs1==s2はfalse、Bです。原文にはセミコロン欠落とSysmteの誤記があります。</p>
+                            Sample(10)でs1だけ別オブジェクトを指すのでs1==s2はfalse、Bです。原文にはセミコロン欠落とSystemの誤記があります。</p>
                         <p class="memory">試験での見分け方：参照の==は中身ではなく同じ箱を指すか。</p>
                     </div>
                 </details>
