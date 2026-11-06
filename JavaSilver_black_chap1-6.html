@@ -615,6 +615,43 @@
             color: var(--navy)
         }
     </style>
+    <style>
+        ul.choices.code-choices {
+            list-style: none !important;
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        ul.choices.code-choices>li {
+            display: grid !important;
+            grid-template-columns: 40px minmax(0, 1fr);
+            align-items: start;
+            column-gap: 8px;
+            margin: 0 0 20px 0 !important;
+            padding: 0 !important;
+            width: 100%;
+        }
+
+        ul.choices.code-choices .choice-label {
+            display: block;
+            font-weight: bold;
+            text-align: left;
+            padding: 12px 0 0 0 !important;
+            margin: 0 !important;
+        }
+
+        ul.choices.code-choices pre {
+            margin: 0 !important;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        ul.choices.code-choices .choice-text {
+            display: block;
+            padding-top: 12px;
+        }
+    </style>
 </head>
 
 <body>
@@ -3487,7 +3524,7 @@ public class Main {
                     <ul class="choices">
                         <li>A. if (num <= 10)</li>
                         <li>B. if num <= 10</li>
-                        <p>c. if (num <= 10) then</p>
+                                <p>c. if (num <= 10) then</p>
                         <li>D. if num <= 10 then</li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
@@ -3508,8 +3545,8 @@ public class Main {
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>ifの条件式は丸括弧で囲み、Javaにthenはありません。</p>
                         <p><strong>この問題では：</strong>printlnnをprintlnの誤記とみなすと、num=10なのでif (num <=
-                            10)がtrueとなりokを表示します。Aです。</p>
-                        <p class="memory">試験での見分け方：if (条件) 文。thenは書かない。</p>
+                                10)がtrueとなりokを表示します。Aです。</p>
+                                <p class="memory">試験での見分け方：if (条件) 文。thenは書かない。</p>
                     </div>
                 </details>
             </article>
@@ -3654,9 +3691,9 @@ public class Main {
                         <div class="correct"><b>正答：</b>A</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>else-if連鎖では最初にtrueになった枝だけを実行します。</p>
-                        <p><strong>この問題では：</strong>num==100はfalse、10 < numもfalse、num==10がtrueなのでCを表示。以降のelseは実行されません。Aです。
-                        </p>
-                        <p class="memory">試験での見分け方：上から最初のtrueで終了。</p>
+                        <p><strong>この問題では：</strong>num==100はfalse、10 <
+                                numもfalse、num==10がtrueなのでCを表示。以降のelseは実行されません。Aです。 </p>
+                                <p class="memory">試験での見分け方：上から最初のtrueで終了。</p>
                     </div>
                 </details>
             </article>
@@ -4074,9 +4111,9 @@ public class Main {
                         <div class="correct"><b>正答：</b>A</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>whileは条件がtrueの間だけ繰り返します。</p>
-                        <p><strong>この問題では：</strong>bは0から1ずつ増えます。while(b < 5)ならb=0～4の5回だけ実行され、aも11→7で常に5より大きいので0～4を表示します。Aです。
-                        </p>
-                        <p class="memory">試験での見分け方：出力回数を管理する変数を条件にする。</p>
+                        <p><strong>この問題では：</strong>bは0から1ずつ増えます。while(b <
+                                5)ならb=0～4の5回だけ実行され、aも11→7で常に5より大きいので0～4を表示します。Aです。 </p>
+                                <p class="memory">試験での見分け方：出力回数を管理する変数を条件にする。</p>
                     </div>
                 </details>
             </article>
@@ -4116,7 +4153,7 @@ public class Main {
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>do-whileは do {本体} while (条件); の形です。</p>
                         <p><strong>この問題では：</strong>空欄1はdo、空欄2はwhile(a < 5);。a=0から表示後に増えるので0,1,2,3,4を表示して終了。Cです。</p>
-                        <p class="memory">試験での見分け方：doの後に条件は書かない。</p>
+                                <p class="memory">試験での見分け方：doの後に条件は書かない。</p>
                     </div>
                 </details>
             </article>
@@ -4330,7 +4367,7 @@ public class Main {
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>forの条件部にはboolean式を1つだけ書きます。</p>
                         <p><strong>この問題では：</strong>i < 3, j < 5のようにカンマで2つの条件を並べる構文はありません。この時点でコンパイルエラー、Dです。</p>
-                        <p class="memory">試験での見分け方：for条件部にカンマは使えない。</p>
+                                <p class="memory">試験での見分け方：for条件部にカンマは使えない。</p>
                     </div>
                 </details>
             </article>
@@ -4622,43 +4659,47 @@ do {
     num++;
 } while (++num < 10);
 System.out.println(num);</code></pre>
-                    <ul class="choices">
+                    <ul class="choices code-choices">
                         <li>
-                            A.
+                            <span class="choice-label">A.</span>
                             <pre><code>int num = 10;
-while (++num < 10) {
+while (++num &lt; 10) {
     num++;
 }
 System.out.println(num);</code></pre>
                         </li>
 
                         <li>
-                            B.
+                            <span class="choice-label">B.</span>
                             <pre><code>int num = 10;
-while (++num <= 10) {
+while (++num &lt;= 10) {
     num++;
 }
 System.out.println(num);</code></pre>
                         </li>
 
                         <li>
-                            C.
+                            <span class="choice-label">C.</span>
                             <pre><code>int num = 10;
-while (num++ < 10) {
+while (num++ &lt; 10) {
     num++;
 }
 System.out.println(num);</code></pre>
                         </li>
 
                         <li>
-                            D.
+                            <span class="choice-label">D.</span>
                             <pre><code>int num = 10;
-while (num++ <= 10) {
+while (num++ &lt;= 10) {
     num++;
 }
 System.out.println(num);</code></pre>
                         </li>
-                        <li>E. 選択肢A～Dはすべて誤りである</li>
+
+                        <li>
+                            <span class="choice-label">E.</span>
+                            <span class="choice-text">選択肢A～Dはすべて誤りである</span>
+                        </li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
                         <div class="answer-control-label">回答を選択</div>
