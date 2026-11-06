@@ -1289,7 +1289,7 @@ java Sample</code></pre>
                         <div class="correct"><b>正答：</b>C</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>varは実行時に型が変わる仕組みではなく、コンパイル時に固定の型へ置き換えられます。</p>
-                        <p><strong>この問題では：</strong>初期化式から決まった型と後続の代入・呼出しを照合すると、Cの結果になります。</p>
+                        <p><strong>この問題では：</strong>初期化式から決まった型と後続の代入・呼出しを照合すると、コンパイルエラーになります。</p>
                         <p class="memory">試験での見分け方：varでも型は固定。</p>
                     </div>
                 </details>
@@ -1931,8 +1931,7 @@ B C</code></pre>
                         <div class="correct"><b>正答：</b>A</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>テキストブロックでは、各非空行と終了区切りの共通先頭空白が付随的インデントとして除去されます。終了区切りの位置も計算対象です。</p>
-                        <p><strong>この問題では：</strong>各行と終了区切りの先頭位置を比べ、最小の共通インデントをすべての行から除きます。その結果はAの字下げになります。以前のBは誤りです。
-                        </p>
+                        <p><strong>この問題では：</strong>各行と終了区切りの先頭位置を比べ、最小の共通インデントをすべての行から除きます。その結果はAの字下げになります。</p>
                         <p class="memory">試験での見分け方：終了区切りも含めて最小インデントを求める。</p>
                     </div>
                 </details>
@@ -1951,18 +1950,10 @@ B C</code></pre>
     }
 }</code></pre>
                     <ul class="choices code-choices">
-                        <li>
-                            <pre><code>A. 「false,true」と表示される</code></pre>
-                        </li>
-                        <li>
-                            <pre><code>B. 「false,false」と表示される</code></pre>
-                        </li>
-                        <li>
-                            <pre><code>C. 「true,false」と表示される</code></pre>
-                        </li>
-                        <li>
-                            <pre><code>D. 「true,true」と表示される</code></pre>
-                        </li>
+                        <li>A. 「false,true」と表示される</li>
+                        <li>B. 「false,false」と表示される</li>
+                        <li>C. 「true,false」と表示される</li>
+                        <li>D. 「true,true」と表示される</li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
                         <div class="answer-control-label">回答を選択</div>
@@ -2087,7 +2078,7 @@ B C</code></pre>
                     <p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
                     <pre><code>public class Main {
     public static void main(String[] args) {
-        int[] = array = new int[0];
+        int[] array = new int[0];
         System.out.println(array);
     }
 }</code></pre>
@@ -2120,10 +2111,40 @@ B C</code></pre>
                     <div class="answer-inner">
                         <div class="correct"><b>正答：</b>F</div>
                         <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>配列変数の宣言は `int[] array = ...` のように型と変数名を正しく並べます。</p>
-                        <p><strong>この問題では：</strong>原文は `int[] = array = new int[0];`
-                            となっており、型の後に変数名がなく構文エラーです。原文どおりならFが正答です。</p>
-                        <p class="memory">試験での見分け方：出力を考える前に配列宣言の構文を見る。</p>
+                        <p><strong>覚えるルール：</strong>配列変数をそのままSystem.out.println()で表示しても、配列の中身は表示されません。
+                            配列はObjectのサブクラスなので、配列オブジェクトを表す文字列が表示されます。</p>
+                        <p><strong>この問題では：</strong><code>new int[0]</code>で、要素数0のint配列が正常に生成されます。
+                            要素が0個でも、arrayがnullになるわけではありません。</p>
+                        </p>
+
+                        <pre><code>int[] array = new int[0];</code></pre>
+
+                        <p>
+                            この時点でarrayは、実際に生成されたint配列を参照しています。
+                        </p>
+
+                        <p>
+                            次に、
+                        </p>
+
+                        <pre><code>System.out.println(array);</code></pre>
+
+                        <p>
+                            を実行すると、配列の要素ではなく、配列オブジェクトを表す
+                            <code>[I@...</code>
+                            のような文字列が表示されます。
+                        </p>
+
+                        <p>
+                            たとえば次のような形式です。
+                        </p>
+
+                        <pre><code>[I@2f92e0f4</code></pre>
+
+                        <p>
+                            <code>[I</code>は「int配列」を表し、<code>@</code>より後ろにはハッシュコードを16進数にした値が使われます。
+                            したがって、選択肢では<strong>E. ハッシュコードが表示される</strong>が最も適切です。
+                        <p class="memory">試験での見分け方：配列をそのままprintlnしても、中身は表示されない。中身を表示したい場合はArrays.toString(array)を使う。</p>
                     </div>
                 </details>
             </article>
