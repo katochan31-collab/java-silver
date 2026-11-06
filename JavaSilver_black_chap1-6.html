@@ -3268,7 +3268,7 @@ public class Main {
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>==で参照型を比較すると、同じオブジェクトを指しているかを比較します。</p>
                         <p><strong>この問題では：</strong>誤記を補正すると、最初はs2=s1で同じオブジェクト。その後s1=new
-                            Sample(10)でs1だけ別オブジェクトを指すのでs1==s2はfalse、Bです。原文にはセミコロン欠落とSystemの誤記があります。</p>
+                            Sample(10)でs1だけ別オブジェクトを指すのでs1==s2はfalse、Bです。</p>
                         <p class="memory">試験での見分け方：参照の==は中身ではなく同じ箱を指すか。</p>
                     </div>
                 </details>
@@ -3340,7 +3340,7 @@ public class Main {
                     <pre><code> public class Sample {
     private int num;
     public Sample (int num) {
-        this.num = num
+        this.num = num;
     }
     public boolean equals(Sample obj) {
         if (obj == null) {
@@ -3382,7 +3382,7 @@ public class Main {
                         <div class="correct"><b>正答：</b>D</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>equals(Sample)はequals(Object)のオーバーライドではなくオーバーロードです。</p>
-                        <p><strong>この問題では：</strong>セミコロン欠落を誤記として補正すると、aとbの参照型はObjectなのでa.equals(b)はObject.equals(Object)を呼びます。別オブジェクトなのでfalse、Dです。原文どおりならSample側でコンパイルエラーです。
+                        <p><strong>この問題では：</strong>aとbの参照型はObjectなのでa.equals(b)はObject.equals(Object)を呼びます。別オブジェクトなのでfalseです。
                         </p>
                         <p class="memory">試験での見分け方：equalsを上書きするなら引数はObject。</p>
                     </div>
@@ -3551,7 +3551,8 @@ public class Main {
                     <div class="answer-inner">
                         <div class="correct"><b>正答：</b>B</div>
                         <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>波括弧のないifが制御するのは直後の1文だけです。</p>
+                        <p><strong>覚えるルール：</strong>波括弧のないifが制御するのは直後の1文だけです。if(false)
+                            の中は実行されないが、到達不可能文エラーにはならない。「if(false) はOK、while(false) はNG」</p>
                         <p><strong>この問題では：</strong>if(false)なのでAのprintlnだけ実行されません。次のBのprintlnはifの外なので実行されます。Bです。</p>
                         <p class="memory">試験での見分け方：波括弧なしは次の1文だけ。</p>
                     </div>
@@ -3710,13 +3711,13 @@ public class Main {
         final int NUM = 0;
         int num = 10;
         switch (num) {
-            case "10":    System.out.println("A");
+            case "10":    System.out.println("A");    //(6行目)
                           break;
-            case num:     System.out.println("B");
+            case num:     System.out.println("B");    //(8行目)
                           break;
-            case 2 * 5:   System.out.println("C");
+            case 2 * 5:   System.out.println("C");    //(10行目)
                           break;
-            case NUM:     System.out.println("D");
+            case NUM:     System.out.println("D");    //(12行目)
                           break;
         }
     }
@@ -3948,7 +3949,7 @@ public class Main {
             case 2 -&gt; "B";
             case 3 -&gt; "C";
             default -&gt; "D";
-        }
+        } //(9行目)
         System.out.println(result);
     }
 }</code></pre>
@@ -4128,7 +4129,6 @@ public class Main {
         int a = 0;
         while (a &lt; 5)
             do
-
                 a++;
                 System.out.print(a);
             while (true);
@@ -4164,7 +4164,8 @@ public class Main {
                         <p><strong>覚えるルール：</strong>doの本体が複数文なら波括弧が必要です。</p>
                         <p><strong>この問題では：</strong>このコードではdoの本体は波括弧なしなので直後のa++;だけです。その次のSystem.out.print(a);がdoとwhileの間に入り、構文が成立しません。コンパイルエラーでEです。
                         </p>
-                        <p class="memory">試験での見分け方：do～whileの間には本体以外の文を挟めない。</p>
+                        <p class="memory">
+                            試験での見分け方：do～while文で中カッコを省略した場合には、doとwhileの間には1文のみを記述できます。2文以上記述した場合には、コンパイルエラーが発生します。</p>
                     </div>
                 </details>
             </article>
@@ -4622,14 +4623,41 @@ do {
 } while (++num &lt; 10);
 System.out.println(num);</code></pre>
                     <ul class="choices">
-                        <li>A. int num = 10;</li>
-                        <p>while (++num &lt; 10) { num++; } System.out.println(num);</p>
-                        <li>B. int nu = 10;</li>
-                        <p>while (++num &lt;= 10) { num++; } System.out.println(num);</p>
-                        <li>C. int num = 10;</li>
-                        <p>while (num++ &lt; 10) { num++; } System.out.println(num);</p>
-                        <li>D. int num = 10;</li>
-                        <p>while (num++ &lt;= 10) { num++; } System.out.println(num);</p>
+                        <li>
+                            A.
+                            <pre><code>int num = 10;
+while (++num &lt; 10) {
+    num++;
+}
+System.out.println(num);</code></pre>
+                        </li>
+
+                        <li>
+                            B.
+                            <pre><code>int num = 10;
+while (++num &lt;= 10) {
+    num++;
+}
+System.out.println(num);</code></pre>
+                        </li>
+
+                        <li>
+                            C.
+                            <pre><code>int num = 10;
+while (num++ &lt; 10) {
+    num++;
+}
+System.out.println(num);</code></pre>
+                        </li>
+
+                        <li>
+                            D.
+                            <pre><code>int num = 10;
+while (num++ &lt;= 10) {
+    num++;
+}
+System.out.println(num);</code></pre>
+                        </li>
                         <li>E. 選択肢A～Dはすべて誤りである</li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
@@ -4650,7 +4678,7 @@ System.out.println(num);</code></pre>
                         <div class="correct"><b>正答：</b>E</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>do-whileは本体を最低1回実行し、前置++と後置++では比較に使う値が違います。</p>
-                        <p><strong>この問題では：</strong>元コードは10→本体で11→条件++numで12、12&lt;10はfalseなので12を表示します。A～Dを追うと、A=11、Bは変数nuの誤記、C=11、D=13となり同じ12にならないためEです。
+                        <p><strong>この問題では：</strong>元コードは10→本体で11→条件++numで12、12&lt;10はfalseなので12を表示します。A～Dを追うと、A=11、B=11、C=11、D=13となり同じ12にならないためEです。
                         </p>
                         <p class="memory">試験での見分け方：前置/後置++は最終値まで追う。</p>
                     </div>
@@ -4662,22 +4690,50 @@ System.out.println(num);</code></pre>
                     <p>次のプログラムを実行して「54321」と表示したい。空欄に入るコードとして、正しいものを選びなさい。(2つ選択)</p>
                     <pre><code>public class Main {
     public static void main(String[] args) {
-        int[] array {1, 2, 3, 4, 5};
+        int[] array = {1, 2, 3, 4, 5};
         int x = array.length;
         _____________________
     }
 }</code></pre>
                     <ul class="choices">
-                        <li>A. while (0 &lt;= x ) {</li>
-                        <p>System.out.println(array[x]); x--; }</p>
-                        <li>B. do {</li>
-                        <p>x--; System.out.println(array[x]); } while( 0 &lt;= x );</p>
-                        <li>C. do {</li>
-                        <p>System.out.println(array[x]); x--; } while (0 &lt;= x);</p>
-                        <li>D. while (0 &lt; x) {</li>
-                        <p>x--; System.out.println(array[x]); }</p>
-                        <li>E. while (0 &lt; x) {</li>
-                        <p>System.out.println(array[--x]); }</p>
+                        <li>
+                            A.
+                            <pre><code>while (0 &lt;= x) {
+    System.out.println(array[x]);
+    x--;
+}</code></pre>
+                        </li>
+
+                        <li>
+                            B.
+                            <pre><code>do {
+    x--;
+    System.out.println(array[x]);
+} while (0 &lt;= x);</code></pre>
+                        </li>
+
+                        <li>
+                            C.
+                            <pre><code>do {
+    System.out.println(array[x]);
+    x--;
+} while (0 &lt;= x);</code></pre>
+                        </li>
+
+                        <li>
+                            D.
+                            <pre><code>while (0 &lt; x) {
+    x--;
+    System.out.println(array[x]);
+}</code></pre>
+                        </li>
+
+                        <li>
+                            E.
+                            <pre><code>while (0 &lt; x) {
+    System.out.println(array[--x]);
+}</code></pre>
+                        </li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
                         <div class="answer-control-label">回答を選択</div>
