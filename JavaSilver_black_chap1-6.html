@@ -3481,14 +3481,14 @@ public class Main {
     public static void main(String[] args) {
         int num = 10;
         _____________
-          System.out.printlnn("ok");
+        System.out.printlnn("ok");
     }
 }</code></pre>
                     <ul class="choices">
-                        <li>A. if (num &lt;= 10)</li>
-                        <li>B. if num &lt;= 10</li>
-                        <p>c. if (num &lt;= 10) then</p>
-                        <li>D. if num &lt;= 10 then</li>
+                        <li>A. if (num <= 10)</li>
+                        <li>B. if num <= 10</li>
+                        <p>c. if (num <= 10) then</p>
+                        <li>D. if num <= 10 then</li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
                         <div class="answer-control-label">回答を選択</div>
@@ -3507,7 +3507,7 @@ public class Main {
                         <div class="correct"><b>正答：</b>A</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>ifの条件式は丸括弧で囲み、Javaにthenはありません。</p>
-                        <p><strong>この問題では：</strong>printlnnをprintlnの誤記とみなすと、num=10なのでif (num &lt;=
+                        <p><strong>この問題では：</strong>printlnnをprintlnの誤記とみなすと、num=10なのでif (num <=
                             10)がtrueとなりokを表示します。Aです。</p>
                         <p class="memory">試験での見分け方：if (条件) 文。thenは書かない。</p>
                     </div>
@@ -3565,7 +3565,7 @@ public class Main {
                     <pre><code>public class Main {
     public static void main(String[] args) {
         int num = 10;
-        if (num &lt; 10)
+        if (num < 10)
             System.out.println("A");
         else
             System.out.println("B");
@@ -3616,7 +3616,7 @@ public class Main {
         int num = 10;
         if (num == 100)
             System.out.println("A");
-        else if (10 &lt; num)
+        else if (10 < num)
             System.out.println("B");
         else
         if (num == 10)
@@ -3654,7 +3654,7 @@ public class Main {
                         <div class="correct"><b>正答：</b>A</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>else-if連鎖では最初にtrueになった枝だけを実行します。</p>
-                        <p><strong>この問題では：</strong>num==100はfalse、10&lt;numもfalse、num==10がtrueなのでCを表示。以降のelseは実行されません。Aです。
+                        <p><strong>この問題では：</strong>num==100はfalse、10 < numもfalse、num==10がtrueなのでCを表示。以降のelseは実行されません。Aです。
                         </p>
                         <p class="memory">試験での見分け方：上から最初のtrueで終了。</p>
                     </div>
@@ -3711,14 +3711,14 @@ public class Main {
         final int NUM = 0;
         int num = 10;
         switch (num) {
-            case "10":    System.out.println("A");    //(6行目)
-                          break;
-            case num:     System.out.println("B");    //(8行目)
-                          break;
-            case 2 * 5:   System.out.println("C");    //(10行目)
-                          break;
-            case NUM:     System.out.println("D");    //(12行目)
-                          break;
+            case "10": System.out.println("A");    //(6行目)
+                        break;
+            case num: System.out.println("B");    //(8行目)
+                        break;
+            case 2 * 5: System.out.println("C");    //(10行目)
+                        break;
+            case NUM: System.out.println("D");    //(12行目)
+                        break;
         }
     }
 }</code></pre>
@@ -3810,10 +3810,10 @@ public class Main {
         int data = 1;
         switch(data) {
             default: System.out.print("C");
-            case 0:  System.out.print("A");
-                     break;
+            case 0: System.out.print("A");
+                    break;
             case 10: System.out.print("B");
-                     break;
+                    break;
         }
     }
 }</code></pre>
@@ -3855,10 +3855,10 @@ public class Main {
     public static void main(String[] args) {
         int a = 2;
         switch (a) {
-            case 1 -&gt; System.out.println("A");
-            case 2 -&gt; System.out.println("B");
-            case 3 -&gt; System.out.println("C");
-            default -&gt; System.out.println("D");
+            case 1 -> System.out.println("A");
+            case 2 -> System.out.println("B");
+            case 3 -> System.out.println("C");
+            default -> System.out.println("D");
         }
     }
 }</code></pre>
@@ -3886,7 +3886,7 @@ public class Main {
                     <div class="answer-inner">
                         <div class="correct"><b>正答：</b>C</div>
                         <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>case -&gt; 形式はフォールスルーしません。</p>
+                        <p><strong>覚えるルール：</strong>case -> 形式はフォールスルーしません。</p>
                         <p><strong>この問題では：</strong>a=2なのでcase2だけが選ばれBを1回表示します。Cです。</p>
                         <p class="memory">試験での見分け方：矢印caseは1枝だけ。</p>
                     </div>
@@ -3900,10 +3900,10 @@ public class Main {
     public static void main(String[] args) {
         int score = 85;
         String grade = switch (score / 10) {
-            case 10, 9 -&gt; "A";
-            case 8 -&gt; "B";
-            case 7 -&gt; "C";
-            case 6 -&gt; "D";
+            case 10, 9 -> "A";
+            case 8 -> "B";
+            case 7 -> "C";
+            case 6 -> "D";
         };
         System.out.println("Grade: " + grade);
     }
@@ -3945,10 +3945,10 @@ public class Main {
     public static void main(String[] args) {
         int a = 3;
         String result = switch (a) {
-            case 1 -&gt; "A";
-            case 2 -&gt; "B";
-            case 3 -&gt; "C";
-            default -&gt; "D";
+            case 1 -> "A";
+            case 2 -> "B";
+            case 3 -> "C";
+            default -> "D";
         } //(9行目)
         System.out.println(result);
     }
@@ -3991,12 +3991,12 @@ public class Main {
         int b = 100;
 
         int result = switch(a) {
-            case 1 -&gt; b * 2;
-            case 2 -&gt; {
+            case 1 -> b * 2;
+            case 2 -> {
                 b = b * 3;
                 ______________ b;
             }
-            default -&gt; b;
+            default -> b;
         };
         System.out.println(result);
     }
@@ -4038,7 +4038,7 @@ public class Main {
         int a = 11;
         int b = 0;
         while (_______) {
-            if (5 &lt; a) {
+            if (5 < a) {
                 System.out.println(b);
             }
             a--;
@@ -4047,10 +4047,10 @@ public class Main {
     }
 }</code></pre>
                     <ul class="choices">
-                        <li>A. b &lt; 5</li>
-                        <li>B. 5 &lt; b</li>
-                        <li>C. 5 &lt; a</li>
-                        <li>D. a &lt; 5</li>
+                        <li>A. b < 5</li>
+                        <li>B. 5 < b</li>
+                        <li>C. 5 < a</li>
+                        <li>D. a < 5</li>
                         <li>E. true</li>
                         <li>F. false</li>
                     </ul>
@@ -4074,7 +4074,7 @@ public class Main {
                         <div class="correct"><b>正答：</b>A</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>whileは条件がtrueの間だけ繰り返します。</p>
-                        <p><strong>この問題では：</strong>bは0から1ずつ増えます。while(b&lt;5)ならb=0～4の5回だけ実行され、aも11→7で常に5より大きいので0～4を表示します。Aです。
+                        <p><strong>この問題では：</strong>bは0から1ずつ増えます。while(b < 5)ならb=0～4の5回だけ実行され、aも11→7で常に5より大きいので0～4を表示します。Aです。
                         </p>
                         <p class="memory">試験での見分け方：出力回数を管理する変数を条件にする。</p>
                     </div>
@@ -4115,7 +4115,7 @@ public class Main {
                         <div class="correct"><b>正答：</b>C</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>do-whileは do {本体} while (条件); の形です。</p>
-                        <p><strong>この問題では：</strong>空欄1はdo、空欄2はwhile(a&lt;5);。a=0から表示後に増えるので0,1,2,3,4を表示して終了。Cです。</p>
+                        <p><strong>この問題では：</strong>空欄1はdo、空欄2はwhile(a < 5);。a=0から表示後に増えるので0,1,2,3,4を表示して終了。Cです。</p>
                         <p class="memory">試験での見分け方：doの後に条件は書かない。</p>
                     </div>
                 </details>
@@ -4127,7 +4127,7 @@ public class Main {
                     <pre><code>public class Main {
     public static void main(String[] args) {
         int a = 0;
-        while (a &lt; 5)
+        while (a < 5)
             do
                 a++;
                 System.out.print(a);
@@ -4175,7 +4175,7 @@ public class Main {
                     <p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
                     <pre><code>public class Main {
     public static void main(String[] args) {
-        for (int i=1, long j =2; i &lt; 5; i++) {
+        for (int i=1, long j =2; i < 5; i++) {
             System.out.print(i * j);
         }
     }
@@ -4215,7 +4215,7 @@ public class Main {
                     <pre><code>public class Main {
     public static void main(String[] args) {
         int a = 1;
-        for (int b = 2, total = 0; b &lt;= 5; b++) {
+        for (int b = 2, total = 0; b <= 5; b++) {
             total += a * b;
         }
         System.out.println(total);
@@ -4267,10 +4267,10 @@ public class Main {
     }
 }</code></pre>
                     <ul class="choices">
-                        <li>A. i &lt; 0</li>
+                        <li>A. i < 0</li>
                         <li>B. i == 0</li>
-                        <li>C. 0 &lt; i</li>
-                        <li>D. 1 &lt; 2</li>
+                        <li>C. 0 < i</li>
+                        <li>D. 1 < 2</li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
                         <div class="answer-control-label">回答を選択</div>
@@ -4300,7 +4300,7 @@ public class Main {
                     <p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
                     <pre><code>public class Main {
     public static void main(String[] args) {
-        for (int i = 0, j = 0; i &lt; 3, j &lt; 5; i++);
+        for (int i = 0, j = 0; i < 3, j < 5; i++);
         j += i;
     }
 }</code></pre>
@@ -4329,7 +4329,7 @@ public class Main {
                         <div class="correct"><b>正答：</b>D</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>forの条件部にはboolean式を1つだけ書きます。</p>
-                        <p><strong>この問題では：</strong>i&lt;3, j&lt;5のようにカンマで2つの条件を並べる構文はありません。この時点でコンパイルエラー、Dです。</p>
+                        <p><strong>この問題では：</strong>i < 3, j < 5のようにカンマで2つの条件を並べる構文はありません。この時点でコンパイルエラー、Dです。</p>
                         <p class="memory">試験での見分け方：for条件部にカンマは使えない。</p>
                     </div>
                 </details>
@@ -4340,7 +4340,7 @@ public class Main {
                     <p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
                     <pre><code>public class Main {
     public static void main(String[] args) {
-        for (int i = 0; i &lt; 3; i++, period()) {
+        for (int i = 0; i < 3; i++, period()) {
             System.out.print(i);
         }
     }
@@ -4390,7 +4390,7 @@ public class Main {
     public static void main(String[] args) {
         int array[][] = new int[][] { { 1, 2 }, { 2, 3, 4 }};
         int total = 0;
-        for (int i = 0; i &lt; array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             for (____________________) {
                 total += array[i][j];
             }
@@ -4399,10 +4399,10 @@ public class Main {
     }
 }</code></pre>
                     <ul class="choices">
-                        <li>A. int j = 0; j &lt; array[i].length; j++</li>
-                        <li>B. int j = 0; j &lt; array[j].length; j++</li>
-                        <li>C. int j = i; j &lt; array[i].length; j++</li>
-                        <li>D. int j = i; j &lt; array[j].length; j++</li>
+                        <li>A. int j = 0; j < array[i].length; j++</li>
+                        <li>B. int j = 0; j < array[j].length; j++</li>
+                        <li>C. int j = i; j < array[i].length; j++</li>
+                        <li>D. int j = i; j < array[j].length; j++</li>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
                         <div class="answer-control-label">回答を選択</div>
@@ -4434,10 +4434,10 @@ public class Main {
     public static void main(String[] args) {
         String[][] array = new String[2][];
         array[0] = new String[2];
-        array[1] = new String[5]:
+        array[1] = new String[5];
         int i = 97;
-        for (int a = 0; a &lt; array.length; a++) {
-            for (int b = 0; b &lt; array.length; b++) {
+        for (int a = 0; a < array.length; a++) {
+            for (int b = 0; b < array.length; b++) {
                 array[a][b] = "" + i;
                 i++;
             }
@@ -4620,13 +4620,13 @@ public class Main {
                     <pre><code>int num = 10;
 do {
     num++;
-} while (++num &lt; 10);
+} while (++num < 10);
 System.out.println(num);</code></pre>
                     <ul class="choices">
                         <li>
                             A.
                             <pre><code>int num = 10;
-while (++num &lt; 10) {
+while (++num < 10) {
     num++;
 }
 System.out.println(num);</code></pre>
@@ -4635,7 +4635,7 @@ System.out.println(num);</code></pre>
                         <li>
                             B.
                             <pre><code>int num = 10;
-while (++num &lt;= 10) {
+while (++num <= 10) {
     num++;
 }
 System.out.println(num);</code></pre>
@@ -4644,7 +4644,7 @@ System.out.println(num);</code></pre>
                         <li>
                             C.
                             <pre><code>int num = 10;
-while (num++ &lt; 10) {
+while (num++ < 10) {
     num++;
 }
 System.out.println(num);</code></pre>
@@ -4653,7 +4653,7 @@ System.out.println(num);</code></pre>
                         <li>
                             D.
                             <pre><code>int num = 10;
-while (num++ &lt;= 10) {
+while (num++ <= 10) {
     num++;
 }
 System.out.println(num);</code></pre>
@@ -4695,42 +4695,42 @@ System.out.println(num);</code></pre>
         _____________________
     }
 }</code></pre>
-                    <ul class="choices">
+                    <ul class="choices code-choices">
                         <li>
-                            A.
-                            <pre><code>while (0 &lt;= x) {
+                            <span class="choice-label">A.</span>
+                            <pre><code>while (0 <= x) {
     System.out.println(array[x]);
     x--;
 }</code></pre>
                         </li>
 
                         <li>
-                            B.
+                            <span class="choice-label">B.</span>
                             <pre><code>do {
     x--;
     System.out.println(array[x]);
-} while (0 &lt;= x);</code></pre>
+} while (0 <= x);</code></pre>
                         </li>
 
                         <li>
-                            C.
+                            <span class="choice-label">C.</span>
                             <pre><code>do {
     System.out.println(array[x]);
     x--;
-} while (0 &lt;= x);</code></pre>
+} while (0 <= x);</code></pre>
                         </li>
 
                         <li>
-                            D.
-                            <pre><code>while (0 &lt; x) {
+                            <span class="choice-label">D.</span>
+                            <pre><code>while (0 < x) {
     x--;
     System.out.println(array[x]);
 }</code></pre>
                         </li>
 
                         <li>
-                            E.
-                            <pre><code>while (0 &lt; x) {
+                            <span class="choice-label">E.</span>
+                            <pre><code>while (0 < x) {
     System.out.println(array[--x]);
 }</code></pre>
                         </li>
