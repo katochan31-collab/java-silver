@@ -5193,7 +5193,7 @@ System.out.println(num);</code></pre>
         Sample.num = 10;
         Sample s = new Sample();
         Sample s2 = new Sample();
-        s num += 10;
+        s.num += 10;
         s2.num = 30;
         System.out.println(Sample.num);
     }
@@ -5224,7 +5224,7 @@ System.out.println(num);</code></pre>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>staticフィールドはクラスに1つだけで、どのインスタンス経由でも同じ値を共有します。</p>
                         <p><strong>この問題では：</strong>s
-                            numをs.numの誤記とみなすと、Sample.num=10→s.num+=10で20→s2.num=30で30。最後も30なのでCです。原文どおりなら構文エラーです。</p>
+                            Sample.num=10→s.num+=10で20→s2.num=30で30。最後も30なのでCです。</p>
                         <p class="memory">試験での見分け方：staticはインスタンスごとではなく1個。</p>
                     </div>
                 </details>
@@ -5261,7 +5261,7 @@ System.out.println(num);</code></pre>
                         <div class="correct"><b>正答：</b>D,E</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>staticメソッドからインスタンスメンバーを直接使うにはオブジェクト参照が必要ですが、staticメンバーは直接使えます。</p>
-                        <p><strong>この問題では：</strong>Dはstaticメソッドからstaticフィールドなので可。Eはインスタンスメソッドからstaticフィールドで可。A,Fはstatic呼出し可なので誤り。B,Cは参照なしにインスタンスメンバーを直接使えるという意味で誤り。D,Eです。
+                        <p><strong>この問題では：</strong>Dはstaticメソッドからstaticフィールドなので可。Eはインスタンスメソッドからstaticフィールドで可。A,Fはstatic呼出し可なので誤り。B,Cは参照なしにインスタンスメンバーを直接使えるという意味で誤り。よって正解はD,Eです。
                         </p>
                         <p class="memory">試験での見分け方：static→instanceは対象オブジェクトが必要。</p>
                     </div>
@@ -5457,7 +5457,7 @@ System.out.println(num);</code></pre>
                     <p>このクラスを利用する以下のプログラムの説明として、正しいものを選びなさい。(1つ選択)</p>
                     <pre><code>public class Main {
     public static void main(String[] args) {
-        Sample = s = new Sample();
+        Sample s = new Sample();
         String val = s.setValue("hello");
         s.getValue();
         System.out.println(val);
@@ -5491,8 +5491,10 @@ System.out.println(num);</code></pre>
                         <div class="correct"><b>正答：</b>A</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>voidメソッドの呼出し結果を変数へ代入することはできません。</p>
-                        <p><strong>この問題では：</strong>Sample = sをSample sの誤記とみなすと、setValueはvoidなのでString val =
-                            s.setValue(...)がコンパイルエラー。s.getValue();を呼んで戻り値を捨てること自体は可能です。Aです。</p>
+                        <p><strong>この問題では：</strong>戻り値を戻さない(戻り値型がvoidである)メソッドに対し、
+                            戻り値を受け取る変数を宣言して受け取ることは出来ない。コンパイルエラーが発生する。
+                            一方で何らかの戻り値を戻すメソッドを呼び出しても、その戻り値を受け取る必要はない。
+                            変数に代入しなければその戻り値は破棄されるだけ。</p>
                         <p class="memory">試験での見分け方：voidの結果は代入できない。</p>
                     </div>
                 </details>
