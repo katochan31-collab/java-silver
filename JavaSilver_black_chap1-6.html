@@ -8654,7 +8654,7 @@ class Employee {
     }
 }</code></pre>
                     <p>このプログラムを次のコマンドで実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
-                    <pre><code>&gt; java Main</code></pre>
+                    <pre><code> >java Main</code></pre>
                     <ul class="choices">
                         <li>A. 「null」と表示される</li>
                         <li>B. 「0」と表示される</li>
@@ -8694,7 +8694,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+        List<String> list = new ArrayList<>();
         list.get(0);
     }
 }</code></pre>
@@ -8883,11 +8883,11 @@ public class Main {
                     </ul>
                     <ul class="choices">
                         <li>C. try {</li>
-                        <p>// do something } catch (AException &amp; BException) { // do something }</p>
+                        <p>// do something } catch (AException & BException) { // do something }</p>
                     </ul>
                     <ul class="choices">
                         <li>D. try {</li>
-                        <p>// do something } catch (AException &amp;&amp; BException b) { // do something }</p>
+                        <p>// do something } catch (AException && BException b) { // do something }</p>
                     </ul>
                     <div aria-label="回答欄" class="answer-controls">
                         <div class="answer-control-label">回答を選択</div>
@@ -8907,7 +8907,7 @@ public class Main {
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>マルチキャッチは例外型を | で区切り、変数名は最後に1つ書きます。</p>
                         <p><strong>この問題では：</strong>正しい形はcatch (AException | BException
-                            b)です。||、&amp;、&amp;&amp;はマルチキャッチの区切りには使えません。Aです。</p>
+                            b)です。||、&、&&はマルチキャッチの区切りには使えません。Aです。</p>
                         <p class="memory">試験での見分け方：マルチキャッチは | 1本。</p>
                     </div>
                 </details>
