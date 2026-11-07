@@ -7175,7 +7175,7 @@ Java</code></pre>
     protected abstract void test();
 }</code></pre>
                     <pre><code>class ConcreteSample extends AbstractSample {
-    protected voi test() {
+    protected void test() {
         System.out.println("B");
     }
 }</code></pre>
@@ -7216,7 +7216,7 @@ Java</code></pre>
                         <p><strong>覚えるルール：</strong>抽象メソッドを実装するメソッドは、元と同じか広いアクセスにします。</p>
                         <p><strong>この問題では：</strong>AbstractSample.test()はprotected abstract
                             voidです。ConcreteSampleはprotected void
-                            test()なら正しく実装でき、sample()はA→test()のB→Cの順に表示します。ただし教材の『voi』を原文どおり読むとコンパイルエラーです。</p>
+                            test()なら正しく実装でき、sample()はA→test()のB→Cの順に表示します。</p>
                         <p class="memory">試験での見分け方：オーバーライドはアクセスを狭めない。誤字も先に確認。</p>
                     </div>
                 </details>
@@ -7692,6 +7692,13 @@ class Employee {
     String name;
 }</code></pre>
                     <p>これらのクラスを利用する以下のプログラムを、コンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
+                    <pre><code>public class Main {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.name = "sample";
+        System.out.println(child.getName());
+    }
+}</code></pre>
                     <ul class="choices">
                         <li>A. 「sample」と表示される</li>
                         <li>B. 「null」と表示される</li>
@@ -7733,7 +7740,7 @@ class Employee {
     }
 }</code></pre>
                     <pre><code>class B extends A {
-    public B {
+    public B() {
         System.out.println("B");
     }
 }</code></pre>
@@ -7770,10 +7777,9 @@ class Employee {
                     <div class="answer-inner">
                         <div class="correct"><b>正答：</b>C</div>
                         <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>コンストラクタにはクラス名の後ろに()が必要です。</p>
-                        <p><strong>この問題では：</strong>Bの宣言がpublic B {となっており、public B()
-                            {ではありません。これはコンストラクタ宣言として不正なのでBクラスでコンパイルエラーです。Eです。</p>
-                        <p class="memory">試験での見分け方：コンストラクタは必ず ClassName(...){...}。</p>
+                        <p><strong>覚えるルール：</strong>継承関係にあるクラスのインスタンス生成時のコンストラクタの動作は、親クラスのコンストラクタが最初に呼び出され、その後に子クラスのコンストラクタが呼び出されます。</p>
+                        <p><strong>この問題では：</strong>サブクラスのコンストラクタには、スーパークラスのコンストラクタを呼び出すためのsuper();がコンパイラによって先頭行に追加される。</p>
+                        <p class="memory">試験での見分け方：A a = new B() の場合、まずB()コンストラクタが呼ばれ、その先頭で自動的にsuper()（A()の呼び出し）が追加されます。したがって、実行時は「1. A()が呼ばれる → 2. B()が呼ばれる」の順で処理されます。</p>
                     </div>
                 </details>
             </article>
