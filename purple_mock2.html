@@ -596,6 +596,29 @@
             }
         }
     </style>
+
+<style id="stage1-review-style">
+.review-toolbar{display:flex;gap:8px;justify-content:center;align-items:center;padding:7px 12px 9px;background:#f7f1fc;border-top:1px solid var(--line);flex-wrap:wrap}
+.review-toolbar button{border:1px solid #bda8d2;border-radius:10px;padding:8px 12px;font-weight:800;background:#fff;color:var(--navy);cursor:pointer}
+.review-toolbar button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.review-summary{font-size:13px;font-weight:800;color:var(--navy)}
+.topic-tags{display:flex;gap:6px;flex-wrap:wrap;margin:5px 0 13px}
+.topic-tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#eee7f5;color:#5d347d;font-size:12px;font-weight:800}
+.understanding-box{margin-top:14px;padding:12px 13px;border:1px solid var(--line);border-radius:13px;background:#fff}
+.understanding-title{font-weight:900;color:var(--navy);margin-bottom:7px}
+.understanding-buttons{display:flex;gap:7px;flex-wrap:wrap}
+.understanding-button{border:2px solid var(--line);border-radius:10px;padding:7px 11px;background:#fff;color:var(--text);font-weight:800;cursor:pointer}
+.understanding-button.selected[data-level="mastered"]{background:#e9f8ef;border-color:#159447;color:#0d7135}
+.understanding-button.selected[data-level="uncertain"]{background:#fff7df;border-color:#d99a00;color:#8a5a00}
+.understanding-button.selected[data-level="unknown"]{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}
+.review-empty{display:none;max-width:980px;margin:22px auto;padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;text-align:center}
+.review-empty.show{display:block}
+.question.review-hidden{display:none}
+#index.review-hidden{display:none}
+#index a.wrong-index{background:#ffe8e8;color:#a91f1f}
+#index a.mastered-index{background:#e9f8ef;color:#0d7135}
+@media(max-width:600px){.review-toolbar{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.review-toolbar button{font-size:12px;padding:7px 9px;white-space:nowrap}.review-summary{white-space:nowrap}.understanding-button{font-size:12px;padding:7px 8px}}
+</style>
 </head>
 
 <body>
@@ -611,6 +634,13 @@
         <div aria-live="polite" class="study-status"><span>解答 <b id="answeredCount">0</b>/<b
                     id="totalCount">0</b></span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b
                     id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div>
+        <div class="review-toolbar" aria-label="復習モード">
+            <button id="showAllQuestions" class="active" type="button">全問表示</button>
+            <button id="showWrongQuestions" type="button">間違い復習 <span id="wrongCountBadge">0問</span></button>
+            <button id="showReviewQuestions" type="button">要復習 <span id="reviewCountBadge">0問</span></button>
+            <span class="review-summary" id="stage1Summary">理解度を記録できます</span>
+        </div>
+
     </div>
     <section id="index">
         <details>
@@ -632,9 +662,14 @@
                     href="#q59">59</a><a href="#q60">60</a></nav>
         </details>
     </section>
-    <main>
-        <article class="question" data-correct="C" data-max-select="1" id="q1">
-            <div class="qhead"><span class="badge">問1</span></div>
+    
+    <section class="review-empty" id="reviewEmpty">
+        <h2>対象の問題はありません</h2>
+        <p>採点して不正解になった問題、または「要復習」にした問題がここに表示されます。</p>
+    </section>
+<main>
+        <article class="question" data-topics="interface,フィールド" data-correct="C" data-max-select="1" id="q1">
+            <div class="qhead"><span class="badge">問1</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#interface</span><span class="topic-tag">#フィールド</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -688,9 +723,18 @@ class MusicPlayer implements Playable {
                     <p>今回は大文字の SPEED を宣言するCが正解</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q2">
-            <div class="qhead"><span class="badge">問2</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q1">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="main,型変換" data-correct="D" data-max-select="1" id="q2">
+            <div class="qhead"><span class="badge">問2</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#main</span><span class="topic-tag">#型変換</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムはMain.javaというファイルに記述されています。</p>
@@ -735,9 +779,18 @@ class MusicPlayer implements Playable {
                     <p>charAt() の戻り値の型はcharであり、int(a) + char(b) により、char(b)は文字コードの数値で加算される</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,D,F" data-max-select="3" id="q3">
-            <div class="qhead"><span class="badge">問3</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q2">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="基本データ型,ボクシング" data-correct="B,D,F" data-max-select="3" id="q3">
+            <div class="qhead"><span class="badge">問3</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#基本データ型</span><span class="topic-tag">#ボクシング</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次の記述のうち、コンパイルエラーが発生するものはどれですか。(3つ選択)</p>
@@ -778,9 +831,18 @@ class MusicPlayer implements Playable {
                     <p> - float → Double ×</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="G" data-max-select="1" id="q4">
-            <div class="qhead"><span class="badge">問4</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q3">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="ループ,ラベル" data-correct="G" data-max-select="1" id="q4">
+            <div class="qhead"><span class="badge">問4</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#ループ</span><span class="topic-tag">#ラベル</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -833,9 +895,18 @@ class MusicPlayer implements Playable {
                     <p>無限ループ問題では「終了条件に本当に到達できるか」を確認する。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,F" data-max-select="2" id="q5">
-            <div class="qhead"><span class="badge">問5</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q4">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="String,StringBuilder" data-correct="B,F" data-max-select="2" id="q5">
+            <div class="qhead"><span class="badge">問5</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#String</span><span class="topic-tag">#StringBuilder</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)を正しく説明しているものはどれですか。(2つ選択)</p>
@@ -883,9 +954,18 @@ String s5 = sb1.toString();</code></pre>
                     <p> StringBuilder.toString() → 新しいString</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="F" data-max-select="1" id="q6">
-            <div class="qhead"><span class="badge">問6</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q5">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="配列,null" data-correct="F" data-max-select="1" id="q6">
+            <div class="qhead"><span class="badge">問6</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#配列</span><span class="topic-tag">#null</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)と同等の記述はどれですか。(1つ選択)</p>
@@ -969,9 +1049,18 @@ array[1][1] = "Y";</code></pre>
                     <p>配列のデフォルト値 null と、空文字 "" は別物。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="E" data-max-select="1" id="q7">
-            <div class="qhead"><span class="badge">問7</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q6">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="String,StringBuilder" data-correct="E" data-max-select="1" id="q7">
+            <div class="qhead"><span class="badge">問7</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#String</span><span class="topic-tag">#StringBuilder</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -1018,9 +1107,18 @@ array[1][1] = "Y";</code></pre>
                     <p>StringBuilder.replace() → 元のStringBuilderを変更する</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A,D" data-max-select="2" id="q8">
-            <div class="qhead"><span class="badge">問8</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q7">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="数値リテラル,var" data-correct="A,D" data-max-select="2" id="q8">
+            <div class="qhead"><span class="badge">問8</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#数値リテラル</span><span class="topic-tag">#var</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のローカル変数の宣言で、コンパイルエラーが発生しないものはどれですか。(2つ選択)</p>
@@ -1060,9 +1158,18 @@ array[1][1] = "Y";</code></pre>
                     <p>アンダースコアは「数字と数字の間」ならOK。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="G" data-max-select="1" id="q9">
-            <div class="qhead"><span class="badge">問9</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q8">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,try-with-resources" data-correct="G" data-max-select="1" id="q9">
+            <div class="qhead"><span class="badge">問9</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#try-with-resources</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。（1つ選択）</p>
@@ -1122,9 +1229,18 @@ class MyResource implements AutoCloseable {
                     <p>throws Exception は「例外が必ず発生する」という意味ではありません。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q10">
-            <div class="qhead"><span class="badge">問10</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q9">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="main,オーバーロード" data-correct="A" data-max-select="1" id="q10">
+            <div class="qhead"><span class="badge">問10</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#main</span><span class="topic-tag">#オーバーロード</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -1174,9 +1290,18 @@ class MyResource implements AutoCloseable {
                     <p>のどちらでもOK。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q11">
-            <div class="qhead"><span class="badge">問11</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q10">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="switch,String" data-correct="D" data-max-select="1" id="q11">
+            <div class="qhead"><span class="badge">問11</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#switch</span><span class="topic-tag">#String</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -1232,9 +1357,18 @@ class MyResource implements AutoCloseable {
                     <p><code>str[0].replace("of", "a").substring(0, 4);</code>のようなメソッドチェーンは、左から順に結果を書き出すとミスしにくいです。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,E" data-max-select="2" id="q12">
-            <div class="qhead"><span class="badge">問12</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q11">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="ジェネリクス,List" data-correct="B,E" data-max-select="2" id="q12">
+            <div class="qhead"><span class="badge">問12</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#ジェネリクス</span><span class="topic-tag">#List</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)があります。</p>
@@ -1287,9 +1421,18 @@ class MyResource implements AutoCloseable {
                     </p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="E" data-max-select="1" id="q13">
-            <div class="qhead"><span class="badge">問13</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q12">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="main,ソースファイルモード" data-correct="E" data-max-select="1" id="q13">
+            <div class="qhead"><span class="badge">問13</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#main</span><span class="topic-tag">#ソースファイルモード</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムはMain.javaというファイルに記述されています。このプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -1337,9 +1480,18 @@ public class Main {
                     <p>なお javac Main.java → java Test の場合、Test.main() は引数なしなので通常のエントリーポイントではなく、Fは不正解です。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B" data-max-select="1" id="q14">
-            <div class="qhead"><span class="badge">問14</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q13">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="三項演算子,equals" data-correct="B" data-max-select="1" id="q14">
+            <div class="qhead"><span class="badge">問14</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#三項演算子</span><span class="topic-tag">#equals</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)があります。</p>
@@ -1409,9 +1561,18 @@ else if (条件2) B
 else C</code></pre>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,D" data-max-select="2" id="q15">
-            <div class="qhead"><span class="badge">問15</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q14">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="継承,アクセス修飾子" data-correct="B,D" data-max-select="2" id="q15">
+            <div class="qhead"><span class="badge">問15</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#継承</span><span class="topic-tag">#アクセス修飾子</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -1482,9 +1643,18 @@ public class Test {
                     <p>protectedフィールドは、別パッケージでもサブクラス内から継承経由で参照可能です。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="G" data-max-select="1" id="q16">
-            <div class="qhead"><span class="badge">問16</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q15">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="配列,ループ" data-correct="G" data-max-select="1" id="q16">
+            <div class="qhead"><span class="badge">問16</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#配列</span><span class="topic-tag">#ループ</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)をコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -1533,9 +1703,18 @@ public class Test {
                     <p>continue は「今回の繰り返しの残りを飛ばして、次の周回へ」。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q17">
-            <div class="qhead"><span class="badge">問17</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q16">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="演算子,代入" data-correct="A" data-max-select="1" id="q17">
+            <div class="qhead"><span class="badge">問17</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#演算子</span><span class="topic-tag">#代入</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -1578,9 +1757,18 @@ public class Test {
                     <p>計算は「×÷が先」、連続代入は「右から左」。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="C" data-max-select="1" id="q18">
-            <div class="qhead"><span class="badge">問18</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q17">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="配列,static" data-correct="C" data-max-select="1" id="q18">
+            <div class="qhead"><span class="badge">問18</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#配列</span><span class="topic-tag">#static</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -1662,9 +1850,18 @@ class Disp {
                     <p>クラス名.メソッド名() なら static を確認です。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q19">
-            <div class="qhead"><span class="badge">問19</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q18">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="オーバーロード,String" data-correct="A" data-max-select="1" id="q19">
+            <div class="qhead"><span class="badge">問19</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#オーバーロード</span><span class="topic-tag">#String</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -1736,9 +1933,18 @@ class Disp {
                     <p>オーバーロードは「実引数の型に最も適合するメソッド」を選ぶ。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q20">
-            <div class="qhead"><span class="badge">問20</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q19">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="配列,演算子" data-correct="A" data-max-select="1" id="q20">
+            <div class="qhead"><span class="badge">問20</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#配列</span><span class="topic-tag">#演算子</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)をコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -1782,9 +1988,18 @@ class Disp {
                     <h4>覚え方</h4>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D,E,F" data-max-select="3" id="q21">
-            <div class="qhead"><span class="badge">問21</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q20">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,throws" data-correct="D,E,F" data-max-select="3" id="q21">
+            <div class="qhead"><span class="badge">問21</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#throws</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -1833,9 +2048,18 @@ class Disp {
                     <p>チェック例外は「catchするまでthrowsでバケツリレー」。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A,F" data-max-select="2" id="q22">
-            <div class="qhead"><span class="badge">問22</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q21">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="抽象クラス,interface" data-correct="A,F" data-max-select="2" id="q22">
+            <div class="qhead"><span class="badge">問22</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#抽象クラス</span><span class="topic-tag">#interface</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次の記述のうちコンパイルエラーが発生するものはどれですか。(2つ選択)</p>
@@ -1905,9 +2129,18 @@ abstract class H implements G {}</code></pre>
                     <p>abstract＝未実装を許す、sealed＝継承先を限定すると役割を分けて覚えましょう。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="C" data-max-select="1" id="q23">
-            <div class="qhead"><span class="badge">問23</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q22">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="sealed,record" data-correct="C" data-max-select="1" id="q23">
+            <div class="qhead"><span class="badge">問23</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#sealed</span><span class="topic-tag">#record</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -1963,9 +2196,18 @@ sealed class Drink implements Item {}</code></pre>
                     <p>recordは暗黙的にfinal、というのもセットで覚えましょう。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B" data-max-select="1" id="q24">
-            <div class="qhead"><span class="badge">問24</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q23">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="配列,null" data-correct="B" data-max-select="1" id="q24">
+            <div class="qhead"><span class="badge">問24</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#配列</span><span class="topic-tag">#null</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2014,9 +2256,18 @@ sealed class Drink implements Item {}</code></pre>
                     <p>null は「使って操作」するとNPE。文字列連結なら "null" と表示される。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="G" data-max-select="1" id="q25">
-            <div class="qhead"><span class="badge">問25</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q24">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="継承,final" data-correct="G" data-max-select="1" id="q25">
+            <div class="qhead"><span class="badge">問25</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#継承</span><span class="topic-tag">#final</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -2074,9 +2325,18 @@ class Main {
                     <p>finalは継承禁止</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="E" data-max-select="1" id="q26">
-            <div class="qhead"><span class="badge">問26</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q25">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="switch,ボクシング" data-correct="E" data-max-select="1" id="q26">
+            <div class="qhead"><span class="badge">問26</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#switch</span><span class="topic-tag">#ボクシング</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)をコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2135,9 +2395,18 @@ class Calc {
                     <p>RuntimeException → 非チェック例外なのでthrows宣言は必須ではない</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q27">
-            <div class="qhead"><span class="badge">問27</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q26">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="static,参照" data-correct="D" data-max-select="1" id="q27">
+            <div class="qhead"><span class="badge">問27</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#static</span><span class="topic-tag">#参照</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2185,9 +2454,18 @@ class Calc {
                     <p>o1 = o2 はオブジェクトのコピーではなく「参照先を同じにする」。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q28">
-            <div class="qhead"><span class="badge">問28</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q27">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,try-with-resources" data-correct="A" data-max-select="1" id="q28">
+            <div class="qhead"><span class="badge">問28</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#try-with-resources</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -2246,9 +2524,18 @@ class SafeResource implements AutoCloseable {
                     <p>try-with-resources：tryの処理 → 自動close</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="F" data-max-select="1" id="q29">
-            <div class="qhead"><span class="badge">問29</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q28">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="instanceof,パターンマッチング" data-correct="F" data-max-select="1" id="q29">
+            <div class="qhead"><span class="badge">問29</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#instanceof</span><span class="topic-tag">#パターンマッチング</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -2309,9 +2596,18 @@ class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
                     <p>パターンマッチングでは、パターン変数が「成立すると保証できる範囲」でだけ使えると考えます。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,E" data-max-select="2" id="q30">
-            <div class="qhead"><span class="badge">問30</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q29">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="String,indexOf" data-correct="B,E" data-max-select="2" id="q30">
+            <div class="qhead"><span class="badge">問30</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#String</span><span class="topic-tag">#indexOf</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -2361,9 +2657,18 @@ class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
                     <p>0 1 2 3 4 5 6 7 8 9</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B" data-max-select="1" id="q31">
-            <div class="qhead"><span class="badge">問31</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q30">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="List,戻り値" data-correct="B" data-max-select="1" id="q31">
+            <div class="qhead"><span class="badge">問31</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#List</span><span class="topic-tag">#戻り値</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)をコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2416,9 +2721,18 @@ class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
                     <p>remove(int) // 削除したE</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A,D,F" data-max-select="3" id="q32">
-            <div class="qhead"><span class="badge">問32</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q31">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="sealed,継承" data-correct="A,D,F" data-max-select="3" id="q32">
+            <div class="qhead"><span class="badge">問32</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#sealed</span><span class="topic-tag">#継承</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -2467,9 +2781,18 @@ final class B {}
                     <p>クラスは「extends 1クラス、implements 複数インターフェース」。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="C" data-max-select="1" id="q33">
-            <div class="qhead"><span class="badge">問33</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q32">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="ループ,演算子" data-correct="C" data-max-select="1" id="q33">
+            <div class="qhead"><span class="badge">問33</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#ループ</span><span class="topic-tag">#演算子</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2520,9 +2843,18 @@ final class B {}
                     <p>|| は短絡評価、| は両辺を必ず評価。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q34">
-            <div class="qhead"><span class="badge">問34</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q33">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="this,変数スコープ" data-correct="D" data-max-select="1" id="q34">
+            <div class="qhead"><span class="badge">問34</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#this</span><span class="topic-tag">#変数スコープ</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2567,9 +2899,18 @@ final class B {}
                     <p>同名の仮引数があるとフィールドは隠れる。フィールドを明示するならthis。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="F" data-max-select="1" id="q35">
-            <div class="qhead"><span class="badge">問35</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q34">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="オーバーロード,可変長引数" data-correct="F" data-max-select="1" id="q35">
+            <div class="qhead"><span class="badge">問35</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#オーバーロード</span><span class="topic-tag">#可変長引数</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2627,9 +2968,18 @@ record Item(int price, int amount) {
                     <p>最後に引数が可変長引数のメソッドになり、100*1.1=110が返る。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D,E" data-max-select="2" id="q36">
-            <div class="qhead"><span class="badge">問36</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q35">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="record,コンストラクタ" data-correct="D,E" data-max-select="2" id="q36">
+            <div class="qhead"><span class="badge">問36</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#record</span><span class="topic-tag">#コンストラクタ</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -2722,9 +3072,18 @@ public Book(int id, String author, double price) {
                     <p>そして重要なのは、recordは暗黙的にfinalだが、メソッド追加やtoString()のオーバーライドは禁止されていないという点です。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="E" data-max-select="1" id="q37">
-            <div class="qhead"><span class="badge">問37</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q36">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,try-with-resources" data-correct="E" data-max-select="1" id="q37">
+            <div class="qhead"><span class="badge">問37</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#try-with-resources</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2776,9 +3135,18 @@ class Resource implements AutoCloseable {
                     <p>try-with-resourcesに既存変数を渡すなら、その変数は再代入しない。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q38">
-            <div class="qhead"><span class="badge">問38</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q37">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="テキストブロック,String" data-correct="A" data-max-select="1" id="q38">
+            <div class="qhead"><span class="badge">問38</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#テキストブロック</span><span class="topic-tag">#String</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)と同様の処理はどれですか。(1つ選択)</p>
@@ -2827,9 +3195,18 @@ class Resource implements AutoCloseable {
                     <p>開始の"""の直後は改行が必要。閉じる"""の位置によって末尾の改行が入るかどうかが変わる。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q39">
-            <div class="qhead"><span class="badge">問39</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q38">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="instanceof,例外" data-correct="D" data-max-select="1" id="q39">
+            <div class="qhead"><span class="badge">問39</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#instanceof</span><span class="topic-tag">#例外</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -2890,9 +3267,18 @@ class Resource implements AutoCloseable {
 if (...) { ... }  // こちらも判定</code></pre>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A,F" data-max-select="2" id="q40">
-            <div class="qhead"><span class="badge">問40</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q39">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="interface,static" data-correct="A,F" data-max-select="2" id="q40">
+            <div class="qhead"><span class="badge">問40</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#interface</span><span class="topic-tag">#static</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -2959,9 +3345,18 @@ class Main {
                     <p>抽象メソッド → 実装したインスタンス.メソッド()</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="G" data-max-select="1" id="q41">
-            <div class="qhead"><span class="badge">問41</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q40">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="値渡し,参照" data-correct="G" data-max-select="1" id="q41">
+            <div class="qhead"><span class="badge">問41</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#値渡し</span><span class="topic-tag">#参照</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -3018,9 +3413,18 @@ class Item {
                     <p>参照型 → 参照値をコピー → 同じオブジェクトの中身を変更すると呼び出し元からも見える</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="E" data-max-select="1" id="q42">
-            <div class="qhead"><span class="badge">問42</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q41">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="オーバーライド,戻り値" data-correct="E" data-max-select="1" id="q42">
+            <div class="qhead"><span class="badge">問42</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#オーバーライド</span><span class="topic-tag">#戻り値</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -3074,9 +3478,18 @@ class Main {
                     <p>戻り値だけ変えてもオーバーロードにはならない。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B" data-max-select="1" id="q43">
-            <div class="qhead"><span class="badge">問43</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q42">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,switch" data-correct="B" data-max-select="1" id="q43">
+            <div class="qhead"><span class="badge">問43</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#switch</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)をコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -3141,9 +3554,18 @@ class Main {
 System.out.print(ex.getMessage()); // 表示する</code></pre>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q44">
-            <div class="qhead"><span class="badge">問44</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q43">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="List,record" data-correct="A" data-max-select="1" id="q44">
+            <div class="qhead"><span class="badge">問44</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#List</span><span class="topic-tag">#record</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)があります。</p>
@@ -3207,9 +3629,18 @@ set(i, e)     // i番目を置換</code></pre>
                     <p>set → 入れ替える</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="E" data-max-select="1" id="q45">
-            <div class="qhead"><span class="badge">問45</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q44">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="interface,戻り値" data-correct="E" data-max-select="1" id="q45">
+            <div class="qhead"><span class="badge">問45</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#interface</span><span class="topic-tag">#戻り値</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>コンパイルエラーが発生する次のプログラムの修正方法を正しく説明しているものはどれですか。(1つ選択)</p>
@@ -3266,9 +3697,18 @@ non-sealed interface C extends A, B {}</code></pre>
                     <p>同じシグネチャでintとIntegerを戻り値として使い分けることはできない</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="C" data-max-select="1" id="q46">
-            <div class="qhead"><span class="badge">問46</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q45">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="switch,定数式" data-correct="C" data-max-select="1" id="q46">
+            <div class="qhead"><span class="badge">問46</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#switch</span><span class="topic-tag">#定数式</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -3324,9 +3764,18 @@ final int b = 5;       // caseに○
 final int c = get();   // caseには×</code></pre>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,C" data-max-select="2" id="q47">
-            <div class="qhead"><span class="badge">問47</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q46">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="コンストラクタ,継承" data-correct="B,C" data-max-select="2" id="q47">
+            <div class="qhead"><span class="badge">問47</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#コンストラクタ</span><span class="topic-tag">#継承</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -3385,9 +3834,18 @@ class Sub extends Super {
                     <p>this(...)とsuper(...)は同時に使えない</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,F" data-max-select="2" id="q48">
-            <div class="qhead"><span class="badge">問48</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q47">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="record,final" data-correct="B,F" data-max-select="2" id="q48">
+            <div class="qhead"><span class="badge">問48</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#record</span><span class="topic-tag">#final</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムでコンパイルエラーが発生する行はどこですか。(2つ選択)</p>
@@ -3460,9 +3918,18 @@ class Main {
                     <p>インスタンスメソッドもstaticメソッドも追加可能だが、インスタンス変数はコンポーネント由来ではないので追加不可。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q49">
-            <div class="qhead"><span class="badge">問49</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q48">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,オーバーロード" data-correct="D" data-max-select="1" id="q49">
+            <div class="qhead"><span class="badge">問49</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#オーバーロード</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -3520,9 +3987,18 @@ class Main {
                     <p>finally → 基本的に最後に実行</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B" data-max-select="1" id="q50">
-            <div class="qhead"><span class="badge">問50</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q49">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="interface,default" data-correct="B" data-max-select="1" id="q50">
+            <div class="qhead"><span class="badge">問50</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#interface</span><span class="topic-tag">#default</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -3597,9 +4073,18 @@ private → interface内部専用</code></pre>
                     <p>interfaceのstaticメソッドは実装クラスへ継承されない</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="C" data-max-select="1" id="q51">
-            <div class="qhead"><span class="badge">問51</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q50">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="参照,null" data-correct="C" data-max-select="1" id="q51">
+            <div class="qhead"><span class="badge">問51</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#参照</span><span class="topic-tag">#null</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -3653,9 +4138,18 @@ class Main {
                     <p>参照型のフィールド初期値はnull。参照変数の代入はオブジェクトのコピーではなく、参照先の共有。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="E" data-max-select="1" id="q52">
-            <div class="qhead"><span class="badge">問52</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q51">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="String,StringBuilder" data-correct="E" data-max-select="1" id="q52">
+            <div class="qhead"><span class="badge">問52</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#String</span><span class="topic-tag">#StringBuilder</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -3706,9 +4200,18 @@ StringBuilder.substring() // Stringを返す。元は変わらない</code></pre
                     <p>sbのdelete()は変更後の自分自身のStringBuilderを戻り値として返すこと</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q53">
-            <div class="qhead"><span class="badge">問53</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q52">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="instanceof,継承" data-correct="D" data-max-select="1" id="q53">
+            <div class="qhead"><span class="badge">問53</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#instanceof</span><span class="topic-tag">#継承</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
@@ -3770,9 +4273,18 @@ public class Main {
                     <p>EBook → Book → Productの継承関係なので、EBookはEBook・Book・Productのいずれにも該当します。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="F" data-max-select="1" id="q54">
-            <div class="qhead"><span class="badge">問54</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q53">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="アクセス修飾子,継承" data-correct="F" data-max-select="1" id="q54">
+            <div class="qhead"><span class="badge">問54</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#アクセス修飾子</span><span class="topic-tag">#継承</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -3840,9 +4352,18 @@ class Main {
                     <p>protectedは別パッケージでも「サブクラスから継承関係を通じて」アクセスできる。無関係な別パッケージのクラスからはアクセスできない。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="C" data-max-select="1" id="q55">
-            <div class="qhead"><span class="badge">問55</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q54">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="ループ,while" data-correct="C" data-max-select="1" id="q55">
+            <div class="qhead"><span class="badge">問55</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#ループ</span><span class="topic-tag">#while</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(1つ選択)</p>
@@ -3887,9 +4408,18 @@ class Main {
                     <p>whileは「条件判定 → 本体」の順。本体で条件を外れる値になっても、その周回の処理は最後まで実行される。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="B,E,F" data-max-select="3" id="q56">
-            <div class="qhead"><span class="badge">問56</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q55">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,Throwable" data-correct="B,E,F" data-max-select="3" id="q56">
+            <div class="qhead"><span class="badge">問56</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#Throwable</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムの6行目に記述できるものはどれですか。(3つ選択)</p>
@@ -3943,9 +4473,18 @@ class MyException extends Exception {
                     <p>Throwableには他にもメソッドがあります。Silver対策としては、まずこの3つを即答できるようにするのがよいです。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="D" data-max-select="1" id="q57">
-            <div class="qhead"><span class="badge">問57</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q56">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="interface,パターンマッチング" data-correct="D" data-max-select="1" id="q57">
+            <div class="qhead"><span class="badge">問57</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#interface</span><span class="topic-tag">#パターンマッチング</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)があります。</p>
@@ -4015,9 +4554,18 @@ public class Main {
                     <p>Calculatorとして共通なのはcalc()、Shapeだけが持つのがdraw()、と分けて考えると分かりやすいです。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="C,E" data-max-select="2" id="q58">
-            <div class="qhead"><span class="badge">問58</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q57">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="interface,共変戻り値" data-correct="C,E" data-max-select="2" id="q58">
+            <div class="qhead"><span class="badge">問58</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#interface</span><span class="topic-tag">#共変戻り値</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムがあります。</p>
@@ -4071,9 +4619,18 @@ public class Main {
                     <p>インターフェースを実装した具象クラスは、抽象メソッドを実装する。オーバーライドは「引数は同じ、戻り値は同じ型またはサブタイプ」。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="F" data-max-select="1" id="q59">
-            <div class="qhead"><span class="badge">問59</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q58">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="interface,抽象クラス" data-correct="F" data-max-select="1" id="q59">
+            <div class="qhead"><span class="badge">問59</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#interface</span><span class="topic-tag">#抽象クラス</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムをコンパイル、実行するとどのような結果になりますか。(１つ選択)</p>
@@ -4131,9 +4688,18 @@ class MyConcrete extends MyAbstract {
                     <p>インターフェースの未実装メソッドは、抽象クラスなら先送りできるが、最初の具象クラスで必ず実装する。</p>
                 </div>
             </details>
-        </article>
-        <article class="question" data-correct="A" data-max-select="1" id="q60">
-            <div class="qhead"><span class="badge">問60</span></div>
+        
+            <div class="understanding-box" data-understanding-for="q59">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
+        <article class="question" data-topics="例外,cause" data-correct="A" data-max-select="1" id="q60">
+            <div class="qhead"><span class="badge">問60</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#例外</span><span class="topic-tag">#cause</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)をコンパイル、実行するとどのような結果になりますか。(１つ選択)</p>
@@ -4196,9 +4762,98 @@ class MyConcrete extends MyAbstract {
                     <p>Cause = UserException: User Ex!</p>
                 </div>
             </details>
-        </article>
+        
+            <div class="understanding-box" data-understanding-for="q60">
+                <div class="understanding-title">この問題の理解度</div>
+                <div class="understanding-buttons">
+                    <button type="button" class="understanding-button" data-level="mastered">😊 わかった</button>
+                    <button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button>
+                    <button type="button" class="understanding-button" data-level="unknown">😵 わからない</button>
+                </div>
+            </div>
+</article>
     </main>
     <script>(() => { const qs = [...document.querySelectorAll('.question')], KEY = 'javaSilver:purple_mock2:finalPlainStable:v4'; let idx = 0, elapsed = 0, last = Date.now(), storageOK = true, state = { answers: {}, graded: {} }; try { const z = JSON.parse(localStorage.getItem(KEY) || 'null'); if (z) { state.answers = z.answers || {}; state.graded = z.graded || {}; elapsed = Number(z.elapsed) || 0 } } catch (e) { storageOK = false } const B = q => [...q.querySelectorAll('.answer-choice')], V = b => b.dataset.answerChoice, A = q => Array.isArray(state.answers[q.id]) ? [...state.answers[q.id]] : [], C = q => (q.dataset.correct || '').split(',').map(x => x.trim()).filter(Boolean); function eq(a, c) { a = [...a].sort(); c = [...c].sort(); return a.length === c.length && a.every((x, i) => x === c[i]) } const R = q => eq(A(q), C(q)); function save() { if (storageOK) try { localStorage.setItem(KEY, JSON.stringify({ answers: state.answers, graded: state.graded, elapsed })) } catch (e) { storageOK = false } } function fmt(s) { s = Math.floor(Math.max(0, s)); return [Math.floor(s / 3600), Math.floor(s % 3600 / 60), s % 60].map(x => String(x).padStart(2, '0')).join(':') } function paint(q) { const a = new Set(A(q)), c = new Set(C(q)), g = !!state.graded[q.id]; B(q).forEach(b => { const x = V(b); b.classList.toggle('selected', a.has(x) && !g); b.classList.toggle('correct-choice', g && c.has(x)); b.classList.toggle('wrong-choice', g && a.has(x) && !c.has(x)); b.setAttribute('aria-pressed', a.has(x) ? 'true' : 'false') }); const r = q.querySelector('.grade-result'); if (r) { r.className = 'grade-result'; if (g) { const pass = R(q), mine = A(q).join(', ') || '未解答'; r.classList.add(pass ? 'pass' : 'fail'); r.textContent = (pass ? '正解です' : '不正解です') + `（選択：${mine}）` } } } function stats() { document.getElementById('answeredCount').textContent = qs.filter(q => A(q).length).length; const t = document.getElementById('totalCount'); if (t) t.textContent = qs.length; document.getElementById('gradedCount').textContent = qs.filter(q => state.graded[q.id]).length; document.getElementById('correctCount').textContent = qs.filter(q => state.graded[q.id] && R(q)).length; document.getElementById('elapsedTime').textContent = fmt(elapsed) } function choose(q, x) { const max = Math.max(1, +q.dataset.maxSelect || C(q).length || 1), set = new Set(A(q)); if (set.has(x)) set.delete(x); else if (max === 1) { set.clear(); set.add(x) } else if (set.size < max) set.add(x); state.answers[q.id] = [...set]; paint(q); stats(); save() } qs.forEach(q => { B(q).forEach(b => { b.onclick = e => { e.preventDefault(); e.stopPropagation(); choose(q, V(b)) }; b.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); choose(q, V(b)) } } }); const d = q.querySelector('details.answer'); if (d) d.ontoggle = () => { if (d.open) { state.graded[q.id] = true; paint(q); stats(); save() } }; paint(q) }); window.resetQuiz = () => { state = { answers: {}, graded: {} }; elapsed = 0; qs.forEach(q => { const d = q.querySelector('details.answer'); if (d) d.open = false; paint(q) }); stats(); save() }; window.go = d => { idx = Math.max(0, Math.min(qs.length - 1, idx + d)); qs[idx].scrollIntoView({ behavior: 'smooth', block: 'start' }); pos() }; function pos() { const p = document.getElementById('pos'); if (p) p.textContent = `${idx + 1} / ${qs.length}` } const ob = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { idx = qs.indexOf(e.target); pos() } }), { rootMargin: '-25% 0px -65%' }); qs.forEach(q => ob.observe(q)); document.querySelectorAll('#index a[href^="#q"]').forEach(a => a.onclick = () => { const n = +a.getAttribute('href').slice(2); if (n) idx = n - 1; pos() }); document.addEventListener('visibilitychange', () => { last = Date.now(); save() }); setInterval(() => { const n = Date.now(); if (!document.hidden) elapsed += (n - last) / 1000; last = n; stats() }, 1000); window.addEventListener('beforeunload', save); pos(); stats() })();</script>
+
+<script id="stage1-review-script">
+(() => {
+  const BASE_KEY = 'javaSilver:purple_mock2:finalPlainStable:v4';
+  const EXTRA_KEY = 'javaSilver:purple_mock2:stage1:v1';
+  const questions = [...document.querySelectorAll('.question')];
+  let mode = 'all';
+  let extra = { understanding: {} };
+  try { extra = Object.assign(extra, JSON.parse(localStorage.getItem(EXTRA_KEY) || '{}')); } catch (_) {}
+
+  const base = () => {
+    try { return JSON.parse(localStorage.getItem(BASE_KEY) || '{}') || {}; }
+    catch (_) { return {}; }
+  };
+  const normalize = xs => [...xs].map(String).sort();
+  const equal = (a,b) => JSON.stringify(normalize(a)) === JSON.stringify(normalize(b));
+  const selected = (q,s) => Array.isArray(s.answers?.[q.id]) ? s.answers[q.id] : [];
+  const correct = q => (q.dataset.correct || '').split(',').map(x=>x.trim()).filter(Boolean);
+  const isWrong = (q,s) => !!s.graded?.[q.id] && !equal(selected(q,s), correct(q));
+  const needsReview = (q,s) => isWrong(q,s) || ['uncertain','unknown'].includes(extra.understanding[q.id]);
+  const save = () => { try { localStorage.setItem(EXTRA_KEY, JSON.stringify(extra)); } catch (_) {} };
+
+  function updateControls() {
+    const s = base();
+    const wrong = questions.filter(q => isWrong(q,s));
+    const review = questions.filter(q => needsReview(q,s));
+    document.getElementById('wrongCountBadge').textContent = `${wrong.length}問`;
+    document.getElementById('reviewCountBadge').textContent = `${review.length}問`;
+    const counts = {mastered:0, uncertain:0, unknown:0};
+    Object.values(extra.understanding).forEach(v => { if (v in counts) counts[v]++; });
+    document.getElementById('stage1Summary').textContent = `理解度：わかった ${counts.mastered} / あやしい ${counts.uncertain} / わからない ${counts.unknown}`;
+    questions.forEach(q => {
+      const show = mode === 'all' || (mode === 'wrong' && isWrong(q,s)) || (mode === 'review' && needsReview(q,s));
+      q.classList.toggle('review-hidden', !show);
+      const level = extra.understanding[q.id];
+      q.querySelectorAll('.understanding-button').forEach(b => b.classList.toggle('selected', b.dataset.level === level));
+      const link = document.querySelector(`#index a[href="#${q.id}"]`);
+      if (link) {
+        link.classList.toggle('wrong-index', isWrong(q,s));
+        link.classList.toggle('mastered-index', level === 'mastered' && !isWrong(q,s));
+      }
+    });
+    document.getElementById('index')?.classList.toggle('review-hidden', mode !== 'all');
+    const visible = questions.filter(q => !q.classList.contains('review-hidden'));
+    document.getElementById('reviewEmpty').classList.toggle('show', visible.length === 0);
+    document.querySelectorAll('.review-toolbar button').forEach(b => b.classList.remove('active'));
+    document.getElementById(mode === 'all' ? 'showAllQuestions' : mode === 'wrong' ? 'showWrongQuestions' : 'showReviewQuestions').classList.add('active');
+    if (mode !== 'all' && visible.length) visible[0].scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  document.getElementById('showAllQuestions').onclick = () => { mode='all'; updateControls(); };
+  document.getElementById('showWrongQuestions').onclick = () => { mode='wrong'; updateControls(); };
+  document.getElementById('showReviewQuestions').onclick = () => { mode='review'; updateControls(); };
+  document.addEventListener('click', e => {
+    const button = e.target.closest('.understanding-button');
+    if (!button) return;
+    e.preventDefault(); e.stopPropagation();
+    const q = button.closest('.question');
+    if (!q) return;
+    const level = button.dataset.level;
+    extra.understanding[q.id] = extra.understanding[q.id] === level ? null : level;
+    if (!extra.understanding[q.id]) delete extra.understanding[q.id];
+    save(); updateControls();
+  });
+
+  // The original quiz updates localStorage on grading/answering. Refresh stage-1 counts after those actions.
+  document.addEventListener('click', e => {
+    if (e.target.closest('.answer-choice') || e.target.closest('details.answer')) setTimeout(updateControls, 60);
+  });
+  document.querySelectorAll('details.answer').forEach(d => d.addEventListener('toggle', () => setTimeout(updateControls, 60)));
+  const originalReset = window.resetQuiz;
+  window.resetQuiz = () => {
+    if (typeof originalReset === 'function') originalReset();
+    extra = { understanding: {} }; mode='all';
+    try { localStorage.removeItem(EXTRA_KEY); } catch (_) {}
+    updateControls();
+  };
+  updateControls();
+})();
+</script>
 </body>
 
 </html>
