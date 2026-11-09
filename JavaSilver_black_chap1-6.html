@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport" />
-    <title>Java SE 17 Silver 第01-06章 全186問 個別精査統合版</title>
+    <title>Java SE 17 Silver 第01-06章 復習機能版 v2</title>
     <style>
         :root {
             --navy: #12345b;
@@ -652,6 +652,14 @@
             padding-top: 12px;
         }
     </style>
+
+<style id="black-review-stage1-style">
+.review-toolbar{position:sticky;top:94px;z-index:99;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;padding:7px 12px;background:#edf4ff;border-bottom:1px solid var(--line)}
+.review-toolbar button{border:1px solid #9db7d4;border-radius:10px;padding:8px 12px;background:#fff;color:var(--navy);font-weight:800;cursor:pointer}
+.review-toolbar button.active{background:var(--navy);border-color:var(--navy);color:#fff}.review-toolbar .review-summary{font-size:13px;font-weight:800;color:var(--navy)}
+.understanding-box{margin-top:14px;padding:12px 13px;border:1px solid var(--line);border-radius:13px;background:#fff}.understanding-title{font-weight:900;color:var(--navy);margin-bottom:7px}.understanding-buttons{display:flex;gap:7px;flex-wrap:wrap}.understanding-button{border:2px solid var(--line);border-radius:10px;padding:7px 11px;background:#fff;color:var(--text);font-weight:800;cursor:pointer}.understanding-button.selected[data-level="mastered"]{background:#e9f8ef;border-color:#159447;color:#0d7135}.understanding-button.selected[data-level="uncertain"]{background:#fff7df;border-color:#d99a00;color:#8a5a00}.understanding-button.selected[data-level="unknown"]{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}.review-hidden{display:none!important}.review-empty{display:none;max-width:1080px;margin:22px auto;padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;text-align:center}.review-empty.show{display:block}.audit-log{max-width:1080px;margin:18px auto;padding:0 16px}.audit-log details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px}.audit-log summary{cursor:pointer;font-weight:800;color:var(--navy)}
+@media(max-width:600px){.review-toolbar{top:78px;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding:5px 7px}.review-toolbar button,.review-toolbar .review-summary{font-size:11px;white-space:nowrap}.understanding-button{font-size:12px;padding:7px 8px}}
+</style>
 </head>
 
 <body>
@@ -666,6 +674,15 @@
     <div aria-live="polite" class="study-status"><span>解答 <b id="answeredCount">0</b>/<b
                 id="totalCount">0</b></span><i>｜</i><span>採点済 <b id="gradedCount">0</b></span><i>｜</i><span>正解 <b
                 id="correctCount">0</b></span><i>｜</i><span>閲覧時間 <b id="elapsedTime">00:00:00</b></span></div>
+<div class="review-toolbar" aria-label="復習モード">
+<button id="reviewAll" class="active" type="button">全問</button>
+<button id="reviewWrong" type="button">間違い復習 <span id="wrongCountBadge">0問</span></button>
+<button id="reviewNeeded" type="button">要復習 <span id="reviewCountBadge">0問</span></button>
+<span class="review-summary" id="understandingSummary">理解度：わかった 0 / あやしい 0 / わからない 0</span>
+</div>
+<section class="audit-log"><details><summary>正答整合性チェック・修正記録</summary><ul><li>第02章 問27（通し35）：正答データを F から E に修正。表示正答と解説も E に統一。</li><li>第04章 問13（通し108）：正答データ、表示正答、解説はいずれも C で一致していることを確認。</li><li>全186問について data-correct と画面上の「正答」表示の一致を機械検査済み。</li></ul></details></section>
+<section class="review-empty" id="reviewEmpty"><h2>対象の問題はありません</h2><p>採点して不正解になった問題、または「あやしい／わからない」にした問題が表示されます。</p></section>
+
     <section id="index">
         <details open="">
             <summary><b>章一覧</b></summary>
@@ -2109,7 +2126,7 @@ B C</code></pre>
                     </div>
                 </details>
             </article>
-            <article class="question" data-correct="F" data-max-select="1" id="q35">
+            <article class="question" data-correct="E" data-max-select="1" id="q35">
                 <div class="qhead"><span class="badge">第02章 問27</span><span class="serial">通し 35 / 186</span></div>
                 <section class="body">
                     <p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
@@ -2146,7 +2163,7 @@ B C</code></pre>
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
                     <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>F</div>
+                        <div class="correct"><b>正答：</b>E</div>
                         <h3>解説</h3>
                         <p><strong>覚えるルール：</strong>配列変数をそのままSystem.out.println()で表示しても、配列の中身は表示されません。
                             配列はObjectのサブクラスなので、配列オブジェクトを表す文字列が表示されます。</p>
@@ -9209,6 +9226,40 @@ public class Main {
         </section>
     </main><button id="topBtn" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
     <script>(() => { const qs = [...document.querySelectorAll('.question')], KEY = 'javaSilver:black_chap1_6:individual_integrated:v2'; let idx = 0, elapsed = 0, last = Date.now(), storageOK = true, state = { answers: {}, graded: {} }; try { const z = JSON.parse(localStorage.getItem(KEY) || 'null'); if (z) { state.answers = z.answers || {}; state.graded = z.graded || {}; elapsed = Number(z.elapsed) || 0 } } catch (e) { storageOK = false } const B = q => [...q.querySelectorAll('.answer-choice')], V = b => b.dataset.answerChoice, A = q => Array.isArray(state.answers[q.id]) ? [...state.answers[q.id]] : [], C = q => (q.dataset.correct || '').split(',').map(x => x.trim()).filter(Boolean); function eq(a, c) { a = [...a].sort(); c = [...c].sort(); return a.length === c.length && a.every((x, i) => x === c[i]) } const R = q => eq(A(q), C(q)); function save() { if (storageOK) try { localStorage.setItem(KEY, JSON.stringify({ answers: state.answers, graded: state.graded, elapsed })) } catch (e) { storageOK = false } } function fmt(s) { s = Math.floor(Math.max(0, s)); return [Math.floor(s / 3600), Math.floor(s % 3600 / 60), s % 60].map(x => String(x).padStart(2, '0')).join(':') } function paint(q) { const a = new Set(A(q)), c = new Set(C(q)), g = !!state.graded[q.id]; B(q).forEach(b => { const x = V(b); b.classList.toggle('selected', a.has(x) && !g); b.classList.toggle('correct-choice', g && c.has(x)); b.classList.toggle('wrong-choice', g && a.has(x) && !c.has(x)); b.setAttribute('aria-pressed', a.has(x) ? 'true' : 'false') }); const r = q.querySelector('.grade-result'); if (r) { r.className = 'grade-result'; r.textContent = ''; if (g) { const pass = R(q), mine = A(q).join(', ') || '未解答'; r.classList.add(pass ? 'pass' : 'fail'); r.textContent = (pass ? '正解です' : '不正解です') + `（選択：${mine}）` } } } function stats() { answeredCount.textContent = qs.filter(q => A(q).length).length; totalCount.textContent = qs.length; gradedCount.textContent = qs.filter(q => state.graded[q.id]).length; correctCount.textContent = qs.filter(q => state.graded[q.id] && R(q)).length; elapsedTime.textContent = fmt(elapsed) } function choose(q, x) { const max = Math.max(1, +q.dataset.maxSelect || C(q).length || 1), set = new Set(A(q)); if (set.has(x)) set.delete(x); else if (max === 1) { set.clear(); set.add(x) } else if (set.size < max) set.add(x); state.answers[q.id] = [...set]; paint(q); stats(); save() } qs.forEach(q => { B(q).forEach(b => { b.onclick = e => { e.preventDefault(); e.stopPropagation(); choose(q, V(b)) } }); const d = q.querySelector('details.answer'); if (d) d.ontoggle = () => { if (d.open) { state.graded[q.id] = true; paint(q); stats(); save() } }; paint(q) }); window.go = d => { idx = Math.max(0, Math.min(qs.length - 1, idx + d)); qs[idx].scrollIntoView({ behavior: 'smooth', block: 'start' }); pos() }; window.toggleAnswers = () => { const ds = [...document.querySelectorAll('details.answer')], v = ds.some(d => !d.open); ds.forEach(d => d.open = v) }; window.resetQuiz = () => { state = { answers: {}, graded: {} }; elapsed = 0; qs.forEach(q => { const d = q.querySelector('details.answer'); if (d) d.open = false; paint(q) }); stats(); save() }; function pos() { document.getElementById('pos').textContent = `${idx + 1} / ${qs.length}` } const ob = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { idx = qs.indexOf(e.target); pos() } }), { rootMargin: '-30% 0px -60%' }); qs.forEach(q => ob.observe(q)); document.addEventListener('visibilitychange', () => { last = Date.now(); save() }); setInterval(() => { const n = Date.now(); if (!document.hidden) elapsed += (n - last) / 1000; last = n; stats() }, 1000); window.addEventListener('beforeunload', save); pos(); stats() })();</script>
+
+<script id="black-review-stage1-script">
+(() => {
+'use strict';
+const BASE_KEY='javaSilver:black_chap1_6:individual_integrated:v2';
+const UNDERSTANDING_KEY='javaSilver:black_chap1_6:understanding:v1';
+const questions=[...document.querySelectorAll('.question')];
+const chapters=[...document.querySelectorAll('.chapter')];
+let mode='all';
+let understanding={};
+try{understanding=JSON.parse(localStorage.getItem(UNDERSTANDING_KEY)||'{}')||{};}catch(_){understanding={};}
+const readBase=()=>{try{return JSON.parse(localStorage.getItem(BASE_KEY)||'{}')||{};}catch(_){return {};}};
+const liveGraded=q=>{const r=q.querySelector('.grade-result');return !!(r && (r.classList.contains('pass')||r.classList.contains('fail')));};
+const liveWrong=q=>{const r=q.querySelector('.grade-result');return !!(r && r.classList.contains('fail'));};
+const sorted=a=>(Array.isArray(a)?a:[]).map(String).sort();
+const same=(a,b)=>JSON.stringify(sorted(a))===JSON.stringify(sorted(b));
+const correct=q=>(q.dataset.correct||'').split(',').map(x=>x.trim()).filter(Boolean);
+const answered=(q,s)=>Array.isArray(s.answers?.[q.id])?s.answers[q.id]:[];
+const graded=(q,s)=>!!s.graded?.[q.id];
+const wrong=(q,s)=>liveWrong(q)||(graded(q,s)&&!same(answered(q,s),correct(q)));
+const needed=(q,s)=>wrong(q,s)||['uncertain','unknown'].includes(understanding[q.id]);
+const saveUnderstanding=()=>{try{localStorage.setItem(UNDERSTANDING_KEY,JSON.stringify(understanding));}catch(_){}};
+questions.forEach(q=>{if(q.querySelector('.understanding-box'))return;const box=document.createElement('div');box.className='understanding-box';box.innerHTML='<div class="understanding-title">この問題の理解度</div><div class="understanding-buttons"><button type="button" class="understanding-button" data-level="mastered">😊 わかった</button><button type="button" class="understanding-button" data-level="uncertain">😐 あやしい</button><button type="button" class="understanding-button" data-level="unknown">😵 わからない</button></div>';q.appendChild(box);});
+function getVisible(){return questions.filter(q=>!q.classList.contains('review-hidden'));}
+function update(){const s=readBase();const wrongs=questions.filter(q=>wrong(q,s));const needs=questions.filter(q=>needed(q,s));wrongCountBadge.textContent=wrongs.length+'問';reviewCountBadge.textContent=needs.length+'問';const c={mastered:0,uncertain:0,unknown:0};Object.values(understanding).forEach(v=>{if(v in c)c[v]++;});understandingSummary.textContent=`理解度：わかった ${c.mastered} / あやしい ${c.uncertain} / わからない ${c.unknown}`;questions.forEach(q=>{const show=mode==='all'||(mode==='wrong'&&wrong(q,s))||(mode==='needed'&&needed(q,s));q.classList.toggle('review-hidden',!show);q.querySelectorAll('.understanding-button').forEach(b=>b.classList.toggle('selected',understanding[q.id]===b.dataset.level));});chapters.forEach(ch=>ch.classList.toggle('review-hidden',mode!=='all'&&!ch.querySelector('.question:not(.review-hidden)')));document.getElementById('index')?.classList.toggle('review-hidden',mode!=='all');reviewEmpty.classList.toggle('show',getVisible().length===0);[reviewAll,reviewWrong,reviewNeeded].forEach(b=>b.classList.remove('active'));(mode==='all'?reviewAll:mode==='wrong'?reviewWrong:reviewNeeded).classList.add('active');const visible=getVisible();if(mode!=='all'&&visible.length)visible[0].scrollIntoView({behavior:'smooth',block:'start'});}
+reviewAll.onclick=()=>{mode='all';update();};reviewWrong.onclick=()=>{mode='wrong';update();};reviewNeeded.onclick=()=>{mode='needed';update();};
+document.addEventListener('click',e=>{const b=e.target.closest('.understanding-button');if(!b)return;e.preventDefault();e.stopPropagation();const q=b.closest('.question');if(!q)return;const level=b.dataset.level;if(understanding[q.id]===level)delete understanding[q.id];else understanding[q.id]=level;saveUnderstanding();update();});
+document.querySelectorAll('details.answer').forEach(d=>d.addEventListener('toggle',()=>{setTimeout(update,0);setTimeout(update,100);}));
+document.addEventListener('click',e=>{if(e.target.closest('.answer-choice')){setTimeout(update,0);setTimeout(update,100);}});
+const oldReset=window.resetQuiz;window.resetQuiz=()=>{if(!confirm('回答・採点・解説表示・閲覧時間・理解度をすべてリセットします。よろしいですか？'))return;if(typeof oldReset==='function')oldReset();understanding={};try{localStorage.removeItem(UNDERSTANDING_KEY);}catch(_){}mode='all';update();};
+window.go=d=>{const visible=getVisible();if(!visible.length)return;let current=visible.findIndex(q=>{const r=q.getBoundingClientRect();return r.top>=0;});if(current<0)current=visible.length-1;current=Math.max(0,Math.min(visible.length-1,current+d));visible[current].scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('pos').textContent=`${current+1} / ${visible.length}`;};
+update();
+})();
+</script>
 </body>
 
 </html>
