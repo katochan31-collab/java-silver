@@ -660,6 +660,19 @@
 .understanding-box{margin-top:14px;padding:12px 13px;border:1px solid var(--line);border-radius:13px;background:#fff}.understanding-title{font-weight:900;color:var(--navy);margin-bottom:7px}.understanding-buttons{display:flex;gap:7px;flex-wrap:wrap}.understanding-button{border:2px solid var(--line);border-radius:10px;padding:7px 11px;background:#fff;color:var(--text);font-weight:800;cursor:pointer}.understanding-button.selected[data-level="mastered"]{background:#e9f8ef;border-color:#159447;color:#0d7135}.understanding-button.selected[data-level="uncertain"]{background:#fff7df;border-color:#d99a00;color:#8a5a00}.understanding-button.selected[data-level="unknown"]{background:#fff0f0;border-color:#d63b3b;color:#a91f1f}.review-hidden{display:none!important}.review-empty{display:none;max-width:1080px;margin:22px auto;padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px;text-align:center}.review-empty.show{display:block}.audit-log{max-width:1080px;margin:18px auto;padding:0 16px}.audit-log details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px}.audit-log summary{cursor:pointer;font-weight:800;color:var(--navy)}
 @media(max-width:600px){.review-toolbar{top:78px;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding:5px 7px}.review-toolbar button,.review-toolbar .review-summary{font-size:11px;white-space:nowrap}.understanding-button{font-size:12px;padding:7px 8px}}
 </style>
+
+<style id="choice-layout-fix-v3">
+/* Prevent narrow/broken choice text caused by generic code-choice grid rules. */
+ul.choices:not(.code-choices){display:block!important;width:100%!important;padding:0!important;margin:12px 0!important;}
+ul.choices:not(.code-choices)>li{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;white-space:normal!important;overflow-wrap:break-word!important;word-break:normal!important;line-height:1.75!important;}
+/* Q1-9 command/code choices: label and code stay together at full width. */
+.command-choices>li{display:block!important;width:100%!important;margin:0 0 16px!important;}
+.command-choices>li>strong{display:block!important;margin:0 0 6px!important;}
+.command-choices>li>pre{display:block!important;width:100%!important;margin:0!important;}
+/* Q32 is normal text, not a two-column code choice. */
+#q32 ul.choices.code-choices{display:block!important;width:100%!important;}
+#q32 ul.choices.code-choices>li{display:block!important;width:100%!important;margin:.55em 0!important;padding:0!important;white-space:normal!important;overflow-wrap:break-word!important;}
+</style>
 </head>
 
 <body>
@@ -680,7 +693,7 @@
 <button id="reviewNeeded" type="button">要復習 <span id="reviewCountBadge">0問</span></button>
 <span class="review-summary" id="understandingSummary">理解度：わかった 0 / あやしい 0 / わからない 0</span>
 </div>
-<section class="audit-log"><details><summary>正答整合性チェック・修正記録</summary><ul><li>第02章 問27（通し35）：正答データを F から E に修正。表示正答と解説も E に統一。</li><li>第04章 問13（通し108）：正答データ、表示正答、解説はいずれも C で一致していることを確認。</li><li>全186問について data-correct と画面上の「正答」表示の一致を機械検査済み。</li></ul></details></section>
+<section class="audit-log"><details><summary>正答整合性チェック・修正記録</summary><ul><li>第02章 問27（通し35）：正答データを F から E に修正。表示正答と解説も E に統一。</li><li>第04章 問13（通し108）：正答データ、表示正答、解説はいずれも C で一致していることを確認。</li><li>全186問について data-correct と画面上の「正答」表示の一致を機械検査済み。</li><li>表示修正：第01章問9・第02章問24の選択肢レイアウトをCSSで補正。</li><li>誤記修正：第02章問28の末尾コロンをセミコロンへ、第02章問32へ「=」を追加、第03章問43の Sustem を System へ修正。第02章問32は修正後の正答をCへ更新。</li><li>解説強化：第04章問36・問38・問40、第06章問5・問6・問7を初学者向けに詳細化。第04章問36はA/Cそれぞれの修正コード例を追加。</li></ul></details></section>
 <section class="review-empty" id="reviewEmpty"><h2>対象の問題はありません</h2><p>採点して不正解になった問題、または「あやしい／わからない」にした問題が表示されます。</p></section>
 
     <section id="index">
@@ -2213,7 +2226,7 @@ B C</code></pre>
         int[][] c;
         int d[][];
         int[] e[];
-        int[][] f[]:
+        int[][] f[];
     }
 }</code></pre>
                     <ul class="choices">
@@ -2245,11 +2258,10 @@ B C</code></pre>
                     <div class="answer-inner">
                         <div class="correct"><b>正答：</b>G</div>
                         <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>配列宣言では[]を型側・変数名側のどちらにも置けますが、文末はセミコロンです。</p>
-                        <p><strong>この問題では：</strong>a～eの[]の位置はすべて有効です。一方 `int[][] f[]:`
-                            は末尾がコロンなので原文どおりならその行でコンパイルエラーです。教材がセミコロンの誤記を前提にするならGになります。</p>
-                        <p class="memory">試験での見分け方：[]の位置と文末の`;`を別々に確認。</p>
-                    </div>
+                        <p><strong>覚えるルール：</strong>配列の宣言では、角括弧 <code>[]</code> は型名の後ろにも変数名の後ろにも記述できます。角括弧が複数あれば、その数が配列の次元数になります。</p>
+                        <p><strong>この問題では：</strong><code>int[] a;</code> と <code>int b[];</code> はどちらも1次元のint配列です。<code>int[][] c;</code>、<code>int d[][];</code>、<code>int[] e[];</code> はいずれも2次元配列、<code>int[][] f[];</code> は合計3組の <code>[]</code> があるため3次元配列として正しく宣言できます。したがって、すべて正しい配列宣言であり、コンパイルエラーは発生しません。正答はGです。</p>
+                        <p class="memory">試験での見分け方：<code>[]</code> は型側・変数側のどちらにも置ける。まず角括弧の数を数えて次元を判断する。</p>
+</div>
                 </details>
             </article>
             <article class="question" data-correct="E" data-max-select="1" id="q37">
@@ -2377,13 +2389,13 @@ B C</code></pre>
                     </div>
                 </details>
             </article>
-            <article class="question" data-correct="E" data-max-select="1" id="q40">
+            <article class="question" data-correct="C" data-max-select="1" id="q40">
                 <div class="qhead"><span class="badge">第02章 問32</span><span class="serial">通し 40 / 186</span></div>
                 <section class="body">
                     <p>次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)</p>
                     <pre><code>public class Main {
     public static void main(String[] args) {
-        String[] array {"A", "B", "C", "D"};
+        String[] array = {"A", "B", "C", "D"};
         array[0] = null;
         for (String str: array) {
             System.out.print(str);
@@ -2415,13 +2427,12 @@ B C</code></pre>
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
                     <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>E</div>
+                        <div class="correct"><b>正答：</b>C</div>
                         <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>配列初期化子を宣言と同時に使うなら `String[] array = {...};` と `=` が必要です。</p>
-                        <p><strong>この問題では：</strong>原文の `String[] array {"A",...};`
-                            は=がないためコンパイルエラーです。`array[0]=null`以降には進みません。原文どおりの正答はEです。</p>
-                        <p class="memory">試験での見分け方：配列初期化子の前に=があるか。</p>
-                    </div>
+                        <p><strong>覚えるルール：</strong>参照型配列の要素には <code>null</code> を代入できます。また、<code>System.out.print(Object)</code> にnull参照を渡すと文字列 <code>null</code> が出力されます。</p>
+                        <p><strong>この問題では：</strong>配列は最初 <code>{"A", "B", "C", "D"}</code> です。<code>array[0] = null;</code> により先頭要素だけがnullになり、配列は <code>{null, "B", "C", "D"}</code> になります。拡張forは先頭から順に各要素を <code>str</code> へ取り出して <code>System.out.print(str)</code> するため、<code>nullBCD</code> と表示されます。例外は発生しません。正答はCです。</p>
+                        <p class="memory">試験での見分け方：配列要素がnullでも、nullそのものをprintするだけなら例外にならない。nullに対してメソッドを呼んだときにNullPointerExceptionとなる。</p>
+</div>
                 </details>
             </article>
             <article class="question" data-correct="B,C,D" data-max-select="3" id="q41">
@@ -4961,7 +4972,7 @@ System.out.println(num);</code></pre>
                 total += j;
             }
         }
-        Sustem.out.println(total);
+        System.out.println(total);
     }
 }</code></pre>
                     <ul class="choices">
@@ -4988,11 +4999,16 @@ System.out.println(num);</code></pre>
                     <div class="answer-inner">
                         <div class="correct"><b>正答：</b>B</div>
                         <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>continue ラベル名 は、そのラベルが付いたループの次の反復へ進みます。</p>
-                        <p><strong>この問題では：</strong>SustemをSystemの誤記とみなすと、iが偶数0,2,4ではすぐcontinue
-                            a。i=1,3だけj=0～3を加算し、1回6を2回でtotal=12、Bです。原文どおりならSustemでコンパイルエラーです。</p>
-                        <p class="memory">試験での見分け方：ラベル付きcontinueは指定した外側ループへ戻る。</p>
-                    </div>
+                        <p><strong>覚えるルール：</strong>ラベル付き <code>continue a;</code> は、ラベル <code>a</code> が付いた外側for文の次の反復へ移ります。ラベル付き <code>break b;</code> は、ラベル <code>b</code> の内側for文を終了します。</p>
+                        <p><strong>この問題では：</strong>外側の <code>i</code> が0、2、4のときは偶数なので、内側ループの最初の <code>j=0</code> で <code>continue a;</code> が実行され、加算は行われません。<code>i=1</code> と <code>i=3</code> のときだけ内側ループが進みます。</p>
+                        <pre><code>j = 0 → total += 0
+j = 1 → total += 1
+j = 2 → total += 2
+j = 3 → total += 3
+j = 4 → 3 &lt; 4 がtrueなので break b</code></pre>
+                        <p>1回の外側ループで <code>0 + 1 + 2 + 3 = 6</code>。これが <code>i=1</code> と <code>i=3</code> の2回あるので、<code>total = 12</code> となります。したがって正答はBです。</p>
+                        <p class="memory">試験での見分け方：ラベル付きcontinueは「どのループの次周回へ行くか」、ラベル付きbreakは「どのループを抜けるか」を先に確認する。</p>
+</div>
                 </details>
             </article>
         </section>
@@ -6642,15 +6658,15 @@ public class Main {
                 <details class="answer">
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
-                    <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>A, C</div>
-                        <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>recordのコンストラクタでは、最終的に全コンポーネントが初期化される必要があります。</p>
-                        <p><strong>この問題では：</strong>Data(String
-                            value)という標準形に合わせてStringを受け取るA、またはコンストラクタでvalueを初期化するCが修正候補です。getterやフィールドを追加しても初期化問題は解消しません。A,Cです。
-                        </p>
-                        <p class="memory">試験での見分け方：recordコンポーネントは必ず初期化する。</p>
-                    </div>
+                    <div class="answer-inner"><div class="correct"><b>正答：</b>A,C</div><h3>解説</h3><p><strong>覚えるルール：</strong>recordの各コンポーネントは、インスタンス生成時に必ず初期化される必要があります。recordヘッダー <code>Data(String value)</code> から、<code>private final String value</code> 相当のフィールドと、<code>Data(String value)</code> という標準コンストラクタが対応します。</p><p><strong>Aの場合：</strong>引数を1つ受け取る標準形のコンストラクタに修正できます。</p><pre><code>public record Data(String value) {
+    public Data(String value) {
+        this.value = value;
+    }
+}</code></pre><p>この形なら、受け取った <code>value</code> をrecordコンポーネントへ代入するので正しくコンパイルできます。</p><p><strong>Cの場合：</strong>引数なしコンストラクタを残したいなら、別コンストラクタへ委譲してvalueを初期化します。</p><pre><code>public record Data(String value) {
+    public Data() {
+        this("sample");
+    }
+}</code></pre><p>つまり、Aは標準コンストラクタそのものを明示する考え方、Cは追加コンストラクタから最終的にvalueを初期化する考え方です。</p><h3>選択肢ごとの判定</h3><ul class="reasons"><li><strong>A.</strong> 正しい。String引数を受け取り、valueを初期化できます。</li><li><strong>B.</strong> 誤り。recordの追加コンストラクタで必要なのはRecordのsuper呼出しではなく、自分の標準コンストラクタへの委譲です。</li><li><strong>C.</strong> 正しい。valueが最終的に初期化されればよく、たとえば <code>this("sample")</code> で実現できます。</li><li><strong>D.</strong> 誤り。アクセサ <code>value()</code> は自動生成され、初期化エラーの解決にはなりません。</li><li><strong>E.</strong> 誤り。valueフィールドはrecordコンポーネントから自動的に用意されます。</li></ul><p class="memory">試験での見分け方：recordの追加コンストラクタでは「最終的に全コンポーネントが初期化されるか」を確認する。</p></div>
                 </details>
             </article>
             <article class="question" data-correct="C" data-max-select="1" id="q132">
@@ -6719,14 +6735,11 @@ public class Main {
                 <details class="answer">
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
-                    <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>D</div>
-                        <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>recordの追加コンストラクタは、先頭でthis(...)を使って標準コンストラクタへ委譲します。</p>
-                        <p><strong>この問題では：</strong>Data()からvalueを初期化するにはthis("sample");とします。Dです。superではRecord側へ値を渡せず、フィールドへの直接代入でも規則を満たしません。
-                        </p>
-                        <p class="memory">試験での見分け方：追加constructorはthis(標準引数)。</p>
-                    </div>
+                    <div class="answer-inner"><div class="correct"><b>正答：</b>D</div><h3>解説</h3><p><strong>レコードとは：</strong>少数の値をひとまとめにして保持する「データ専用クラス」を短く書く仕組みです。<code>record Data(String value)</code> と書くと、valueを保存するためのfinalフィールド、valueを受け取る標準コンストラクタ、<code>value()</code>アクセサ、さらにequals・hashCode・toStringなどが自動的に用意されます。</p><p><strong>この問題のポイント：</strong><code>public Data()</code> はヘッダーにない追加コンストラクタです。追加コンストラクタは、最初の文で同じrecordの別コンストラクタへ <code>this(...)</code> で委譲し、最終的に全コンポーネントを初期化しなければなりません。</p><pre><code>public record Data(String value) {
+    public Data() {
+        this("sample");
+    }
+}</code></pre><p>この <code>this("sample")</code> が標準コンストラクタ <code>Data(String value)</code> を呼び、valueへ <code>"sample"</code> を設定します。したがってDです。</p><h3>選択肢ごとの判定</h3><ul class="reasons"><li><strong>A.</strong> <code>this()</code> は自分自身のData()を再び呼ぶ形になり、正しい委譲ではありません。</li><li><strong>B.</strong> <code>super()</code> でRecord側を呼んでも、recordコンポーネントvalueの初期化はできません。</li><li><strong>C.</strong> 追加コンストラクタから生成されたfinalコンポーネントへ直接代入するのではなく、標準コンストラクタへ委譲します。</li><li><strong>D.</strong> 正しい。<code>this("sample")</code> で標準コンストラクタへつなぎます。</li><li><strong>E.</strong> RecordにそのようなString引数のsuperコンストラクタはありません。</li></ul><p class="memory">試験での見分け方：recordの「ヘッダーにない追加コンストラクタ」を見たら、最初に <code>this(...)</code> があるか確認。</p></div>
                 </details>
             </article>
             <article class="question" data-correct="C" data-max-select="1" id="q134">
@@ -6812,14 +6825,9 @@ public class Main {
                 <details class="answer">
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
-                    <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>C</div>
-                        <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>recordはコンポーネントと同名・同引数のアクセサを自動生成します。戻り値型だけ違うメソッドは共存できません。</p>
-                        <p><strong>この問題では：</strong>Data(String value)はString value()を生成します。一方Testはvoid
-                            value()を要求します。同じ名前・引数で戻り値だけがvoid/Stringと異なるため両立せずコンパイルエラー、Cです。</p>
-                        <p class="memory">試験での見分け方：recordアクセサ名とinterfaceメソッド名の衝突を見る。</p>
-                    </div>
+                    <div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h3>解説</h3><p><strong>まずrecordの自動生成を確認：</strong><code>record Data(String value)</code> は、外から見ると概ね「valueという読み取り専用データ」と「String value()というアクセサ」を持ちます。ここでアクセサ名は <code>getValue()</code> ではなく、コンポーネント名そのものの <code>value()</code> です。</p><pre><code>public record Data(String value) implements Test { }</code></pre><p>この宣言ではDataに <code>public String value()</code> が必要になります。一方、Testには次のメソッドがあります。</p><pre><code>default void value() {
+    System.out.println("A");
+}</code></pre><p>Javaでは、メソッドを区別するシグネチャに戻り値型は含まれません。したがって <code>String value()</code> と <code>void value()</code> は「同じ名前・同じ引数なのに戻り値だけ違う」衝突になります。戻り値型だけ変えてオーバーロードすることはできません。</p><p><strong>重要：</strong>これは「recordのメソッドがinterfaceのdefaultメソッドより優先されてBを表示する」という問題ではありません。Dataクラスを成立させる段階で2つのvalue()を両立できず、実行前にコンパイルエラーです。</p><h3>選択肢ごとの判定</h3><ul class="reasons"><li><strong>A.</strong> 誤り。Testのdefault void value()をそのまま採用できません。</li><li><strong>B.</strong> 誤り。DataのString value()を実行するところまでコンパイルできません。</li><li><strong>C.</strong> 正しい。戻り値だけ異なるvalue()が衝突します。</li><li><strong>D.</strong> 誤り。実行時例外ではなくコンパイル時に検出されます。</li></ul><p class="memory">試験での見分け方：recordヘッダーの名前は自動アクセサ名になる。interfaceの同名・同引数メソッドと戻り値が合うか確認。</p></div>
                 </details>
             </article>
         </section>
@@ -8329,14 +8337,11 @@ class Employee {
                 <details class="answer">
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
-                    <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>C</div>
-                        <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>catchでreturnしても、その前にfinallyが実行されます。</p>
-                        <p><strong>この問題では：</strong>objはnullなのでobj.toString()でNullPointerException。catchで戻り値Aを決めますが、先にfinallyでBを表示。その後mainが戻り値Aをprintlnします。出力はB→AでCです。
-                        </p>
-                        <p class="memory">試験での見分け方：returnを見たらfinallyを先に実行。</p>
-                    </div>
+                    <div class="answer-inner"><div class="correct"><b>正答：</b>C</div><h3>解説</h3><p><strong>覚えるルール：</strong><code>return</code> がcatchにあっても、メソッドから実際に抜ける前にfinallyが実行されます。ただしfinally自身にreturnがなければ、catchで決めた戻り値はそのまま有効です。</p><h3>処理を順番に追う</h3><ol><li><code>test(null)</code> を呼びます。</li><li>try内の <code>obj.toString()</code> はobjがnullなのでNullPointerExceptionになります。</li><li>catchへ移り、<code>return "A";</code> に到達します。この時点で「戻す予定の値A」が決まります。</li><li>しかし、まだメソッドからは抜けません。先にfinallyを実行し、<code>System.out.println("B")</code> によりBを表示します。</li><li>finally終了後、予定どおりAを呼出し元へ返します。</li><li>mainの <code>System.out.println(test(null))</code> がそのAを表示します。</li></ol><pre><code>catch : return "A" を予約
+          ↓
+finally: B を表示
+          ↓
+return : A が呼出し元へ戻る</code></pre><p>したがって表示順は <strong>B → A</strong> で、正答はCです。最後の <code>return "C";</code> には到達しません。</p><p class="memory">試験での見分け方：「returnを見つけた = 即終了」ではない。try/catchのreturnを見たら、必ずfinallyを先に確認。</p></div>
                 </details>
             </article>
             <article class="question" data-correct="B" data-max-select="1" id="q167">
@@ -8379,13 +8384,9 @@ class Employee {
                 <details class="answer">
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
-                    <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>B</div>
-                        <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>finally自身のreturnは、それ以前のreturnを上書きします。</p>
-                        <p><strong>この問題では：</strong>catchではreturn 10ですが、finallyでreturn 20が実行されるため最終的な戻り値は20です。Bです。</p>
-                        <p class="memory">試験での見分け方：finallyのreturnが最優先。</p>
-                    </div>
+                    <div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h3>解説</h3><p><strong>覚えるルール：</strong>finallyにもreturnがある場合、そのreturnが最終結果を上書きします。catch側で一度return値を決めても、finallyが別のreturnを実行すれば、finallyの値が呼出し元へ返ります。</p><h3>処理を順番に追う</h3><ol><li>tryでRuntimeExceptionをthrowします。</li><li>catch(RuntimeException)が受け取り、<code>return 10;</code> に到達します。まず「10を返す予定」になります。</li><li>実際にメソッドを抜ける前にfinallyへ進みます。</li><li>finallyに <code>return 20;</code> があるため、「10を返す予定」が破棄され、20を返すことが確定します。</li><li>mainのresultには20が入り、20を表示します。</li></ol><pre><code>catch   : return 10  ← いったん予約
+finally : return 20  ← こちらが上書き
+結果    : 20</code></pre><p>したがって正答はBです。</p><p><strong>試験上の注意：</strong>finallyでreturnを書くコードは実務では避けるのが一般的です。try/catch側のreturnや例外を隠してしまい、処理を追いにくくなるからです。ただしSilverでは、この「finallyのreturnが勝つ」という挙動が出題されます。</p><p class="memory">試験での見分け方：finallyにreturnがあれば最優先。try/catchのreturnも例外も上書きし得る。</p></div>
                 </details>
             </article>
             <article class="question" data-correct="B" data-max-select="1" id="q168">
@@ -8432,14 +8433,15 @@ class Employee {
                 <details class="answer">
                     <summary>正答・解説を表示</summary>
                     <div aria-live="polite" class="grade-result"></div>
-                    <div class="answer-inner">
-                        <div class="correct"><b>正答：</b>B</div>
-                        <h3>解説</h3>
-                        <p><strong>覚えるルール：</strong>return式の値はfinally実行前に確定します。finallyでローカル変数を変えても確定済みの値は変わりません。</p>
-                        <p><strong>この問題では：</strong>catchでval=10にしてreturn
-                            valを評価し、10を保存します。その後finallyでvalは20になりますが、返る値は保存済み10。Bです。</p>
-                        <p class="memory">試験での見分け方：return valは値を先にコピーしてからfinally。</p>
-                    </div>
+                    <div class="answer-inner"><div class="correct"><b>正答：</b>B</div><h3>解説</h3><p><strong>覚えるルール：</strong><code>return val;</code> では、finallyを実行する前に「その時点のvalの値」が戻り値として退避されます。finallyが同じローカル変数valを書き換えても、退避済みの基本型の戻り値は変わりません。</p><h3>処理を順番に追う</h3><ol><li>最初は <code>val = 0</code> です。</li><li><code>array[3]</code> は範囲外なのでArrayIndexOutOfBoundsExceptionが発生します。これはRuntimeExceptionのサブクラスなのでcatchされます。</li><li>catchで <code>val = 10;</code> になります。</li><li><code>return val;</code> を評価します。この瞬間の値10が「戻す予定の値」として退避されます。</li><li>メソッドを抜ける前にfinallyを実行し、<code>val += 10;</code> によりローカル変数val自体は20になります。</li><li>しかし戻り値としてすでに退避した10は変わらないため、sample()は10を返します。</li></ol><pre><code>val = 0
+  ↓ catch
+val = 10
+  ↓ return val を評価
+戻り値 10 を退避
+  ↓ finally
+val = 20
+  ↓
+返す値は 10 のまま</code></pre><p><strong>問6との違い：</strong>問6はfinally自身が <code>return 20;</code> を実行するので戻り値を上書きします。この問7ではfinallyにreturnがなく、単に変数valを変更するだけなので、退避済みの10は上書きされません。</p><p class="memory">試験での見分け方：finallyに「return」があるかを最初に見る。なければ、return式で評価済みの基本型の値は後から変わらない。</p></div>
                 </details>
             </article>
             <article class="question" data-correct="D" data-max-select="1" id="q169">
