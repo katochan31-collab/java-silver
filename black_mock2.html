@@ -1564,14 +1564,11 @@ class SampleException extends Exception {}</code></pre>
                 <pre><code>public class Sample implements A, B {
     // some code
 }</code></pre>
-                <p class="choice" data-choice="A">A.
-                    Sampleは、helloを実装する必要がある。Bのメソッド実装にアクセスする必要がある場合には、B.default.hello()のように記述する。</p>
-                <p class="choice" data-choice="B">B.
-                    Sampleは、helloを実装する必要がある。Bのメソッド実装にアクセスする必要がある場合には、B.super.hello()のように記述する</p>
+                <p class="choice" data-choice="A">A. Sampleは、helloを実装する必要がある。Bのメソッド実装にアクセスする必要がある場合には、B.default.hello()のように記述する。</p>
+                <p class="choice" data-choice="B">B. Sampleは、helloを実装する必要がある。Bのメソッド実装にアクセスする必要がある場合には、B.super.hello()のように記述する</p>
                 <p class="choice" data-choice="C">C. Sampleは、helloを実装する必要はない。helloメソッドが呼び出されるとAの実装が使われる。</p>
                 <p class="choice" data-choice="D">D. Sampleは、helloを実装する必要はない。helloメソッドが呼び出されるとBの実装が使われる。</p>
-                <p class="choice" data-choice="E">E.
-                    Sampleは、helloを実装する必要はない。helloメソッドを使用するには、利用した実装を持つインタフェース型の変数を通じてアクセスする必要がある。</p>
+                <p class="choice" data-choice="E">E. Sampleは、helloを実装する必要はない。helloメソッドを使用するには、利用した実装を持つインタフェース型の変数を通じてアクセスする必要がある。</p>
                 <div aria-label="回答欄" class="answer-controls">
                     <div class="answer-control-label">回答を選択</div>
                     <div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice"
@@ -1625,7 +1622,7 @@ public void sample() {}
 }</code></pre>
 
 
-                <pre><code>F. abstract class B implemnets A {
+                <pre><code>F. abstract class B implements A {
 public void sample() {}
 }</code></pre>
 
@@ -1654,7 +1651,7 @@ public void sample() {}
                     <li><b>C：正解。</b><code>final</code> によりBの継承を禁止し、<code>sample()</code> も実装しています。</li>
                     <li><b>D：不正解。</b>直接サブクラスに必要な3つの修飾子のいずれもありません。</li>
                     <li><b>E：不正解。</b><code>sealed</code> を選ぶなら、Bが許可する直接サブクラスが必要です。この宣言にはサブクラスがなく、継承階層を閉じるなら <code>final</code> を使います。</li>
-                    <li><b>F：不正解。</b><code>implemnets</code> は <code>implements</code> のスペルミスです。さらに、修正してもAと同様に継承制御の修飾子が必要です。</li>
+                    <li><b>F：不正解。</b>Aと同様に継承制御の修飾子が必要です。</li>
                     </ul>
                     <p><b>見分け方：</b>sealedの直下には「final・sealed・non-sealedの札を必ず付ける」と覚えます。</p>
                 </div>
@@ -2050,7 +2047,7 @@ public class Sample {
                 <div class="answer-inner">
                     <div class="correct"><b>正答：</b>D</div>
                     <p><b>論点：</b><code>instanceof</code> のパターン変数は、その型であることが保証される範囲だけで使用できます。</p>
-                    <p><code>obj instanceof String str</code> がtrueのif側では、<code>str</code> はStringとして利用できます。しかしelse側は「objがStringではない」経路なので、<code>str</code> はスコープ外です。したがって <code>str.toLowerCase()</code> でコンパイルエラーになります。なお、掲載コードには <code>object</code> という変数はなく、実際の引数名は <code>obj</code> で統一されており、既存解説の「objectとobjの不一致」は誤りなので削除しました。</p>
+                    <p><code>obj instanceof String str</code> がtrueのif側では、<code>str</code> はStringとして利用できます。しかしelse側は「objがStringではない」経路なので、<code>str</code> はスコープ外です。したがって <code>str.toLowerCase()</code> でコンパイルエラーになります。</p>
                     <ul>
                     <li><b>A：不正解。</b>else側の不正な参照があるため実行できません。</li>
                     <li><b>B：不正解。</b>もしelse側を削除すれば、引数"A"ではif側に入りAを返しますが、現状はコンパイルできません。</li>
@@ -2588,7 +2585,7 @@ public class B extends A {
                     <li><b>C：正解。</b>aだけが別パッケージから参照できません。</li>
                     <li><b>D：不正解。</b>bはコンパイルエラーになりません。</li>
                     </ul>
-                    <p><b>補足：</b>別パッケージのサブクラス内でも、<code>new A().b</code> のように親型のオブジェクト経由ではprotectedへアクセスできません。</p>
+                    <p><b>補足：</b>別パッケージのサブクラス内でも、<code>new A().b</code> のように親型のオブジェクト経由ではprotectedへアクセスできません。new B().bならアクセス可能。</p>
                 </div>
             </details>
         </article>
