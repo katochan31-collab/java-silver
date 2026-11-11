@@ -619,13 +619,24 @@
 #index a.mastered-index{background:#e9f8ef;color:#0d7135}
 @media(max-width:600px){.review-toolbar{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.review-toolbar button{font-size:12px;padding:7px 9px;white-space:nowrap}.review-summary{white-space:nowrap}.understanding-button{font-size:12px;padding:7px 8px}}
 </style>
+
+<style id="choice-readability-fix">
+/* Readability: code-block choices and ordinary choices use one consistent card style. */
+.body > p.choice-label {font-weight:900;color:var(--navy);margin:14px 0 6px}
+.body > p.choice-label + pre {margin-top:6px;border-left:4px solid #7450a8;background:#fcf9ff}
+.body .choice {display:block !important;border:1.5px solid var(--line) !important;border-radius:10px !important;padding:10px 12px !important;margin:8px 0 !important;background:#fff !important;color:var(--text) !important;line-height:1.65 !important;}
+.body .choice code {color:#4a2868;font-weight:600}
+.answer-inner h4 {margin-top:18px;margin-bottom:6px;color:var(--navy)}
+.answer-inner p {margin:.45em 0}
+@media(max-width:600px){.body .choice{padding:9px 10px !important;font-size:15px !important}.body > p.choice-label + pre{font-size:12px}}
+</style>
 </head>
 
 <body>
     <header>
         <h1>Java Silver 紫本 模擬試験②</h1>
         <p>全60問。正答・解説は各問題の下で開閉できます。</p>
-    </header>
+    </header><section style="max-width:980px;margin:16px auto 0;padding:0 16px"><details style="background:#fff7df;border:1px solid #e6c76b;border-radius:14px;padding:12px 16px"><summary style="font-weight:900;color:#6f4b00;cursor:pointer">今回の重点復習問題</summary><p>間違い：7, 11, 23, 24, 31, 33, 34, 35, 40, 42, 47, 50, 54, 55</p><p>わからない／あやしい：3, 4, 7, 9, 10, 11, 12, 15, 22, 23, 24, 31, 33, 34, 35, 39, 40, 42, 45, 47, 50, 54, 55</p></details></section>
     <div class="toolbar-wrap">
         <div class="toolbar nav-row"><a class="home-button" href="index.html">はじめの画面に戻る</a><button onclick="go(-1)"
                 type="button">前へ</button><span class="progress" id="pos">1 / 60</span><button onclick="go(1)"
@@ -849,7 +860,7 @@ class MusicPlayer implements Playable {
                 <pre><code>public class Main {
     public static void main(String[] args) {
         int i = 0;
-        label;
+        label:
         for ( ; ; ) {                               //(A)
             while (i &lt; 5) {
                 i++;
@@ -970,13 +981,13 @@ String s5 = sb1.toString();</code></pre>
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)と同等の記述はどれですか。(1つ選択)</p>
                 <pre><code>String[][] array = {{"A", "", "C"}, {"X", "Y", ""}};</code></pre>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>String[][] array = new String[2][3];
 array[0][0] = "A";
 array[0][2] = "C";
 array[1][0] = "X";
 array[1][1] = "Y";</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>String[][] array = new String[3][3];
 array[0][0] = "A";
 array[0][1] = "";
@@ -984,13 +995,13 @@ array[0][2] = "C";
 array[1][0] = "X";
 array[1][1] = "Y";
 array[1][2] = "";</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>String[][] array = new String[3][2];
 array[1][0] = "A";
 array[1][2] = "C";
 array[2][1] = "X";
 array[2][2] = "Y";</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>String[2] array = new String[][3];
 array[0][0] = "A";
 array[0][1] = "";
@@ -1005,7 +1016,7 @@ array[1][2] = "";</code></pre>
 
 
 
-                <p>• E.</p>
+                <p class="choice-label">E.</p>
                 <pre><code>String[][] array = new String[2][];
 array[0] = new String[3];
 array[1] = new String[2];
@@ -1079,7 +1090,7 @@ array[1][1] = "Y";</code></pre>
                 <div class="choice" data-choice="C">C. Cのメソッドは第2引数の指定が正しくないため、StringIndexOutOfBoundsExceptionがスローされる
                 </div>
                 <div class="choice" data-choice="D">D. 正常にコンパイル、実行でき、trueが出力される</div>
-                <p>‐ E. 正常にコンパイル、実行でき、falseが出力される</p>
+                <div class="choice" data-choice="E">E. 正常にコンパイル、実行でき、falseが出力される</div>
                 <div aria-label="回答欄" class="answer-controls">
                     <div class="answer-control-label">回答を選択</div>
                     <div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice"
@@ -1100,7 +1111,7 @@ array[1][1] = "Y";</code></pre>
                     <p>考え方の修正ポイントは substring() は StringBuilder 自体を変更しないことです。</p>
                     <p>戻り値 "Japan" を受け取っていないため、sb はそのまま "Japanese" です。</p>
                     <p>sb.replace()によってJapaneseがJavaに変更されるが、8行目のstr.equalsには、StringBuilderオブジェクトが渡されているため、結果はfalse。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：1行ずつ追う</h4><p>① <code>str</code> は "Japan"。<code>str.replace(...)</code> の戻り値を代入していないので、str は "Japan" のままです。</p><p>② <code>sb.substring(0, 5)</code> は String の "Japan" を返しますが、これも受け取っていないので sb はまだ "Japanese"。</p><p>③ <code>sb.replace(2, 8, "va")</code> は StringBuilder 自身を書き換え、sb は "Java" になります。</p><p>④ 最後は <code>"Japan".equals(StringBuilder)</code>。文字列が似ていても相手がStringBuilderなので false です。</p><h4>覚え方</h4>
                     <p>戻り値を捨てたら変更されないメソッドに注意。</p>
                     <p>String.replace() → 新しい String を返す</p>
                     <p>StringBuilder.substring() → String を返す。元のStringBuilderは変更しない</p>
@@ -1183,7 +1194,7 @@ array[1][1] = "Y";</code></pre>
     }
     static void method(MyResource r) throws Exception {    //(A)
         try (r) {                                          //(B)
-            System.ouut.print("B");
+            System.out.print("B");
         }                                                  //(C)
     }
 }
@@ -1352,7 +1363,7 @@ class MyResource implements AutoCloseable {
                     <h4>正解の理由</h4>
                     <p>2 + 2 + 1 + 1 + 1 = 7</p>
                     <p>new String("Coffee") や new String("Ca").concat("fe") でも、switchは参照先が同じかではなく文字列の内容で一致判定されます。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：配列を確定してから足す</h4><p><code>"Coffee".replace("of", "a")</code> は "Cafe"、さらに <code>substring(0,4)</code> も "Cafe" です。したがって配列は Coffee, Coffee, Cafe, Cafe, Cafe。switch式は文字列内容で一致するので、2 + 2 + 1 + 1 + 1 = 7 です。</p><h4>覚え方</h4>
                     <p>Stringのswitchは == ではなく、文字列の内容でcaseを判定する。</p>
                     <p><code>str[0].replace("of", "a").substring(0, 4);</code>のようなメソッドチェーンは、左から順に結果を書き出すとミスしにくいです。</p>
                 </div>
@@ -1417,7 +1428,7 @@ class MyResource implements AutoCloseable {
                     <p>ジェネリクスを外すと、取り出す型は Object。</p>
                     <p>ArrayList&lt;String&gt; → List&lt;String&gt;のように、具体的なクラスからインターフェース型へ渡すのはOKです。</p>
                     <p>Collection, list,
-                        ArrayListなどのコレクションフレームワークに所属するインタフェースやクラスには、&lt;E&gt;など仮の型である型パラメータが指定されているためオブジェクト生成っ時に必要な型を指定できますが、Objectクラスは&lt;String&gt;のような指定はできません。
+                        ArrayListなどのコレクションフレームワークに所属するインタフェースやクラスには、&lt;E&gt;など仮の型である型パラメータが指定されているためオブジェクト生成時に必要な型を指定できますが、Objectクラスは&lt;String&gt;のような指定はできません。
                     </p>
                 </div>
             </details>
@@ -1500,27 +1511,27 @@ var y = new String("Java");
 int i = 0;
 i = x.equals(y) ? 1 :y.equals(x) ? 2 : 3;  //6行目</code></pre>
                 <p>6行目の処理と同じ結果となるものはどれですか。(1つ選択)</p>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>if (x.equals(y)) i = 1;
 else i = 2;</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>if (x.equals(y)) i = 1;
 else if (y.equals(x)) i = 2;
 else i = 3;</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>if (x.equals(y)) i = 1;
 if (!x.equals(y)) i = 2;
 if (y.equals(x)) i = 3;</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>if (!x.equals(y)) i = 2;
 if (!y.equals(x)) i = 1;
 else i = 3;</code></pre>
-                <p>• E.</p>
+                <p class="choice-label">E.</p>
                 <pre><code>if (x.equals(y)) {
     i = 1;
     if (y.equals(x)) i = 2;
 }</code></pre>
-                <p>• F.</p>
+                <p class="choice-label">F.</p>
                 <pre><code>if (!x.equals(y)) {
     if (!y.equals(x)) i = 3;
     i = 2;
@@ -1603,7 +1614,7 @@ public class Test {
         obj.print();
     }
 }</code></pre>
-                <p>Super!SUb#print()を出力するために必要な記述はどれですか。(2つ選択)</p>
+                <p>Super!Sub#print()を出力するために必要な記述はどれですか。(2つ選択)</p>
                 <div class="choice" data-choice="A">A. Aのprotectedをprivateに変更する</div>
                 <div class="choice" data-choice="B">B. Bのprint()にpublicを指定する</div>
                 <div class="choice" data-choice="C">C. Cのnameをsuper(name)に変更する</div>
@@ -1698,7 +1709,7 @@ public class Test {
                 <div class="answer-inner">
                     <div class="correct"><b>正答：</b>G</div>
                     <h4>正解の理由</h4>
-                    <p>countires配列内の文字について、文字の長さが2文字の場合はそのままで、それ以外は頭文字2文字を大文字にするメソッドにより変更されるから。</p>
+                    <p>countries配列内の文字について、文字の長さが2文字の場合はそのままで、それ以外は頭文字2文字を大文字にするメソッドにより変更されるから。</p>
                     <h4>覚え方</h4>
                     <p>continue は「今回の繰り返しの残りを飛ばして、次の周回へ」。</p>
                 </div>
@@ -1782,7 +1793,7 @@ class Disp {
     // insert code here
 }</code></pre>
                 <p>bdgを出力するために// insert code hereに必要な記述はどれですか。(1つ選択)</p>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>static void print(char... arr) {
     int i = arr.length;
     while(i &gt; arr.length) {
@@ -1790,7 +1801,7 @@ class Disp {
         i--;
     }
 }</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>static void print(char... arr) {
     int i = 0;
     while(i &lt; arr.length) {
@@ -1799,7 +1810,7 @@ class Disp {
         i++;
     }
 }</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>static void print(char... arr) {
     int i = 0;
     while(i &lt; arr.length) {
@@ -1807,7 +1818,7 @@ class Disp {
         i += 2;
     }
 }</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>void print(char... arr) {
     int i = 0;
     while(true) {
@@ -1816,7 +1827,7 @@ class Disp {
         i += 2;
     }
 }</code></pre>
-                <p>• E.</p>
+                <p class="choice-label">E.</p>
                 <pre><code>void print(char... arr) {
     int i = 0;
     while(true) {
@@ -1860,7 +1871,7 @@ class Disp {
                 </div>
             </div>
 </article>
-        <article class="question" data-topics="オーバーロード,String" data-correct="A" data-max-select="1" id="q19">
+        <article class="question" data-topics="オーバーロード,String" data-correct="D" data-max-select="1" id="q19">
             <div class="qhead"><span class="badge">問19</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#オーバーロード</span><span class="topic-tag">#String</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
@@ -1917,12 +1928,12 @@ class Disp {
                 <summary>正答・解説を表示</summary>
                 <div aria-live="polite" class="grade-result"></div>
                 <div class="answer-inner">
-                    <div class="correct"><b>正答：</b>A</div>
+                    <div class="correct"><b>正答：</b>D</div>
                     <h4>正解の理由</h4>
                     <p>• 1. method(s1.toString(), s2)</p>
                     <p> 引数は String, String</p>
                     <p> A/Bには一致しないため、Object, Object の C</p>
-                    <p> "Hey!!" と "Hello" は長さが一緒である → T</p>
+                    <p> "Hey!!" と "Hello" はどちらも5文字なので → T</p>
                     <p>• 2. method(s1, s2)</p>
                     <p> StringBuilder, String → A</p>
                     <p> "Hey!!" と "Hello" は両方 H で始まる → T</p>
@@ -1943,7 +1954,7 @@ class Disp {
                 </div>
             </div>
 </article>
-        <article class="question" data-topics="配列,演算子" data-correct="A" data-max-select="1" id="q20">
+        <article class="question" data-topics="配列,演算子" data-correct="D" data-max-select="1" id="q20">
             <div class="qhead"><span class="badge">問20</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#配列</span><span class="topic-tag">#演算子</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
@@ -1951,10 +1962,10 @@ class Disp {
                 <pre><code>public class Main {
     public static void main(String... args) {
         double[] oldPrice = {7.95, 10.0, 25.99};
-        double[] newPrice = new double[old.Price.length];
+        double[] newPrice = new double[oldPrice.length];
         for (int i = 0; i &lt; oldPrice.length; i++) {
             if (oldPrice[i] &lt; 10) newPrice[i] = oldPrice[i] += 2;
-            else if (oldPrice[i] &gt; 20) new Price[i] = --oldPrice[i];
+            else if (oldPrice[i] &gt; 20) newPrice[i] = --oldPrice[i];
             else newPrice[i] = ++oldPrice[i];
         }
         System.out.println(Arrays.toString(newPrice));
@@ -2008,11 +2019,11 @@ class Disp {
         methodA("Ex");
     }
     static void methodA(String s) {
-        if(s.lengh() &lt; 0) throw new RuntimeException(); //(A)
+        if(s.length() &lt; 0) throw new RuntimeException(); //(A)
         methodB(s);
     }
     static void methodB(String s) {
-        if(!(s.endWith("Z")))
+        if(!(s.endsWith("Z")))
             throw new Exception("Incorrect letter");    //(B)
     }
 }</code></pre>
@@ -2063,35 +2074,35 @@ class Disp {
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次の記述のうちコンパイルエラーが発生するものはどれですか。(2つ選択)</p>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>class A {
     public void x();
 }</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>abstract class B {
     abstract void x();
 }</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>abstract sealed class C permits Sub {
     abstract void x();
 }
 final class Sub extends C {
     public void x() {}
 }</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>interface D {
     public void x();
 }</code></pre>
-                <p>• E.</p>
+                <p class="choice-label">E.</p>
                 <pre><code>interface E {
     static void x(){}
     static private void y() {}
 }</code></pre>
-                <p>• F.</p>
+                <p class="choice-label">F.</p>
                 <pre><code>interface F {
     default void x();
 }</code></pre>
-                <p>• G.</p>
+                <p class="choice-label">G.</p>
                 <pre><code>interface G {
     void x();
 }
@@ -2121,7 +2132,7 @@ abstract class H implements G {}</code></pre>
                     <p>C: 〇、abstract sealed class
                         は可能です。abstractは「抽象クラス」、sealedは「継承できるクラスを限定する」という別々の役割なので併用できます。また、許可されたSubがfinalになるのも正しい形です。</p>
                     <p>D: 〇、インタフェースのメソッドは暗黙的にpublic abstractになるから</p>
-                    <p>E: 〇、両方ともstaticメソッドであり書き方はあっている。static privateは順不同だっと思う。</p>
+                    <p>E: 〇、両方ともstaticメソッドであり書き方はあっている。static privateは順不同です。</p>
                     <p>F: ×、インターフェースのdefaultメソッドは必ず実装 {} が必要。</p>
                     <p>G: 〇、HクラスでインタフェースGを実装しているが、抽象クラスとして実装しているので、抽象メソッドxを実現する必要がない。</p>
                     <h4>覚え方</h4>
@@ -2147,19 +2158,19 @@ abstract class H implements G {}</code></pre>
                 <pre><code>public sealed interface Item permits Food, Drink {}
 // insert code here</code></pre>
                 <p>コンパイルを成功させるために2行目以降に必要な記述はどれですか。(1つ選択)</p>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>sealed interface Food extends Item permits Drink {}
 final class Drink implements Food {}</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>sealed interface Food extends Item {}
 non-sealed interface Drink implements Food {}</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>sealed interface Food extends Item permits Drink {}
 record Drink() implements Food, Item {}</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>non-sealed class Food implements Item permits Drink {}
 final class Drink extends Food implements Item {}</code></pre>
-                <p>• E.</p>
+                <p class="choice-label">E.</p>
                 <pre><code>final interface Food extends Item {}
 sealed class Drink implements Item {}</code></pre>
                 <div aria-label="回答欄" class="answer-controls">
@@ -2187,7 +2198,7 @@ sealed class Drink implements Item {}</code></pre>
                     </p>
                     <p>D. ×：non-sealedクラスだがpermitsをしているためNG</p>
                     <p>E. ×：Foodインタフェースがfinalとなっている。（インタフェースにfinalは指定できない）また、Drinkクラスはsealedが指定されているが、permitsの指定がない。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：permitsは「直接の子」リスト</h4><p><code>Item permits Food, Drink</code> と書いた以上、FoodとDrinkはどちらもItemの直接サブタイプである必要があります。CではFoodが<code>extends Item</code>、Drinkが<code>implements Food, Item</code>なので両方が直接Itemにつながります。さらにrecordは暗黙的にfinalなのでsealed階層の子として条件を満たします。</p><h4>覚え方</h4>
                     <p>sealedのpermitsに書いた型は「直接の子」である必要がある。</p>
                     <p>また、直接の子は原則として次のどれかになります。</p>
                     <p>• final</p>
@@ -2252,7 +2263,7 @@ sealed class Drink implements Item {}</code></pre>
                     <h4>正解の理由</h4>
                     <p>printメソッドは、Stringオブジェクトを引数に受取り、引数がnullの場合は"null"を表示する。</p>
                     <p>なお、nullは参照するだけではNPEにならない。何か操作をするときにNPEになる。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：nullを「表示する」のと「操作する」のは別</h4><p><code>list[1][1]</code> の値は null ですが、式 <code>list[i][j] + ":"</code> は文字列連結です。null参照にメソッドを呼んでいないためNPEにはならず、文字列 <code>"null"</code> として連結されます。</p><h4>覚え方</h4>
                     <p>null は「使って操作」するとNPE。文字列連結なら "null" と表示される。</p>
                 </div>
             </details>
@@ -2271,7 +2282,7 @@ sealed class Drink implements Item {}</code></pre>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
-                <pre><code>sealed class Super permits SUb {
+                <pre><code>sealed class Super permits Sub {
     private String name = "SUPER ";
     final String getName() { return name; }
     private void reset() { this.name = ""; }
@@ -2279,7 +2290,7 @@ sealed class Drink implements Item {}</code></pre>
 }
 non-sealed class Sub extends Super {
     private String name = "SUB ";
-    public string getName() { return name; }
+    public String getName() { return name; }
     public void reset() { this.name = ""; }
     public String toString() {return "Sub " + name; } 
 }
@@ -2384,7 +2395,7 @@ class Calc {
                     <div class="correct"><b>正答：</b>E</div>
                     <h4>正解の理由</h4>
                     <p>A.
-                        oboo11は3、0x000Cは12でnumber配列はすべてint型なので、ラッパークラスのInteger[]にオートボクシングされえて問題ないため、RuntimeExceptionはスローされない
+                        0b0011は3、0x000Cは12でnumber配列はすべてint型なので、ラッパークラスのInteger[]にオートボクシングされて問題ないため、RuntimeExceptionはスローされない
                     </p>
                     <p>B. 引数はラッパークラスのIntegerであり、呼び出し側もInteger型なので問題なし。throwsは非チェック例外なので特に問題なし。</p>
                     <p>C, D, F. switchの条件分岐とobjのインクリメントから異なる結果である。</p>
@@ -2541,7 +2552,7 @@ class SafeResource implements AutoCloseable {
                 <p>次のプログラムを正しく説明しているものはどれですか。(1つ選択)</p>
                 <pre><code>public class Main {
     public static void main(String[] args) {
-        Object[] obj = {new Item(), new Clothes(), "TBD ", new Object();}            //(A)
+        Object[] obj = {new Item(), new Clothes(), "TBD ", new Object()};            //(A)
         for (Object o: obj) { method(o); }
     }
     static void method(Object obj) {
@@ -2549,7 +2560,7 @@ class SafeResource implements AutoCloseable {
             System.out.print(c.name);                                                //(B)
         } else if (obj instanceof Item i) {
             System.out.print(i.name);
-        } else if (!(obj instance of String s)) {
+        } else if (!(obj instanceof String s)) {
             System.out.print("N/A ");
         } else {
             System.out.print(s);                                                     //(D)
@@ -2557,7 +2568,7 @@ class SafeResource implements AutoCloseable {
     }
 }
 class Item { String name = "Item "; }
-class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
+class Clothes extends Item { String name = "Clothese "; }</code></pre>
                 <div class="choice" data-choice="A">A. Object型の配列でStringを要素にする場合はnew String("TBD
                     ")とする必要があるため、Aでコンパイルエラーが発生する</div>
                 <div class="choice" data-choice="B">B. この位置からは変数cにアクセスできないため、Bでコンパイルエラーが発生する</div>
@@ -2712,7 +2723,7 @@ class Clothes exnteds Item { String name = "Clothese "; }</code></pre>
                     <p>そのため、戻り値のないメソッドを</p>
                     <p><code>var value1 = list.add(0, "Carol ");</code></p>
                     <p>で変数に代入することはできず、コンパイルエラーとなる</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：addは2種類</h4><p><code>add(E)</code> は「追加できたか」の boolean を返します。一方、<code>add(int, E)</code> は指定位置へ挿入するだけで戻り値は void。<code>var</code> は void を受け取れないので(B)でコンパイルエラーです。</p><h4>覚え方</h4>
                     <p>ArrayListでは戻り値の違いに注意です。</p>
                     <p>add(E e) // boolean</p>
                     <p>add(int, E) // void ← 要注意</p>
@@ -2838,7 +2849,7 @@ final class B {}
                     <p>operate()はint型配列を受け取り、問題なく動作する。</p>
                     <p>do-while構文により無限ループにもならないし、例外も起きない</p>
                     <p>11以下または次の要素が11未満まで、がdo継続条件なので、5, 7, 11, 13がprintされる。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：<code>|</code> が最大の罠</h4><p><code>||</code>と違い、<code>|</code>は左辺がtrueでも右辺を必ず評価します。そのため毎回 <code>arr[i++]</code> が評価され、i は0→1→2→3と進みます。13を出力した後の条件では両辺がfalseとなり終了します。</p><h4>覚え方</h4>
                     <p>| は短絡評価しないため、左辺がtrueでも右辺のarr[i++]まで必ず評価されます。したがって毎回 i が1増えます。</p>
                     <p>|| は短絡評価、| は両辺を必ず評価。</p>
                 </div>
@@ -2895,7 +2906,7 @@ final class B {}
                     <h4>正解の理由</h4>
                     <p>setName(String name)では、name = name;となっているため、ローカル変数のみの変更になり、インスタンス変数が変更されない。</p>
                     <p>したがって、インスタンス生成時に使った引数のDukeが、toStringのオーバーライドによりname:Dukeと表示される。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：同名なら近い変数が優先</h4><p><code>setName(String name)</code> の中の <code>name = name</code> は、左辺も右辺も仮引数nameです。フィールドを変更するには <code>this.name = name</code> とする必要があります。よってフィールドは最初の "Duke" のままです。</p><h4>覚え方</h4>
                     <p>同名の仮引数があるとフィールドは隠れる。フィールドを明示するならthis。</p>
                 </div>
             </details>
@@ -2960,7 +2971,7 @@ record Item(int price, int amount) {
                     <div class="correct"><b>正答：</b>F</div>
                     <h4>正解の理由</h4>
                     <p>戻り値の型がintとlongのcalc()があり、オーバーロードに失敗している。（メソッド名、引数リストが一緒）</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：オーバーロード判定に戻り値は使わない</h4><p><code>int calc()</code> と <code>long calc()</code> は、メソッド名も引数リストも同じです。Javaは戻り値だけでは呼び分けられないため、クラス定義そのものがコンパイルエラーです。後ろの呼び出し結果を計算する前にここで終了です。</p><h4>覚え方</h4>
                     <p>Math.floor()は小数部を切り捨ててdoubleを戻し、Math.round()は、小数部を丸めた結果をlongで戻す。</p>
                     <p>問題のメソッドを仮にどちからコメントアウトすると、200 100 110となる。</p>
                     <p>最初は引数なしのため、price * amountすなわち、100*2=200が返る。</p>
@@ -2991,29 +3002,29 @@ record Item(int price, int amount) {
 }</code></pre>
                 <p>以下の実行結果となるレコードの宣言はどれですか。(2つ選択)</p>
                 <p><code>Book[id=100, author=WILLIAM, price=7.99]</code></p>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>public record Book(int id, String author, double price) {
     public String toString() {
         return "author=" + author.toUpperCase() + ",";
     }
 }</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>public record Book(int id, String author, double price) {
     this.author = author.toUpperCase();
 }</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>public record Book() {
     public Book(int id, String author, double price) {
         author.toUpperCase();
     }
 }</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>public record Book(int id, String author, double price) {
     public Book {
         author = author.toUpperCase();
     }
 }</code></pre>
-                <p>• E.</p>
+                <p class="choice-label">E.</p>
                 <pre><code>public record Book(int id, String author, double price) {
     public Book(int id, String author, double price) {
         this.id = id;
@@ -3021,7 +3032,7 @@ record Item(int price, int amount) {
         this.price = price;
     }
 }</code></pre>
-                <p>• F.</p>
+                <p class="choice-label">F.</p>
                 <pre><code>public record Book(int id, String author, double price) {
     public String getAuthor() {
         return author.toUpperCase();
@@ -3151,16 +3162,16 @@ class Resource implements AutoCloseable {
                 <h3>問題文・コード・選択肢</h3>
                 <p>次のプログラム(抜粋)と同様の処理はどれですか。(1つ選択)</p>
                 <pre><code>String text = "Java \"17\"";</code></pre>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>String text = """
     Java "17\"""";</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>String text = """
     Java "17\""";</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>String text = \"""
     Java "17\""";</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>String text = """
     Java "17"
     """</code></pre>
@@ -3219,7 +3230,7 @@ class Resource implements AutoCloseable {
             e.printStackTrace();
         }
     }
-    private staic void validate(Object obj) {
+    private static void validate(Object obj) {
         if (obj instanceof Integer o) {
             System.out.print("Integer");
         }
@@ -3338,7 +3349,7 @@ class Main {
                     <p>Point.calculate(100) // ×</p>
                     <p>なお、<code>int basePoint = 10;</code>は暗黙的に<code>public static final int basePoint = 10;</code>となるため、CでもDでも呼び出せる。
                     </p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：3種類を分離する</h4><p>フィールド <code>basePoint</code> は暗黙にpublic static final。staticメソッド <code>getBasePoint()</code> はPoint自身に属し、実装オブジェクトには継承されません。<code>calculate()</code> はインスタンスメソッドなので実装オブジェクトから呼びます。したがって A と F がエラーです。</p><h4>覚え方</h4>
                     <p>インターフェースでは、</p>
                     <p>フィールド → public static final</p>
                     <p>staticメソッド → インターフェース名.メソッド()</p>
@@ -3474,7 +3485,7 @@ class Main {
                     <h4>正解の理由</h4>
                     <p>戻り値の型が異なる同じメソッド名・引数リストのメソッドをオーバーライドしようとしているから、メソッドの重複によるコンパイルエラーが発生する。</p>
                     <p>引数リストが同じなのでこれはオーバーライドになりますが、戻り値をdoubleからintへ変更することはできません。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：まずメソッド宣言だけを見る</h4><p>親の <code>execute(double)</code> は戻り値double、子には同じ引数の <code>execute(double)</code> があり戻り値intです。これは別のオーバーロードではなくオーバーライド候補ですが、primitiveのdoubleをintへ変える戻り値変更は不可です。mainの計算まで進みません。</p><h4>覚え方</h4>
                     <p>戻り値だけ変えてもオーバーロードにはならない。</p>
                 </div>
             </details>
@@ -3510,7 +3521,7 @@ class Main {
                 case "Sat", "Sun" -&gt; System.out.print("Close ");
                 case "Monday", "Tuesday", "Wednesday", 
                         "Thursday", "Friday", 
-                        "Saturday", "Sunday" - &gt;
+                        "Saturday", "Sunday" -&gt;
                          throw new DataTooLongException(s + " ");
                 default -&gt;
                          throw new InvalidDataException(s + " "); 
@@ -3649,7 +3660,7 @@ set(i, e)     // i番目を置換</code></pre>
         return a * b;
     }
 }
-saaled interface B {
+sealed interface B {
     default Integer operate(int x, int y) {
         return x += y;
     }
@@ -3829,7 +3840,7 @@ class Sub extends Super {
                     <p>E: Superに引数2つのコンストラクタが存在しないためコンパイルエラーが発生する</p>
                     <p>F: 引数なしのSuperコンストラクタが暗黙的に呼び出されるが、存在しないためコンパイルエラーが発生する</p>
                     <p>G: super(no); と this(code);を同時に記述しているのでコンパイルエラーが発生する</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：コンストラクタの1行目を確認</h4><p>親Superには<code>Super(int)</code>しかありません。子の各コンストラクタは最終的にこれを呼ぶ必要があります。Bは<code>this(10,"cd000")</code>経由で既存コンストラクタに入り、その中の<code>super(no)</code>へ到達。Cは直接<code>super(no)</code>を呼ぶので有効です。</p><h4>覚え方</h4>
                     <p>親にSuper()がなければ、暗黙のsuper()でエラー</p>
                     <p>this(...)とsuper(...)は同時に使えない</p>
                 </div>
@@ -4064,7 +4075,7 @@ public class MyClass implements A, B {
                     <p>D ×：obj.min()不可。show()はprivateなのでobj.show()も不可。</p>
                     <p>E ×：MyClass.min()不可。A.show()もprivateのインスタンスメソッドなので不可。</p>
                     <p>F ×：A.min()は正しいが、A.show()が不可。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：static / default / private</h4><p><code>A.min()</code> はinterfaceのstaticなのでAから呼ぶ。<code>obj.max()</code> はMyClassのインスタンスメソッドで、内部から<code>A.super.max()</code>を呼びます。そのAのdefault maxがprivate showを呼ぶので、出力は10 → A... → 11です。</p><h4>覚え方</h4>
                     <p>interfaceでは、この3つを分けると整理しやすいです。</p>
                     <pre><code>static  → A.method()          // interface名から
 default → obj.method()        // インスタンスから
@@ -4096,7 +4107,7 @@ private → interface内部専用</code></pre>
     public String toString() { return "[" + id + ":" + name + "]"; }
 }
 class Main {
-    public static void mai(String[] args) {
+    public static void main(String[] args) {
         var p1 = new Product(10);
         System.out.print(p1);
         var p2 = new Product(20);
@@ -4348,7 +4359,7 @@ class Main {
                         ")を呼んでいる箇所です。MainはBaseと別パッケージにあり、Baseのサブクラスでもないため、protectedなコンストラクタにアクセスできません。</p>
                     <p>なお、最後の(Derived) new Base()はコンパイル自体は可能ですが、そこまで実行できるコードなら、実体がBaseなので実行時にClassCastExceptionになります。
                     </p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：protectedは「どこから呼ぶか」を見る</h4><p><code>Derived</code> のコンストラクタから <code>super(name)</code> とするのは継承関係内なのでOK。一方Mainは<code>com.ext</code>にある無関係なクラスで、<code>com.base.Base</code>のprotectedコンストラクタ<code>Base(String)</code>を<code>new Base("Base ")</code>として直接呼べません。実行時キャストを考える前にコンパイルで止まります。</p><h4>覚え方</h4>
                     <p>protectedは別パッケージでも「サブクラスから継承関係を通じて」アクセスできる。無関係な別パッケージのクラスからはアクセスできない。</p>
                 </div>
             </details>
@@ -4404,7 +4415,7 @@ class Main {
                     <h4>正解の理由</h4>
                     <p>最初はx=5, y=5で条件を満たします。ループ内で先にxを3減らしてから出力するため、順に2:5、-1:4、-4:3と出力されます。-4:3を出力した次の条件判定では、x &gt;=
                         -1がfalseになります。さらに&amp;&amp;は短絡評価なので、そこで条件判定が終了し、ループを抜けます。したがって 2:5 -1:4 -4:3 となります。</p>
-                    <h4>覚え方</h4>
+                    <h4>初学者向け：条件判定は周回の「前」</h4><p>開始時5:5は条件true。その周回の中でxを2にして2:5を出力します。次は-1:4。3周目の開始時点ではx=-1なのでまだ条件trueで、本体に入りx=-4として-4:3を出力します。終了判定はその後なので、ここも表示されます。</p><h4>覚え方</h4>
                     <p>whileは「条件判定 → 本体」の順。本体で条件を外れる値になっても、その周回の処理は最後まで実行される。</p>
                 </div>
             </details>
@@ -4504,7 +4515,7 @@ record Triangle(double base, double height) implements Calculator {
 }
 record Circle(double radius) implements Calculator, Shape {
     public void calc() {                                         //(B)
-        double d = Math.pow(radius, 2) + 3.14;
+        double d = Math.pow(radius, 2) * 3.14;
         System.out.print("Circle:" + d + "sq.cm. ");
     }
     public void draw() { System.out.print("drawing..."); }
@@ -4513,10 +4524,10 @@ public class Main {
     public static void main(String[] args) {
         List&lt;Calculator&gt; list = 
                     List.of(new Rectangle(2.0, 5.0), 
-                    new Trinagle(5.0, 4.0), new Circle(3.0));
+                    new Triangle(5.0, 4.0), new Circle(3.0));
         execute(list);
     }
-    public static void execute(list&lt;Calculator&gt; list) {
+    public static void execute(List&lt;Calculator&gt; list) {
         for (Calculator calc: list) {
             calc.calc();                                          //(C)
             calc.draw();                                          //(D)
@@ -4573,23 +4584,23 @@ public class Main {
     Number calc();
 }</code></pre>
                 <p>コンパイルを成功させるために必要な記述はどれですか。(2つ選択)</p>
-                <p>• A.</p>
+                <p class="choice-label">A.</p>
                 <pre><code>record Rectangle(int height, int width) {
     public int calc() { return height * width; }
 }</code></pre>
-                <p>• B.</p>
+                <p class="choice-label">B.</p>
                 <pre><code>final class Rectangle implements Shape {
     public Integer calc(double base) { return 100; }
 }</code></pre>
-                <p>• C.</p>
+                <p class="choice-label">C.</p>
                 <pre><code>record Rectangle(Long height, Long width) implements Shape {
     public Long calc() { return height * width; }
 }</code></pre>
-                <p>• D.</p>
+                <p class="choice-label">D.</p>
                 <pre><code>non-sealed class Rectangle extends Shape {
     public Double calc() { return height * width; }
 }</code></pre>
-                <p>• E.</p>
+                <p class="choice-label">E.</p>
                 <pre><code>final class Rectangle implements Shape {
     public Integer calc() { return 100; }
 }</code></pre>
