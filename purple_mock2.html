@@ -1087,8 +1087,7 @@ array[1][1] = "Y";</code></pre>
 }</code></pre>
                 <div class="choice" data-choice="A">A. Aのメソッドは引数を3つ指定する必要があるため、コンパイルエラーが発生する</div>
                 <div class="choice" data-choice="B">B. Bのメソッドは引数を1つのみ指定して使用するため、コンパイルエラーが発生する</div>
-                <div class="choice" data-choice="C">C. Cのメソッドは第2引数の指定が正しくないため、StringIndexOutOfBoundsExceptionがスローされる
-                </div>
+                <div class="choice" data-choice="C">C. Cのメソッドは第2引数の指定が正しくないため、StringIndexOutOfBoundsExceptionがスローされる</div>
                 <div class="choice" data-choice="D">D. 正常にコンパイル、実行でき、trueが出力される</div>
                 <div class="choice" data-choice="E">E. 正常にコンパイル、実行でき、falseが出力される</div>
                 <div aria-label="回答欄" class="answer-controls">
@@ -1135,8 +1134,7 @@ array[1][1] = "Y";</code></pre>
                 <p>次のローカル変数の宣言で、コンパイルエラーが発生しないものはどれですか。(2つ選択)</p>
                 <div class="choice" data-choice="A">A. <code>var a = -1___00;</code></div>
                 <div class="choice" data-choice="B">B. <code>var b = 100_L;</code></div>
-                <div class="choice" data-choice="C">C. <code>var c = 0b_0000_0000_0000_0000_0000_0000_0000_0010;</code>
-                </div>
+                <div class="choice" data-choice="C">C. <code>var c = 0b_0000_0000_0000_0000_0000_0000_0000_0010;</code></div>
                 <div class="choice" data-choice="D">D. <code>var d = 0xf_f_f_fL;</code></div>
                 <div class="choice" data-choice="E">E. <code>var e = 0xadd_:</code></div>
                 <div class="choice" data-choice="F">F. <code>var f = 3._1_4F;</code></div>
@@ -1259,12 +1257,9 @@ class MyResource implements AutoCloseable {
     void main(String args) { new Main(); }
     public static void main(String... s) { main(); }
 }</code></pre>
-                <div class="choice" data-choice="A">A.
-                    Javaアプリケーションの実行に必要なmain()メソッドの宣言は、3行目のように仮引数にString型の可変長引数を1つ指定できる</div>
-                <div class="choice" data-choice="B">B.
-                    Javaアプリケーションの実行に必要なmain()メソッドをクラス内の先頭に記述していないため、JavaコマンドでMainクラスを指定しても実行に失敗する</div>
-                <div class="choice" data-choice="C">C.
-                    Javaコマンドで実行すると3行目のmain()メソッドが呼ばれ、次に2行目のmain()メソッドが呼ばれてMainオブジェクトが生成される</div>
+                <div class="choice" data-choice="A">A. Javaアプリケーションの実行に必要なmain()メソッドの宣言は、3行目のように仮引数にString型の可変長引数を1つ指定できる</div>
+                <div class="choice" data-choice="B">B. Javaアプリケーションの実行に必要なmain()メソッドをクラス内の先頭に記述していないため、JavaコマンドでMainクラスを指定しても実行に失敗する</div>
+                <div class="choice" data-choice="C">C. Javaコマンドで実行すると3行目のmain()メソッドが呼ばれ、次に2行目のmain()メソッドが呼ばれてMainオブジェクトが生成される</div>
                 <div class="choice" data-choice="D">D. main()メソッドはオーバーロードできないためコンパイルエラーが発生する</div>
                 <div class="choice" data-choice="E">E. クラスにpublicが付いていないためnew Main()でコンパイルエラーが発生する</div>
                 <div class="choice" data-choice="F">F. コンストラクタが宣言されていないためnew Main()でコンパイルエラーが発生する</div>
@@ -1954,7 +1949,7 @@ class Disp {
                 </div>
             </div>
 </article>
-        <article class="question" data-topics="配列,演算子" data-correct="D" data-max-select="1" id="q20">
+        <article class="question" data-topics="配列,演算子" data-correct="A" data-max-select="1" id="q20">
             <div class="qhead"><span class="badge">問20</span></div><div class="topic-tags" aria-label="出題テーマ"><span class="topic-tag">#配列</span><span class="topic-tag">#演算子</span></div>
             <section class="body">
                 <h3>問題文・コード・選択肢</h3>
@@ -1996,7 +1991,13 @@ class Disp {
                 <div class="answer-inner">
                     <div class="correct"><b>正答：</b>A</div>
                     <h4>正解の理由</h4>
+                    <p>正答はAです。oldPriceの各要素を順番に条件判定します。</p>
+                    <p>7.95は10未満なので <code>oldPrice[i] += 2</code> が実行され、9.95になります。この更新後の値がnewPriceにも代入されます。</p>
+                    <p>10.0は10未満でも20より大きくもないためelseに入り、<code>++oldPrice[i]</code> により先に1増えて11.0になり、その値がnewPriceに代入されます。</p>
+                    <p>25.99は20より大きいため、<code>--oldPrice[i]</code> により先に1減って24.99になり、その値がnewPriceに代入されます。</p>
+                    <p>したがってnewPriceは <code>[9.95, 11.0, 24.99]</code> となるため、Aが正解です。</p>
                     <h4>覚え方</h4>
+                    <p>前置 <code>++</code> / <code>--</code> は「先に変更して、その変更後の値を使う」。<code>+=</code> は「計算して更新し、その更新後の値を使う」と覚えます。</p>
                 </div>
             </details>
         
@@ -2232,14 +2233,10 @@ sealed class Drink implements Item {}</code></pre>
         }
     }
 }</code></pre>
-                <div class="choice" data-choice="A">A.
-                    <code>Amy:Clara:Lewis:</code>と出力された後、ArrayIndexOutOfBoundsExceptionがスローされる
-                </div>
+                <div class="choice" data-choice="A">A. <code>Amy:Clara:Lewis:</code>と出力された後、ArrayIndexOutOfBoundsExceptionがスローされる</div>
                 <div class="choice" data-choice="B">B. <code>Amy:Clara:Lewis:null:</code>が出力される</div>
                 <div class="choice" data-choice="C">C. <code>Amy:Clara:Lewis:</code>が出力される</div>
-                <div class="choice" data-choice="D">D.
-                    <code>[Amy, Clara][Lewis,</code>と出力された後、NullPointerExceptionがスローされる
-                </div>
+                <div class="choice" data-choice="D">D. <code>[Amy, Clara][Lewis,</code>と出力された後、NullPointerExceptionがスローされる</div>
                 <div class="choice" data-choice="E">E. <code>[Amy, Clara][Lewis, null]</code>が出力される</div>
                 <div class="choice" data-choice="F">F. <code>[Amy, Clara][Lewis]</code>が出力される</div>
                 <div aria-label="回答欄" class="answer-controls">
@@ -3667,14 +3664,10 @@ sealed interface B {
 }
 non-sealed interface C extends A, B {}</code></pre>
                 <div class="choice" data-choice="A">A. sealedで宣言されたインタフェースA,Bにはpermits Cを指定しなければならない</div>
-                <div class="choice" data-choice="B">B.
-                    sealedで宣言されたインタフェースはクラスへの実装のみを許可するため、インタフェースCをクラスとして宣言し、implements A, Bとする</div>
-                <div class="choice" data-choice="C">C.
-                    インタフェースCの宣言において、複数のインタフェースを継承することはできないため、extendsにはAまたはBのどちらかのみを指定する</div>
-                <div class="choice" data-choice="D">D. インタフェースA,
-                    Bのdefaultメソッドが衝突するため、インタフェースCでoperate()をオーバーライドし、衝突を回避する</div>
-                <div class="choice" data-choice="E">E. インターフェースA,
-                    BのdefaultメソッドはインタフェースCでのオーバーライドに失敗するため、インタフェースCのextendsにはAまたはBのどちらかのみを指定する</div>
+                <div class="choice" data-choice="B">B. sealedで宣言されたインタフェースはクラスへの実装のみを許可するため、インタフェースCをクラスとして宣言し、implements A, Bとする</div>
+                <div class="choice" data-choice="C">C. インタフェースCの宣言において、複数のインタフェースを継承することはできないため、extendsにはAまたはBのどちらかのみを指定する</div>
+                <div class="choice" data-choice="D">D. インタフェースA,Bのdefaultメソッドが衝突するため、インタフェースCでoperate()をオーバーライドし、衝突を回避する</div>
+                <div class="choice" data-choice="E">E. インタフェースA,BのdefaultメソッドはインタフェースCでのオーバーライドに失敗するため、インタフェースCのextendsにはAまたはBのどちらかのみを指定する</div>
                 <div aria-label="回答欄" class="answer-controls">
                     <div class="answer-control-label">回答を選択</div>
                     <div class="answer-choice-grid"><button aria-pressed="false" class="answer-choice"
